@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: display_elements
+#
+#  id         :integer          not null, primary key
+#  event_id   :integer
+#  position   :integer
+#  type       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  position: 1
+  type: 
+
+two:
+  event_id: 1
+  position: 1
+  type: 
