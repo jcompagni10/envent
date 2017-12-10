@@ -11,7 +11,19 @@ import {
   ActivityIndicator,
   NavigatorIOS,
 } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import EventLandingPage from './eventLandingPage';
+
+const navigationOptions = {
+  drawerLabel: 'Home',
+  drawerIcon: ({ tintColor }) => (
+    // TODO3 find permanant solution for images - local assets vs CDN
+    <Image
+      source="https://res.cloudinary.com/trwong/image/upload/v1512893290/153755917_vjhfz4.jpg"
+      style={[styles.icon, { tintColor: tintColor }]}
+    />
+  )
+};
 
 export default class HomeLandingPage extends React.Component {
   constructor(props) {
@@ -26,15 +38,6 @@ export default class HomeLandingPage extends React.Component {
     this.handleEventPress = this.handleEventPress.bind(this);
     this.updateStateAndFindEvent = this.updateStateAndFindEvent.bind(this);
   }
-
-  // componentDidMount(){
-  //   return fetch("https://code-ninjas.herokuapp.com/api/level_sets")
-  //   .then(response => response.json())
-  //   .then(responseJson => {
-  //     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-  //     this.setState({data: ds.cloneWithRows(responseJson.by_id), isLoading: false});
-  //   });
-  // }
 
     findEventFromInput() {
     // TODO1 fetch address is hard coded in as Taylor's local IP
@@ -101,5 +104,9 @@ const styles = StyleSheet.create({
   },
   photo: {
     flex: 4
-  }
+  },
+  icon: {
+    width: 24,
+    height: 24,
+  },
 });
