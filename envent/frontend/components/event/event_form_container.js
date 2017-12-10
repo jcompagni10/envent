@@ -1,14 +1,13 @@
 import {connect} from 'react-redux';
-import Header from './Header';
-import {logout} from '../../actions/session.js';
-import {withRouter} from 'react-router-dom';
+import {createEvent} from '../../actions/event.js';
 import EventForm from './event_form';
 
 const mapStateToProps = state => (
-  {currentUser: state.session.currentUser}
+  {errors: state.errors.eventErrors}
 );
+
 const mapDispatchToProps = dispatch => ({
-  logout: ()=>dispatch(logout())
+  createEvent: (event)=>dispatch(createEvent(event))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(EventForm);
