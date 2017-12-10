@@ -41,7 +41,7 @@ export default class EventForm extends React.Component{
       <div>
         <h2> Event Form</h2>
         <form>
-          <Errors error = {this.props.errors} />
+          <Errors errors = {this.props.errors} />
           <fieldset>
             <label htmlForm ="event-name"> Name </label>
             <input

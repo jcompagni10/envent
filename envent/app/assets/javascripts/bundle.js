@@ -25477,7 +25477,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { error: this.props.errors }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'fieldset',
           null,
@@ -25664,7 +25664,7 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ((state = { currentUser: null }, action) => {
+/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENT_ERRORS */]:

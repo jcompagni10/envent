@@ -9,7 +9,7 @@ class Api::EventsController < ApplicationController
       end
       render :show
     else
-      render JSON: @event.errors.full_messages, status: 422
+      render json: @event.errors.full_messages, status: 422
     end
   end
 
