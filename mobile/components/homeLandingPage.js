@@ -81,6 +81,7 @@ export default class HomeLandingPage extends React.Component {
         <TextInput
           style={{ height: 60, }}
           placeholder="Event Tag"
+          // Ajax request is handled on text change - needs to happen on submission
           onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
         />
         <Button
