@@ -1,4 +1,4 @@
 json.name @event.name
-json.modules @event.modules.each do |mod|
-  json.extract! mod, :position, :module
+json.display_elements @event.display_elements.each do |el|
+  json.extract! el, :position, :module
 end

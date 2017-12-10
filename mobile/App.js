@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput , Alert, Button, ListView, ActivityIndicator} from 'react-native';
+import Event from './event';
 
 export default class App extends React.Component {
   constructor(){
@@ -11,11 +12,11 @@ export default class App extends React.Component {
   }
 
   componentDidMount(){
-    return fetch("https://code-ninjas.herokuapp.com/api/level_sets")
+    return fetch("http://169.254.210.106:3000/api/events")
     .then(response => response.json())
     .then(responseJson => {
       let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      this.setState({data: ds.cloneWithRows(responseJson.by_id), isLoading: false});
+      this.setState({data: ds.cloneWithRows(responseJson), isLoading: false});
     });
   }
   render() {
@@ -28,9 +29,11 @@ export default class App extends React.Component {
     } else {
       return (
         <View style = {styles.container}>
+        <Text> EVENTS </Text>
           <ListView dataSource = {this.state.data}
-            renderRow = {(level) => <Text>{level.name}</Text>}
+            renderRow = {(event) => <Text>{event.name}</Text>}
           />
+        <Event />
         </View>
       );
     }
@@ -40,7 +43,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f00',
+    backgroundColor: 'aqua',
     flexDirection: "column"
   },
   photo: {

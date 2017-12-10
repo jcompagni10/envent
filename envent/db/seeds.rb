@@ -7,35 +7,57 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 events = Event.create!([
-  { name: "OCD House Party" },
-  { name: "Sick Festival" },
-  { name: "Corporate McCorporate" },
+  {
+    name: "OCD House Party",
+    tag: "OCD",
+    user_id: 1,
+    private: false
+
+  },
+  { name: "Sick Festival",
+    tag: "Coachella",
+    user_id: 2,
+    private: false
+
+  },
+  { name: "Corporate McCorporate",
+    tag: "biznitch",
+    user_id: 1,
+    private: false
+
+  },
    ])
+
+
 
 elements = DisplayElement.create!([
   {
     event_id: 1,
     position: 0,
-    module: "calender"
+    module: "calender",
   },
   {
     event_id: 1,
     position: 1,
-    module: "info"
+    module: "info",
+
   },
   {
     event_id: 2,
     position: 0,
-    module: "calender"
+    module: "calender",
+
   },
   {
     event_id: 3,
     position: 1,
-    module: "calender"
+    module: "calender",
+
   },
   {
     event_id: 3,
     position: 0,
-    module: "info"
+    module: "info",
+
   },
 ])
