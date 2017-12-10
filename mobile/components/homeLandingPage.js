@@ -34,28 +34,29 @@ export default class HomeLandingPage extends React.Component {
     this.updateStateAndFindEvent = this.updateStateAndFindEvent.bind(this);
   }
 
-    findEventFromInput() {
-    // TODO1 fetch address is hard coded in as Taylor's local IP
-    return fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
+    findEventFromInput(callback) {
+    fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
       .then(response => response.json())
       .then(responseJson => {
-        this.state.eventId = responseJson.id;
-        return responseJson.id;
-      });
+        callback(responseJson.id);
+      })
       // .catch(error => {
       //   Alert.alert(`${error}`);
       // });
     }
     
-  handleEventPress() {
-    this.props.navigation.navigate('EventLandingPage', { eventId: this.state.eventId });
-
+  handleEventPress(eventId) {
+    this.findEventFromInput(
+      this.props.navigation.navigate(
+        'EventLandingPage',
+        { eventId: eventId }
+      )
+    );
   }
 
 
   updateStateAndFindEvent(eventTag) {
     this.setState({ eventTag });
-    this.findEventFromInput();
   }
 
   render() {
@@ -64,11 +65,10 @@ export default class HomeLandingPage extends React.Component {
         <TextInput
           style={{ height: 60, }}
           placeholder="Event Tag"
-          // Ajax request is handled on text change - needs to happen on submission
           onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
         />
         <Button
-          onPress={this.handleEventPress}
+          onPress={() => this.findEventFromInput(this.handleEventPress)}
           title="Next"
         />
       </View>
