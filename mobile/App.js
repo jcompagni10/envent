@@ -29,7 +29,15 @@ export default class App extends React.Component {
   // }
 
   findEventFromInput() {
-    
+    // TODO1 fetch address is hard coded in as Taylor's local IP
+    return fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
+    .then(response => response.json())
+    .then( responseJson => {
+      Alert.alert(`${responseJson}`);
+    })
+    .catch( error => {
+      Alert.alert(`${error}`);
+    });
   }
 
   render() {
