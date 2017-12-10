@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  event_id   :integer
 #  position   :integer
-#  type       :string
+#  module     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

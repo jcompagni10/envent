@@ -4,12 +4,12 @@ class Api::EventsController < ApplicationController
     render :index
   end
 
-  # def show
-  #   @event = Event.find_by(id: params[:id])
-  #   if @event
-  #     render :show
-  #   else
-  #     render JSON: {}, status: 404
-  #   end
-  # end
+  def show
+    @event = Event.find_by(tag: params[:id])
+    if @event
+      render :show
+    else
+      render JSON: {}, status: 404
+    end
+  end
 end
