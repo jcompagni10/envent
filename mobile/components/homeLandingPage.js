@@ -75,18 +75,3 @@ export default class HomeLandingPage extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    flexDirection: "column"
-  },
-  photo: {
-    flex: 4
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-});
