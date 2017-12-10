@@ -18,7 +18,7 @@ import EventLandingPage from './eventLandingPage';
 
 export default class HomeLandingPage extends React.Component {
   static navigationOptions = {
-    title: 'Home'
+    title: 'Change Events'
   };
 
   constructor(props) {
