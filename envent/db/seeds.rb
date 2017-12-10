@@ -6,6 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+users = User.create!([
+  {
+    email: "jcp@gmail.com",
+    password_digest: "asdf"
+  },
+  {
+    email: "ejb@gmail.com",
+    password_digest: "qwerty"
+  },
+  {
+    email: "trw@gmail.com",
+    password_digest: "poiuy"
+  },
+])
+
 events = Event.create!([
   {
     name: "OCD House Party",

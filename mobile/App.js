@@ -1,49 +1,58 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput , Alert, Button, ListView, ActivityIndicator} from 'react-native';
-import Event from './event';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  Alert,
+  Button,
+  ListView,
+  ActivityIndicator
+} from 'react-native';
 
 export default class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      text: "",
-      isLoading: true
+      eventTag: "",
     };
   }
 
-  componentDidMount(){
-    return fetch("http://169.254.210.106:3000/api/events")
-    .then(response => response.json())
-    .then(responseJson => {
-      let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      this.setState({data: ds.cloneWithRows(responseJson), isLoading: false});
-    });
+  // componentDidMount(){
+  //   return fetch("https://code-ninjas.herokuapp.com/api/level_sets")
+  //   .then(response => response.json())
+  //   .then(responseJson => {
+  //     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  //     this.setState({data: ds.cloneWithRows(responseJson.by_id), isLoading: false});
+  //   });
+  // }
+
+  findEventFromInput() {
+    
   }
+
   render() {
-    if (this.state.isLoading){
-      return (
-        <View style={{flex: 1, paddingTop: 20}}>
-          <ActivityIndicator />
-        </View>
-      );
-    } else {
-      return (
-        <View style = {styles.container}>
-        <Text> EVENTS </Text>
-          <ListView dataSource = {this.state.data}
-            renderRow = {(event) => <Text>{event.name}</Text>}
-          />
-        <Event />
-        </View>
-      );
-    }
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <TextInput 
+          style={{ height: 40, }}
+          placeholder="Event Tag"
+          onChangeText={ eventTag => this.setState({eventTag})}
+        />
+        <Button
+          onPress={ () => this.findEventFromInput(this.state.eventTag) }
+          title="Next"
+        />
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'aqua',
+    backgroundColor: '#000',
     flexDirection: "column"
   },
   photo: {
