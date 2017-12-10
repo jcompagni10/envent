@@ -18,14 +18,22 @@ export default class EventLandingPage extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <View style={{ flex:1, justifyContent:"center", alignItems: "center", backgroundColor: 'powderblue' }}>
-        <Text>
-          You made it
-          
-          {`${this.props.eventId}`}
-        </Text>
+        <View style={{ flex: 0.05 }}>
+        </View>
+        <View style={{ flex: 0.1 }}>
+          <Image source={require('./assets/check.png')} />
+          <Text>Event Home</Text>
+          <Text></Text>
+        </View>
+        <View style={{ flex:0.85}}>
+          <Text>
+            You made it
+            
+            {`${this.props.navigation.state.params.eventId}`}
+          </Text>
+        </View>
       </View>
     );
   }
