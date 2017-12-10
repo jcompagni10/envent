@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   # TODO: add uniquness validate to DB
   validates :name, presence: true
   validates :tag, presence: true, uniqueness: true
+  before_save :downcase_fields
 
 
   belongs_to :creator,
@@ -23,5 +24,9 @@ class Event < ApplicationRecord
              foreign_key: :user_id
 
   has_many :display_elements
+
+  def downcase_fields
+    self.tag.downcase!
+  end
 
 end

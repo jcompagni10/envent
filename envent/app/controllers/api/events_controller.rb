@@ -5,7 +5,8 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(tag: params[:id])
+    lowercase_tag = params[:id].downcase
+    @event = Event.find_by(tag: lowercase_tag)
     if @event
       render :show
     else
