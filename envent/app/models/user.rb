@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :events
 
   after_initialize :ensure_session_token
-  
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def self.find_by_credentials(credentials)
-    user = User.find_by(username: credentials[:username])
+    user = User.find_by(email: credentials[:email])
     return user if user && user.is_password?(credentials[:password])
   end
 
