@@ -66,17 +66,44 @@ As users create events, they are able to customize the components for their even
 * Finish basic React Native tutorial
 * Create wireframes
 
+#### Weekend
+- Connect home landing with event landing
+- Nav bar with three empty components
+- Pressing link redirects to new component
+- AJAX call that finds what components that are needed to be pulled from the backend and load it to the frontend
+
+##### Web:
+- user auth
+- admins can create event
+- dynamically creates DB tables of each modules of event
+
+
 ## Group Members and Work Breakdown
 **Julian Portis, Taylor Wong, Edward Bai**
 
 ### Day 1
+- Admin page enables admin to input basic info (time, location) to event landing page
+- Basic event landing page displays basic information for users
+- Hamburger menu
 
 ### Day 2
+- Admin page enables admin to set up message board
+- Admin can view page on web app, modify posts
+- Users are able to post to message board
 
 ### Day 3
+- Admin page enables admin to create events with time
+- Admin can view current event queue chronologically, with basic CRUD features
+- Users are able to see the event queue from the mobile app
 
 ### Day 4
+- Admin page enables admin to create a map page where they can upload a map image
+- Users are able to see the map
+- Admin page enables admin to create announcements
+- Users can view the announcements chronologically within the announcements component
 
 ### Day 5
+-
 
 ### Day 6
+- 
