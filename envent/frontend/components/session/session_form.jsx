@@ -35,7 +35,7 @@ export default class SessionForm extends React.Component {
       <div>
         <h3>{this.title()}</h3>
         <form>
-          <SessionErrors errors = {this.props.errors} />
+          <Errors errors = {this.props.errors} />
           <fieldset>
             <label htmlFor="email">Email:</label>
             <input

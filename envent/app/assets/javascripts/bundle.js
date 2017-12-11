@@ -25249,7 +25249,7 @@ class SessionForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SessionErrors, { errors: this.props.errors }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__misc_errors__["a" /* default */], { errors: this.props.errors }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'fieldset',
           null,
