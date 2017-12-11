@@ -9,22 +9,23 @@ import {
   Button,
   ListView,
   ActivityIndicator,
+  TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import {
   NavigationActions,
   DrawerNavigator,
 } from 'react-navigation';
-import EventLandingPage from './eventLandingPage';
-import Router from './router';
-import Schedule from './schedule/schedule';
-import News from './news/news';
-import MessageBoard from './messageBoard/messageBoard';
+
+import style from './styles/landing_page.js';
+
 
 const moduleNames = {Schedule: 'Schedule', News: "News", MessageBoard: "Message Board"}
 
 export default class HomeLandingPage extends React.Component {
   static navigationOptions = {
-    title: 'Change Events'
+    title: 'Change Events',
+    status: ''
   };
 
   constructor(props) {
@@ -47,9 +48,8 @@ export default class HomeLandingPage extends React.Component {
     fetch("http://192.168.3.37:3000/api/events/"+this.state.eventTag, )
       .then((response) => response.json())
       .then(this.handleEventPress)
-
       .catch(error => {
-        Alert.alert(error);
+        this.setState({status: "Event Not Found"})
       });
     }
 
@@ -65,10 +65,7 @@ export default class HomeLandingPage extends React.Component {
   }
 
   handleEventPress(event) {
-    // this.findEventFromInput(
-      // Alert.alert(event.name)
       let navItems = this.buildNav(event.display_elements);
-      debugger
       this.props.navigation.navigate(
         'Router',
         {
@@ -83,22 +80,46 @@ export default class HomeLandingPage extends React.Component {
     this.setState({ eventTag });
   }
 
+  componentDidMount(){
+    StatusBar.setHidden(true);
+  }
+
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <TextInput
-          style={{ height: 60, }}
-          placeholder="Event Tag"
-          onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
-          onSubmitEditing = {this.findEventFromInput}
-          returnKeyType = "join"
+      <View style={style.landingPageContainer} >
+        <Image
+          source={require('./../assets/crowd.jpg')}
+          style={style.backgroundImage}
         />
-        <Button
-          type ="submit"
-          onPress={()=>this.findEventFromInput(this.handleEventPress)}
-          title="Next"
-        />
+        <View style ={style.logoWrapper} >
+          <Image
+          source={require('./../assets/logo.png')}
+          style={style.logo}
+          />
+        </View>
+        <View style ={style.entryForm}>
+          <Text style = {style.statusText}>
+          {this.state.status}
+          </Text>
+          <View style = {style.tagBar}>
+            <TextInput
+              style={style.tagInput}
+              placeholder="Event Tag"
+              onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
+              onSubmitEditing = {this.findEventFromInput}
+              returnKeyType = "join"
+            />
+            <TouchableOpacity
+              style={style.joinButton}
+              onPress={()=>this.findEventFromInput(this.handleEventPress)}
+            >
+              <Text style ={style.joinButtonText}>Join</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+// Photo by Ezra Jeffrey
