@@ -49,7 +49,7 @@ export default class EventLandingPage extends React.Component {
           <Text>
             Event Landing Page
 
-            {`${this.props.navigation.state.eventId}`}
+            {`${this.props.navigation.state.params.eventName}`}
           </Text>
         </View>
       </View>

@@ -44,14 +44,13 @@ export default class HomeLandingPage extends React.Component {
 
   findEventFromInput(callback) {
     // TODO1 Add logic if failed response
-    fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.handleEventPress(responseJson);
-      })
-      // .catch(error => {
-      //   Alert.alert(`${error}`);
-      // });
+    fetch("http://192.168.3.37:3000/api/events/"+this.state.eventTag, )
+      .then((response) => response.json())
+      .then(this.handleEventPress)
+
+      .catch(error => {
+        Alert.alert(error);
+      });
     }
 
   buildNav(elements){
@@ -73,7 +72,8 @@ export default class HomeLandingPage extends React.Component {
       this.props.navigation.navigate(
         'Router',
         {
-          items:
+          items: navItems,
+          eventName: event.name
          }
       )
   }
@@ -90,12 +90,12 @@ export default class HomeLandingPage extends React.Component {
           style={{ height: 60, }}
           placeholder="Event Tag"
           onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
-          onSubmitEditing = {this.handleEventPress}
+          onSubmitEditing = {this.findEventFromInput}
           returnKeyType = "join"
         />
         <Button
           type ="submit"
-          onPress={this.findEventFromInput}
+          onPress={()=>this.findEventFromInput(this.handleEventPress)}
           title="Next"
         />
       </View>

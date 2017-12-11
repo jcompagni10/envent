@@ -10,6 +10,7 @@ import Schedule from './schedule/schedule';
 import News from './news/news';
 import MessageBoard from './messageBoard/messageBoard';
 import CustomItems from './custom_items';
+import Home from './homeLandingPage';
 
 
 // let drawerRoutes = {
