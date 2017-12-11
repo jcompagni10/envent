@@ -8,8 +8,7 @@ import {
   // DrawerNavigator,
   // NavigationActions,
 } from 'react-navigation';
-import HomeLandingPage from './components/homeLandingPage';
-import EventLandingPage from './components/eventLandingPage';
+import HomeLandingPage from './components/landing_page';
 import Router from './components/router';
 
 
