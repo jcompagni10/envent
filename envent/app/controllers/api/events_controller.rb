@@ -24,7 +24,7 @@ class Api::EventsController < ApplicationController
     if @event
       render :show
     else
-      render JSON: {}, status: 404
+      render json: {}, status: 404
     end
   end
 

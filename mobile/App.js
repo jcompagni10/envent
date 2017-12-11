@@ -4,8 +4,8 @@ import React from 'react';
 //   View,
 // } from 'react-native';
 import {
-  // StackNavigator,
-  DrawerNavigator,
+  StackNavigator,
+  // DrawerNavigator,
   // NavigationActions,
 } from 'react-navigation';
 import HomeLandingPage from './components/homeLandingPage';
@@ -21,11 +21,16 @@ import Router from './components/router';
 //   }
 // }
 
-export default DrawerNavigator({
-  Home: {
-    screen: HomeLandingPage,
+export default StackNavigator(
+  {
+    Home: {
+      screen: HomeLandingPage,
+    },
+    Router: {
+      screen: Router,
+    },
   },
-  Router: {
-    screen: Router,
-  },
-});
+  {
+    headerMode: "none"
+  }
+);

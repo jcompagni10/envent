@@ -1,14 +1,15 @@
 import React from 'react';
 import {
   DrawerNavigator,
+  DrawerItems,
+  SafeAreaView
 } from 'react-navigation';
-import {Text} from 'react-native';
-
+import {ScrollView} from 'react-native';
 import EventLandingPage from './eventLandingPage';
 import Schedule from './schedule/schedule';
 import News from './news/news';
 import MessageBoard from './messageBoard/messageBoard';
-import CustomWE from './customwe';
+import CustomItems from './custom_items';
 
 
 // let drawerRoutes = {
@@ -53,10 +54,23 @@ export default DrawerNavigator(
   {
     EventLandingPage: {
       screen: EventLandingPage,
+    },
+    Schedule: {
+      screen: Schedule,
+    },
+    News: {
+      screen: News
+    },
+    MessageBoard: {
+      screen: MessageBoard
     }
   },
   {
     contentComponent: props =>
-    <Text>{props.navigation.state}</Text>
+    <ScrollView>
+      <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+        <CustomItems {...props} />
+      </SafeAreaView>
+    </ScrollView>
   }
 );
