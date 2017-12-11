@@ -48,13 +48,13 @@ export default class HomeLandingPage extends React.Component {
       },
     };
 
-    
+
     this.findEventFromInput = this.findEventFromInput.bind(this);
     this.handleEventPress = this.handleEventPress.bind(this);
     this.updateStateAndFindEvent = this.updateStateAndFindEvent.bind(this);
   }
 
-  
+
 
   findEventFromInput(callback) {
     // TODO1 Add logic if failed response
@@ -67,7 +67,7 @@ export default class HomeLandingPage extends React.Component {
       //   Alert.alert(`${error}`);
       // });
     }
-    
+
   handleEventPress(eventId) {
     // this.findEventFromInput(
       this.props.navigation.navigate(
@@ -91,8 +91,11 @@ export default class HomeLandingPage extends React.Component {
           style={{ height: 60, }}
           placeholder="Event Tag"
           onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
+          onSubmitEditing = {this.handleEventPress}
+          returnKeyType = "join"
         />
         <Button
+          type ="submit"
           // onPress={() => this.findEventFromInput(this.handleEventPress)}
           onPress={() => this.handleEventPress()}
           title="Next"

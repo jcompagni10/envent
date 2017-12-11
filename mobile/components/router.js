@@ -2,6 +2,8 @@ import React from 'react';
 import {
   DrawerNavigator,
 } from 'react-navigation';
+import {Text} from 'react-native';
+
 import EventLandingPage from './eventLandingPage';
 import Schedule from './schedule/schedule';
 import News from './news/news';
@@ -27,7 +29,7 @@ import CustomWE from './customwe';
 // export default DrawerNavigator(navigation.state.params.drawerRoutes);
 // export default () => {
 //   // console.log(navigation);
-//   // debugger; 
+//   // debugger;
 //   return DrawerNavigator({
 //     EventLandingPage: {
 //       screen: EventLandingPage,
@@ -54,7 +56,7 @@ export default DrawerNavigator(
     }
   },
   {
-    contentComponent: props => 
-      <CustomWE {...props} />
+    contentComponent: props =>
+    <Text>{props.navigation.state}</Text>
   }
 );
