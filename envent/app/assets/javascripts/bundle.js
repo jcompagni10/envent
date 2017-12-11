@@ -25362,23 +25362,63 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "nav",
-      { className: "navbar navbar-expand-lg navbar-dark bg-dark" },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "navbar-brand" },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "h2",
-          null,
-          "Envent"
-        )
-      ),
-      this.props.currentUser.email,
+      { "class": "navbar navbar-toggleable-md navbar-light bg-faded" },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "button",
-        {
-          className: "btn btn-secondary",
-          onClick: this.props.logout },
-        "Log Out"
+        { "class": "navbar-toggler navbar-toggler-right", type: "button", "data-toggle": "collapse", "data-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { "class": "navbar-toggler-icon" })
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "a",
+        { "class": "navbar-brand", href: "#" },
+        "Envent"
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { "class": "collapse navbar-collapse", id: "navbarSupportedContent" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "ul",
+          { "class": "navbar-nav mr-auto" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "li",
+            { "class": "nav-item active" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "a",
+              { "class": "nav-link", href: "#" },
+              "Home ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "span",
+                { "class": "sr-only" },
+                "(current)"
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "li",
+            { "class": "nav-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "a",
+              { "class": "nav-link", href: "#" },
+              "Link"
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "li",
+            { "class": "nav-item" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "a",
+              { "class": "nav-link disabled", href: "#" },
+              "Disabled"
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          {
+            className: "btn btn-secondary",
+            onClick: this.props.logout },
+          "Log Out"
+        )
       )
     );
   }
@@ -25483,7 +25523,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            { htmlForm: 'event-name' },
+            { htmlFor: 'event-name' },
             ' Name '
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
@@ -25498,7 +25538,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
-            { htmlForm: 'event-tag' },
+            { htmlFor: 'event-tag' },
             'Tag'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {

@@ -43,7 +43,7 @@ export default class EventForm extends React.Component{
         <form>
           <Errors errors = {this.props.errors} />
           <fieldset>
-            <label htmlForm ="event-name"> Name </label>
+            <label htmlFor ="event-name"> Name </label>
             <input
               id= "event-name"
               type ="text"
@@ -52,7 +52,7 @@ export default class EventForm extends React.Component{
             />
           </fieldset>
           <fieldset>
-            <label htmlForm ="event-tag">Tag</label>
+            <label htmlFor ="event-tag">Tag</label>
             <input
               id= "event-tag"
               type ="text"
