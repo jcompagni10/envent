@@ -1,33 +1,31 @@
 import React from 'react';
+// import {
+//   Text,
+//   View,
+// } from 'react-native';
 import {
-  Text,
-  View,
-} from 'react-native';
-import {
-  StackNavigator,
+  // StackNavigator,
   DrawerNavigator,
-  NavigationActions,
+  // NavigationActions,
 } from 'react-navigation';
 import HomeLandingPage from './components/homeLandingPage';
 import EventLandingPage from './components/eventLandingPage';
-import Schedule from './components/schedule/schedule';
-import News from './components/news/news';
-import MessageBoard from './components/messageBoard/messageBoard';
+import Router from './components/router';
+
+
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//       <HomeLandingPage />
+//     );
+//   }
+// }
 
 export default DrawerNavigator({
   Home: {
     screen: HomeLandingPage,
   },
-  EventLandingPage: {
-    screen: EventLandingPage,
-  },
-  Schedule: {
-    screen: Schedule,
-  },
-  News: {
-    screen: News,
-  },
-  MessageBoard: {
-    screen: MessageBoard,
+  Router: {
+    screen: Router,
   },
 });

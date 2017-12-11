@@ -15,6 +15,11 @@ import {
   DrawerNavigator,
 } from 'react-navigation';
 import EventLandingPage from './eventLandingPage';
+import Router from './router';
+import Schedule from './schedule/schedule';
+import News from './news/news';
+import MessageBoard from './messageBoard/messageBoard';
+
 
 export default class HomeLandingPage extends React.Component {
   static navigationOptions = {
@@ -28,13 +33,31 @@ export default class HomeLandingPage extends React.Component {
       eventId: undefined,
     };
 
+    this.drawerRoutes = {
+      EventLandingPage: {
+        screen: EventLandingPage,
+      },
+      Schedule: {
+        screen: Schedule,
+      },
+      News: {
+        screen: News,
+      },
+      MessageBoard: {
+        screen: MessageBoard,
+      },
+    };
+
     
     this.findEventFromInput = this.findEventFromInput.bind(this);
     this.handleEventPress = this.handleEventPress.bind(this);
     this.updateStateAndFindEvent = this.updateStateAndFindEvent.bind(this);
   }
 
-    findEventFromInput(callback) {
+  
+
+  findEventFromInput(callback) {
+    // TODO1 Add logic if failed response
     fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
       .then(response => response.json())
       .then(responseJson => {
@@ -46,12 +69,14 @@ export default class HomeLandingPage extends React.Component {
     }
     
   handleEventPress(eventId) {
-    this.findEventFromInput(
+    // this.findEventFromInput(
       this.props.navigation.navigate(
-        'EventLandingPage',
-        { eventId: eventId }
+        'Router',
+        { eventId: eventId,
+          drawerRoutes: this.drawerRoutes
+         }
       )
-    );
+    // );
   }
 
 
@@ -68,7 +93,8 @@ export default class HomeLandingPage extends React.Component {
           onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
         />
         <Button
-          onPress={() => this.findEventFromInput(this.handleEventPress)}
+          // onPress={() => this.findEventFromInput(this.handleEventPress)}
+          onPress={() => this.handleEventPress()}
           title="Next"
         />
       </View>

@@ -22,6 +22,7 @@ export default class EventLandingPage extends React.Component {
   }
 
   render() {
+    // debugger
     return (
       <View style={{ flex:1, justifyContent:"center", alignItems: "stretch", backgroundColor: 'powderblue' }}>
       
@@ -48,7 +49,7 @@ export default class EventLandingPage extends React.Component {
           <Text>
             Event Landing Page
             
-            {`${this.props.navigation.state.params.eventId}`}
+            {`${this.props.navigation.state.eventId}`}
           </Text>
         </View>
       </View>
