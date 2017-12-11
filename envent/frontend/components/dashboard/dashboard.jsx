@@ -5,7 +5,7 @@ export default()=>{
   return (
     <div>
       <h1> DASHBOARD</h1>
-      <Link to="/create_event">
+      <Link to="/event/new">
         Create An Event
       </Link>
     </div>
