@@ -20,6 +20,7 @@ import Schedule from './schedule/schedule';
 import News from './news/news';
 import MessageBoard from './messageBoard/messageBoard';
 
+const moduleNames = {Schedule: 'Schedule', News: "News", MessageBoard: "Message Board"}
 
 export default class HomeLandingPage extends React.Component {
   static navigationOptions = {
@@ -31,21 +32,6 @@ export default class HomeLandingPage extends React.Component {
     this.state = {
       eventTag: "",
       eventId: undefined,
-    };
-
-    this.drawerRoutes = {
-      EventLandingPage: {
-        screen: EventLandingPage,
-      },
-      Schedule: {
-        screen: Schedule,
-      },
-      News: {
-        screen: News,
-      },
-      MessageBoard: {
-        screen: MessageBoard,
-      },
     };
 
 
@@ -61,22 +47,35 @@ export default class HomeLandingPage extends React.Component {
     fetch(`http://192.168.3.21:3000/api/events/${this.state.eventTag}`)
       .then(response => response.json())
       .then(responseJson => {
-        callback(responseJson.id);
+        this.handleEventPress(responseJson);
       })
       // .catch(error => {
       //   Alert.alert(`${error}`);
       // });
     }
 
-  handleEventPress(eventId) {
+  buildNav(elements){
+    let navItems = [];
+    elements.forEach(element => (
+      navItems.push({
+        title: moduleNames[element],
+        component: element
+    }
+    )));
+    return navItems
+  }
+
+  handleEventPress(event) {
     // this.findEventFromInput(
+      // Alert.alert(event.name)
+      let navItems = this.buildNav(event.display_elements);
+      debugger
       this.props.navigation.navigate(
         'Router',
-        { eventId: eventId,
-          drawerRoutes: this.drawerRoutes
+        {
+          items:
          }
       )
-    // );
   }
 
 
@@ -96,8 +95,7 @@ export default class HomeLandingPage extends React.Component {
         />
         <Button
           type ="submit"
-          // onPress={() => this.findEventFromInput(this.handleEventPress)}
-          onPress={() => this.handleEventPress()}
+          onPress={this.findEventFromInput}
           title="Next"
         />
       </View>

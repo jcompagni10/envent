@@ -39,7 +39,7 @@ export default class MessageBoard extends React.Component {
               style={{ width: 40, height: 40 }}
             />
           </TouchableHighlight>
-          <Text>Schedule</Text>
+          <Text>Message Board</Text>
           <Text></Text>
         </View>
 

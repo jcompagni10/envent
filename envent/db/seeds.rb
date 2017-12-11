@@ -49,30 +49,35 @@ elements = DisplayElement.create!([
   {
     event_id: 1,
     position: 0,
-    module: "calender",
+    module: "Schedule",
   },
   {
     event_id: 1,
     position: 1,
-    module: "info",
+    module: "News",
 
+  },
+  {
+    event_id: 1,
+    position: 3,
+    module: "MessageBoard",
   },
   {
     event_id: 2,
     position: 0,
-    module: "calender",
+    module: "MessageBoard",
 
   },
   {
     event_id: 3,
     position: 1,
-    module: "calender",
+    module: "Schedule",
 
   },
   {
     event_id: 3,
     position: 0,
-    module: "info",
+    module: "News",
 
   },
 ])
