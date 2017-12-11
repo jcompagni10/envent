@@ -5,7 +5,7 @@ import LandingPage from './landing_page.jsx';
 import HeaderContainer from './header/header_container';
 import EventFormContainer from './event/event_form_container';
 import Dashboard from './dashboard/dashboard';
-// import Event from './event/event';
+import Event from './event/event';
 
 export default ()=>(
   <div>
@@ -13,7 +13,8 @@ export default ()=>(
   <Switch>
     <ProtectedRoute path='/dashboard' component = {Dashboard} />
     <ProtectedRoute path='/event/new' component = {EventFormContainer} />
-    {/* <ProtectedRoute path='/event' component = {Event} /> */}
+    <ProtectedRoute path='/event/' component = {Event} />
+    <ProtectedRoute path='/event' component = {Event} />
     <AuthRoute exact path="/:signup?" component = {LandingPage} />
   </Switch>
 </div>
