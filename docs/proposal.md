@@ -1,4 +1,4 @@
-# Eventful
+Â# Eventful
 
 ## Background and Overview
 
@@ -67,15 +67,17 @@ As users create events, they are able to customize the components for their even
 * Create wireframes
 
 #### Weekend
-- Connect home landing with event landing
-- Nav bar with three empty components
-- Pressing link redirects to new component
-- AJAX call that finds what components that are needed to be pulled from the backend and load it to the frontend
-
 ##### Web:
 - user auth
-- admins can create event
-- dynamically creates DB tables of each modules of event
+- admins can create event & specify modules
+
+##### Mobile:
+- Connect home landing with event landing
+- AJAX call that finds what components that are needed to be pulled from the backend and load it to the frontend
+- Nav bar with navigation to modules for given app
+- Pressing link redirects to new component
+
+
 
 
 ## Group Members and Work Breakdown
@@ -103,7 +105,9 @@ As users create events, they are able to customize the components for their even
 - Users can view the announcements chronologically within the announcements component
 
 ### Day 5
--
+- Etickets web and mobile
+- map web and mobiles
 
 ### Day 6
-- 
+- news module for web and mobile
+- flexible styling options
