@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util.js';
 import LandingPage from './landing_page.jsx';
 import HeaderContainer from './header/header_container';
-import EventFormContainer from './event/event_form_container';
+import AppBuilder from './builder/app_builder';
 import Dashboard from './dashboard/dashboard';
 
 export default ()=>(
@@ -11,7 +11,7 @@ export default ()=>(
     <ProtectedRoute path="/" component = {HeaderContainer} />
   <Switch>
     <ProtectedRoute path='/dashboard' component = {Dashboard} />
-    <ProtectedRoute path='/create_event' component = {EventFormContainer} />
+    <ProtectedRoute path='/event_builder' component = {AppBuilder} />
     <AuthRoute exact path="/:signup?" component = {LandingPage} />
   </Switch>
 </div>
