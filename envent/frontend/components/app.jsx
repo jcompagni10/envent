@@ -6,6 +6,7 @@ import HeaderContainer from './header/header_container';
 import EventFormContainer from './event/event_form_container';
 import Dashboard from './dashboard/dashboard';
 import Event from './event/event';
+import Schedule from './schedule/schedule';
 
 export default ()=>(
   <div>
@@ -13,8 +14,10 @@ export default ()=>(
   <Switch>
     <ProtectedRoute path='/dashboard' component = {Dashboard} />
     <ProtectedRoute path='/event/new' component = {EventFormContainer} />
-    <ProtectedRoute path='/event/' component = {Event} />
-    <ProtectedRoute path='/event' component = {Event} />
+    <ProtectedRoute exact path='/event/' component = {Event} />
+    {/* <ProtectedRoute path='/event' component = {Event} /> */}
+    <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} />
+
     <AuthRoute exact path="/:signup?" component = {LandingPage} />
   </Switch>
 </div>

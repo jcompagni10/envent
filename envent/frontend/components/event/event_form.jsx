@@ -34,7 +34,10 @@ export default class EventForm extends React.Component{
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
+    this.props.history.push(`/event/${event.tag}/schedule`);
   }
+
+
 
   render(){
     return (

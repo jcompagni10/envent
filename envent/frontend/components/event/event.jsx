@@ -5,7 +5,13 @@ export default class Event extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
   render() {
+    
+
     return (
       <div>
         Event

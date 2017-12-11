@@ -1706,10 +1706,10 @@ const RECEIVE_EVENT = "RECEIVE_EVENT";
 /* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_EVENT;
 
 const RECEIVE_EVENTS = "RECEIVE_EVENTS";
-/* unused harmony export RECEIVE_EVENTS */
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_EVENTS;
 
 const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_EVENT_ERRORS;
+/* harmony export (immutable) */ __webpack_exports__["d"] = RECEIVE_EVENT_ERRORS;
 
 const CLEAR_EVENT_ERRORS = "CLEAR_EVENT_ERRORS";
 /* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_EVENT_ERRORS;
@@ -1733,7 +1733,7 @@ const receiveEventErrors = errors => ({
 
 // thunk action creators
 const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["c" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["d"] = createEvent;
+/* harmony export (immutable) */ __webpack_exports__["e"] = createEvent;
 
 
 const fetchEvent = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["a" /* getEvent */])(eventId).then(event => dispatch(receiveEvent(event)));
@@ -25122,6 +25122,8 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__event_event_form_container__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__event_event__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__ = __webpack_require__(134);
+
 
 
 
@@ -25140,8 +25142,8 @@ var createMemoryHistory = function createMemoryHistory() {
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/dashboard', component: __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/new', component: __WEBPACK_IMPORTED_MODULE_5__event_event_form_container__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["a" /* AuthRoute */], { exact: true, path: '/:signup?', component: __WEBPACK_IMPORTED_MODULE_3__landing_page_jsx__["a" /* default */] })
   )
 ));
@@ -25471,7 +25473,7 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 const mapStateToProps = state => ({ errors: state.errors.eventErrors });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["d" /* createEvent */])(event))
+  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_form__["a" /* default */]));
@@ -25545,6 +25547,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
+    this.props.history.push(`/event/${event.tag}/schedule`);
   }
 
   render() {
@@ -25756,11 +25759,13 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ((state = { currentUser: null }, action) => {
+/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["b" /* RECEIVE_EVENT */]:
       return Object.assign({}, state, { [action.event.id]: action.event });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENTS */]:
+      return action.events;
     default:
       return state;
   }
@@ -25777,7 +25782,7 @@ exports['default'] = thunk;
 /* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENT_ERRORS */]:
+    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["d" /* RECEIVE_EVENT_ERRORS */]:
       return Object.assign({}, state, { eventErrors: action.errors });
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["a" /* CLEAR_EVENT_ERRORS */]:
       return Object.assign({}, state, { eventErrors: null });
@@ -25808,7 +25813,12 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
   render() {
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
@@ -25817,6 +25827,35 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Event;
+
+
+/***/ }),
+/* 134 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h2',
+        null,
+        ' Schedule '
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Schedule;
 
 
 /***/ })
