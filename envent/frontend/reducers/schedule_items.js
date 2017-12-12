@@ -1,19 +1,20 @@
 import {
   RECEIVE_SCHEDULE_ITEM,
   RECEIVE_SCHEDULE_ITEMS,
-  POST_SCHEDULE_ITEM,
   DELETE_SCHEDULE_ITEM
 } from '../actions/scheduleItem';
 
 export default (state = { all_ids: [], by_id: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
+  let index;
+
   switch (action.type) {
     case RECEIVE_SCHEDULE_ITEM:
       newState.by_id[action.scheduleItem.id] = action.scheduleItem; 
 
 
-      let index = newState.all_ids.indexOf(action.scheduleItem.id);
+      index = newState.all_ids.indexOf(action.scheduleItem.id);
       if (index > -1) {
         newState.all_ids.splice(index, 1);
       }
@@ -22,10 +23,17 @@ export default (state = { all_ids: [], by_id: {} }, action) => {
       return newState;
     case RECEIVE_SCHEDULE_ITEMS:
       return action.scheduleItems;
-    case POST_SCHEDULE_ITEM:
-      return action.events;
+
     case DELETE_SCHEDULE_ITEM:
-      return action.events;
+      index = newState.all_ids.indexOf(action.scheduleItemId);
+      if (index > -1) {
+        newState.all_ids.splice(index, 1);
+      }
+      
+      newState.by_id[action.scheduleItemId] = undefined;
+
+      return newState;
+      
     default:
       return state;
   }

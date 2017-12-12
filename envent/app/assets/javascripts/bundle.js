@@ -3679,6 +3679,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   const root = document.getElementById('root');
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_root__["a" /* default */], { store: store }), root);
+
+  window.dispatch = store.dispatch;
 });
 
 /***/ }),
@@ -25775,6 +25777,8 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_form_container__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__schedule_index_container__ = __webpack_require__(142);
+
 
 
 
@@ -25787,7 +25791,8 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_form_container__["a" /* default */], null)
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_form_container__["a" /* default */], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__schedule_index_container__["a" /* default */], null)
     );
   }
 }
@@ -25953,7 +25958,7 @@ exports['default'] = thunk;
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  createScheduleItem: scheduleItem => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["e" /* createScheduleItem */])(scheduleItem))
+  createScheduleItem: scheduleItem => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["d" /* createScheduleItem */])(scheduleItem))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_form__["a" /* default */]));
@@ -26092,13 +26097,10 @@ const deleteScheduleItem = scheduleItemId => $.ajax({
 
 
 const RECEIVE_SCHEDULE_ITEM = "RECEIVE_SCHEDULE_ITEM";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_SCHEDULE_ITEM;
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_SCHEDULE_ITEM;
 
 const RECEIVE_SCHEDULE_ITEMS = "RECEIVE_SCHEDULE_ITEMS";
-/* harmony export (immutable) */ __webpack_exports__["d"] = RECEIVE_SCHEDULE_ITEMS;
-
-const POST_SCHEDULE_ITEM = "POST_SCHEDULE_ITEM";
-/* harmony export (immutable) */ __webpack_exports__["b"] = POST_SCHEDULE_ITEM;
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_SCHEDULE_ITEMS;
 
 const DELETE_SCHEDULE_ITEM = "DELETE_SCHEDULE_ITEM";
 /* harmony export (immutable) */ __webpack_exports__["a"] = DELETE_SCHEDULE_ITEM;
@@ -26122,7 +26124,7 @@ const removeScheduleItem = scheduleItemId => ({
 
 // thunk action creators
 const createScheduleItem = scheduleItem => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
-/* harmony export (immutable) */ __webpack_exports__["e"] = createScheduleItem;
+/* harmony export (immutable) */ __webpack_exports__["d"] = createScheduleItem;
 
 
 const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["b" /* getScheduleItem */])(scheduleItemId).then(scheduleItem => dispatch(receiveScheduleItem(scheduleItem)));
@@ -26130,11 +26132,11 @@ const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTE
 
 
 const fetchScheduleItems = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["c" /* getScheduleItems */])().then(scheduleItems => dispatch(receiveScheduleItems(scheduleItems)));
-/* unused harmony export fetchScheduleItems */
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchScheduleItems;
 
 
 const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["a" /* deleteScheduleItem */])(scheduleItemId).then(() => dispatch(removeScheduleItem(scheduleItemId)));
-/* unused harmony export destroyScheduleItem */
+/* harmony export (immutable) */ __webpack_exports__["e"] = destroyScheduleItem;
 
 
 /***/ }),
@@ -26148,27 +26150,188 @@ const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPOR
 /* harmony default export */ __webpack_exports__["a"] = ((state = { all_ids: [], by_id: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
+  let index;
+
   switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEM */]:
+    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
       newState.by_id[action.scheduleItem.id] = action.scheduleItem;
 
-      let index = newState.all_ids.indexOf(action.scheduleItem.id);
+      index = newState.all_ids.indexOf(action.scheduleItem.id);
       if (index > -1) {
         newState.all_ids.splice(index, 1);
       }
       newState.all_ids.unshift(action.scheduleItem.id);
 
       return newState;
-    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["d" /* RECEIVE_SCHEDULE_ITEMS */]:
+    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
       return action.scheduleItems;
-    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["b" /* POST_SCHEDULE_ITEM */]:
-      return action.events;
+
     case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["a" /* DELETE_SCHEDULE_ITEM */]:
-      return action.events;
+      index = newState.all_ids.indexOf(action.scheduleItemId);
+      if (index > -1) {
+        newState.all_ids.splice(index, 1);
+      }
+
+      newState.by_id[action.scheduleItemId] = undefined;
+
+      return newState;
+
     default:
       return state;
   }
 });
+
+/***/ }),
+/* 142 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(140);
+
+
+
+
+const mapStateToProps = state => ({
+  scheduleItems: state.scheduleItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["f" /* fetchScheduleItems */])())
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index__["a" /* default */]));
+
+/***/ }),
+/* 143 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__ = __webpack_require__(144);
+
+
+
+class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchScheduleItems();
+  }
+
+  render() {
+    if (!this.props.scheduleItems) {
+      return null;
+    }
+
+    let display = this.props.scheduleItems.all_ids.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
+      key: id,
+      scheduleItemId: id
+    }));
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h5',
+        null,
+        'Current Schedule Items'
+      ),
+      display
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ScheduleIndex;
+
+
+/***/ }),
+/* 144 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index_item__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(140);
+
+
+
+
+const mapStateToProps = state => ({
+  scheduleItems: state.scheduleItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  destroyScheduleItem: scheduleItemId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["e" /* destroyScheduleItem */])(scheduleItemId))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item__["a" /* default */]));
+
+/***/ }),
+/* 145 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let { by_id } = this.props.scheduleItems;
+    // debugger;
+    let scheduleItem = by_id[this.props.scheduleItemId];
+    let {
+      title,
+      start_time,
+      end_time,
+      feature_id,
+      location,
+      img_url,
+      description
+    } = scheduleItem;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      'title: ',
+      title,
+      'start_time: ',
+      start_time,
+      'end_time: ',
+      end_time,
+      'feature_id: ',
+      feature_id,
+      'location: ',
+      location,
+      'img_url: ',
+      img_url,
+      'description: ',
+      description,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        null,
+        'Update'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        {
+          onClick: () => this.props.destroyScheduleItem(this.props.scheduleItemId)
+        },
+        'Delete'
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ScheduleIndexItem;
+
 
 /***/ })
 /******/ ]);
