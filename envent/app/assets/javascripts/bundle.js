@@ -1093,8 +1093,8 @@ function warning(message) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(34);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
-/* unused harmony reexport combineReducers */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
 /* unused harmony reexport compose */
@@ -1645,13 +1645,13 @@ var createTransitionManager = function createTransitionManager() {
 
 
 const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-/* unused harmony export RECEIVE_CURRENT_USER */
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_CURRENT_USER;
 
 const RECEIVE_SESSION_ERRORS = "RECEIVE_ERRORS";
-/* unused harmony export RECEIVE_SESSION_ERRORS */
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_SESSION_ERRORS;
 
 const CLEAR_SESSION_ERRORS = "CLEAR_ERRORS";
-/* unused harmony export CLEAR_SESSION_ERRORS */
+/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_SESSION_ERRORS;
 
 
 const receiveCurrentUser = currentUser => ({
@@ -1680,18 +1680,18 @@ const login = formUser => dispatch => {
     dispatch(clearErrors());
   }, errors => dispatch(receiveErrors(errors.responseJSON)));
 };
-/* harmony export (immutable) */ __webpack_exports__["a"] = login;
+/* harmony export (immutable) */ __webpack_exports__["d"] = login;
 
 
 const logout = () => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_session_api__["b" /* logoutUser */]().then(() => dispatch(receiveCurrentUser(null)), errors => dispatch(receiveErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["b"] = logout;
+/* harmony export (immutable) */ __webpack_exports__["e"] = logout;
 
 
 const signupUser = formUser => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_session_api__["c" /* postUser */](formUser).then(user => {
   dispatch(receiveCurrentUser(user));
   dispatch(clearErrors());
 }, errors => dispatch(receiveErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["c"] = signupUser;
+/* harmony export (immutable) */ __webpack_exports__["f"] = signupUser;
 
 
 /***/ }),
@@ -1703,16 +1703,16 @@ const signupUser = formUser => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_ses
 
 
 const RECEIVE_EVENT = "RECEIVE_EVENT";
-/* unused harmony export RECEIVE_EVENT */
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_EVENT;
 
 const RECEIVE_EVENTS = "RECEIVE_EVENTS";
-/* unused harmony export RECEIVE_EVENTS */
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_EVENTS;
 
 const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
-/* unused harmony export RECEIVE_EVENT_ERRORS */
+/* harmony export (immutable) */ __webpack_exports__["d"] = RECEIVE_EVENT_ERRORS;
 
 const CLEAR_EVENT_ERRORS = "CLEAR_EVENT_ERRORS";
-/* unused harmony export CLEAR_EVENT_ERRORS */
+/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_EVENT_ERRORS;
 
 
 // actions
@@ -1733,7 +1733,7 @@ const receiveEventErrors = errors => ({
 
 // thunk action creators
 const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["c" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["a"] = createEvent;
+/* harmony export (immutable) */ __webpack_exports__["e"] = createEvent;
 
 
 const fetchEvent = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["a" /* getEvent */])(eventId).then(event => dispatch(receiveEvent(event)));
@@ -22271,7 +22271,7 @@ function symbolObservablePonyfill(root) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(34);
@@ -25207,7 +25207,7 @@ const ProtectedRoute = Object(__WEBPACK_IMPORTED_MODULE_2_react_router__["c" /* 
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let action = ownProps.match.params.signup ? __WEBPACK_IMPORTED_MODULE_1__actions_session__["c" /* signupUser */] : __WEBPACK_IMPORTED_MODULE_1__actions_session__["a" /* login */];
+  let action = ownProps.match.params.signup ? __WEBPACK_IMPORTED_MODULE_1__actions_session__["f" /* signupUser */] : __WEBPACK_IMPORTED_MODULE_1__actions_session__["d" /* login */];
   return {
     action: user => dispatch(action(user))
   };
@@ -25369,7 +25369,7 @@ const logoutUser = () => $.ajax({
 
 const mapStateToProps = state => ({ currentUser: state.session.currentUser });
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_session_js__["b" /* logout */])())
+  logout: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_session_js__["e" /* logout */])())
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */]));
@@ -25549,7 +25549,7 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 const mapStateToProps = state => ({ errors: state.errors.eventErrors });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["a" /* createEvent */])(event))
+  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_form__["a" /* default */]));
@@ -25743,7 +25743,6 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_root__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_root___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__reducers_root__);
 
 
 
@@ -25755,7 +25754,7 @@ if (true) {
   middlewares.push(logger);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (preloadedState => Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers_root__["default"], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(...middlewares)));
+/* harmony default export */ __webpack_exports__["a"] = (preloadedState => Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers_root__["a" /* default */], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(...middlewares)));
 
 /***/ }),
 /* 128 */
@@ -25788,15 +25787,104 @@ exports['default'] = thunk;
 
 /***/ }),
 /* 129 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (5:1)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m events from \u001b[32m'./events'\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 4 | \u001b[39m\u001b[36mimport\u001b[39m errors from \u001b[32m'./errors'\u001b[39m\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 | \u001b[39m\u001b[36mimport\u001b[39m maps from \u001b[32m'./map'\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 7 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\n \u001b[90m 8 | \u001b[39m\u001b[36mimport\u001b[39m scheduleItems from \u001b[32m'./schedule_items'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__session__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__schedule_items__ = __webpack_require__(148);
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_redux__["c" /* combineReducers */])({
+  session: __WEBPACK_IMPORTED_MODULE_0__session__["a" /* default */],
+  errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
+  events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
+  maps: __WEBPACK_IMPORTED_MODULE_4__map__["a" /* default */],
+  scheduleItems: __WEBPACK_IMPORTED_MODULE_5__schedule_items__["a" /* default */]
+}));
 
 /***/ }),
-/* 130 */,
-/* 131 */,
-/* 132 */,
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_session__ = __webpack_require__(25);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = { currentUser: null }, action) => {
+  Object.freeze(state);
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["b" /* RECEIVE_CURRENT_USER */]:
+      return Object.assign({}, { currentUser: action.currentUser });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["c" /* RECEIVE_SESSION_ERRORS */]:
+      return Object.assign({}, { errors: action.errors });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["a" /* CLEAR_SESSION_ERRORS */]:
+      return Object.assign({}, state, { errors: null });
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event__ = __webpack_require__(26);
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
+  Object.freeze(state);
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_1__actions_event__["b" /* RECEIVE_EVENT */]:
+      return Object.assign({}, state, { [action.event.id]: action.event });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
+      let newState = Object.assign({}, state);
+      return newState;
+    case __WEBPACK_IMPORTED_MODULE_1__actions_event__["c" /* RECEIVE_EVENTS */]:
+      return action.events;
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_map__ = __webpack_require__(134);
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
+  Object.freeze(state);
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["d" /* RECEIVE_EVENT_ERRORS */]:
+      return Object.assign({}, state, { eventErrors: action.errors });
+    case __WEBPACK_IMPORTED_MODULE_1__actions_map__["c" /* RECEIVE_MAP_ERRORS */]:
+      return Object.assign({}, state, { mapErrors: action.errors });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["a" /* CLEAR_EVENT_ERRORS */]:
+      return Object.assign({}, state, { eventErrors: null });
+    case __WEBPACK_IMPORTED_MODULE_1__actions_map__["a" /* CLEAR_MAP_ERRORS */]:
+      return Object.assign({}, state, { mapErrors: action.errors });
+    default:
+      return state;
+  }
+});
+
+/***/ }),
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25805,9 +25893,103 @@ throw new Error("Module build failed: SyntaxError: Unexpected token (5:1)\n\n\u0
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ }),
-/* 134 */,
-/* 135 */,
-/* 136 */,
+/* 134 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_map_api__ = __webpack_require__(135);
+
+
+const RECEIVE_MAP = "RECEIVE_EVENT";
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_MAP;
+
+const REMOVE_MAP = "REMOVE_MAP";
+/* harmony export (immutable) */ __webpack_exports__["d"] = REMOVE_MAP;
+
+const RECEIVE_MAP_ERRORS = "RECEIVE_MAP_ERRORS";
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_MAP_ERRORS;
+
+const CLEAR_MAP_ERRORS = "CLEAR_MAP_ERRORS";
+/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_MAP_ERRORS;
+
+
+const receiveMap = map => ({
+  type: RECEIVE_MAP,
+  map
+});
+
+const receiveMapErrors = errors => ({
+  type: RECEIVE_MAP_ERRORS,
+  errors
+});
+
+const removeMap = mapId => ({
+  type: REMOVE_MAP,
+  mapId
+});
+
+const getMap = id => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(id).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* unused harmony export getMap */
+
+
+const createMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(map).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* unused harmony export createMap */
+
+
+const deletePost = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["a" /* deleteMap */])(mapId).then(map => dispatch(removeMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* unused harmony export deletePost */
+
+
+/***/ }),
+/* 135 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const postMap = map => $.ajax({
+  method: 'POST',
+  url: 'api/maps',
+  data: { map }
+});
+/* harmony export (immutable) */ __webpack_exports__["c"] = postMap;
+
+
+const deleteMap = id => $.ajax({
+  method: 'DELETE',
+  url: `api/maps/${id}`
+});
+/* harmony export (immutable) */ __webpack_exports__["a"] = deleteMap;
+
+
+const fetchMap = id => $.ajax({
+  method: 'GET',
+  url: `api/maps/${id}`
+});
+/* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
+
+
+/***/ }),
+/* 136 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(134);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
+  Object.freeze(state);
+  let newState = Object.assign({}, state);
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
+      return Object.assign({}, state, { [action.map.id]: action.map });
+    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["d" /* REMOVE_MAP */]:
+      delete newState[action.mapId];
+      return newState;
+    default:
+      return state;
+  }
+});
+
+/***/ }),
 /* 137 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -25816,13 +25998,13 @@ throw new Error("Module build failed: SyntaxError: Unexpected token (5:1)\n\n\u0
 
 
 const RECEIVE_SCHEDULE_ITEM = "RECEIVE_SCHEDULE_ITEM";
-/* unused harmony export RECEIVE_SCHEDULE_ITEM */
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_SCHEDULE_ITEM;
 
 const RECEIVE_SCHEDULE_ITEMS = "RECEIVE_SCHEDULE_ITEMS";
-/* unused harmony export RECEIVE_SCHEDULE_ITEMS */
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_SCHEDULE_ITEMS;
 
 const DELETE_SCHEDULE_ITEM = "DELETE_SCHEDULE_ITEM";
-/* unused harmony export DELETE_SCHEDULE_ITEM */
+/* harmony export (immutable) */ __webpack_exports__["a"] = DELETE_SCHEDULE_ITEM;
 
 
 // actions
@@ -25843,7 +26025,7 @@ const removeScheduleItem = scheduleItemId => ({
 
 // thunk action creators
 const createScheduleItem = scheduleItem => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
-/* harmony export (immutable) */ __webpack_exports__["a"] = createScheduleItem;
+/* harmony export (immutable) */ __webpack_exports__["d"] = createScheduleItem;
 
 
 const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["b" /* getScheduleItem */])(scheduleItemId).then(scheduleItem => dispatch(receiveScheduleItem(scheduleItem)));
@@ -25851,11 +26033,11 @@ const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTE
 
 
 const fetchScheduleItems = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["c" /* getScheduleItems */])().then(scheduleItems => dispatch(receiveScheduleItems(scheduleItems)));
-/* harmony export (immutable) */ __webpack_exports__["c"] = fetchScheduleItems;
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchScheduleItems;
 
 
 const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["a" /* deleteScheduleItem */])(scheduleItemId).then(() => dispatch(removeScheduleItem(scheduleItemId)));
-/* harmony export (immutable) */ __webpack_exports__["b"] = destroyScheduleItem;
+/* harmony export (immutable) */ __webpack_exports__["e"] = destroyScheduleItem;
 
 
 /***/ }),
@@ -25919,7 +26101,7 @@ const mapDispatchToProps = dispatch => ({});
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  createScheduleItem: scheduleItem => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["a" /* createScheduleItem */])(scheduleItem))
+  createScheduleItem: scheduleItem => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["d" /* createScheduleItem */])(scheduleItem))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_form__["a" /* default */]));
@@ -26066,7 +26248,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["c" /* fetchScheduleItems */])())
+  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["f" /* fetchScheduleItems */])())
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index__["a" /* default */]));
@@ -26133,7 +26315,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  destroyScheduleItem: scheduleItemId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["b" /* destroyScheduleItem */])(scheduleItemId))
+  destroyScheduleItem: scheduleItemId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["e" /* destroyScheduleItem */])(scheduleItemId))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item__["a" /* default */]));
@@ -26230,6 +26412,48 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Event;
 
+
+/***/ }),
+/* 148 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__ = __webpack_require__(137);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = { all_ids: [], by_id: {} }, action) => {
+  Object.freeze(state);
+  let newState = Object.assign({}, state);
+  let index;
+
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
+      newState.by_id[action.scheduleItem.id] = action.scheduleItem;
+
+      index = newState.all_ids.indexOf(action.scheduleItem.id);
+      if (index > -1) {
+        newState.all_ids.splice(index, 1);
+      }
+      newState.all_ids.unshift(action.scheduleItem.id);
+
+      return newState;
+    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
+      return action.scheduleItems;
+
+    case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["a" /* DELETE_SCHEDULE_ITEM */]:
+      index = newState.all_ids.indexOf(action.scheduleItemId);
+      if (index > -1) {
+        newState.all_ids.splice(index, 1);
+      }
+
+      newState.by_id[action.scheduleItemId] = undefined;
+
+      return newState;
+
+    default:
+      return state;
+  }
+});
 
 /***/ })
 /******/ ]);
