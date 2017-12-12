@@ -25144,7 +25144,6 @@ var createMemoryHistory = function createMemoryHistory() {
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/dashboard', component: __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_5__builder_app_builder__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["a" /* AuthRoute */], { exact: true, path: '/:signup?', component: __WEBPACK_IMPORTED_MODULE_3__landing_page_jsx__["a" /* default */] })
   )
