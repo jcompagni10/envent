@@ -1093,8 +1093,8 @@ function warning(message) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(34);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* unused harmony reexport combineReducers */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
 /* unused harmony reexport compose */
@@ -1645,13 +1645,13 @@ var createTransitionManager = function createTransitionManager() {
 
 
 const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_CURRENT_USER;
+/* unused harmony export RECEIVE_CURRENT_USER */
 
 const RECEIVE_SESSION_ERRORS = "RECEIVE_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_SESSION_ERRORS;
+/* unused harmony export RECEIVE_SESSION_ERRORS */
 
 const CLEAR_SESSION_ERRORS = "CLEAR_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_SESSION_ERRORS;
+/* unused harmony export CLEAR_SESSION_ERRORS */
 
 
 const receiveCurrentUser = currentUser => ({
@@ -1680,18 +1680,18 @@ const login = formUser => dispatch => {
     dispatch(clearErrors());
   }, errors => dispatch(receiveErrors(errors.responseJSON)));
 };
-/* harmony export (immutable) */ __webpack_exports__["d"] = login;
+/* harmony export (immutable) */ __webpack_exports__["a"] = login;
 
 
 const logout = () => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_session_api__["b" /* logoutUser */]().then(() => dispatch(receiveCurrentUser(null)), errors => dispatch(receiveErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["e"] = logout;
+/* harmony export (immutable) */ __webpack_exports__["b"] = logout;
 
 
 const signupUser = formUser => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_session_api__["c" /* postUser */](formUser).then(user => {
   dispatch(receiveCurrentUser(user));
   dispatch(clearErrors());
 }, errors => dispatch(receiveErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["f"] = signupUser;
+/* harmony export (immutable) */ __webpack_exports__["c"] = signupUser;
 
 
 /***/ }),
@@ -1703,18 +1703,27 @@ const signupUser = formUser => dispatch => __WEBPACK_IMPORTED_MODULE_0__util_ses
 
 
 const RECEIVE_EVENT = "RECEIVE_EVENT";
-/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_EVENT;
+/* unused harmony export RECEIVE_EVENT */
+
+const RECEIVE_EVENTS = "RECEIVE_EVENTS";
+/* unused harmony export RECEIVE_EVENTS */
 
 const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_EVENT_ERRORS;
+/* unused harmony export RECEIVE_EVENT_ERRORS */
 
 const CLEAR_EVENT_ERRORS = "CLEAR_EVENT_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_EVENT_ERRORS;
+/* unused harmony export CLEAR_EVENT_ERRORS */
 
 
+// actions
 const receiveEvent = event => ({
   type: RECEIVE_EVENT,
   event
+});
+
+const receiveEvents = events => ({
+  type: RECEIVE_EVENTS,
+  events
 });
 
 const receiveEventErrors = errors => ({
@@ -1722,8 +1731,17 @@ const receiveEventErrors = errors => ({
   errors
 });
 
-const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["a" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["d"] = createEvent;
+// thunk action creators
+const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["c" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
+/* harmony export (immutable) */ __webpack_exports__["a"] = createEvent;
+
+
+const fetchEvent = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["a" /* getEvent */])(eventId).then(event => dispatch(receiveEvent(event)));
+/* unused harmony export fetchEvent */
+
+
+const fetchEvents = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["b" /* getEvents */])().then(events => dispatch(receiveEvents(events)));
+/* unused harmony export fetchEvents */
 
 
 /***/ }),
@@ -3653,6 +3671,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   const root = document.getElementById('root');
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_root__["a" /* default */], { store: store }), root);
+
+  window.dispatch = store.dispatch;
 });
 
 /***/ }),
@@ -22251,7 +22271,7 @@ function symbolObservablePonyfill(root) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
+/* unused harmony export default */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(34);
@@ -25095,6 +25115,10 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__header_header_container__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__builder_app_builder__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__event_event__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__ = __webpack_require__(138);
+
+
 
 
 
@@ -25111,6 +25135,8 @@ var createMemoryHistory = function createMemoryHistory() {
     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Switch */],
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/dashboard', component: __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_5__builder_app_builder__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["a" /* AuthRoute */], { exact: true, path: '/:signup?', component: __WEBPACK_IMPORTED_MODULE_3__landing_page_jsx__["a" /* default */] })
   )
@@ -25181,7 +25207,7 @@ const ProtectedRoute = Object(__WEBPACK_IMPORTED_MODULE_2_react_router__["c" /* 
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let action = ownProps.match.params.signup ? __WEBPACK_IMPORTED_MODULE_1__actions_session__["f" /* signupUser */] : __WEBPACK_IMPORTED_MODULE_1__actions_session__["d" /* login */];
+  let action = ownProps.match.params.signup ? __WEBPACK_IMPORTED_MODULE_1__actions_session__["c" /* signupUser */] : __WEBPACK_IMPORTED_MODULE_1__actions_session__["a" /* login */];
   return {
     action: user => dispatch(action(user))
   };
@@ -25343,7 +25369,7 @@ const logoutUser = () => $.ajax({
 
 const mapStateToProps = state => ({ currentUser: state.session.currentUser });
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_session_js__["e" /* logout */])())
+  logout: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_session_js__["b" /* logout */])())
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */]));
@@ -25436,6 +25462,8 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__ = __webpack_require__(139);
+
 
 
 
@@ -25456,7 +25484,8 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/event_builder', componet: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
       )
     );
   }
@@ -25520,7 +25549,7 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 const mapStateToProps = state => ({ errors: state.errors.eventErrors });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["d" /* createEvent */])(event))
+  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["a" /* createEvent */])(event))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_form__["a" /* default */]));
@@ -25535,7 +25564,19 @@ const postEvent = event => $.ajax({
   url: 'api/events',
   data: { event }
 });
-/* harmony export (immutable) */ __webpack_exports__["a"] = postEvent;
+/* harmony export (immutable) */ __webpack_exports__["c"] = postEvent;
+
+
+const getEvent = eventTag => $.ajax({
+  url: `/api/events/${eventTag}`
+});
+/* harmony export (immutable) */ __webpack_exports__["a"] = getEvent;
+
+
+const getEvents = () => $.ajax({
+  url: `/api/events/`
+});
+/* harmony export (immutable) */ __webpack_exports__["b"] = getEvents;
 
 
 /***/ }),
@@ -25565,8 +25606,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     this.props.action(this.state);
   }
 
-  handleChange(feild, e) {
-    if (feild === 'modules') {
+  handleChange(field, e) {
+    if (field === 'modules') {
       let value = e.target.value;
       if (e.target.checked) {
         this.modules.add(value);
@@ -25575,13 +25616,14 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       }
     }
 
-    this.setState({ [feild]: e.target.value });
+    this.setState({ [field]: e.target.value });
   }
 
   handleSubmit() {
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
+    this.props.history.push(`/event_builder/${event.tag}/schedule`);
   }
 
   render() {
@@ -25686,7 +25728,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-      { to: '/create_event' },
+      { to: '/event_builder' },
       'Create An Event'
     )
   );
@@ -25701,6 +25743,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_thunk__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_root__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_root___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__reducers_root__);
 
 
 
@@ -25712,7 +25755,7 @@ if (true) {
   middlewares.push(logger);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (preloadedState => Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers_root__["a" /* default */], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(...middlewares)));
+/* harmony default export */ __webpack_exports__["a"] = (preloadedState => Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers_root__["default"], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(...middlewares)));
 
 /***/ }),
 /* 128 */
@@ -25745,99 +25788,15 @@ exports['default'] = thunk;
 
 /***/ }),
 /* 129 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__session__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map__ = __webpack_require__(136);
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_redux__["c" /* combineReducers */])({
-  session: __WEBPACK_IMPORTED_MODULE_0__session__["a" /* default */],
-  errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
-  events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
-  maps: __WEBPACK_IMPORTED_MODULE_4__map__["a" /* default */]
-}));
+throw new Error("Module build failed: SyntaxError: Unexpected token (5:1)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m events from \u001b[32m'./events'\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 4 | \u001b[39m\u001b[36mimport\u001b[39m errors from \u001b[32m'./errors'\u001b[39m\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 | \u001b[39m\u001b[36mimport\u001b[39m maps from \u001b[32m'./map'\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 7 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\n \u001b[90m 8 | \u001b[39m\u001b[36mimport\u001b[39m scheduleItems from \u001b[32m'./schedule_items'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
-/* 130 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_session__ = __webpack_require__(25);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = { currentUser: null }, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["b" /* RECEIVE_CURRENT_USER */]:
-      return Object.assign({}, { currentUser: action.currentUser });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["c" /* RECEIVE_SESSION_ERRORS */]:
-      return Object.assign({}, { errors: action.errors });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_session__["a" /* CLEAR_SESSION_ERRORS */]:
-      return Object.assign({}, state, { errors: null });
-    default:
-      return state;
-  }
-});
-
-/***/ }),
-/* 131 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_map__ = __webpack_require__(134);
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = { currentUser: null }, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["b" /* RECEIVE_EVENT */]:
-      return Object.assign({}, state, { [action.event.id]: action.event });
-    case __WEBPACK_IMPORTED_MODULE_1__actions_map__["b" /* RECEIVE_MAP */]:
-      let newState = Object.assign({}, state);
-      return newState;
-    default:
-      return state;
-  }
-});
-
-/***/ }),
-/* 132 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_map__ = __webpack_require__(134);
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENT_ERRORS */]:
-      return Object.assign({}, state, { eventErrors: action.errors });
-    case __WEBPACK_IMPORTED_MODULE_1__actions_map__["c" /* RECEIVE_MAP_ERRORS */]:
-      return Object.assign({}, state, { mapErrors: action.errors });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["a" /* CLEAR_EVENT_ERRORS */]:
-      return Object.assign({}, state, { eventErrors: null });
-    case __WEBPACK_IMPORTED_MODULE_1__actions_map__["a" /* CLEAR_MAP_ERRORS */]:
-      return Object.assign({}, state, { mapErrors: action.errors });
-    default:
-      return state;
-  }
-});
-
-/***/ }),
+/* 130 */,
+/* 131 */,
+/* 132 */,
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25846,101 +25805,431 @@ exports['default'] = thunk;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ }),
-/* 134 */
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_map_api__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_schedule_api__ = __webpack_require__(142);
 
 
-const RECEIVE_MAP = "RECEIVE_EVENT";
-/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_MAP;
+const RECEIVE_SCHEDULE_ITEM = "RECEIVE_SCHEDULE_ITEM";
+/* unused harmony export RECEIVE_SCHEDULE_ITEM */
 
-const REMOVE_MAP = "REMOVE_MAP";
-/* harmony export (immutable) */ __webpack_exports__["d"] = REMOVE_MAP;
+const RECEIVE_SCHEDULE_ITEMS = "RECEIVE_SCHEDULE_ITEMS";
+/* unused harmony export RECEIVE_SCHEDULE_ITEMS */
 
-const RECEIVE_MAP_ERRORS = "RECEIVE_MAP_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_MAP_ERRORS;
-
-const CLEAR_MAP_ERRORS = "CLEAR_MAP_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_MAP_ERRORS;
+const DELETE_SCHEDULE_ITEM = "DELETE_SCHEDULE_ITEM";
+/* unused harmony export DELETE_SCHEDULE_ITEM */
 
 
-const receiveMap = map => ({
-  type: RECEIVE_MAP,
-  map
+// actions
+const receiveScheduleItem = scheduleItem => ({
+  type: RECEIVE_SCHEDULE_ITEM,
+  scheduleItem
 });
 
-const receiveMapErrors = errors => ({
-  type: RECEIVE_MAP_ERRORS,
-  errors
+const receiveScheduleItems = scheduleItems => ({
+  type: RECEIVE_SCHEDULE_ITEMS,
+  scheduleItems
 });
 
-const removeMap = mapId => ({
-  type: REMOVE_MAP,
-  mapId
+const removeScheduleItem = scheduleItemId => ({
+  type: DELETE_SCHEDULE_ITEM,
+  scheduleItemId
 });
 
-const getMap = id => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(id).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* unused harmony export getMap */
+// thunk action creators
+const createScheduleItem = scheduleItem => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
+/* harmony export (immutable) */ __webpack_exports__["a"] = createScheduleItem;
 
 
-const createMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(map).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* unused harmony export createMap */
+const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["b" /* getScheduleItem */])(scheduleItemId).then(scheduleItem => dispatch(receiveScheduleItem(scheduleItem)));
+/* unused harmony export fetchScheduleItem */
 
 
-const deletePost = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["a" /* deleteMap */])(mapId).then(map => dispatch(removeMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* unused harmony export deletePost */
+const fetchScheduleItems = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["c" /* getScheduleItems */])().then(scheduleItems => dispatch(receiveScheduleItems(scheduleItems)));
+/* harmony export (immutable) */ __webpack_exports__["c"] = fetchScheduleItems;
+
+
+const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["a" /* deleteScheduleItem */])(scheduleItemId).then(() => dispatch(removeScheduleItem(scheduleItemId)));
+/* harmony export (immutable) */ __webpack_exports__["b"] = destroyScheduleItem;
 
 
 /***/ }),
-/* 135 */
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const postMap = map => $.ajax({
-  method: 'POST',
-  url: 'api/maps',
-  data: { map }
-});
-/* harmony export (immutable) */ __webpack_exports__["c"] = postMap;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_form_container__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__schedule_index_container__ = __webpack_require__(143);
 
 
-const deleteMap = id => $.ajax({
-  method: 'DELETE',
-  url: `api/maps/${id}`
-});
-/* harmony export (immutable) */ __webpack_exports__["a"] = deleteMap;
 
 
-const fetchMap = id => $.ajax({
-  method: 'GET',
-  url: `api/maps/${id}`
-});
-/* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
-
-
-/***/ }),
-/* 136 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(134);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
-  Object.freeze(state);
-  let newState = Object.assign({}, state);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
-      return Object.assign({}, state, { [action.map.id]: action.map });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["d" /* REMOVE_MAP */]:
-      delete newState[action.mapId];
-      return newState;
-    default:
-      return state;
+class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
   }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_form_container__["a" /* default */], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__schedule_index_container__["a" /* default */], null)
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Schedule;
+
+
+/***/ }),
+/* 139 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule__ = __webpack_require__(138);
+
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule__["a" /* default */]));
+
+/***/ }),
+/* 140 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_form__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(137);
+
+
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  createScheduleItem: scheduleItem => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["a" /* createScheduleItem */])(scheduleItem))
 });
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_form__["a" /* default */]));
+
+/***/ }),
+/* 141 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: "",
+      start_time: "",
+      end_time: "",
+      feature_id: "",
+      location: "",
+      image: undefined,
+      description: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(title) {
+    return event => this.setState({ [title]: event.target.value });
+  }
+
+  handleSubmit(event) {
+    // debugger
+    event.preventDefault();
+    this.props.createScheduleItem(this.state);
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "div",
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h2",
+        null,
+        " Schedule Form "
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "form",
+        { action: "" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("title"),
+          type: "text",
+          name: "title",
+          placeholder: "Title" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("start_time"),
+          type: "datetime-local",
+          name: "start_time",
+          placeholder: "Start Time" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("end_time"),
+          type: "datetime-local",
+          name: "end_time",
+          placeholder: "End Time" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("feature_id"),
+          type: "text",
+          name: "feature_id",
+          placeholder: "Feature(_id)" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("location"),
+          type: "text",
+          name: "location",
+          placeholder: "Location" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("image"),
+          type: "file",
+          name: "image",
+          placeholder: "Image" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onChange: this.handleChange("description"),
+          type: "text",
+          name: "description",
+          placeholder: "Description" }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          onClick: this.handleSubmit,
+          type: "submit" })
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Schedule;
+
+
+/***/ }),
+/* 142 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const getScheduleItem = scheduleItemId => $.ajax({
+  url: `/api/schedule_items/${scheduleItemId}`
+});
+/* harmony export (immutable) */ __webpack_exports__["b"] = getScheduleItem;
+
+
+const getScheduleItems = () => $.ajax({
+  url: `/api/schedule_items/`
+});
+/* harmony export (immutable) */ __webpack_exports__["c"] = getScheduleItems;
+
+
+const postScheduleItem = schedule_item => $.ajax({
+  method: 'POST',
+  url: 'api/schedule_items',
+  data: { schedule_item }
+});
+/* harmony export (immutable) */ __webpack_exports__["d"] = postScheduleItem;
+
+
+const deleteScheduleItem = scheduleItemId => $.ajax({
+  method: 'DELETE',
+  url: `api/schedule_items/${scheduleItemId}`
+});
+/* harmony export (immutable) */ __webpack_exports__["a"] = deleteScheduleItem;
+
+
+/***/ }),
+/* 143 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(137);
+
+
+
+
+const mapStateToProps = state => ({
+  scheduleItems: state.scheduleItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["c" /* fetchScheduleItems */])())
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index__["a" /* default */]));
+
+/***/ }),
+/* 144 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__ = __webpack_require__(145);
+
+
+
+class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchScheduleItems();
+  }
+
+  render() {
+    if (!this.props.scheduleItems) {
+      return null;
+    }
+
+    let display = this.props.scheduleItems.all_ids.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
+      key: id,
+      scheduleItemId: id
+    }));
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h5',
+        null,
+        'Current Schedule Items'
+      ),
+      display
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ScheduleIndex;
+
+
+/***/ }),
+/* 145 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule_index_item__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(137);
+
+
+
+
+const mapStateToProps = state => ({
+  scheduleItems: state.scheduleItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  destroyScheduleItem: scheduleItemId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["b" /* destroyScheduleItem */])(scheduleItemId))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item__["a" /* default */]));
+
+/***/ }),
+/* 146 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let { by_id } = this.props.scheduleItems;
+    // debugger;
+    let scheduleItem = by_id[this.props.scheduleItemId];
+    let {
+      title,
+      start_time,
+      end_time,
+      feature_id,
+      location,
+      img_url,
+      description
+    } = scheduleItem;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      'title: ',
+      title,
+      'start_time: ',
+      start_time,
+      'end_time: ',
+      end_time,
+      'feature_id: ',
+      feature_id,
+      'location: ',
+      location,
+      'img_url: ',
+      img_url,
+      'description: ',
+      description,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        null,
+        'Update'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        {
+          onClick: () => this.props.destroyScheduleItem(this.props.scheduleItemId)
+        },
+        'Delete'
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ScheduleIndexItem;
+
+
+/***/ }),
+/* 147 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
+  render() {
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      'Event'
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Event;
+
 
 /***/ })
 /******/ ]);

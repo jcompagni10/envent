@@ -17,8 +17,8 @@ export default class EventForm extends React.Component{
     this.props.action(this.state);
   }
 
-  handleChange(feild, e){
-    if (feild === 'modules'){
+  handleChange(field, e){
+    if (field === 'modules'){
       let value = e.target.value;
       if (e.target.checked){
         this.modules.add(value);
@@ -27,14 +27,17 @@ export default class EventForm extends React.Component{
       }
     }
 
-    this.setState({[feild]: e.target.value});
+    this.setState({[field]: e.target.value});
   }
 
   handleSubmit(){
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
+    this.props.history.push(`/event_builder/${event.tag}/schedule`);
   }
+
+
 
   render(){
     return (

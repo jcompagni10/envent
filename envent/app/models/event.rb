@@ -24,6 +24,7 @@ class Event < ApplicationRecord
              foreign_key: :user_id
 
   has_many :display_elements
+  has_many :schedule_items
 
   has_one :map
 
