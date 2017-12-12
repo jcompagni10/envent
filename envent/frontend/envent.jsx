@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store} />, root);
 
   window.dispatch = store.dispatch;
-  window.createScheduleItem = createScheduleItem
-  window.fetchScheduleItem = fetchScheduleItem
-  window.fetchScheduleItems = fetchScheduleItems
-  window.destroyScheduleItem = destroyScheduleItem
+  window.createScheduleItem = createScheduleItem;
+  window.fetchScheduleItem = fetchScheduleItem;
+  window.fetchScheduleItems = fetchScheduleItems;
+  window.destroyScheduleItem = destroyScheduleItem;
 });

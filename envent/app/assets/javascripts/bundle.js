@@ -26226,6 +26226,7 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__schedule_items__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__current_event__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__current_event___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__current_event__);
 
 
 
@@ -26238,7 +26239,7 @@ exports['default'] = thunk;
   errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
   events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
   scheduleItems: __WEBPACK_IMPORTED_MODULE_4__schedule_items__["a" /* default */],
-  currentEvent: __WEBPACK_IMPORTED_MODULE_5__current_event__["a" /* default */]
+  currentEvent: __WEBPACK_IMPORTED_MODULE_5__current_event__["default"]
 }));
 
 /***/ }),
@@ -26376,62 +26377,9 @@ exports['default'] = thunk;
 
 /***/ }),
 /* 145 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__ = __webpack_require__(5);
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
-  Object.freeze(state);
-  let newState = Object.assign({}, state);
-  let index;
-  debugger;
-
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["b" /* RECEIVE_EVENT */]:
-      debugger;
-      return action.event;
-
-    // case RECEIVE_SCHEDULE_ITEM:
-    //   newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
-
-    //   index = newState
-    //     .scheduleItemsArray
-    //     .indexOf(action.scheduleItem.id);
-    //   if (index > -1) {
-    //     newState.scheduleItemsArray.splice(index, 1);
-    //   }
-    //   newState
-    //     .scheduleItemsArray
-    //     .unshift(action.scheduleItem.id);
-
-    //   return newState;
-
-    // case RECEIVE_SCHEDULE_ITEMS:
-    //   newState.scheduleItems = action.by_id;
-    //   newState.scheduleItemsArray = action.all_ids;
-
-    //   return newState;
-
-    // case DELETE_SCHEDULE_ITEM:
-    //   newState.scheduleItems[action.scheduleItemId] = undefined;
-
-    //   index = newState
-    //     .scheduleItemsArray
-    //     .indexOf(action.scheduleItemId);
-    //   if (index > -1) {
-    //     newState.scheduleItemsArray.splice(index, 1);
-    //   }
-
-    //   return newState;
-
-    default:
-      return state;
-  }
-});
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/trwong/Documents/appacademy/envent/envent/frontend/reducers/current_event.js'\n    at Error (native)");
 
 /***/ }),
 /* 146 */
