@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :create]
     resources :schedule_items, only: [:index, :show, :create, :destroy, :update]
     resources :maps, only: [:create, :show, :destroy]
+    get 'events/show_id/:id', :to => 'events#show_id'
   end
 end

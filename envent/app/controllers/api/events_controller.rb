@@ -25,7 +25,16 @@ class Api::EventsController < ApplicationController
     if @event
       render :show
     else
-      render json: {}, status: 404
+      render json: @event.errors.full_messages, status: 404
+    end
+  end
+
+  def show_id
+    @event = Event.find(params[:id])
+    if @event
+      render :show
+    else
+      render json: @event.errors.full_messages, status: 404
     end
   end
 

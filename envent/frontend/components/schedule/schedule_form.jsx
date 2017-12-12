@@ -11,7 +11,8 @@ export default class Schedule extends React.Component {
       feature_id: "",
       location: "",
       image: undefined,
-      description: ""
+      description: "",
+      // event_id: ,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

@@ -25934,6 +25934,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       location: "",
       image: undefined,
       description: ""
+      // event_id: ,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
