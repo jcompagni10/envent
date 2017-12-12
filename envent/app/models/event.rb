@@ -27,6 +27,7 @@ class Event < ApplicationRecord
   has_many :schedule_items
 
   has_many :maps
+  has_many :news
 
   def downcase_fields
     self.tag.downcase!

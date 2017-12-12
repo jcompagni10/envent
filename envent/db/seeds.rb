@@ -9,15 +9,15 @@
 users = User.create!([
   {
     email: "jcp@gmail.com",
-    password_digest: "asdf"
+    password: "asdf"
   },
   {
     email: "ejb@gmail.com",
-    password_digest: "qwerty"
+    password: "qwerty"
   },
   {
     email: "trw@gmail.com",
-    password_digest: "poiuy"
+    password: "poiuy"
   },
 ])
 
@@ -108,3 +108,21 @@ schedule_items = ScheduleItem.create!([
     end_time: DateTime.new(2001,2,3,4,5,6)
   }
   ])
+
+mews = News.create!([
+  {
+    event_id: 1,
+    title: "37 Dead",
+    message: "Lorem Ipsum"
+  },
+  {
+    event_id: 2,
+    title: "Event extended",
+    message: "Lorem Ipsum"
+  },
+  {
+    event_id: 3,
+    title: "Docking at main stage",
+    message: "Lorem Ipsum"
+  }
+])
