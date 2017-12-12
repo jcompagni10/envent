@@ -22,26 +22,26 @@ export default (state = {}, action) => {
     case RECEIVE_EVENTS:
       return action.events;
 
-    case RECEIVE_SCHEDULE_ITEM:
-      newState[action.scheduleItem.event_id].scheduleItems[action.scheduleItem.id] = action.scheduleItem;
+    // case RECEIVE_SCHEDULE_ITEM:
+    //   newState[action.scheduleItem.event_id].scheduleItems[action.scheduleItem.id] = action.scheduleItem;
 
-      index = newState[action.scheduleItem.event_id]
-        .scheduleItemsArray
-        .indexOf(action.scheduleItem.id);
-      if (index > -1) {
-        newState[action.scheduleItem.event_id].scheduleItemsArray.splice(index, 1);
-      }
-      newState[action.scheduleItem.event_id]
-        .scheduleItemsArray
-        .unshift(action.scheduleItem.id);
+    //   index = newState[action.scheduleItem.event_id]
+    //     .scheduleItemsArray
+    //     .indexOf(action.scheduleItem.id);
+    //   if (index > -1) {
+    //     newState[action.scheduleItem.event_id].scheduleItemsArray.splice(index, 1);
+    //   }
+    //   newState[action.scheduleItem.event_id]
+    //     .scheduleItemsArray
+    //     .unshift(action.scheduleItem.id);
 
-      return newState;
+    //   return newState;
       
-    case RECEIVE_SCHEDULE_ITEMS:
-      return;
+    // case RECEIVE_SCHEDULE_ITEMS:
+    //   return;
       
-    case DELETE_SCHEDULE_ITEM:
-      return;
+    // case DELETE_SCHEDULE_ITEM:
+    //   return;
 
     default:
       return state;

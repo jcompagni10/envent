@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store.js';
+import {
+  createScheduleItem,
+  fetchScheduleItem,
+  fetchScheduleItems,
+  destroyScheduleItem
+} from './actions/scheduleItem';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,5 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store} />, root);
 
   window.dispatch = store.dispatch;
-  
+  window.createScheduleItem = createScheduleItem
+  window.fetchScheduleItem = fetchScheduleItem
+  window.fetchScheduleItems = fetchScheduleItems
+  window.destroyScheduleItem = destroyScheduleItem
 });

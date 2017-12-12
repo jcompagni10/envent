@@ -3664,6 +3664,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_root__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store_js__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__ = __webpack_require__(140);
+
 
 
 
@@ -3681,6 +3683,10 @@ document.addEventListener('DOMContentLoaded', () => {
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_root__["a" /* default */], { store: store }), root);
 
   window.dispatch = store.dispatch;
+  window.createScheduleItem = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["d" /* createScheduleItem */];
+  window.fetchScheduleItem = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["f" /* fetchScheduleItem */];
+  window.fetchScheduleItems = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["g" /* fetchScheduleItems */];
+  window.destroyScheduleItem = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["e" /* destroyScheduleItem */];
 });
 
 /***/ }),
@@ -25785,6 +25791,11 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__schedule_items__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__current_event__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__current_ev__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__current_ev___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__current_ev__);
+
+
 
 
 
@@ -25795,7 +25806,9 @@ exports['default'] = thunk;
   session: __WEBPACK_IMPORTED_MODULE_0__session__["a" /* default */],
   errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
   events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
-  scheduleItems: __WEBPACK_IMPORTED_MODULE_4__schedule_items__["a" /* default */]
+  currentEvent: __WEBPACK_IMPORTED_MODULE_5__current_event__["a" /* default */],
+  scheduleItems: __WEBPACK_IMPORTED_MODULE_4__schedule_items__["a" /* default */],
+  currentEv: __WEBPACK_IMPORTED_MODULE_6__current_ev__["default"]
 }));
 
 /***/ }),
@@ -25843,22 +25856,26 @@ exports['default'] = thunk;
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENTS */]:
       return action.events;
 
-    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
-      newState[action.scheduleItem.event_id].scheduleItems[action.scheduleItem.id] = action.scheduleItem;
+    // case RECEIVE_SCHEDULE_ITEM:
+    //   newState[action.scheduleItem.event_id].scheduleItems[action.scheduleItem.id] = action.scheduleItem;
 
-      index = newState[action.scheduleItem.event_id].scheduleItemsArray.indexOf(action.scheduleItem.id);
-      if (index > -1) {
-        newState[action.scheduleItem.event_id].scheduleItemsArray.splice(index, 1);
-      }
-      newState[action.scheduleItem.event_id].scheduleItemsArray.unshift(action.scheduleItem.id);
+    //   index = newState[action.scheduleItem.event_id]
+    //     .scheduleItemsArray
+    //     .indexOf(action.scheduleItem.id);
+    //   if (index > -1) {
+    //     newState[action.scheduleItem.event_id].scheduleItemsArray.splice(index, 1);
+    //   }
+    //   newState[action.scheduleItem.event_id]
+    //     .scheduleItemsArray
+    //     .unshift(action.scheduleItem.id);
 
-      return newState;
+    //   return newState;
 
-    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
-      return;
+    // case RECEIVE_SCHEDULE_ITEMS:
+    //   return;
 
-    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["a" /* DELETE_SCHEDULE_ITEM */]:
-      return;
+    // case DELETE_SCHEDULE_ITEM:
+    //   return;
 
     default:
       return state;
@@ -26079,11 +26096,11 @@ const createScheduleItem = scheduleItem => dispatch => Object(__WEBPACK_IMPORTED
 
 
 const fetchScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["b" /* getScheduleItem */])(scheduleItemId).then(scheduleItem => dispatch(receiveScheduleItem(scheduleItem)));
-/* unused harmony export fetchScheduleItem */
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchScheduleItem;
 
 
 const fetchScheduleItems = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["c" /* getScheduleItems */])().then(scheduleItems => dispatch(receiveScheduleItems(scheduleItems)));
-/* harmony export (immutable) */ __webpack_exports__["f"] = fetchScheduleItems;
+/* harmony export (immutable) */ __webpack_exports__["g"] = fetchScheduleItems;
 
 
 const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["a" /* deleteScheduleItem */])(scheduleItemId).then(() => dispatch(removeScheduleItem(scheduleItemId)));
@@ -26149,7 +26166,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["f" /* fetchScheduleItems */])())
+  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["g" /* fetchScheduleItems */])())
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index__["a" /* default */]));
@@ -26377,6 +26394,70 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Header;
 
+
+/***/ }),
+/* 148 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__ = __webpack_require__(140);
+
+
+
+let _nullState = {
+  scheduleItems: {},
+  scheduleItemsArray: []
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ((state = _nullState, action) => {
+  Object.freeze(state);
+  let newState = Object.assign({}, state);
+  let index;
+  // debugger
+
+  switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_event__["b" /* RECEIVE_EVENT */]:
+      return action.event;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
+      newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
+
+      index = newState.scheduleItemsArray.indexOf(action.scheduleItem.id);
+      if (index > -1) {
+        newState.scheduleItemsArray.splice(index, 1);
+      }
+      newState.scheduleItemsArray.unshift(action.scheduleItem.id);
+
+      return newState;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
+      newState.scheduleItems = action.by_id;
+      newState.scheduleItemsArray = action.all_ids;
+
+      return newState;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["a" /* DELETE_SCHEDULE_ITEM */]:
+      newState.scheduleItems[action.scheduleItemId] = undefined;
+
+      index = newState.scheduleItemsArray.indexOf(action.scheduleItemId);
+      if (index > -1) {
+        newState.scheduleItemsArray.splice(index, 1);
+      }
+
+      return newState;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+/* 149 */
+/***/ (function(module, __webpack_exports__) {
+
+"use strict";
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/trwong/Documents/appacademy/envent/envent/frontend/reducers/current_ev.js'\n    at Error (native)");
 
 /***/ })
 /******/ ]);
