@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20171212032712) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_id", null: false
+    t.index ["event_id"], name: "index_schedule_items_on_event_id"
     t.index ["title"], name: "index_schedule_items_on_title"
   end
 
