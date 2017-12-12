@@ -84,21 +84,25 @@ elements = DisplayElement.create!([
 
 schedule_items = ScheduleItem.create!([
   {
+    event_id: 1,
     title: "OCD",
     start_time: DateTime.new(2001,2,3,4,5,6),
     end_time: DateTime.new(2001,2,3,4,5,6)
   },
   {
+    event_id: 2,
     title: "Julian's Rager",
     start_time: DateTime.new(2001,2,3,4,5,6),
     end_time: DateTime.new(2001,2,3,4,5,6)
   },
   {
+    event_id: 3,
     title: "Taylor's Party",
     start_time: DateTime.new(2001,2,3,4,5,6),
     end_time: DateTime.new(2001,2,3,4,5,6)
   },
   {
+    event_id: 1,
     title: "Edward's Bday",
     start_time: DateTime.new(2001,2,3,4,5,6),
     end_time: DateTime.new(2001,2,3,4,5,6)

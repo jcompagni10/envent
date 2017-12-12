@@ -20,4 +20,6 @@ class ScheduleItem < ApplicationRecord
   # belongs_to :featured_people,
   #            class_name: :FeaturedPerson,
   #            foreign_key: :feature_id
+  belongs_to :event
+
 end

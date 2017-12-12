@@ -11,7 +11,7 @@ export default class AppBuilder extends React.Component {
         <h2>Build Your App</h2>
         <ProgressBar data={[3,5]} />
         <Switch>
-          <Route path="/event_builder" componet={EventFormContainer} />
+          <Route path="/event_builder" component={EventFormContainer} />
         </Switch>
       </div>
     );
