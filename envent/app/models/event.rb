@@ -25,6 +25,8 @@ class Event < ApplicationRecord
 
   has_many :display_elements
 
+  has_many :maps
+
   def downcase_fields
     self.tag.downcase!
   end
