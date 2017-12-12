@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: JSON } do
     resource :session, only: [:create, :destroy]
     resources :users, only: [:show, :create]
-    resources :events, only: [:index, :show, :create]
-    resources :schedule_items, only: [:index, :show, :create, :destroy, :update]
-    resources :maps, only: [:create, :show, :destroy]
+    resources :events, only: [:index, :show, :create] do
+      resources :schedule_items, only: [:index, :show, :create, :destroy, :update]
+      resources :maps, only: [:create, :show, :destroy]
+      resources :news, only: [:create, :index, :show, :destroy, :update]
+    end
     get 'events/show_id/:id', :to => 'events#show_id'
   end
 end
