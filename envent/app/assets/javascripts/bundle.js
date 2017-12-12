@@ -25826,15 +25826,40 @@ exports['default'] = thunk;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__ = __webpack_require__(140);
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
   Object.freeze(state);
+  let newState = Object.assign({}, state);
+  let index;
+
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["b" /* RECEIVE_EVENT */]:
-      return Object.assign({}, state, { [action.event.id]: action.event });
+      return Object.assign({}, newState, { [action.event.id]: action.event });
+
+    // don't think this is ever used
     case __WEBPACK_IMPORTED_MODULE_0__actions_event__["c" /* RECEIVE_EVENTS */]:
       return action.events;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
+      newState[action.scheduleItem.event_id].scheduleItems[action.scheduleItem.id] = action.scheduleItem;
+
+      index = newState[action.scheduleItem.event_id].scheduleItemsArray.indexOf(action.scheduleItem.id);
+      if (index > -1) {
+        newState[action.scheduleItem.event_id].scheduleItemsArray.splice(index, 1);
+      }
+      newState[action.scheduleItem.event_id].scheduleItemsArray.unshift(action.scheduleItem.id);
+
+      return newState;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
+      return;
+
+    case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["a" /* DELETE_SCHEDULE_ITEM */]:
+      return;
+
     default:
       return state;
   }

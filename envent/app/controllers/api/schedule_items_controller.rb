@@ -41,7 +41,7 @@ class Api::ScheduleItemsController < ApplicationController
       :title,
       :start_time,
       :end_time,
-      :featured_id,
+      :feature_id,
       :location,
       :img_url,
       :description
