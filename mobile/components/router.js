@@ -5,12 +5,12 @@ import {
   SafeAreaView
 } from 'react-navigation';
 import {ScrollView} from 'react-native';
-import EventLandingPage from './eventLandingPage';
+import EventLandingPage from './event_landing_page';
 import Schedule from './schedule/schedule';
 import News from './news/news';
 import MessageBoard from './messageBoard/messageBoard';
-import CustomItems from './custom_items';
-import Home from './homeLandingPage';
+import NavMenu from './nav_menu';
+import Home from './landing_page';
 
 
 // let drawerRoutes = {
@@ -68,10 +68,6 @@ export default DrawerNavigator(
   },
   {
     contentComponent: props =>
-    <ScrollView>
-      <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-        <CustomItems {...props} />
-      </SafeAreaView>
-    </ScrollView>
+        <NavMenu {...props} />
   }
 );

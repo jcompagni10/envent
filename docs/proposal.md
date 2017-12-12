@@ -49,6 +49,21 @@ This application will be able to:
 
 ![announcements](https://i.imgur.com/Vy9cHsc.png)
 
+- Web Auth 
+
+![web auth](https://i.imgur.com/Z9TZcx4.png)
+
+- Web Main
+
+![web main](https://i.imgur.com/hrltUnt.png)
+
+- Web Component Edit
+
+![web component edit](https://i.imgur.com/chk4cGW.png)
+
+- Web Final Preview 
+
+![web final preview](https://i.imgur.com/bwtmm6G.png)
 
 
 ## Technologies / Technical Challenges

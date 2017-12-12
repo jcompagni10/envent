@@ -4,31 +4,32 @@ import {
   Text,
   View,
   Image,
-  TextInput,
-  Alert,
   Button,
   ListView,
   ActivityIndicator,
   TouchableHighlight,
+  Alert
 } from 'react-native';
-import Header from '../header';
+import style from './styles/event_landing_page.js';
+import Header from './header';
 
-export default class Schedule extends React.Component {
-
+export default class EventLandingPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    debugger
     return (
-      <View>
+      <View style={style.landingPageContainer}>
         <Header
-          title = {"Schedule"}
+          title = {this.props.navigation.state.params.eventName}
           navigation = {this.props.navigation}
         />
-        <View>
+        <View style={{ flex:0.85}}>
           <Text>
-            Schedule
+            Event Landing Page
+
           </Text>
         </View>
       </View>
