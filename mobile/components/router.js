@@ -9,7 +9,7 @@ import EventLandingPage from './event_landing_page';
 import Schedule from './schedule/schedule';
 import News from './news/news';
 import MessageBoard from './messageBoard/messageBoard';
-import CustomItems from './custom_items';
+import NavMenu from './nav_menu';
 import Home from './landing_page';
 
 
@@ -68,10 +68,6 @@ export default DrawerNavigator(
   },
   {
     contentComponent: props =>
-    <ScrollView>
-      <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-        <CustomItems {...props} />
-      </SafeAreaView>
-    </ScrollView>
+        <NavMenu {...props} />
   }
 );

@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   StatusBar,
+  AsyncStorage
 } from 'react-native';
 import {
   NavigationActions,
@@ -20,35 +21,47 @@ import {
 import style from './styles/landing_page.js';
 
 
-const moduleNames = {Schedule: 'Schedule', News: "News", MessageBoard: "Message Board"}
-
 export default class HomeLandingPage extends React.Component {
-  static navigationOptions = {
-    title: 'Change Events',
-    status: ''
-  };
 
   constructor(props) {
     super(props);
     this.state = {
       eventTag: "",
       eventId: undefined,
+      isLoading: true
     };
-
-
     this.findEventFromInput = this.findEventFromInput.bind(this);
-    this.handleEventPress = this.handleEventPress.bind(this);
-    this.updateStateAndFindEvent = this.updateStateAndFindEvent.bind(this);
   }
 
+  componentDidMount(){
+    this.setState({isLoading: true});
+    StatusBar.setHidden(true);
+      try {
+        AsyncStorage.getItem('eventTag')
+          .then(tag=>this.handleDBTag(tag));
+      } catch (error) {
+        Alert.alert(error);
+      }
+  }
 
+  handleDBTag(tag){
+    if (tag){
+      this.state['eventTag'] = tag;
+      this.findEventFromInput(tag);
+    } else{
+      this.setState({isLoading: false});
+    }
+  }
 
-  findEventFromInput(callback) {
+  findEventFromInput(tag = null) {
     // TODO1 Add logic if failed response
-    fetch("http://192.168.3.37:3000/api/events/"+this.state.eventTag, )
+
+    let eventTag = tag || this.state.eventTag;
+    fetch("http://192.168.3.37:3000/api/events/"+eventTag)
       .then((response) => response.json())
-      .then(this.handleEventPress)
+      .then(this.enterEvent.bind(this))
       .catch(error => {
+        debugger
         this.setState({status: "Event Not Found"})
       });
     }
@@ -61,30 +74,46 @@ export default class HomeLandingPage extends React.Component {
         component: element
     }
     )));
-    return navItems
+    return navItems;
   }
 
-  handleEventPress(event) {
-      let navItems = this.buildNav(event.display_elements);
+  storeEventTag(){
+    try {
+      AsyncStorage.setItem('eventTag', this.state.eventTag, ()=>{
+      });
+    } catch (error){
+      Alert.alert(error);
+    }
+  }
+
+  enterEvent(event) {
+      this.storeEventTag();
+      // let navItems = this.buildNav(event.display_elements);
       this.props.navigation.navigate(
         'Router',
         {
-          items: navItems,
+          items: event.display_elements,
           eventName: event.name
          }
-      )
+      );
   }
 
 
-  updateStateAndFindEvent(eventTag) {
+  handleChange(eventTag) {
     this.setState({ eventTag });
   }
 
-  componentDidMount(){
-    StatusBar.setHidden(true);
-  }
-
   render() {
+    if (this.state.isLoading){
+      return (
+        // TODO2: make this sexier
+        <View style={style.landingPageContainer}>
+          <ActivityIndicator
+            size='large'
+            color="#4abdac"/>
+        </View>
+      );
+    }
     return (
       <View style={style.landingPageContainer} >
         <Image
@@ -105,13 +134,13 @@ export default class HomeLandingPage extends React.Component {
             <TextInput
               style={style.tagInput}
               placeholder="Event Tag"
-              onChangeText={ eventTag => this.updateStateAndFindEvent(eventTag) }
-              onSubmitEditing = {this.findEventFromInput}
+              onChangeText={ eventTag => this.handleChange(eventTag) }
+              onSubmitEditing = {()=>this.findEventFromInput()}
               returnKeyType = "join"
             />
             <TouchableOpacity
               style={style.joinButton}
-              onPress={()=>this.findEventFromInput(this.handleEventPress)}
+              onPress={()=>this.findEventFromInput()}
             >
               <Text style ={style.joinButtonText}>Join</Text>
             </TouchableOpacity>
