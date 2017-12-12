@@ -7,53 +7,50 @@ import {
   DELETE_SCHEDULE_ITEM
 } from '../actions/scheduleItem';
 
-let _nullState = {
-  scheduleItems: {},
-  scheduleItemsArray: [],
-};
 
-export default (state = _nullState, action) => {
+export default (state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
-  // debugger
+  debugger;
 
   switch (action.type) {
     case RECEIVE_EVENT:
+      debugger;
       return action.event;
 
-    case RECEIVE_SCHEDULE_ITEM:
-      newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
+    // case RECEIVE_SCHEDULE_ITEM:
+    //   newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
 
-      index = newState
-        .scheduleItemsArray
-        .indexOf(action.scheduleItem.id);
-      if (index > -1) {
-        newState.scheduleItemsArray.splice(index, 1);
-      }
-      newState
-        .scheduleItemsArray
-        .unshift(action.scheduleItem.id);
+    //   index = newState
+    //     .scheduleItemsArray
+    //     .indexOf(action.scheduleItem.id);
+    //   if (index > -1) {
+    //     newState.scheduleItemsArray.splice(index, 1);
+    //   }
+    //   newState
+    //     .scheduleItemsArray
+    //     .unshift(action.scheduleItem.id);
 
-      return newState;
+    //   return newState;
 
-    case RECEIVE_SCHEDULE_ITEMS:
-      newState.scheduleItems = action.by_id;
-      newState.scheduleItemsArray = action.all_ids;
+    // case RECEIVE_SCHEDULE_ITEMS:
+    //   newState.scheduleItems = action.by_id;
+    //   newState.scheduleItemsArray = action.all_ids;
     
-      return newState;
+    //   return newState;
 
-    case DELETE_SCHEDULE_ITEM:
-      newState.scheduleItems[action.scheduleItemId] = undefined;
+    // case DELETE_SCHEDULE_ITEM:
+    //   newState.scheduleItems[action.scheduleItemId] = undefined;
 
-      index = newState
-        .scheduleItemsArray
-        .indexOf(action.scheduleItemId);
-      if (index > -1) {
-        newState.scheduleItemsArray.splice(index, 1);
-      }
+    //   index = newState
+    //     .scheduleItemsArray
+    //     .indexOf(action.scheduleItemId);
+    //   if (index > -1) {
+    //     newState.scheduleItemsArray.splice(index, 1);
+    //   }
     
-      return newState;
+    //   return newState;
 
     default:
       return state;
