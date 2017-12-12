@@ -25470,6 +25470,8 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__ = __webpack_require__(146);
+
 
 
 
@@ -25490,6 +25492,7 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
         null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
       )
     );
@@ -25628,7 +25631,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
-    this.props.history.push(`/event/${event.tag}/schedule`);
+    this.props.history.push(`/event_builder/${event.tag}/schedule`);
   }
 
   render() {
@@ -26332,6 +26335,22 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = ScheduleIndexItem;
 
+
+/***/ }),
+/* 146 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__schedule__ = __webpack_require__(129);
+
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule__["a" /* default */]));
 
 /***/ })
 /******/ ]);
