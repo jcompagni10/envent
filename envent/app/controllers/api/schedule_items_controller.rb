@@ -18,7 +18,13 @@ class Api::ScheduleItemsController < ApplicationController
   def index
     event_id = params[:event_id]
     if event_id
-      @schedule_items = Event.find(event_id).schedule_items
+      if event_id.to_i == event_id.to_i.to_s
+        # find by event_id
+        @schedule_items = Event.find_by(id: event_id).schedule_items
+      else
+        # find by event tag
+        @schedule_items = Event.find_by(tag: event_id).schedule_items
+      end
     else
       @schedule_items = ScheduleItem.all
     end
