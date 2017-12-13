@@ -927,7 +927,6 @@ const removeScheduleItem = scheduleItemId => ({
 
 // thunk action creators
 const createScheduleItem = (eventId, scheduleItem) => dispatch => {
-  // debugger;
   return Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(eventId, scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
 };
 /* harmony export (immutable) */ __webpack_exports__["d"] = createScheduleItem;
@@ -25863,7 +25862,6 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   // componentWillReceiveProps(newProps) {
-  // debugger;
   // if (newProps.currentEvent.id !== this.props.currentEvent.id) {
   //   this.setState({ event_id: newProps.currentEvent.id });
   // }
@@ -25875,7 +25873,6 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // debugger;
     this.props.createScheduleItem(this.props.currentEvent.id, this.state);
   }
 
@@ -25981,7 +25978,8 @@ const deleteScheduleItem = scheduleItemId => $.ajax({
 
 
 const mapStateToProps = state => ({
-  scheduleItems: state.scheduleItems
+  scheduleItems: state.scheduleItems,
+  currentEvent: state.currentEvent
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26011,11 +26009,12 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
   }
 
   render() {
-    if (!this.props.scheduleItems) {
+    // debugger;
+    let { currentEvent } = this.props;
+    if (currentEvent === undefined || currentEvent.scheduleItemsArray === undefined) {
       return null;
     }
-
-    let display = this.props.scheduleItems.all_ids.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
+    let display = this.props.currentEvent.scheduleItemsArray.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
       key: id,
       scheduleItemId: id
     }));
@@ -26048,7 +26047,8 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
 
 
 const mapStateToProps = state => ({
-  scheduleItems: state.scheduleItems
+  // scheduleItems: state.scheduleItems,
+  currentEvent: state.currentEvent
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26072,8 +26072,9 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
   }
 
   render() {
-    let { by_id } = this.props.scheduleItems;
-    let scheduleItem = by_id[this.props.scheduleItemId];
+    // debugger;
+    let id_arr = this.props.currentEvent.scheduleItems;
+    let scheduleItem = id_arr[this.props.scheduleItemId];
     let {
       title,
       start_time,
@@ -26530,7 +26531,6 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
       return action.event;
 
     case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
-      // debugger;
       newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
       index = newState.scheduleItemsArray.indexOf(action.scheduleItem.id);
       if (index > 1) {
@@ -26541,7 +26541,6 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
       return newState;
 
     case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
-      // debugger;
       newState.scheduleItems = action.scheduleItems.by_id;
       newState.scheduleItemsArray = action.scheduleItems.all_ids;
 

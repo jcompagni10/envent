@@ -4,6 +4,7 @@ import { fetchScheduleItems } from './../../actions/scheduleItem';
 
 const mapStateToProps = state => ({
   scheduleItems: state.scheduleItems,
+  currentEvent: state.currentEvent,
 });
 
 const mapDispatchToProps = dispatch => ({

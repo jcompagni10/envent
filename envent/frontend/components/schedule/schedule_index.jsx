@@ -11,14 +11,16 @@ export default class ScheduleIndex extends React.Component {
   }
 
   render() {
-    if (!this.props.scheduleItems) {
+    // debugger;
+    let { currentEvent } = this.props;
+    if (currentEvent === undefined ||
+      currentEvent.scheduleItemsArray === undefined) {
       return null;
     }
-
-    let display = this.props.scheduleItems.all_ids.map( id => (
+    let display = this.props.currentEvent.scheduleItemsArray.map( id => (
       <ScheduleIndexItemContainer
-        key={id}
-        scheduleItemId={id}
+      key={id}
+      scheduleItemId={id}
       />
     ));
 

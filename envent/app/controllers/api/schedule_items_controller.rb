@@ -2,7 +2,6 @@ class Api::ScheduleItemsController < ApplicationController
 
   def create
     create_params = schedule_item_params
-    debugger
     create_params["event_id"] = params[:event_id]
     @schedule_item = ScheduleItem.new(create_params)
     feature = FeaturedPerson.find_or_create_by(name:
