@@ -1,11 +1,7 @@
 import React from 'react';
 import Errors from '../misc/errors';
 
-<<<<<<< HEAD
-const modules = ["schedule", "info", "announcements", "map"];
-=======
 const modules = ["schedule", "info", "news", "message board", "map"];
->>>>>>> 695f441243c7407408fa246586bd8871c21cbe56
 
 export default class EventForm extends React.Component{
   constructor(){

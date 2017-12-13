@@ -16,13 +16,10 @@ export default ()=>(
     <ProtectedRoute path='/dashboard' component = {Dashboard} />
     <ProtectedRoute exact path='/event/' component = {Event} />
     {/* <ProtectedRoute path='/event' component = {Event} /> */}
-<<<<<<< HEAD
     <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} />
     <ProtectedRoute path='/event/:eventTag/map/1' component = {Map} />
-=======
     {/* <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} /> */}
 
->>>>>>> 695f441243c7407408fa246586bd8871c21cbe56
     <ProtectedRoute path='/event_builder' component = {AppBuilder} />
     <AuthRoute exact path="/:signup?" component = {LandingPage} />
   </Switch>
