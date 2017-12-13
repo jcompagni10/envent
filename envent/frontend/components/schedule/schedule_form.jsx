@@ -11,20 +11,26 @@ export default class Schedule extends React.Component {
       feature_id: "",
       location: "",
       image: undefined,
-      description: ""
+      description: "",
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // componentWillReceiveProps(newProps) {
+    // debugger;
+    // if (newProps.currentEvent.id !== this.props.currentEvent.id) {
+    //   this.setState({ event_id: newProps.currentEvent.id });
+    // }
+  // }
 
   handleChange(title) {
     return event => this.setState({ [title]: event.target.value});
   }
 
   handleSubmit(event) {
-    // debugger
     event.preventDefault();
-    this.props.createScheduleItem(this.state);
+    // debugger;
+    this.props.createScheduleItem(this.props.currentEvent.id, this.state);
   }
 
   render() {

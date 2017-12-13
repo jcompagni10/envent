@@ -5,6 +5,10 @@ export default class Map extends React.Component{
     super(props);
   }
 
+  componentDidMount(){
+    this.props.getMap();
+  }
+
   render(){
     debugger
     if(!this.props.map.img_url){
