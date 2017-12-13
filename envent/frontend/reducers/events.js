@@ -19,7 +19,7 @@ export default (state = {asdf: []}, action) => {
     case RECEIVE_EVENT:
       return Object.assign({}, state, {[action.event.id]: action.event});
     case RECEIVE_MAP:
-      let newState = Object.assign({}, state);
+      newState = Object.assign({}, state);
       return newState;
     case RECEIVE_EVENTS:
       return action.events;

@@ -926,7 +926,10 @@ const removeScheduleItem = scheduleItemId => ({
 });
 
 // thunk action creators
-const createScheduleItem = (eventId, scheduleItem) => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(eventId, scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
+const createScheduleItem = (eventId, scheduleItem) => dispatch => {
+  // debugger;
+  return Object(__WEBPACK_IMPORTED_MODULE_0__util_schedule_api__["d" /* postScheduleItem */])(eventId, scheduleItem).then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)));
+};
 /* harmony export (immutable) */ __webpack_exports__["d"] = createScheduleItem;
 
 
@@ -25872,6 +25875,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // debugger;
     this.props.createScheduleItem(this.props.currentEvent.id, this.state);
   }
 
@@ -26352,7 +26356,7 @@ const deletePost = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util
     case __WEBPACK_IMPORTED_MODULE_1__actions_event__["b" /* RECEIVE_EVENT */]:
       return Object.assign({}, state, { [action.event.id]: action.event });
     case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
-      let newState = Object.assign({}, state);
+      newState = Object.assign({}, state);
       return newState;
     case __WEBPACK_IMPORTED_MODULE_1__actions_event__["c" /* RECEIVE_EVENTS */]:
       return action.events;
@@ -26455,10 +26459,10 @@ const fetchMap = id => $.ajax({
   let newState = Object.assign({}, state);
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
-      return Object.assign({}, state, { [action.map.id]: action.map });
+    // return Object.assign({}, state, {[action.map.id]: action.map});
     case __WEBPACK_IMPORTED_MODULE_0__actions_map__["d" /* REMOVE_MAP */]:
-      delete newState[action.mapId];
-      return newState;
+    // delete newState[action.mapId];
+    // return newState;
     default:
       return state;
   }
@@ -26526,7 +26530,7 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
       return action.event;
 
     case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
-      debugger;
+      // debugger;
       newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
       index = newState.scheduleItemsArray.indexOf(action.scheduleItem.id);
       if (index > 1) {
@@ -26538,8 +26542,8 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
 
     case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
       // debugger;
-      newState.scheduleItems = action.by_id;
-      newState.scheduleItemsArray = action.all_ids;
+      newState.scheduleItems = action.scheduleItems.by_id;
+      newState.scheduleItemsArray = action.scheduleItems.all_ids;
 
       return newState;
 

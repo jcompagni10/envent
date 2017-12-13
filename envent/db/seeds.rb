@@ -109,7 +109,7 @@ schedule_items = ScheduleItem.create!([
   }
   ])
 
-mews = News.create!([
+news = News.create!([
   {
     event_id: 1,
     title: "37 Dead",

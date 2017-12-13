@@ -18,7 +18,7 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
       return action.event;
 
     case RECEIVE_SCHEDULE_ITEM:
-      debugger;
+      // debugger;
       newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
       index = newState
         .scheduleItemsArray
@@ -36,8 +36,8 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
 
     case RECEIVE_SCHEDULE_ITEMS:
       // debugger;
-      newState.scheduleItems = action.by_id;
-      newState.scheduleItemsArray = action.all_ids;
+      newState.scheduleItems = action.scheduleItems.by_id;
+      newState.scheduleItemsArray = action.scheduleItems.all_ids;
     
       return newState;
 

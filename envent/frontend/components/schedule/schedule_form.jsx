@@ -29,6 +29,7 @@ export default class Schedule extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // debugger;
     this.props.createScheduleItem(this.props.currentEvent.id, this.state);
   }
 
