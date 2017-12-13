@@ -1,5 +1,4 @@
-class NewsController < ApplicationController
-
+class Api::NewsController < ApplicationController
   def index
     event_id = params[:event_id]
     if (event_id)
@@ -33,7 +32,7 @@ class NewsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @news = News.find(params[:id])
     @news.destroy
     render json: {}
@@ -42,6 +41,6 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).peermit(:title, :message, :img_url, :event_id)
+    params.require(:news).permit(:title, :message, :img_url, :event_id)
   end
 end
