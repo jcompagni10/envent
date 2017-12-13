@@ -9,15 +9,15 @@
 users = User.create!([
   {
     email: "jcp@gmail.com",
-    password_digest: "asdf"
+    password: "asdf"
   },
   {
     email: "ejb@gmail.com",
-    password_digest: "qwerty"
+    password: "qwerty"
   },
   {
     email: "trw@gmail.com",
-    password_digest: "poiuy"
+    password: "poiuy"
   },
 ])
 
@@ -107,4 +107,12 @@ schedule_items = ScheduleItem.create!([
     start_time: DateTime.new(2001,2,3,4,5,6),
     end_time: DateTime.new(2001,2,3,4,5,6)
   }
+  ])
+
+  maps = Map.create!([
+    {
+      event_id: 1, 
+      title: "OCD MAP",
+      img_url: "https://i.pinimg.com/736x/10/50/72/105072385f123d60287715cc006a185b--bedroom-floor-plans--bedroom-carriage-house-plans.jpg"
+    }
   ])

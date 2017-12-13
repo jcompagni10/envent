@@ -6,9 +6,10 @@ export default class Map extends React.Component{
   }
 
   render(){
+    console.log(this.props);
     return(
       <div>
-        
+        <img src={this.state.maps.img_url} alt=""/>
       </div>
     );
   }
