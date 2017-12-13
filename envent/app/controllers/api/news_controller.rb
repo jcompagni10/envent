@@ -1,10 +1,10 @@
 class Api::NewsController < ApplicationController
   def index
     event_id = params[:event_id]
-    if (event_id)
+    if event_id != 'undefined'
       @news = Event.find(event_id).news
     else
-      @news = News.find
+      @news = News.all
     end
     render :index
   end
@@ -16,6 +16,7 @@ class Api::NewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
+    @news.event_id = params[:event_id]
     if @news.save
       render :show
     else

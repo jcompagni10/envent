@@ -1,9 +1,10 @@
 class Api::ScheduleItemsController < ApplicationController
 
   def create
-    create_params = schedule_item_params
-    create_params["event_id"] = params[:event_id]
+    # create_params = schedule_item_params
+    # create_params["event_id"] = params[:event_id]
     @schedule_item = ScheduleItem.new(create_params)
+    @schedule_item.event_id = params[:event_id]
     feature = FeaturedPerson.find_or_create_by(name:
       params[:schedule_item][:feature_name])
     @schedule_item.featured_person = feature

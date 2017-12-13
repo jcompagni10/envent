@@ -3741,6 +3741,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store_js__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_event__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_news__ = __webpack_require__(152);
+
 
 
 
@@ -3766,6 +3768,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.destroyScheduleItem = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["e" /* destroyScheduleItem */];
   window.fetchEvent = __WEBPACK_IMPORTED_MODULE_5__actions_event__["f" /* fetchEvent */];
   window.fetchEvents = __WEBPACK_IMPORTED_MODULE_5__actions_event__["g" /* fetchEvents */];
+
+  window.createNews = __WEBPACK_IMPORTED_MODULE_6__actions_news__["a" /* createNews */];
+  window.fetchSingleNews = __WEBPACK_IMPORTED_MODULE_6__actions_news__["c" /* fetchSingleNews */];
+  window.fetchNews = __WEBPACK_IMPORTED_MODULE_6__actions_news__["b" /* fetchNews */];
+  window.updateNews = __WEBPACK_IMPORTED_MODULE_6__actions_news__["e" /* updateNews */];
+  window.removeNews = __WEBPACK_IMPORTED_MODULE_6__actions_news__["d" /* removeNews */];
 });
 
 /***/ }),
@@ -26616,6 +26624,105 @@ class News extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = News;
+
+
+/***/ }),
+/* 152 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_news_api__ = __webpack_require__(153);
+
+
+const RECEIVE_NEWS = "RECEIVE_NEWS";
+/* unused harmony export RECEIVE_NEWS */
+
+const RECEIVE_NEW = "RECEIVE_NEW";
+/* unused harmony export RECEIVE_NEW */
+
+const DELETE_NEWS = "DELETE_NEWS";
+/* unused harmony export DELETE_NEWS */
+
+
+//  actions
+const receiveNew = singleNews => ({
+  type: RECEIVE_NEW,
+  singleNews
+});
+
+const receiveNews = news => ({
+  type: RECEIVE_NEWS,
+  news
+});
+
+const destroyNews = newsId => ({
+  type: DELETE_NEWS,
+  newsId
+});
+
+// thunk action creators
+const createNews = (eventId, news) => dispatch => {
+  return Object(__WEBPACK_IMPORTED_MODULE_0__util_news_api__["e" /* postNews */])(eventId, news).then(newNews => dispatch(receiveNew(newNews)));
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = createNews;
+
+
+const fetchSingleNews = newsId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_news_api__["c" /* getSingleNews */])(newsId).then(news => dispatch(receiveNew(news)));
+/* harmony export (immutable) */ __webpack_exports__["c"] = fetchSingleNews;
+
+
+const fetchNews = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_news_api__["b" /* getNews */])(eventId).then(news => dispatch(receiveNews(news)));
+/* harmony export (immutable) */ __webpack_exports__["b"] = fetchNews;
+
+
+const updateNews = news => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_news_api__["d" /* patchNews */])(news).then(newNews => dispatch(receiveNew(newNews)));
+/* harmony export (immutable) */ __webpack_exports__["e"] = updateNews;
+
+
+const removeNews = newsId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_news_api__["a" /* deleteNews */])(newsId).then(() => dispatch(destroyNews(newsId)));
+/* harmony export (immutable) */ __webpack_exports__["d"] = removeNews;
+
+
+/***/ }),
+/* 153 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const postNews = (eventId, news) => $.ajax({
+  method: 'POST',
+  url: `api/events/${eventId}/news`,
+  data: { news }
+});
+/* harmony export (immutable) */ __webpack_exports__["e"] = postNews;
+
+
+const getNews = eventId => $.ajax({
+  method: 'GET',
+  url: `api/events/${eventId}/news`
+});
+/* harmony export (immutable) */ __webpack_exports__["b"] = getNews;
+
+
+const getSingleNews = newsId => $.ajax({
+  method: 'GET',
+  url: `api/news/${newsId}`
+});
+/* harmony export (immutable) */ __webpack_exports__["c"] = getSingleNews;
+
+
+const patchNews = news => $.ajax({
+  method: 'PATCH',
+  url: `api/news/${news.id}`,
+  data: { news }
+});
+/* harmony export (immutable) */ __webpack_exports__["d"] = patchNews;
+
+
+const deleteNews = newsId => $.ajax({
+  method: 'DELETE',
+  url: `api/news/${newsId}`
+});
+/* harmony export (immutable) */ __webpack_exports__["a"] = deleteNews;
 
 
 /***/ })
