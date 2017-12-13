@@ -9,15 +9,12 @@ import {
 
 
 const currentEvent = (state = {}, action) => {
-  console.log("inside the current event reducer");
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
-  // debugger;
   
   switch (action.type) {
     case RECEIVE_EVENT:
-      debugger;
       return action.event;
 
     case RECEIVE_SCHEDULE_ITEM:
@@ -54,7 +51,6 @@ const currentEvent = (state = {}, action) => {
       return newState;
 
     default:
-      // debugger;
       return state;
   }
 };
