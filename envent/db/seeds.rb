@@ -116,6 +116,7 @@ schedule_items = ScheduleItem.create!([
       img_url: "https://i.pinimg.com/736x/10/50/72/105072385f123d60287715cc006a185b--bedroom-floor-plans--bedroom-carriage-house-plans.jpg"
     }
   ])
+  
 news = News.create!([
   {
     event_id: 1,
