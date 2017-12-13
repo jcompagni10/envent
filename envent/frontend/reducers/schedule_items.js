@@ -5,6 +5,7 @@ import {
 } from '../actions/scheduleItem';
 
 export default (state = { all_ids: [], by_id: {} }, action) => {
+  console.log("inside the scheduleitem reducer");
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
