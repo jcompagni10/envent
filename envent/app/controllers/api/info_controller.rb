@@ -32,6 +32,12 @@ class Api::InfoController < ApplicationController
   private
   
   def info_params
-    params.require(:info).permit(:start_date, :end_date, :location, :message, :event_id)
+    params.require(:info).permit(
+      :start_date,
+      :end_date,
+      :location,
+      :message,
+      :event_id
+    )
   end
 end

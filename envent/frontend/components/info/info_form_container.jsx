@@ -3,7 +3,7 @@ import InfoForm from './info_form';
 import {
   fetchInfo,
   createInfo,
-} from './../../actions/event';
+} from './../../actions/info';
 
 const mapStateToProps = state => ({
   currentEvent: state.currentEvent

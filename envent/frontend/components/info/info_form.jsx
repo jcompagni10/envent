@@ -41,28 +41,45 @@ export default class InfoForm extends React.Component {
       <div>
         Info
         <form action="">
-          <input
-            onChange={this.handleChange("start_date")}
-            type="date"
-            name="start_date"
-            id=""/>
-          <input
-            onChange={this.handleChange("end_date")}
-            type="date"
-            name="end_date"
-            id=""/>
-          <input
-            onChange={this.handleChange("location")}
-            type="text"
-            name="location"
-            id=""/>
-          <textarea
-            onChange={this.handleChange("message")}
-            name="message"
-            id=""
-            cols="30"
-            rows="10">
-          </textarea>
+          <label>Start Date:
+            <input
+              onChange={this.handleChange("start_date")}
+              type="date"
+              name="start_date"
+              id=""/>
+          </label>
+          <br />
+
+          <label>End Date:
+            <input
+              onChange={this.handleChange("end_date")}
+              type="date"
+              name="end_date"
+              id=""/>
+          </label>
+          <br />
+
+          <label>Location:
+            <input
+              onChange={this.handleChange("location")}
+              type="text"
+              name="location"
+              id=""/>
+          </label>
+          <br />
+
+          <label>Admin Message:
+            <br />
+            <textarea
+              onChange={this.handleChange("message")}
+              name="message"
+              id=""
+              cols="30"
+              rows="10">
+            </textarea>
+          </label>
+          <br />
+
           <input
             type="submit"
             onClick={this.handleSubmit}/>

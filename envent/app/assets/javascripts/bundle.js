@@ -25620,6 +25620,8 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_route_util__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__news_news_container__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__news_news_container___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__news_news_container__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__info_info_form_container__ = __webpack_require__(156);
+
 
 
 
@@ -25643,6 +25645,7 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
         null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/info', component: __WEBPACK_IMPORTED_MODULE_7__info_info_form_container__["a" /* default */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/news', component: __WEBPACK_IMPORTED_MODULE_6__news_news_container___default.a }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
@@ -26777,6 +26780,135 @@ const patchInfo = (eventId, info) => $.ajax({
   data: { info }
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = patchInfo;
+
+
+/***/ }),
+/* 156 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__info_form__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_info__ = __webpack_require__(154);
+
+
+
+
+const mapStateToProps = state => ({
+  currentEvent: state.currentEvent
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchInfo: eventId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_info__["c" /* fetchInfo */])(eventId)),
+  createInfo: (eventId, info) => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_info__["b" /* createInfo */])(eventId, info))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__info_form__["a" /* default */]));
+
+/***/ }),
+/* 157 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class InfoForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      start_date: "",
+      end_date: "",
+      location: "",
+      message: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchInfo(this.props.currentEvent.id);
+  }
+
+  handleChange(name) {
+    return event => this.setState({ [name]: event.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createInfo(this.props.currentEventId, this.state);
+  }
+
+  render() {
+    let { info } = this.props.currentEvent;
+    if (info === {}) {
+      return null;
+    }
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "div",
+      null,
+      "Info",
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "form",
+        { action: "" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "label",
+          null,
+          "Start Date:",
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+            onChange: this.handleChange("start_date"),
+            type: "date",
+            name: "start_date",
+            id: "" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "label",
+          null,
+          "End Date:",
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+            onChange: this.handleChange("end_date"),
+            type: "date",
+            name: "end_date",
+            id: "" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "label",
+          null,
+          "Location:",
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+            onChange: this.handleChange("location"),
+            type: "text",
+            name: "location",
+            id: "" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "label",
+          null,
+          "Admin Message:",
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("textarea", {
+            onChange: this.handleChange("message"),
+            name: "message",
+            id: "",
+            cols: "30",
+            rows: "10" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+          type: "submit",
+          onClick: this.handleSubmit })
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = InfoForm;
 
 
 /***/ })
