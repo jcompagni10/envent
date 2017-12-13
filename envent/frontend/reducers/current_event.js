@@ -8,7 +8,7 @@ import {
 } from '../actions/scheduleItem';
 
 
-const currentEvent = (state = {}, action) => {
+const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
@@ -18,34 +18,38 @@ const currentEvent = (state = {}, action) => {
       return action.event;
 
     case RECEIVE_SCHEDULE_ITEM:
+      debugger;
       newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
-
       index = newState
         .scheduleItemsArray
         .indexOf(action.scheduleItem.id);
-      if (index > -1) {
-        newState.scheduleItemsArray.splice(index, 1);
+      if (index > 1) {
+        newState
+
+          .scheduleItemsArray.splice(index, 1);
       }
       newState
         .scheduleItemsArray
         .unshift(action.scheduleItem.id);
-
-      return newState;
+      
+        return newState;
 
     case RECEIVE_SCHEDULE_ITEMS:
+      // debugger;
       newState.scheduleItems = action.by_id;
       newState.scheduleItemsArray = action.all_ids;
     
       return newState;
 
     case DELETE_SCHEDULE_ITEM:
-      newState.scheduleItems[action.scheduleItemId] = undefined;
+      newState.currentEvent.scheduleItems[action.scheduleItemId] = undefined;
 
       index = newState
+        .currentEvent
         .scheduleItemsArray
         .indexOf(action.scheduleItemId);
       if (index > -1) {
-        newState.scheduleItemsArray.splice(index, 1);
+        newState.currentEvent.scheduleItemsArray.splice(index, 1);
       }
     
       return newState;

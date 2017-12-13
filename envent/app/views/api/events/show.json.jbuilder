@@ -25,4 +25,4 @@ end
     
 
 
-json.all_ids arr
+json.scheduleItemsArray arr

@@ -1,7 +1,9 @@
 class Api::ScheduleItemsController < ApplicationController
 
   def create
-    @schedule_item = ScheduleItem.new(schedule_item_params)
+    create_params = schedule_item_params
+    create_params["event_id"] = params[:event_id]
+    @schedule_item = ScheduleItem.new(create_params)
     if @schedule_item.save
       render :show
     else
@@ -37,14 +39,16 @@ class Api::ScheduleItemsController < ApplicationController
   private
 
   def schedule_item_params
-    params.require(:schedule_item).permit(
+    p "----------"
+    p params.require(:schedule_item).permit(
       :title,
       :start_time,
       :end_time,
       :feature_id,
       :location,
       :img_url,
-      :description
+      :description,
+      :event_id
     )
   end
 end
