@@ -15,13 +15,7 @@ class Api::ScheduleItemsController < ApplicationController
   end
 
   def index
-    event_id = params[:event_id]
-    if event_id
-      @schedule_items = Event.find(event_id).schedule_items
-    else
-      @schedule_items = ScheduleItem.all
-    end
-
+    @schedule_items = ScheduleItem.all
     render :index
   end
 
@@ -48,7 +42,8 @@ class Api::ScheduleItemsController < ApplicationController
   private
 
   def schedule_item_params
-    params.require(:schedule_item).permit(
+    p "----------"
+    p params.require(:schedule_item).permit(
       :title,
       :start_time,
       :end_time,

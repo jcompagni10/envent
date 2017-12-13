@@ -7,9 +7,4 @@ json.by_id do
   end
 end
 
-arr = []
-@schedule_items.each do |item|
-  arr << item.id
-end
-
-json.all_ids arr
+json.set! :by_time, @schedule_items.time_group
