@@ -19,7 +19,6 @@ export default class EventLandingPage extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <View style={style.landingPageContainer}>
         <Header

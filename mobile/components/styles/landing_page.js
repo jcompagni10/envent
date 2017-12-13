@@ -3,13 +3,16 @@ import  {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   landingPageContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'contain'
+    justifyContent: "center",
+    flexDirection: 'column',
+    alignItems: 'center'
   },
+
   entryForm: {
     position: 'absolute',
     justifyContent: 'center'
@@ -19,8 +22,9 @@ export default StyleSheet.create({
   },
   tagInput: {
     width: 200,
-    height: 30,
+    height: 50,
     padding: 5,
+    fontSize: 20,
     borderTopLeftRadius: 3,
     borderBottomLeftRadius: 3,
     backgroundColor: 'rgba(255, 255, 255, .8)',
@@ -31,35 +35,34 @@ export default StyleSheet.create({
     borderBottomRightRadius: 3,
     width: 50,
     justifyContent: "center",
-    height: 30,
+    height: 50,
     backgroundColor: '#4abdac'
   },
   joinButtonText: {
     textAlign: 'center',
-    color: '#fc4a1a',
+    color: 'rgb(247,183,51)',
     fontWeight: 'bold'
   },
   logoWrapper: {
-    position: 'absolute',
-    flex: 1,
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 100,
-    backgroundColor: 'rgba(74, 189, 172, 0)',
-    justifyContent: 'flex-end',
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+
+    backgroundColor: 'rgba(74, 189, 172, 1)',
   },
   logo: {
-    left: 0,
-    top: 7,
-    height: 25,
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    height: 50,
+    width: 150,
     resizeMode: "contain"
   },
   statusText: {
     backgroundColor: 'rgba(0,0,0,0)',
-    color: '#FC4a1a',
-    textAlign: 'left',
+    color: '#F77',
+    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 16,
-  }
+  },
 });
