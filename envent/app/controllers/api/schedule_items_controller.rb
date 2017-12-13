@@ -16,12 +16,9 @@ class Api::ScheduleItemsController < ApplicationController
   end
 
   def index
-<<<<<<< HEAD
-    @schedule_items = ScheduleItem.all
-=======
     event_id = params[:event_id]
     if event_id
-      if event_id.to_i == event_id.to_i.to_s
+      if event_id == event_id.to_i.to_s
         # find by event_id
         @schedule_items = Event.find_by(id: event_id).schedule_items
       else
@@ -32,7 +29,6 @@ class Api::ScheduleItemsController < ApplicationController
       @schedule_items = ScheduleItem.all
     end
 
->>>>>>> master
     render :index
   end
 

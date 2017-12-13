@@ -8,16 +8,16 @@
 
 users = User.create!([
   {
-    email: "jcp@gmail.com",
-    password: "asdf"
+    email: "jcp",
+    password: "pass123"
   },
   {
     email: "ejb@gmail.com",
-    password: "qwerty"
+    password: "pass123"
   },
   {
     email: "trw@gmail.com",
-    password: "poiuy"
+    password: "pass123"
   },
 ])
 
@@ -85,27 +85,66 @@ elements = DisplayElement.create!([
 schedule_items = ScheduleItem.create!([
   {
     event_id: 1,
-    title: "OCD",
-    start_time: DateTime.new(2001,2,3,4,5,6),
-    end_time: DateTime.new(2001,2,3,4,5,6)
-  },
-  {
-    event_id: 2,
-    title: "Julian's Rager",
-    start_time: DateTime.new(2001,2,3,4,5,6),
-    end_time: DateTime.new(2001,2,3,4,5,6)
-  },
-  {
-    event_id: 3,
-    title: "Taylor's Party",
-    start_time: DateTime.new(2001,2,3,4,5,6),
-    end_time: DateTime.new(2001,2,3,4,5,6)
+    location: "kitchen",
+    title: "mimosas and doses",
+    start_time: DateTime.new(2018,2,3,8,30),
+    end_time: DateTime.new(2018,2,3,9,0)
   },
   {
     event_id: 1,
-    title: "Edward's Bday",
-    start_time: DateTime.new(2001,2,3,4,5,6),
-    end_time: DateTime.new(2001,2,3,4,5,6)
+    location: "kitchen",
+    title: "more mimosas",
+    start_time: DateTime.new(2018,2,3,10,0),
+    end_time: DateTime.new(2018,2,3,11,15)
+  },
+  {
+    event_id: 1,
+    location: "livingroom",
+    title: "real party time",
+    start_time: DateTime.new(2018,2,3,2,30),
+    end_time: DateTime.new(2018,2,3,3,30)
+  },
+  {
+    event_id: 1,
+    location: "bathroom",
+    title: "the keg arrives",
+    start_time: DateTime.new(2018,2,4,12,00),
+    end_time: DateTime.new(2018,2,4,12,15)
+  },
+  {
+    event_id: 1,
+    location: "party spot",
+    title: "sing songs",
+    start_time: DateTime.new(2018,2,4,12,00),
+    end_time: DateTime.new(2018,2,4,2,30)
+  },
+  {
+    event_id: 1,
+    location: "party spot",
+    title: "more stuff ",
+    start_time: DateTime.new(2018,2,4,12,6),
+    end_time: DateTime.new(2018,2,4,5,6)
+  },
+  {
+    event_id: 1,
+    location: "party spot",
+    title: "everyone leaves",
+    start_time: DateTime.new(2018,2,4,14,20),
+    end_time: DateTime.new(2018,2,4,15,0)
+  },
+  {
+    event_id: 1,
+    location: "basement",
+    title: "after party",
+    start_time: DateTime.new(2018,2,4,14,20),
+    end_time: DateTime.new(2018,2,4,15,0)
+  },
+  {
+    event_id: 1,
+    location: "party spot",
+    title: "after after party",
+    start_time: DateTime.new(2018,2,4,14,20),
+    end_time: DateTime.new(2018,2,4,15,0)
   }
   ])
 

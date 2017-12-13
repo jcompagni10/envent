@@ -21,6 +21,7 @@ import {
 
 import style from './styles/landing_page.js';
 import AuthForm from './auth_form';
+import Loader from './misc/loader';
 
 export default class HomeLandingPage extends React.Component {
 
@@ -30,7 +31,7 @@ export default class HomeLandingPage extends React.Component {
       eventTag: "",
       eventId: undefined,
       showAuth: false,
-      isLoading: false
+      isLoading: true
     };
     this.findEventFromInput = this.findEventFromInput.bind(this);
   }
@@ -78,6 +79,7 @@ export default class HomeLandingPage extends React.Component {
     return fetch("http://192.168.3.37:3000/api/events/"+eventTag)
       .then(
         (response) => {
+          this.setState({isLoading: false});
           if (response.status === 200){
             return response.json();
           } else{
@@ -87,7 +89,8 @@ export default class HomeLandingPage extends React.Component {
       .catch(error => {
         this.setState({
           status: "Event Not Found",
-          showAuth: false
+          showAuth: false,
+          isLoading: false
         });
       });
     }
@@ -129,7 +132,8 @@ export default class HomeLandingPage extends React.Component {
       'Router',
       {
         items: eventt.display_elements,
-        eventName: eventt.name
+        eventName: eventt.name,
+        eventId: eventt.id
        }
     );
   }
@@ -142,12 +146,7 @@ export default class HomeLandingPage extends React.Component {
   render() {
     if (this.state.isLoading){
       return (
-        // TODO2: make this sexier
-        <View style={style.landingPageContainer}>
-          <ActivityIndicator
-            size='large'
-            color="#4abdac"/>
-        </View>
+        <Loader />
       );
     }
     return (

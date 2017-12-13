@@ -32,7 +32,7 @@ class Event < ApplicationRecord
         unless times[date]
           times[date] = {}
         end
-        time_str = time.strftime("%H:%M")
+        time_str = time.strftime("%I:%M %p")
         times[date][time_str] = events.pluck(:id)
       end
       times

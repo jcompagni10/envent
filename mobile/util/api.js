@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 export function fetchSchedule(event){
   return fetch(`http://192.168.3.37:3000/api/events/${event}/schedule_items`)
   .then(response => {
@@ -10,8 +10,3 @@ export function fetchSchedule(event){
     }}
   );
 }
-=======
-export const fetchSchedule = (event)=>{
-  sdfgdfgdfg
-};
->>>>>>> master
