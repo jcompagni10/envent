@@ -29,14 +29,13 @@ export default class HomeLandingPage extends React.Component {
     this.state = {
       eventTag: "",
       eventId: undefined,
-      isLoading: true,
-      showAuth: false
+      showAuth: false,
+      isLoading: false
     };
     this.findEventFromInput = this.findEventFromInput.bind(this);
   }
 
   componentDidMount(){
-    this.setState({isLoading: true});
     StatusBar.setHidden(true);
       try {
         AsyncStorage.getItem('eventTag')
@@ -44,9 +43,11 @@ export default class HomeLandingPage extends React.Component {
       } catch (error) {
         Alert.alert(error);
       }
+
   }
 
   handleTagSubmit(){
+    this.setState({status: ''});
     let eventTag = this.state.eventTag;
     if (eventTag){
       this.findEventFromInput(eventTag)
@@ -65,11 +66,9 @@ export default class HomeLandingPage extends React.Component {
       this.state['eventTag'] = tag;
       this.findEventFromInput(tag)
       .then((event)=>{
-        this.state.event = event;
-        this.enterEvent();
+        this.enterEvent(event);
       });
     } else{
-
       this.setState({isLoading: false});
     }
   }
@@ -82,7 +81,6 @@ export default class HomeLandingPage extends React.Component {
           if (response.status === 200){
             return response.json();
           } else{
-
             throw new Error(response.statusText);
           }
         })
@@ -94,6 +92,9 @@ export default class HomeLandingPage extends React.Component {
       });
     }
 
+  closeAuth(){
+    this.setState({showAuth: false});
+  }
 
   storeEventTag(){
     try {
@@ -105,21 +106,30 @@ export default class HomeLandingPage extends React.Component {
   }
 
   displayAuth(event){
-    this.setState({
-      showAuth: true,
-      status: '',
-      event
+    if (this.state.status !== '') return;
+    AsyncStorage.getItem('userEmail').then(email=>{
+      if (email){
+        this.enterEvent(event);
+      } else {
+        this.setState({
+          showAuth: true,
+          status: '',
+          event
+        });
+      }
     });
   }
-  enterEvent() {
-    let event = this.state.event;
+
+
+  enterEvent(event= null) {
+    let eventt = event || this.state.event;
+    this.setState({showAuth: false});
     this.storeEventTag();
-    // let navItems = this.buildNav(event.display_elements);
     this.props.navigation.navigate(
       'Router',
       {
-        items: event.display_elements,
-        eventName: event.name
+        items: eventt.display_elements,
+        eventName: eventt.name
        }
     );
   }
@@ -174,6 +184,8 @@ export default class HomeLandingPage extends React.Component {
         <AuthForm
           visible = {this.state.showAuth}
           callback = {this.enterEvent.bind(this)}
+          skip = {true}
+          close = {this.closeAuth.bind(this)}
           />
       </View>
     );

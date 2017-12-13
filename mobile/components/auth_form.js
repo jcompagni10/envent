@@ -7,7 +7,10 @@ import {
   TouchableOpacity,
   AsyncStorage,
   FlatList,
+  Alert,
+  Keyboard
 } from 'react-native';
+import {persistUser} from '../util/user';
 import style from './styles/auth_form.js';
 
 
@@ -30,6 +33,10 @@ export default class AuthForm extends React.Component {
     this.setState(newValue);
   }
 
+  closeKeyboard(){
+    Keyboard.dismiss();
+  }
+
   login(){
     fetch("http://192.168.3.37:3000/api/session/",{
       method: 'POST',
@@ -45,14 +52,11 @@ export default class AuthForm extends React.Component {
       if (response.status === 200){
         response.json()
         .then( responseBody => {
-          let sessionToken = responseBody.session_token;
-          let email = responseBody.email;
-          AsyncStorage.setItem('sessionToken', sessionToken);
-          AsyncStorage.setItem('email', email);
+          persistUser(responseBody);
           this.callback();
         })
       } else {
-          this.setState({errors: ["Invalid Email/Password"]})
+          this.setState({errors: ["Invalid Email/Password"]});
         }
       });
   }
@@ -72,46 +76,65 @@ export default class AuthForm extends React.Component {
       if (response.status === 200){
         response.json()
         .then( responseBody => {
-          let sessionToken = responseBody.session_token;
-          let email = responseBody.email;
-          AsyncStorage.setItem('sessionToken', sessionToken);
-          AsyncStorage.setItem('email', email);
+          persistUser(responseBody);
           this.callback();
-        })
+        });
       } else {
         response.json()
         .then( responseBody => {
-          debugger
-          this.setState({errors: ["Invalid Email/Password"]});
+          this.setState({errors: responseBody});
         });}
       });
   }
+
 
   render (){
     if (this.props.visible){
       return (
         <View style={style.authBG}>
           <View style={style.authForm}>
+            <TouchableOpacity
+              style={style.closeButtonWrapper}
+              onPress={this.props.close}
+            >
+              <Text style ={style.closeButton}>X</Text>
+            </TouchableOpacity>
             <Text style={style.authText}>
               Sign Up or Log In
             </Text>
-            <Text style={style.errorText}>
-            {this.state.errors}
-            </Text>
+            <FlatList
+              style = {style.errors}
+              data = {this.state.errors}
+              renderItem = {({item}) =>
+                <View>
+                  <Text style={style.errorText}>
+                  {"-"+item}
+                  </Text>
+                </View>
+              }
+              keyExtractor={(item, index) => index}
+            />
             <View style={style.AuthInputWrapper}>
               <TextInput
                 style= {style.authInput}
                 placeholder="email"
                 onChangeText={ email => this.handleChange({email}) }
                 keyboardType= 'email-address'
-                />
+                returnKeyType = "next"
+                onSubmitEditing = {(event) => {
+                  this.refs.passwordInput.focus();
+                }}
+              />
             </View>
             <View style={style.AuthInputWrapper}>
               <TextInput
+                ref='passwordInput'
                 style= {style.authInput}
                 placeholder="password"
                 onChangeText={ password => this.handleChange({password}) }
                 secureTextEntry = {true}
+                onSubmitEditing = {this.login.bind(this)}
+                returnKeyType = "go"
                 />
             </View>
             <View style={style.bottomButtons}>
@@ -129,14 +152,16 @@ export default class AuthForm extends React.Component {
                 <Text style ={style.authButtonText}>Log In</Text>
               </TouchableOpacity>
             </View>
-            <View style={style.skipContainer}>
-              <TouchableOpacity
-                style={style.skipButton}
-                onPress={this.callback.bind(this)}
-                >
-                <Text style ={style.skipButtonText}>Skip</Text>
-              </TouchableOpacity>
-            </View>
+            {(this.props.skip )? (
+              <View style={style.skipContainer}>
+                <TouchableOpacity
+                  style={style.skipButton}
+                  onPress={this.callback.bind(this)}
+                  >
+                  <Text style ={style.skipButtonText}>Skip</Text>
+                </TouchableOpacity>
+              </View>
+            ) : null }
           </View>
         </View>
       );
