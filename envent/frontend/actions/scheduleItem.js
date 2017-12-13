@@ -28,8 +28,8 @@ const removeScheduleItem = scheduleItemId => ({
 
 
 // thunk action creators
-export const createScheduleItem = scheduleItem => dispatch => (
-  postScheduleItem(scheduleItem)
+export const createScheduleItem = (eventId, scheduleItem) => dispatch => (
+  postScheduleItem(eventId, scheduleItem)
     .then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)))
 );
 
@@ -38,8 +38,8 @@ export const fetchScheduleItem = scheduleItemId => dispatch => (
     .then(scheduleItem => dispatch(receiveScheduleItem(scheduleItem)))
 );
 
-export const fetchScheduleItems = () => dispatch => (
-  getScheduleItems()
+export const fetchScheduleItems = (eventId) => dispatch => (
+  getScheduleItems(eventId)
     .then(scheduleItems => dispatch(receiveScheduleItems(scheduleItems)))
 );
 

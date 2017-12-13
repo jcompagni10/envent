@@ -21,10 +21,20 @@ class Api::EventsController < ApplicationController
   def show
     lowercase_tag = params[:id].downcase
     @event = Event.find_by(tag: lowercase_tag)
+    @scheduleItems = ScheduleItem.find_by(event_id: @event.id)
     if @event
       render :show
     else
-      render json: {}, status: 404
+      render json: @event.errors.full_messages, status: 404
+    end
+  end
+
+  def show_id
+    @event = Event.find(params[:id])
+    if @event
+      render :show
+    else
+      render json: @event.errors.full_messages, status: 404
     end
   end
 
