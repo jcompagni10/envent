@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchScheduleItems: () => dispatch(fetchScheduleItems()),
+  fetchScheduleItems: (eventId) => dispatch(fetchScheduleItems(eventId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleIndex);

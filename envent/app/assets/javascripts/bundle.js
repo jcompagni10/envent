@@ -25983,7 +25983,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchScheduleItems: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["g" /* fetchScheduleItems */])())
+  fetchScheduleItems: eventId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__["g" /* fetchScheduleItems */])(eventId))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__schedule_index__["a" /* default */]));
@@ -26004,8 +26004,15 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchScheduleItems();
+  // componentDidMount() {
+  //   // debugger;
+  //   this.props.fetchScheduleItems(this.props.currentEvent.id);
+  // }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.currentEvent.id !== this.props.currentEvent.id) {
+      this.props.fetchScheduleItems(this.props.currentEvent.id);
+    }
   }
 
   render() {
