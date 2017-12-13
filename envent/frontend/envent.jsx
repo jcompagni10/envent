@@ -19,6 +19,11 @@ import {
   updateNews,
   removeNews,
 } from './actions/news';
+import {
+  createInfo,
+  fetchInfo,
+  updateInfo
+} from './actions/info';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,4 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchNews = fetchNews;
   window.updateNews = updateNews;
   window.removeNews = removeNews;
+
+  window.createInfo = createInfo;
+  window.fetchInfo = fetchInfo;
+  window.updateInfo = updateInfo;
 });

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :create] do
       resources :schedule_items, only: [:index, :create, :update]
       resources :news, only: [:create, :index]
+      resources :info, only: [:create, :show, :update]
     end
     resources :news, only: [:show, :destroy, :update]
     resources :schedule_items, only: [:show, :destroy]

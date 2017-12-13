@@ -9,15 +9,19 @@
 users = User.create!([
   {
     email: "jcp@gmail.com",
-    password: "asdf"
+    password: "asdf12"
   },
   {
     email: "ejb@gmail.com",
-    password: "qwerty"
+    password: "qwerty12"
   },
   {
     email: "trw@gmail.com",
-    password: "poiuy"
+    password: "poiuy12"
+  },
+  {
+    email: "tay",
+    password: "password"
   },
 ])
 
@@ -38,6 +42,12 @@ events = Event.create!([
   { name: "Corporate McCorporate",
     tag: "biznitch",
     user_id: 1,
+    private: false
+
+  },
+  { name: "Christmast party",
+    tag: "xmas",
+    user_id: 2,
     private: false
 
   },
@@ -124,5 +134,29 @@ news = News.create!([
     event_id: 3,
     title: "Docking at main stage",
     message: "Lorem Ipsum"
+  }
+])
+
+info = Info.create!([
+  {
+    start_date: Date.new(1234, 5, 6),
+    end_date: Date.new(1234, 5, 7),
+    location: "eddie's pants",
+    message: "byob",
+    event_id: 1
+  },
+  {
+    start_date: Date.new(5678, 5, 6),
+    end_date: Date.new(5678, 5, 7),
+    location: "Karim's palace",
+    message: "this is a party i would like to attend",
+    event_id: 2
+  },
+  {
+    start_date: Date.new(1987, 5, 6),
+    end_date: Date.new(1987, 5, 7),
+    location: "OCD Venue",
+    message: "there will be kegs",
+    event_id: 3
   }
 ])

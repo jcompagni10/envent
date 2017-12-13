@@ -28,6 +28,7 @@ class Event < ApplicationRecord
 
   has_one :map
   has_many :news
+  has_one :info
 
   def downcase_fields
     self.tag.downcase!

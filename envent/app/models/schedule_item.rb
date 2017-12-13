@@ -19,7 +19,8 @@ class ScheduleItem < ApplicationRecord
 
   belongs_to :featured_person,
     foreign_key: :feature_id,
-    class_name: :FeaturedPerson
+    class_name: :FeaturedPerson,
+    optional: true
 
   belongs_to :event
 

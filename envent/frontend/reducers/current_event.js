@@ -6,9 +6,17 @@ import {
   RECEIVE_SCHEDULE_ITEMS,
   DELETE_SCHEDULE_ITEM
 } from '../actions/scheduleItem';
+import  {
+  RECEIVE_INFO
+} from '../actions/info';
 
+let _nullState = {
+  scheduleItems: {},
+  scheduleItemArray: [],
+  info: {},
+};
 
-const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, action) => {
+const currentEvent = (state = _nullState, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
@@ -50,6 +58,10 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
         newState.currentEvent.scheduleItemsArray.splice(index, 1);
       }
     
+      return newState;
+
+    case RECEIVE_INFO:
+      newState.info = action.info;
       return newState;
 
     default:
