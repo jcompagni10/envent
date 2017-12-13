@@ -1,7 +1,7 @@
 import React from 'react';
 import Errors from '../misc/errors';
 
-const modules = ["schedule", "info", "news", "message board", "map"];
+const modules = ["schedule", "news", "info", "message board", "map"];
 
 export default class EventForm extends React.Component{
   constructor(){
@@ -34,7 +34,7 @@ export default class EventForm extends React.Component{
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
-    this.props.history.push(`/event_builder/${event.tag}/schedule`);
+    this.props.history.push(`/event_builder/${event.tag}/${this.state.modules[0]}`);
   }
 
 

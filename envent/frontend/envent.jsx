@@ -12,6 +12,13 @@ import {
   fetchEvent,
   fetchEvents,
 } from './actions/event';
+import {
+  createNews,
+  fetchSingleNews,
+  fetchNews,
+  updateNews,
+  removeNews,
+} from './actions/news';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,4 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.destroyScheduleItem = destroyScheduleItem;
   window.fetchEvent = fetchEvent;
   window.fetchEvents = fetchEvents;
+  
+  window.createNews = createNews;
+  window.fetchSingleNews = fetchSingleNews;
+  window.fetchNews = fetchNews;
+  window.updateNews = updateNews;
+  window.removeNews = removeNews;
 });
