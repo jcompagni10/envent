@@ -4,10 +4,11 @@ import { fetchScheduleItems } from './../../actions/scheduleItem';
 
 const mapStateToProps = state => ({
   scheduleItems: state.scheduleItems,
+  currentEvent: state.currentEvent,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchScheduleItems: () => dispatch(fetchScheduleItems()),
+  fetchScheduleItems: (eventId) => dispatch(fetchScheduleItems(eventId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleIndex);

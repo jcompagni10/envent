@@ -1,10 +1,10 @@
 class Api::ScheduleItemsController < ApplicationController
 
   def create
-    create_params = schedule_item_params
-    debugger
-    create_params["event_id"] = params[:event_id]
+    # create_params = schedule_item_params
+    # create_params["event_id"] = params[:event_id]
     @schedule_item = ScheduleItem.new(create_params)
+    @schedule_item.event_id = params[:event_id]
     feature = FeaturedPerson.find_or_create_by(name:
       params[:schedule_item][:feature_name])
     @schedule_item.featured_person = feature
@@ -16,7 +16,13 @@ class Api::ScheduleItemsController < ApplicationController
   end
 
   def index
-    @schedule_items = ScheduleItem.all
+    event_id = params[:event_id]
+    if event_id
+      @schedule_items = Event.find(event_id).schedule_items
+    else
+      @schedule_items = ScheduleItem.all
+    end
+
     render :index
   end
 
@@ -43,8 +49,7 @@ class Api::ScheduleItemsController < ApplicationController
   private
 
   def schedule_item_params
-    p "----------"
-    p params.require(:schedule_item).permit(
+    params.require(:schedule_item).permit(
       :title,
       :start_time,
       :end_time,

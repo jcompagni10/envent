@@ -29,7 +29,6 @@ const removeScheduleItem = scheduleItemId => ({
 
 // thunk action creators
 export const createScheduleItem = (eventId, scheduleItem) => dispatch => {
-  // debugger;
   return (
   postScheduleItem(eventId, scheduleItem)
     .then(newScheduleItem => dispatch(receiveScheduleItem(newScheduleItem)))

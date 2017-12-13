@@ -10,7 +10,6 @@ export default class Schedule extends React.Component{
   render(){
     return (
       <div>
-        {/* <div id="calendar"></div> */}
         <ScheduleFormContainer />
         <ScheduleIndexContainer />
       </div>

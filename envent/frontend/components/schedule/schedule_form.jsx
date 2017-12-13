@@ -17,7 +17,6 @@ export default class Schedule extends React.Component {
   }
 
   // componentWillReceiveProps(newProps) {
-    // debugger;
     // if (newProps.currentEvent.id !== this.props.currentEvent.id) {
     //   this.setState({ event_id: newProps.currentEvent.id });
     // }
@@ -29,7 +28,6 @@ export default class Schedule extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // debugger;
     this.props.createScheduleItem(this.props.currentEvent.id, this.state);
   }
 
