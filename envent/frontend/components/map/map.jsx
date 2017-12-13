@@ -6,10 +6,13 @@ export default class Map extends React.Component{
   }
 
   render(){
-    console.log(this.props);
+    debugger
+    if(!this.props.map.img_url){
+      return null;
+    }
     return(
       <div>
-        <img src={this.state.maps.img_url} alt=""/>
+        <img src={this.props.map.img_url} alt=""/>
       </div>
     );
   }

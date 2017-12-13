@@ -7,7 +7,7 @@ import AppBuilder from './builder/app_builder';
 import Dashboard from './dashboard/dashboard';
 import Event from './event/event';
 import Schedule from './schedule/schedule';
-import Map from './map/map';
+import Map from './map/map_container';
 
 export default ()=>(
   <div>

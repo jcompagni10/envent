@@ -38,7 +38,7 @@ export const createMap = map => dispatch => (
   )
 );
 
-export const deletePost = mapId => dispatch => (
+export const destroyMap = mapId => dispatch => (
   deleteMap(mapId)
   .then(map => dispatch(removeMap(map)),
      errors => dispatch(receiveMapErrors(errors.responseJSON))
