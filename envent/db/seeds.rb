@@ -155,13 +155,14 @@ news = News.create!([
     message: "Lorem Ipsum"
   },
   {
-    event_id: 2,
+    event_id: 1,
     title: "Event extended",
     message: "Lorem Ipsum"
   },
   {
-    event_id: 3,
+    event_id: 1,
     title: "Docking at main stage",
-    message: "Lorem Ipsum"
+    img_url: "https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg",
+    message: "Lorem Ipsum much long text to test if long text shows up ok this text goes on and onand onand on. blah"
   }
 ])

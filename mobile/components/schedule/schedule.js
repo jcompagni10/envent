@@ -14,7 +14,7 @@ import {
   FlatList,
 } from 'react-native';
 import AppHeader from '../header';
-import {fetchSchedule} from '../../util/api';
+import {fetchModuleData} from '../../util/api';
 import Loader from '../misc/loader';
 import style from '../styles/schedule';
 
@@ -28,7 +28,7 @@ export default class Schedule extends React.Component {
 
   componentWillMount(){
     let eventId = this.props.navigation.state.params.eventId;
-    fetchSchedule(eventId)
+    fetchModuleData(eventId, "schedule_items")
       .then(this.parseSchedule.bind(this));
   }
 
