@@ -12,7 +12,7 @@ import  {
 
 let _nullState = {
   scheduleItems: {},
-  scheduleItemArray: [],
+  scheduleItemsArray: [],
   info: {},
 };
 
@@ -42,8 +42,17 @@ const currentEvent = (state = _nullState, action) => {
         return newState;
 
     case RECEIVE_SCHEDULE_ITEMS:
-      newState.scheduleItems = action.scheduleItems.by_id;
-      newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      if (action.scheduleItems.by_id === undefined) {
+        action.scheduleItems.by_id = {};
+      } else {
+        newState.scheduleItems = action.scheduleItems.by_id;
+      }
+
+      if (action.scheduleItems.all_ids === undefined) {
+        newState.scheduleItemsArray = [];  
+      } else {
+        newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      }
     
       return newState;
 

@@ -12,8 +12,9 @@ export const getEvent = (eventTag) => (
   })
 );
 
-export const getEvents = () => (
+export const getEvents = (userId) => (
   $.ajax({
-    url: `/api/events/`
+    url: `/api/events/`,
+    data: { userId }
   })
 );
