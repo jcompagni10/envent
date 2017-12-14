@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       resources :schedule_items, only: [:index, :create, :update]
       resources :news, only: [:create, :index]
       resources :info, only: [:create, :show, :update]
+      resources :messages, only: [:create, :index]
     end
+    resources :messages, only: [:show, :update, :delete]
     resources :news, only: [:show, :destroy, :update]
     resources :schedule_items, only: [:show, :destroy]
     resources :maps, only: [:create, :show, :destroy]

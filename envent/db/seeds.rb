@@ -8,22 +8,6 @@
 
 users = User.create!([
   {
-<<<<<<< HEAD
-    email: "jcp@gmail.com",
-    password: "asdf12"
-  },
-  {
-    email: "ejb@gmail.com",
-    password: "qwerty12"
-  },
-  {
-    email: "trw@gmail.com",
-    password: "poiuy12"
-  },
-  {
-    email: "tay",
-    password: "password"
-=======
     email: "jcp",
     password: "pass123"
   },
@@ -34,7 +18,10 @@ users = User.create!([
   {
     email: "trw@gmail.com",
     password: "pass123"
->>>>>>> cec420d1db6c2c6399c7931b504c17ecdc5a1fdd
+  },
+  {
+    email: "tay",
+    password: "password"
   },
 ])
 
@@ -189,7 +176,6 @@ news = News.create!([
     message: "Lorem Ipsum much long text to test if long text shows up ok this text goes on and onand onand on. blah"
   }
 ])
-<<<<<<< HEAD
 
 info = Info.create!([
   {
@@ -214,5 +200,31 @@ info = Info.create!([
     event_id: 3
   }
 ])
-=======
->>>>>>> cec420d1db6c2c6399c7931b504c17ecdc5a1fdd
+
+messages = Message.create!([
+  {
+  event_id: 1,
+  author_id: 1,
+  body: "docking at main stage"
+  },
+  {
+  event_id: 1,
+  author_id: 2,
+  body: "tiki lamps for sale"
+  },
+  {
+  event_id: 1,
+  author_id: 3,
+  body: "clan meeting asap"
+  },
+  {
+  event_id: 2,
+  author_id: 4,
+  body: "keg is arriving"
+  },
+  {
+  event_id: 2,
+  author_id: 1,
+  body: "OGC"
+  },
+])
