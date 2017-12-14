@@ -50,7 +50,7 @@ export default class Schedule extends React.Component {
       itemsByDay,
       items: schedule.by_id,
       isLoading: false,
-      curDay: days[0]
+      curDay: days[1]
     });
   }
 
@@ -97,19 +97,32 @@ export default class Schedule extends React.Component {
     }
   }
 
+  _renderButton(item){
+    return (
+      <TouchableHighlight
+        key = {item}
+        style={this.buttonStyle(item)}
+        onPress={()=>this.setDay(item)}
+      >
+        <Text style={style.dayButtonText}>{item}</Text>
+      </TouchableHighlight>
+    );
+  }
   dayButtons(){
     if (this.state.days.length > 1){
       return (
-        <View style={style.buttonContainer} >
-          {this.state.days.map((day)=>(
-            <TouchableHighlight
-              key ={day}
-              style={this.buttonStyle(day)}
-              onPress={()=>this.setDay(day)}
-            >
-              <Text style={style.dayButtonText}>{day}</Text>
-            </TouchableHighlight>
-          ))}
+        <View style={style.buttonWrapper}>
+          <FlatList
+            contentContainerStyle = {style.buttonContainer}
+            horizontal={true}
+            vertical={false}
+            extraData = {this.state.curDay}
+            data = {this.state.days}
+            renderItem = {({item}) =>
+              this._renderButton(item)
+            }
+            keyExtractor={(item, index) => index}
+          />
         </View>
       );
     }

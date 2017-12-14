@@ -12,6 +12,7 @@ import MessageBoard from './messageBoard/messageBoard';
 import NavMenu from './nav_menu';
 import Home from './landing_page';
 import AuthFormPage from './auth_form_page';
+import Ticket from './tickets/ticket';
 
 export default DrawerNavigator(
   {
@@ -29,6 +30,9 @@ export default DrawerNavigator(
     },
     SignIn : {
       screen: AuthFormPage
+    },
+    Ticket : {
+      screen: Ticket
     }
   },
   {
