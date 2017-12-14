@@ -26141,19 +26141,17 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     super(props);
   }
 
-  componentDidMount() {
-    //   // debugger;
-    this.props.fetchScheduleItems(this.props.currentEvent.id);
-  }
+  // componentDidMount() {
+  //   this.props.fetchScheduleItems(this.props.currentEvent.id);
+  // }
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentEvent.id !== this.props.currentEvent.id) {
-      this.props.fetchScheduleItems(this.props.currentEvent.id);
+      this.props.fetchScheduleItems(newProps.currentEvent.id);
     }
   }
 
   render() {
-    // debugger;
     let { currentEvent } = this.props;
     if (currentEvent === undefined || currentEvent.scheduleItemsArray === undefined) {
       return null;
@@ -26761,6 +26759,7 @@ const fetchMap = id => $.ajax({
     case __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__["b" /* RECEIVE_SCHEDULE_ITEM */]:
       newState.by_id[action.scheduleItem.id] = action.scheduleItem;
 
+      // debugger;
       index = newState.all_ids.indexOf(action.scheduleItem.id);
       if (index > -1) {
         newState.all_ids.splice(index, 1);
@@ -26800,7 +26799,7 @@ const fetchMap = id => $.ajax({
 
 let _nullState = {
   scheduleItems: {},
-  scheduleItemArray: [],
+  scheduleItemsArray: [],
   info: {}
 };
 
@@ -26824,8 +26823,17 @@ const currentEvent = (state = _nullState, action) => {
       return newState;
 
     case __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__["c" /* RECEIVE_SCHEDULE_ITEMS */]:
-      newState.scheduleItems = action.scheduleItems.by_id;
-      newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      if (action.scheduleItems.by_id === undefined) {
+        action.scheduleItems.by_id = {};
+      } else {
+        newState.scheduleItems = action.scheduleItems.by_id;
+      }
+
+      if (action.scheduleItems.all_ids === undefined) {
+        newState.scheduleItemsArray = [];
+      } else {
+        newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      }
 
       return newState;
 
