@@ -3,7 +3,7 @@ import  {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   navMenuWrapper: {
     flex: 1,
-    top: 20,
+    top: '2%',
     bottom: 0,
     height: '100%',
   },
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   navTitle: {
-    fontSize: 25,
+    fontSize: 23,
     marginLeft: 10,
     color: "#4abdac"
   },
