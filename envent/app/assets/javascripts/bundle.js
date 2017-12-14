@@ -373,7 +373,7 @@ const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPOR
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_map_api__ = __webpack_require__(141);
 
 
-const RECEIVE_MAP = "RECEIVE_EVENT";
+const RECEIVE_MAP = "RECEIVE_MAP";
 /* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_MAP;
 
 const REMOVE_MAP = "REMOVE_MAP";
@@ -401,7 +401,7 @@ const removeMap = mapId => ({
   mapId
 });
 
-const getMap = event_id => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(event_id).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+const getMap = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(eventId).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
 /* harmony export (immutable) */ __webpack_exports__["g"] = getMap;
 
 
@@ -26254,14 +26254,14 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     currentEvent: state.currentEvent
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getMap: event_id => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["g" /* getMap */])(event_id)),
+  getMap: eventId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["g" /* getMap */])(eventId)),
   createMap: map => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["e" /* createMap */])(map)),
   destroyMap: mapId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["f" /* destroyMap */])(mapId))
 });
@@ -26283,20 +26283,28 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentDidMount() {
+    debugger;
     // console.log(this.props);
-    this.props.getMap(this.eventId);
+    this.props.getMap(this.props.match.params.eventTag);
   }
 
   render() {
     let { currentEvent } = this.props;
-    console.log(currentEvent);
-    if (!currentEvent.map.img_url) {
+    if (!this.props.currentEvent.map) {
       return null;
     }
+    let display = this.props.currentEvent.map.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+      key: id
+    }));
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
+      'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: currentEvent.map.img_url, alt: "" })
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h5',
+        null,
+        currentEvent.map.title
+      ),
+      display
     );
   }
 }
@@ -26323,9 +26331,9 @@ const deleteMap = id => $.ajax({
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteMap;
 
 
-const fetchMap = event_id => $.ajax({
+const fetchMap = eventId => $.ajax({
   method: 'GET',
-  url: `api/events/${event_id}/maps/${map_id}`
+  url: `api/events/${eventId}/maps/1`
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
 

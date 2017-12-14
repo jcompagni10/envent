@@ -6,19 +6,26 @@ export default class Map extends React.Component{
   }
 
   componentDidMount(){
+    debugger
     // console.log(this.props);
-    this.props.getMap(this.eventId);
+    this.props.getMap(this.props.match.params.eventTag);
   }
 
   render(){
-    let {currentEvent} = this.props;
-    console.log(currentEvent);
-    if(!currentEvent.map.img_url){
+    let { currentEvent } = this.props;
+    if (!this.props.currentEvent.map) {
       return null;
     }
+    let display = this.props.currentEvent.map.map(id => (
+      <img
+        key={id}
+      />
+    ));
     return(
+
       <div>
-        <img src={currentEvent.map.img_url} alt=""/>
+        <h5>{currentEvent.map.title}</h5>
+        {display}
       </div>
     );
   }

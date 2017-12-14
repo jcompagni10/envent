@@ -13,9 +13,9 @@ export const deleteMap = (id) => (
   })
 );
 
-export const fetchMap = (event_id) => (
+export const fetchMap = (eventId) => (
   $.ajax({
     method: 'GET', 
-    url: `api/events/${event_id}/maps/${map_id}`
+    url: `api/events/${eventId}/maps/1`
   })
 );

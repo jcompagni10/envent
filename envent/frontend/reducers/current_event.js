@@ -34,7 +34,7 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: 
         .scheduleItemsArray
         .unshift(action.scheduleItem.id);
       
-        return newState;
+        return newState; 
 
     case RECEIVE_SCHEDULE_ITEMS:
       newState.scheduleItems = action.scheduleItems.by_id;
