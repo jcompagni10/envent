@@ -12,3 +12,4 @@ arr = @news
         .map { |new| new.id }
 
 json.all_ids arr
+json.admin @admin.email

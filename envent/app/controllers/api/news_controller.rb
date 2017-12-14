@@ -2,7 +2,9 @@ class Api::NewsController < ApplicationController
   def index
     event_id = params[:event_id]
     if event_id != 'undefined'
-      @news = Event.find(event_id).news
+      event = Event.find_by(id:event_id)
+      @news = event.news
+      @admin = event.creator
     else
       @news = News.all
     end

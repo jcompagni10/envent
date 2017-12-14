@@ -10,5 +10,6 @@ end
 message = @messages
             .sort_by{ |message| message.updated_at }
             .map { |message| message.id }
+            .reverse
 
 json.all_ids message
