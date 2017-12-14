@@ -63,10 +63,10 @@ export default class HomeLandingPage extends React.Component {
         </button>
       </div>
 
-      <SessionModal 
+      {/* <SessionModal 
         modalOpen= {this.state.modalOpen}
         closeModal= {this.closeModal.bind(this)}
-      />
+      /> */}
       
         <div
           className="landing-page-background-image"

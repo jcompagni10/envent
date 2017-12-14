@@ -1,1 +1,1 @@
-json.extract! event, :id, :name, :tag, :private
+json.extract! event, :id, :name, :tag, :private, :img_url
