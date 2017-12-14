@@ -156,6 +156,21 @@ news = News.create!([
   },
   {
     event_id: 1,
+    title: "more news",
+    message: "no news is good news"
+  },
+  {
+    event_id: 1,
+    title: "fyre fest sux",
+    message: "Lorem Ipsum"
+  },
+  {
+    event_id: 1,
+    title: "r kelly is dope",
+    message: "haters want to hate lovers want to love, I don't want none of the above, I want to piss on you yes I do" 
+  },
+  {
+    event_id: 1,
     title: "Event extended",
     message: "Lorem Ipsum"
   },

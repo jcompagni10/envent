@@ -7,11 +7,14 @@ import {
   Button,
   TouchableHighlight,
   FlatList,
+  KeyboardAvoidingView
 } from 'react-native';
 import AppHeader from '../header';
 import {fetchModuleData} from '../../util/api';
 import Loader from '../misc/loader';
 import style from '../styles/messages';
+import {currentUser} from '../../util/user';
+import PostMessage from '../misc/post_message';
 
 export default class Schedule extends React.Component {
   constructor(props) {
@@ -22,18 +25,35 @@ export default class Schedule extends React.Component {
   }
 
   componentWillMount(){
+    currentUser()
+      .then(user=>(this.setState({user})));
     let eventId = this.props.navigation.state.params.eventId;
-    fetchModuleData(eventId, "news")
+    this.state["eventId"] = eventId;
+    this.fetchNews(eventId);
+  }
+
+  fetchNews(eventId = null){
+    eventId = this.state.eventId || eventId
+    return fetchModuleData(eventId, "news")
       .then(data =>{
         this.setState({
           newsItems: data.by_id,
+          admin: data.admin,
           newsIds: data.all_ids,
-          isLoading: false
+          isLoading: false,
         });
       });
   }
 
+  isAdmin(){
+    return (this.state.user && this.state.admin === this.state.user.email);
+  }
 
+  succcesfulPost(){
+    this.fetchNews().then(()=>{
+      this.refs.PostList.scrollToOffset(0);
+    });
+  }
   _renderListItem(item){
     let data = this.state.newsItems[item];
     return (
@@ -67,19 +87,27 @@ export default class Schedule extends React.Component {
       );
     }
     return (
-      <View>
+        <KeyboardAvoidingView style={style.fullPage}
+          behavior="position"
+          keyboardVerticalOffset ={70}>
         <AppHeader
           title = {"News"}
           navigation = {this.props.navigation}
         />
-        <View style={style.listWrapper}>
-          <FlatList
-            renderItem={({item}) => this._renderListItem(item)}
-            data = {this.state.newsIds}
-            keyExtractor={(item, index) => index}
-          />
-        </View>
-      </View>
+        <View style={style.listWrapperPostable}>
+            <FlatList
+              ref= "PostList"
+              renderItem={({item}) => this._renderListItem(item)}
+              data = {this.state.newsIds}
+              keyExtractor={(item, index) => index}
+            />
+          </View>
+            <PostMessage
+              visible = {this.isAdmin()}
+              eventId = {this.state.eventId}
+              callback = {this.succcesfulPost.bind(this)}
+              />
+        </KeyboardAvoidingView>
     );
   }
 }
