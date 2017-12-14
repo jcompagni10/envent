@@ -12,6 +12,7 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  event_id    :string           not null
 #
 
 class ScheduleItem < ApplicationRecord

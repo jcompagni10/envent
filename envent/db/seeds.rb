@@ -131,6 +131,13 @@ schedule_items = ScheduleItem.create!([
   {
     event_id: 1,
     location: "party spot",
+    title: "day 3",
+    start_time: DateTime.new(2018,2,5,12,00),
+    end_time: DateTime.new(2018,2,4,2,30)
+  },
+  {
+    event_id: 1,
+    location: "party spot",
     title: "more stuff ",
     start_time: DateTime.new(2018,2,4,12,6),
     end_time: DateTime.new(2018,2,4,5,6)
@@ -177,7 +184,7 @@ news = News.create!([
   {
     event_id: 1,
     title: "r kelly is dope",
-    message: "haters want to hate lovers want to love, I don't want none of the above, I want to piss on you yes I do" 
+    message: "haters want to hate lovers want to love, I don't want none of the above, I want to piss on you yes I do"
   },
   {
     event_id: 1,

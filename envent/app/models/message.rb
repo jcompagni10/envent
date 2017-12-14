@@ -10,5 +10,9 @@ class Message < ApplicationRecord
     class_name: :Event,
     foreign_key: :event_id,
     primary_key: :id
-  
+
+  def author_username
+    author.email
+  end
+
 end

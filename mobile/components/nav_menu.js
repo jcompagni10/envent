@@ -80,7 +80,10 @@ export default class CustomItems extends React.Component {
               >
                 <Icon
                   name = {modules[item].icon}
+                  size = {17}
                   reverse = {true}
+                  raised
+
                   color = '#4abdac' />
                 <Text style={style.navTitle}>
                   {modules[item].title}
@@ -94,9 +97,12 @@ export default class CustomItems extends React.Component {
               onPress = {this.accountAction.bind(this)}
              >
               <Icon
+                style = {style.button}
                 name = "account"
                 type = "material-community"
                 reverse = {true}
+                raised
+                size = {17}
                 color = '#4abdac' />
               <Text style={style.navTitle}>
               {  (this.state.user) ? "Log Out" : "Sign In"}

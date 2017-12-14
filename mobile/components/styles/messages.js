@@ -20,7 +20,15 @@ export default StyleSheet.create({
     top: 0,
     bottom: 0,
     height: Dimensions.get('window').height - 230,
+
   },
+
+  listWrapper: {
+    top: 0,
+    bottom: 0,
+    height: Dimensions.get('window').height- 80,
+  },
+
 
   eventList:{
     flex:1,
@@ -45,6 +53,18 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left'
   },
+  posterName: {
+    fontWeight: 'bold',
+    textAlign: 'left'
+  },
+  postTime: {
+    top: 10
+  },
+
+  postTimeText: {
+    color: '#ccc',
+    fontSize: 12
+  },
 
   postContainer: {
     position: 'absolute',
@@ -67,14 +87,7 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#ccc"
   },
-  postBody:{
-    width: '100%',
-    height: 55,
-    padding: 10,
-    backgroundColor: '#fff',
-    borderRadius: 5,
 
-  },
   postButton: {
     top: 10,
     width: '100%',
@@ -87,6 +100,13 @@ export default StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  activity: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 25,
+    zIndex: -1
   }
 
 });
