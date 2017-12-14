@@ -3804,7 +3804,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadedState = { session: { currentUser: window.currentUser } };
     delete window.currentUser;
   }
-  const store = Object(__WEBPACK_IMPORTED_MODULE_3__store_store_js__["a" /* default */])();
+  const store = Object(__WEBPACK_IMPORTED_MODULE_3__store_store_js__["a" /* default */])(preloadedState);
   window.store = store;
   const root = document.getElementById('root');
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_root__["a" /* default */], { store: store }), root);
@@ -26256,7 +26256,7 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 const mapStateToProps = state => {
   return {
-    currentEvent: state.currentEvent
+    maps: Object.values(state.currentEvent.maps)
   };
 };
 
@@ -26282,28 +26282,37 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     debugger;
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
+  test() {
+    debugger;
+  }
   render() {
-    let { currentEvent } = this.props;
-    if (!this.props.currentEvent.map) {
-      return null;
+
+    debugger;
+    // let { currentEvent } = this.props;
+    if (this.props.maps.length === 0) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { height: '200', width: '200', onClick: this.test.bind(this) });
     }
-    let display = this.props.currentEvent.map.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
-      key: id
-    }));
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    let display = this.props.maps.map(map => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h5',
         null,
-        currentEvent.map.title
+        map.title
       ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+        src: map.img_url
+      })
+    ));
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
       display
     );
   }
@@ -26399,6 +26408,7 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__events__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__schedule_items__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__current_event__ = __webpack_require__(150);
 
@@ -26414,7 +26424,6 @@ exports['default'] = thunk;
   currentEvent: __WEBPACK_IMPORTED_MODULE_6__current_event__["a" /* default */],
   errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
   events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
-  maps: __WEBPACK_IMPORTED_MODULE_4__map__["a" /* default */],
   scheduleItems: __WEBPACK_IMPORTED_MODULE_5__schedule_items__["a" /* default */]
 }));
 
@@ -26526,25 +26535,26 @@ exports['default'] = thunk;
 
 /***/ }),
 /* 148 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(7);
+// import {
+//   RECEIVE_MAP, 
+//   REMOVE_MAP
+// } from '../actions/map';
 
-
-/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
-  Object.freeze(state);
-  let newState = Object.assign({}, state);
-  switch (action.type) {
-    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
-      return Object.assign({}, state, { [action.map.id]: action.map });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["d" /* REMOVE_MAP */]:
-      delete newState[action.mapId];
-      return newState;
-    default:
-      return state;
-  }
-});
+// export default (state = {}, action) => {
+//    Object.freeze(state);
+//    let newState = Object.assign({}, state);
+//    switch(action.type){
+//      case RECEIVE_MAP:
+//       return Object.assign({}, state, {[action.map.id]: {action.map}});
+//      case REMOVE_MAP:
+//       delete newState[action.mapId];
+//       return newState;
+//      default:
+//       return state;
+//    }
+//   };
 
 /***/ }),
 /* 149 */
@@ -26636,11 +26646,11 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: 
       return newState;
 
     case __WEBPACK_IMPORTED_MODULE_2__actions_map__["b" /* RECEIVE_MAP */]:
-      newState.map = action.map;
+      let maps = Object.assign({}, state.maps, { [action.map.id]: action.map });
+      newState.maps = maps;
       return newState;
-
     case __WEBPACK_IMPORTED_MODULE_2__actions_map__["d" /* REMOVE_MAP */]:
-      newState.map = undefined;
+      newState.maps = undefined;
       return newState;
 
     default:

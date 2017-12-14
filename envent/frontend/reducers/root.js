@@ -11,6 +11,5 @@ export default combineReducers({
   currentEvent,
   errors,
   events,
-  maps,
   scheduleItems
 });

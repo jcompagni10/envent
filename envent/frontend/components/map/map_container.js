@@ -4,7 +4,7 @@ import { getMap, createMap, destroyMap } from '../../actions/map';
 
 const mapStateToProps = state => {
   return {
-    currentEvent: state.currentEvent
+    maps: Object.values(state.currentEvent.maps)
   };
 };
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   destroyMap: mapId => dispatch(destroyMap(mapId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(mapStateToProps, mapDispatchToProps)(Map)

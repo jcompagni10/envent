@@ -56,11 +56,11 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: 
       return newState;
     
     case RECEIVE_MAP:
-      newState.map = action.map;
+      let maps = Object.assign({}, state.maps, { [action.map.id]: action.map });
+      newState.maps = maps;
       return newState;
-
     case REMOVE_MAP:
-      newState.map = undefined;
+      newState.maps = undefined;
       return newState;
 
     default:
