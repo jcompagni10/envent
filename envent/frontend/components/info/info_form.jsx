@@ -26,7 +26,7 @@ export default class InfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createInfo(
-      this.props.currentEventId,
+      this.props.currentEvent.id,
       this.state
     );
   }

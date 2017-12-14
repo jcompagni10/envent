@@ -26856,7 +26856,7 @@ class InfoForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createInfo(this.props.currentEventId, this.state);
+    this.props.createInfo(this.props.currentEvent.id, this.state);
   }
 
   render() {
