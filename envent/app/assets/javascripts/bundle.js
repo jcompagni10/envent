@@ -34057,10 +34057,6 @@ class HomeLandingPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
           'CREATE YOUR APP'
         )
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__session_modal__["a" /* default */], {
-        modalOpen: this.state.modalOpen,
-        closeModal: this.closeModal.bind(this)
-      }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', {
         className: 'landing-page-background-image'
       }),
@@ -46151,7 +46147,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
     );
   }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = SessionModal;
+/* unused harmony export default */
 
 
 /***/ })
