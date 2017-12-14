@@ -82,6 +82,7 @@ export default class InfoForm extends React.Component {
 
           <input
             type="submit"
+            value="Save"
             onClick={this.handleSubmit}/>
         </form>
       </div>

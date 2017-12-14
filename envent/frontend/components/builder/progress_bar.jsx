@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class ProgressBar extends React.Component {
   constructor(){
@@ -17,6 +18,18 @@ export default class ProgressBar extends React.Component {
   }
 
   render() {
+    let display;
+    let { currentEvent } = this.props;
+    let { display_elements } = currentEvent;
+    if (display_elements) {
+      display = display_elements.map(el => (
+        <Link
+          key={el}
+          to={`/event_builder/${currentEvent.tag}/${el}`}
+          >{`${el}`}</Link>
+      ));
+    }
+
   return (
     <div className ="nav-item-data">
       <div className="progress-bar-outer" >
@@ -24,6 +37,7 @@ export default class ProgressBar extends React.Component {
           style={this.state.barStyle}>
         </div>
       </div>
+      { display }
     </div>
   );
 }}

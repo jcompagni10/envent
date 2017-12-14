@@ -25613,7 +25613,7 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar_container__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__ = __webpack_require__(129);
@@ -25641,7 +25641,7 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
         null,
         'Build Your App'
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__progress_bar__["a" /* default */], { data: [3, 5] }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__progress_bar_container__["a" /* default */], { data: [3, 5] }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
         null,
@@ -25663,6 +25663,8 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(6);
+
 
 
 class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -25682,15 +25684,30 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
   }
 
   render() {
+    let display;
+    let { currentEvent } = this.props;
+    let { display_elements } = currentEvent;
+    if (display_elements) {
+      display = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+        {
+          key: el,
+          to: `/event_builder/${currentEvent.tag}/${el}`
+        },
+        `${el}`
+      ));
+    }
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
-      { className: "nav-item-data" },
+      'div',
+      { className: 'nav-item-data' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "progress-bar-outer" },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "progress-bar-inner",
+        'div',
+        { className: 'progress-bar-outer' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'progress-bar-inner',
           style: this.state.barStyle })
-      )
+      ),
+      display
     );
   }
 }
@@ -26903,6 +26920,7 @@ class InfoForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
           type: "submit",
+          value: "Save",
           onClick: this.handleSubmit })
       )
     );
@@ -26910,6 +26928,24 @@ class InfoForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = InfoForm;
 
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(125);
+
+
+
+const mapStateToProps = state => ({
+  currentEvent: state.currentEvent
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__progress_bar__["a" /* default */]));
 
 /***/ })
 /******/ ]);

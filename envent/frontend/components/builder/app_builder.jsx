@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from './progress_bar';
+import ProgressBarContainer from './progress_bar_container';
 import {Route, Switch} from 'react-router-dom';
 import EventFormContainer from '../event/event_form_container';
 import ScheduleContainer from './../schedule/schedule_container';
@@ -13,7 +13,7 @@ export default class AppBuilder extends React.Component {
     return (
       <div>
         <h2>Build Your App</h2>
-        <ProgressBar data={[3,5]} />
+        <ProgressBarContainer data={[3,5]} />
         <Switch>
           <ProtectedRoute path='/event_builder/:eventTag/info' component={InfoFormContainer} />
           <ProtectedRoute path='/event_builder/:eventTag/schedule' component={ScheduleContainer} />
