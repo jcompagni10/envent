@@ -26141,10 +26141,10 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     super(props);
   }
 
-  // componentDidMount() {
-  //   // debugger;
-  //   this.props.fetchScheduleItems(this.props.currentEvent.id);
-  // }
+  componentDidMount() {
+    //   // debugger;
+    this.props.fetchScheduleItems(this.props.currentEvent.id);
+  }
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentEvent.id !== this.props.currentEvent.id) {
@@ -26447,6 +26447,8 @@ const patchInfo = (eventId, info) => $.ajax({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_index_container__ = __webpack_require__(159);
+
 
 
 
@@ -26463,7 +26465,8 @@ const patchInfo = (eventId, info) => $.ajax({
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
       { to: '/event_builder' },
       'Create An Event'
-    )
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__event_event_index_container__["a" /* default */], null)
   );
 });
 
@@ -26611,17 +26614,26 @@ exports['default'] = thunk;
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = ((state = { asdf: [] }, action) => {
+/* harmony default export */ __webpack_exports__["a"] = ((state = { all_ids: [], by_id: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
 
   switch (action.type) {
     case __WEBPACK_IMPORTED_MODULE_1__actions_event__["b" /* RECEIVE_EVENT */]:
-      return Object.assign({}, state, { [action.event.id]: action.event });
-    case __WEBPACK_IMPORTED_MODULE_0__actions_map__["b" /* RECEIVE_MAP */]:
-      newState = Object.assign({}, state);
+      index = newState.all_ids.indexOf(action.event.id);
+      if (index > -1) {
+        newState.all_ids.splice(index, 1);
+      }
+      newState.all_ids.unshift(action.event.id);
+
+      newState.by_id[action.event.id] = action.event;
+
       return newState;
+    // return Object.assign({}, state, {[action.event.id]: action.event});
+    // case RECEIVE_MAP:
+    //   newState = Object.assign({}, state);
+    //   return newState;
     case __WEBPACK_IMPORTED_MODULE_1__actions_event__["c" /* RECEIVE_EVENTS */]:
       return action.events;
     // case RECEIVE_EVENT:
@@ -26943,6 +26955,121 @@ const deleteNews = newsId => $.ajax({
   url: `api/news/${newsId}`
 });
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteNews;
+
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_index_item_container__ = __webpack_require__(160);
+
+
+
+class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
+  render() {
+    let { events } = this.props;
+    let display;
+
+    if (events === {}) {
+      return null;
+    }
+
+    // display = events.map( event => (
+    //   <EventIndexItemContainer />
+    // ));
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h5',
+        null,
+        'Your Events'
+      ),
+      display
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = EventIndex;
+
+
+/***/ }),
+/* 159 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_index__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_event__ = __webpack_require__(10);
+
+
+
+
+
+const mapStateToProps = state => ({
+  events: state.events
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchEvents: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_event__["g" /* fetchEvents */])())
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_index__["a" /* default */]));
+
+/***/ }),
+/* 160 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_index_item__ = __webpack_require__(161);
+
+
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_index_item__["a" /* default */]));
+
+/***/ }),
+/* 161 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class EventIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      'Event Index Item'
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = EventIndexItem;
 
 
 /***/ })

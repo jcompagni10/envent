@@ -19,6 +19,7 @@ class Api::ScheduleItemsController < ApplicationController
     event_id = params[:event_id]
     # if event_id == "undefined"
     #   @schedule_items = Event.find(event_id).schedule_items
+    debugger
     if event_id
       if event_id == event_id.to_i.to_s
         # find by event_id
