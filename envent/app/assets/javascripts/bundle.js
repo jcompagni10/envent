@@ -367,6 +367,54 @@ const destroyScheduleItem = scheduleItemId => dispatch => Object(__WEBPACK_IMPOR
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_map_api__ = __webpack_require__(141);
+
+
+const RECEIVE_MAP = "RECEIVE_EVENT";
+/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_MAP;
+
+const REMOVE_MAP = "REMOVE_MAP";
+/* harmony export (immutable) */ __webpack_exports__["d"] = REMOVE_MAP;
+
+const RECEIVE_MAP_ERRORS = "RECEIVE_MAP_ERRORS";
+/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_MAP_ERRORS;
+
+const CLEAR_MAP_ERRORS = "CLEAR_MAP_ERRORS";
+/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_MAP_ERRORS;
+
+
+const receiveMap = map => ({
+  type: RECEIVE_MAP,
+  map
+});
+
+const receiveMapErrors = errors => ({
+  type: RECEIVE_MAP_ERRORS,
+  errors
+});
+
+const removeMap = mapId => ({
+  type: REMOVE_MAP,
+  mapId
+});
+
+const getMap = event_id => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(event_id).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* harmony export (immutable) */ __webpack_exports__["g"] = getMap;
+
+
+const createMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(map).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* harmony export (immutable) */ __webpack_exports__["e"] = createMap;
+
+
+const destroyMap = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["a" /* deleteMap */])(mapId).then(map => dispatch(removeMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* harmony export (immutable) */ __webpack_exports__["f"] = destroyMap;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -408,7 +456,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -475,7 +523,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -546,7 +594,7 @@ var createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -596,7 +644,7 @@ const fetchEvents = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_e
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -655,7 +703,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -669,7 +717,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(7);
+var emptyFunction = __webpack_require__(8);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -723,7 +771,7 @@ if (true) {
 module.exports = warning;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -842,7 +890,7 @@ Router.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Router);
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -919,7 +967,7 @@ var matchPath = function matchPath(pathname) {
 /* harmony default export */ __webpack_exports__["a"] = (matchPath);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -927,7 +975,7 @@ var matchPath = function matchPath(pathname) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(10);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -993,54 +1041,6 @@ var createLocation = function createLocation(path, state, key, currentLocation) 
 var locationsAreEqual = function locationsAreEqual(a, b) {
   return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && Object(__WEBPACK_IMPORTED_MODULE_1_value_equal__["default"])(a.state, b.state);
 };
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_map_api__ = __webpack_require__(141);
-
-
-const RECEIVE_MAP = "RECEIVE_EVENT";
-/* harmony export (immutable) */ __webpack_exports__["b"] = RECEIVE_MAP;
-
-const REMOVE_MAP = "REMOVE_MAP";
-/* harmony export (immutable) */ __webpack_exports__["d"] = REMOVE_MAP;
-
-const RECEIVE_MAP_ERRORS = "RECEIVE_MAP_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["c"] = RECEIVE_MAP_ERRORS;
-
-const CLEAR_MAP_ERRORS = "CLEAR_MAP_ERRORS";
-/* harmony export (immutable) */ __webpack_exports__["a"] = CLEAR_MAP_ERRORS;
-
-
-const receiveMap = map => ({
-  type: RECEIVE_MAP,
-  map
-});
-
-const receiveMapErrors = errors => ({
-  type: RECEIVE_MAP_ERRORS,
-  errors
-});
-
-const removeMap = mapId => ({
-  type: REMOVE_MAP,
-  mapId
-});
-
-const getMap = id => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["b" /* fetchMap */])(id).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["g"] = getMap;
-
-
-const createMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(map).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["e"] = createMap;
-
-
-const destroyMap = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["a" /* deleteMap */])(mapId).then(map => dispatch(removeMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
-/* harmony export (immutable) */ __webpack_exports__["f"] = destroyMap;
-
 
 /***/ }),
 /* 17 */
@@ -1154,8 +1154,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 if (true) {
-  var invariant = __webpack_require__(11);
-  var warning = __webpack_require__(12);
+  var invariant = __webpack_require__(12);
+  var warning = __webpack_require__(13);
   var ReactPropTypesSecret = __webpack_require__(30);
   var loggedTypeFailures = {};
 }
@@ -1387,7 +1387,7 @@ var _valueEqual = __webpack_require__(41);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1547,7 +1547,7 @@ exports.default = createTransitionManager;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(14);
 // Written in this round about way for babel-transform-imports
 
 
@@ -1566,7 +1566,7 @@ exports.default = createTransitionManager;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(15);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3027,7 +3027,7 @@ Link.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(14);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -3370,9 +3370,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(14);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -3553,7 +3553,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(15);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -3692,13 +3692,13 @@ var withRouter = function withRouter(Component) {
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(26);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(14);
 /* unused harmony reexport Router */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(49);
 /* unused harmony reexport StaticRouter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(50);
 /* unused harmony reexport Switch */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(15);
 /* unused harmony reexport matchPath */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__withRouter__ = __webpack_require__(51);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_8__withRouter__["a"]; });
@@ -3788,7 +3788,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_root__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store_js__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_event__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_event__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_map__ = __webpack_require__(7);
+
 
 
 
@@ -3814,6 +3816,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.destroyScheduleItem = __WEBPACK_IMPORTED_MODULE_4__actions_scheduleItem__["e" /* destroyScheduleItem */];
   window.fetchEvent = __WEBPACK_IMPORTED_MODULE_5__actions_event__["f" /* fetchEvent */];
   window.fetchEvents = __WEBPACK_IMPORTED_MODULE_5__actions_event__["g" /* fetchEvents */];
+  window.getMap = __WEBPACK_IMPORTED_MODULE_6__actions_map__["g" /* getMap */];
+  window.createMap = __WEBPACK_IMPORTED_MODULE_6__actions_map__["e" /* createMap */];
+  window.destroyMap = __WEBPACK_IMPORTED_MODULE_6__actions_map__["f" /* destroyMap */];
 });
 
 /***/ }),
@@ -3840,9 +3845,9 @@ if (true) {
 
 var _assign = __webpack_require__(17);
 var emptyObject = __webpack_require__(29);
-var invariant = __webpack_require__(11);
-var warning = __webpack_require__(12);
-var emptyFunction = __webpack_require__(7);
+var invariant = __webpack_require__(12);
+var warning = __webpack_require__(13);
+var emptyFunction = __webpack_require__(8);
 var checkPropTypes = __webpack_require__(18);
 
 // TODO: this is special because it gets imported during build.
@@ -5248,11 +5253,11 @@ if (true) {
 'use strict';
 
 var React = __webpack_require__(0);
-var invariant = __webpack_require__(11);
-var warning = __webpack_require__(12);
+var invariant = __webpack_require__(12);
+var warning = __webpack_require__(13);
 var ExecutionEnvironment = __webpack_require__(59);
 var _assign = __webpack_require__(17);
-var emptyFunction = __webpack_require__(7);
+var emptyFunction = __webpack_require__(8);
 var EventListener = __webpack_require__(60);
 var getActiveElement = __webpack_require__(61);
 var shallowEqual = __webpack_require__(62);
@@ -20681,7 +20686,7 @@ module.exports = ExecutionEnvironment;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(7);
+var emptyFunction = __webpack_require__(8);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -21267,9 +21272,9 @@ function createProvider() {
 
 
 
-var emptyFunction = __webpack_require__(7);
-var invariant = __webpack_require__(11);
-var warning = __webpack_require__(12);
+var emptyFunction = __webpack_require__(8);
+var invariant = __webpack_require__(12);
+var warning = __webpack_require__(13);
 var assign = __webpack_require__(17);
 
 var ReactPropTypesSecret = __webpack_require__(30);
@@ -22962,7 +22967,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(23);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _createTransitionManager = __webpack_require__(24);
 
@@ -23339,7 +23344,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(23);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _createTransitionManager = __webpack_require__(24);
 
@@ -23676,7 +23681,7 @@ var _warning = __webpack_require__(1);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _LocationUtils = __webpack_require__(23);
 
@@ -24390,10 +24395,10 @@ module.exports = Array.isArray || function (arr) {
 /* unused harmony reexport createHashHistory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(111);
 /* unused harmony reexport createMemoryHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(16);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(10);
 /* unused harmony reexport parsePath */
 /* unused harmony reexport createPath */
 
@@ -24415,8 +24420,8 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(48);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -24719,8 +24724,8 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(48);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -25038,8 +25043,8 @@ var createHashHistory = function createHashHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(27);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -25226,7 +25231,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(15);
 // Written in this round about way for babel-transform-imports
 
 
@@ -25278,7 +25283,7 @@ var createMemoryHistory = function createMemoryHistory() {
     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Switch */],
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/dashboard', component: __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/map/1', component: __WEBPACK_IMPORTED_MODULE_9__map_map_container__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_5__builder_app_builder__["a" /* default */] }),
@@ -25684,7 +25689,7 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_form__ = __webpack_require__(128);
 
 
@@ -26244,22 +26249,21 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__map__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_map__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_map__ = __webpack_require__(7);
 
 
 
 
-const mapStateToProps = state => ({
-  map: state.maps
-});
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentEvent: state.currentEvent
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  getMap: id => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["g" /* getMap */])(id)),
+  getMap: event_id => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["g" /* getMap */])(event_id)),
   createMap: map => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["e" /* createMap */])(map)),
   destroyMap: mapId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["f" /* destroyMap */])(mapId))
-  //fetch create delete
-  //figure out map vs maps
-  //migration side default img url q
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__map__["a" /* default */]));
@@ -26279,18 +26283,20 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentDidMount() {
-    this.props.getMap();
+    // console.log(this.props);
+    this.props.getMap(this.eventId);
   }
 
   render() {
-    debugger;
-    if (!this.props.map.img_url) {
+    let { currentEvent } = this.props;
+    console.log(currentEvent);
+    if (!currentEvent.map.img_url) {
       return null;
     }
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "div",
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: this.props.map.img_url, alt: "" })
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: currentEvent.map.img_url, alt: "" })
     );
   }
 }
@@ -26317,9 +26323,9 @@ const deleteMap = id => $.ajax({
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteMap;
 
 
-const fetchMap = id => $.ajax({
+const fetchMap = event_id => $.ajax({
   method: 'GET',
-  url: `api/maps/${id}`
+  url: `api/events/${event_id}/maps/${map_id}`
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
 
@@ -26431,8 +26437,8 @@ exports['default'] = thunk;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_scheduleItem__ = __webpack_require__(5);
 
 
@@ -26489,8 +26495,8 @@ exports['default'] = thunk;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_map__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_map__ = __webpack_require__(7);
 
 
 
@@ -26515,7 +26521,7 @@ exports['default'] = thunk;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(7);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
@@ -26579,12 +26585,14 @@ exports['default'] = thunk;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_event__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_scheduleItem__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_map__ = __webpack_require__(7);
 
 
 
-const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, action) => {
+
+const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
@@ -26617,6 +26625,14 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
         newState.currentEvent.scheduleItemsArray.splice(index, 1);
       }
 
+      return newState;
+
+    case __WEBPACK_IMPORTED_MODULE_2__actions_map__["b" /* RECEIVE_MAP */]:
+      newState.map = action.map;
+      return newState;
+
+    case __WEBPACK_IMPORTED_MODULE_2__actions_map__["d" /* REMOVE_MAP */]:
+      newState.map = undefined;
       return newState;
 
     default:

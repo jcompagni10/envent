@@ -6,9 +6,13 @@ import {
   RECEIVE_SCHEDULE_ITEMS,
   DELETE_SCHEDULE_ITEM
 } from '../actions/scheduleItem';
+import {
+  RECEIVE_MAP, 
+  REMOVE_MAP
+} from '../actions/map';
 
 
-const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, action) => {
+const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
@@ -24,7 +28,6 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
         .indexOf(action.scheduleItem.id);
       if (index > 1) {
         newState
-
           .scheduleItemsArray.splice(index, 1);
       }
       newState
@@ -50,6 +53,14 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [] }, acti
         newState.currentEvent.scheduleItemsArray.splice(index, 1);
       }
     
+      return newState;
+    
+    case RECEIVE_MAP:
+      newState.map = action.map;
+      return newState;
+
+    case REMOVE_MAP:
+      newState.map = undefined;
       return newState;
 
     default:

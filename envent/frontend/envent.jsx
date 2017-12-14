@@ -12,6 +12,11 @@ import {
   fetchEvent,
   fetchEvents,
 } from './actions/event';
+import {
+  getMap,
+  createMap,
+  destroyMap
+} from './actions/map';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,4 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.destroyScheduleItem = destroyScheduleItem;
   window.fetchEvent = fetchEvent;
   window.fetchEvents = fetchEvents;
+  window.getMap = getMap;
+  window.createMap = createMap;
+  window.destroyMap = destroyMap;
 });

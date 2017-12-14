@@ -24,8 +24,8 @@ const removeMap = mapId => ({
   mapId
 });
 
-export const getMap = id => dispatch => (
-  fetchMap(id)
+export const getMap = (event_id) => dispatch => (
+  fetchMap(event_id)
   .then(map => dispatch(receiveMap(map)),
     errors => dispatch(receiveMapErrors(errors.responseJSON))
   )
