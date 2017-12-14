@@ -32,8 +32,13 @@ export default class Schedule extends React.Component {
     this.fetchNews(eventId);
   }
 
+
+  listStyle(){
+    return (this.isAdmin()) ? style.listWrapperPostable : style.listWrapper;
+  }
+
   fetchNews(eventId = null){
-    eventId = this.state.eventId || eventId
+    eventId = this.state.eventId || eventId;
     return fetchModuleData(eventId, "news")
       .then(data =>{
         this.setState({
@@ -75,6 +80,11 @@ export default class Schedule extends React.Component {
           <Text style={style.newsText}>
             {data.message}
           </Text>
+          <View style={style.postTime}>
+            <Text style={style.postTimeText}>
+              posted {data.posted_time}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -94,7 +104,7 @@ export default class Schedule extends React.Component {
           title = {"News"}
           navigation = {this.props.navigation}
         />
-        <View style={style.listWrapperPostable}>
+      <View style={this.listStyle()}>
             <FlatList
               ref= "PostList"
               renderItem={({item}) => this._renderListItem(item)}
@@ -103,6 +113,7 @@ export default class Schedule extends React.Component {
             />
           </View>
             <PostMessage
+              type = "news"
               visible = {this.isAdmin()}
               eventId = {this.state.eventId}
               callback = {this.succcesfulPost.bind(this)}
