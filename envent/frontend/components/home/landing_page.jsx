@@ -1,8 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
+import SessionModal from './session_modal';
 
 export default class HomeLandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false,
+    };
+
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalOpen: false});
+  }
+
   render() {
+
+    
+
     return (
     <div className="home-landing-page-container">
       <header
@@ -14,9 +36,9 @@ export default class HomeLandingPage extends React.Component {
           <Link to="/signup" className="landing-page-home-link">
             LOG IN
           </Link>
-          <Link to="/signup" className="landing-page-create-button">
+          <button onClick={ this.openModal } className="landing-page-create-button">
             CREATE YOUR APP
-          </Link>
+          </button>
         </div>
       </header>
       <div className="landing-page-main-container">
@@ -36,15 +58,16 @@ export default class HomeLandingPage extends React.Component {
           <h3>Engage participants. Interact with your audience. Create inspirin meetings</h3>
           <h3 className="second-element">Your next successful event stars with Envent</h3>
         </div>
-        <Link to="/signup" className="landing-page-create-button-large">
+        <button onClick={ this.openModal } className="landing-page-create-button-large">
           CREATE YOUR APP
-        </Link>
+        </button>
       </div>
 
-        {/* <img
-          className="landing-page-background-image"
-          src="https://res.cloudinary.com/trwong/image/upload/v1513238696/ezra-jeffrey-77199_yskzks.jpg"
-          alt=""/> */}
+      <SessionModal 
+        modalOpen= {this.state.modalOpen}
+        closeModal= {this.closeModal.bind(this)}
+      />
+      
         <div
           className="landing-page-background-image"
           ></div>
@@ -55,3 +78,4 @@ export default class HomeLandingPage extends React.Component {
     );
   }
 }
+
