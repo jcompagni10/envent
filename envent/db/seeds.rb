@@ -19,6 +19,10 @@ users = User.create!([
     email: "trw@gmail.com",
     password: "pass123"
   },
+  {
+    email: "tay",
+    password: "password"
+  },
 ])
 
 events = Event.create!([
@@ -38,6 +42,12 @@ events = Event.create!([
   { name: "Corporate McCorporate",
     tag: "biznitch",
     user_id: 1,
+    private: false
+
+  },
+  { name: "Christmast party",
+    tag: "xmas",
+    user_id: 2,
     private: false
 
   },
@@ -180,4 +190,56 @@ news = News.create!([
     img_url: "https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg",
     message: "Lorem Ipsum much long text to test if long text shows up ok this text goes on and onand onand on. blah"
   }
+])
+
+info = Info.create!([
+  {
+    start_date: Date.new(1234, 5, 6),
+    end_date: Date.new(1234, 5, 7),
+    location: "eddie's pants",
+    message: "byob",
+    event_id: 1
+  },
+  {
+    start_date: Date.new(5678, 5, 6),
+    end_date: Date.new(5678, 5, 7),
+    location: "Karim's palace",
+    message: "this is a party i would like to attend",
+    event_id: 2
+  },
+  {
+    start_date: Date.new(1987, 5, 6),
+    end_date: Date.new(1987, 5, 7),
+    location: "OCD Venue",
+    message: "there will be kegs",
+    event_id: 3
+  }
+])
+
+messages = Message.create!([
+  {
+  event_id: 1,
+  author_id: 1,
+  body: "docking at main stage"
+  },
+  {
+  event_id: 1,
+  author_id: 2,
+  body: "tiki lamps for sale"
+  },
+  {
+  event_id: 1,
+  author_id: 3,
+  body: "clan meeting asap"
+  },
+  {
+  event_id: 2,
+  author_id: 4,
+  body: "keg is arriving"
+  },
+  {
+  event_id: 2,
+  author_id: 1,
+  body: "OGC"
+  },
 ])

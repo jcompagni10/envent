@@ -35,6 +35,7 @@ export default class EventForm extends React.Component{
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
     this.props.history.push(`/event_builder/${event.tag}/${this.state.modules[0]}`);
+    
   }
 
 

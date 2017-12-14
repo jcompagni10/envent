@@ -1,0 +1,1 @@
+json.partial! 'api/info/info', info: @info
