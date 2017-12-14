@@ -7,7 +7,7 @@ export default class EventIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.props.fetchEvents(this.props.currentUser.id);
   }
 
   render() {
@@ -18,9 +18,11 @@ export default class EventIndex extends React.Component {
       return null;
     }
     
-    // display = events.map( event => (
-    //   <EventIndexItemContainer />
-    // ));
+    display = events.all_ids.map( eventId => (
+      <EventIndexItemContainer
+        key={eventId}
+        eventId={eventId} />
+    ));
 
     return (
       <div>

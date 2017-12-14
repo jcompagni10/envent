@@ -591,7 +591,7 @@ const fetchEvent = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__ut
 /* harmony export (immutable) */ __webpack_exports__["f"] = fetchEvent;
 
 
-const fetchEvents = () => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["b" /* getEvents */])().then(events => dispatch(receiveEvents(events)));
+const fetchEvents = userId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["b" /* getEvents */])(userId).then(events => dispatch(receiveEvents(events)));
 /* harmony export (immutable) */ __webpack_exports__["g"] = fetchEvents;
 
 
@@ -25802,8 +25802,9 @@ const getEvent = eventTag => $.ajax({
 /* harmony export (immutable) */ __webpack_exports__["a"] = getEvent;
 
 
-const getEvents = () => $.ajax({
-  url: `/api/events/`
+const getEvents = userId => $.ajax({
+  url: `/api/events/`,
+  data: { userId }
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = getEvents;
 
@@ -26982,7 +26983,7 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.props.fetchEvents(this.props.currentUser.id);
   }
 
   render() {
@@ -26993,9 +26994,9 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       return null;
     }
 
-    // display = events.map( event => (
-    //   <EventIndexItemContainer />
-    // ));
+    display = events.all_ids.map(eventId => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__event_index_item_container__["a" /* default */], {
+      key: eventId,
+      eventId: eventId }));
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
@@ -27027,11 +27028,12 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
 
 
 const mapStateToProps = state => ({
-  events: state.events
+  events: state.events,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvents: () => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_event__["g" /* fetchEvents */])())
+  fetchEvents: userId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_event__["g" /* fetchEvents */])(userId))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_index__["a" /* default */]));
@@ -27048,11 +27050,13 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  events: state.events
+});
 
 const mapDispatchToProps = dispatch => ({});
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_index_item__["a" /* default */]));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_index_item__["a" /* default */]));
 
 /***/ }),
 /* 161 */
@@ -27069,11 +27073,23 @@ class EventIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
   }
 
   render() {
+    if (this.props.events.by_id === {}) {
+      return null;
+    }
+
+    let {
+      name, tag
+    } = this.props.events.by_id[this.props.eventId];
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      'Event Index Item'
+      'Name: ',
+      name,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+      'Tag: ',
+      tag,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
     );
   }
 }

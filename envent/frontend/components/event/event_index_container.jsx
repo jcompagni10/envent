@@ -7,10 +7,11 @@ import {
 
 const mapStateToProps = state => ({
   events: state.events,
+  currentUser: state.session.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvents: () => dispatch(fetchEvents()),
+  fetchEvents: userId => dispatch(fetchEvents(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventIndex);

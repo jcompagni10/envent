@@ -14,7 +14,12 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    userId = params[:userId]
+    if userId == "undefined"
+      @events = Event.all
+    else
+      @events = User.find(userId).events
+    end
     render :index
   end
 
