@@ -73,6 +73,11 @@ elements = DisplayElement.create!([
     module: "MessageBoard",
   },
   {
+    event_id: 1,
+    position: 3,
+    module: "Ticket",
+  },
+  {
     event_id: 2,
     position: 0,
     module: "MessageBoard",

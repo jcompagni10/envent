@@ -27,10 +27,13 @@ export default StyleSheet.create({
     flex:1,
     backgroundColor: 'red'
   },
+  buttonWrapper: {
+    height: 40,
+  },
   buttonContainer:{
-    flexDirection: 'row',
-    justifyContent: "space-around",
-    paddingBottom: 5
+    paddingBottom: 5,
+    height: '100%',
+    justifyContent: 'space-around'
   },
   dayButtonText:{
     fontWeight: 'bold',
