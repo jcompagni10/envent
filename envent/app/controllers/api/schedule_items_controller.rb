@@ -17,8 +17,19 @@ class Api::ScheduleItemsController < ApplicationController
 
   def index
     event_id = params[:event_id]
+<<<<<<< HEAD
     if event_id == "undefined"
       @schedule_items = Event.find(event_id).schedule_items
+=======
+    if event_id
+      if event_id == event_id.to_i.to_s
+        # find by event_id
+        @schedule_items = Event.find_by(id: event_id).schedule_items
+      else
+        # find by event tag
+        @schedule_items = Event.find_by(tag: event_id).schedule_items
+      end
+>>>>>>> cec420d1db6c2c6399c7931b504c17ecdc5a1fdd
     else
       @schedule_items = ScheduleItem.all
     end
@@ -49,7 +60,8 @@ class Api::ScheduleItemsController < ApplicationController
   private
 
   def schedule_item_params
-    params.require(:schedule_item).permit(
+    p "----------"
+    p params.require(:schedule_item).permit(
       :title,
       :start_time,
       :end_time,

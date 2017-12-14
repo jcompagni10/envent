@@ -24,4 +24,9 @@ class ScheduleItem < ApplicationRecord
 
   belongs_to :event
 
+  before_save :ensure_image
+
+  def ensure_image
+    self.img_url = "https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg"
+  end
 end
