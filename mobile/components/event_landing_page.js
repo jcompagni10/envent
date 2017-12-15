@@ -19,16 +19,17 @@ export default class EventLandingPage extends React.Component {
   }
 
   render() {
+    const event = this.props.navigation.state.params.event;
     return (
       <View style={style.landingPageContainer}>
         <Header
-          title = {this.props.navigation.state.params.eventName}
+          title = {event.name}
           navigation = {this.props.navigation}
         />
         <View style={{ flex:0.85}}>
           <Text>
             Event Landing Page
-
+            this.
           </Text>
         </View>
       </View>

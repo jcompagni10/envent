@@ -52,5 +52,15 @@ export default StyleSheet.create({
   itemTitle: {
     fontWeight: 'bold',
     textAlign: 'left'
+  },
+  noScheduleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  noScheduleText: {
+    fontSize: 25,
+    color: '#aaa',
+    top: 200
   }
 });

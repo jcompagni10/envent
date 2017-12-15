@@ -124,16 +124,18 @@ export default class HomeLandingPage extends React.Component {
   }
 
 
-  enterEvent(event= null) {
-    let eventt = event || this.state.event;
+  enterEvent(passedEvent= null) {
+    let event = passedEvent || this.state.event;
     this.setState({showAuth: false});
     this.storeEventTag();
     this.props.navigation.navigate(
       'Router',
+      // TODO1: fix code to get rid of need for redundant properties 
       {
-        items: eventt.display_elements,
-        eventName: eventt.name,
-        eventId: eventt.id
+        items: event.display_elements,
+        eventName: event.name,
+        eventId: event.id,
+        event
        }
     );
   }

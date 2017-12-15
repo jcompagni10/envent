@@ -133,6 +133,18 @@ export default class Schedule extends React.Component {
       return (
         <Loader />
       );
+    } else if (this.state.days.length < 1){
+      return (
+        <View>
+          <AppHeader
+            title = {"Schedule"}
+            navigation = {this.props.navigation}
+          />
+        <View style={style.noScheduleContainer}>
+            <Text style={style.noScheduleText}> No Schedule Items</Text>
+          </View>
+        </View>
+      );
     }
     return (
       <View>
