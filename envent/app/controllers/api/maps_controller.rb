@@ -10,7 +10,12 @@ class Api::MapsController < ApplicationController
   end
 
   def show
-    @map = Map.find(params[:id])
+    event = Event.find(params[:event_id])
+    
+    @map = event.map
+    # @map = Map.find(params[:id]) 
+  
+   
     render :show
   end
 

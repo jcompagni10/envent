@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171215023109) do
 
   create_table "maps", force: :cascade do |t|
     t.string "title", null: false
-    t.string "img_url", null: false
+    t.string "img_url", default: "https://res.cloudinary.com/ejbai31/image/upload/v1513139888/45944_sjwpfv.svg", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id", null: false

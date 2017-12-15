@@ -4,7 +4,7 @@ import {
   fetchMap
 } from '../util/map_api';
 
-export const RECEIVE_MAP = "RECEIVE_EVENT";
+export const RECEIVE_MAP = "RECEIVE_MAP";
 export const REMOVE_MAP = "REMOVE_MAP";
 export const RECEIVE_MAP_ERRORS = "RECEIVE_MAP_ERRORS";
 export const CLEAR_MAP_ERRORS = "CLEAR_MAP_ERRORS";
@@ -24,8 +24,8 @@ const removeMap = mapId => ({
   mapId
 });
 
-export const getMap = id => dispatch => (
-  fetchMap(id)
+export const getMap = (eventId) => dispatch => (
+  fetchMap(eventId)
   .then(map => dispatch(receiveMap(map)),
     errors => dispatch(receiveMapErrors(errors.responseJSON))
   )
@@ -38,7 +38,7 @@ export const createMap = map => dispatch => (
   )
 );
 
-export const deletePost = mapId => dispatch => (
+export const destroyMap = mapId => dispatch => (
   deleteMap(mapId)
   .then(map => dispatch(removeMap(map)),
      errors => dispatch(receiveMapErrors(errors.responseJSON))
