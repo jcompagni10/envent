@@ -45689,6 +45689,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
     button = this.props.modalAction === "signup" ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
       {
+        form: 'session-form',
         onClick: this.handleSignUp,
         bsStyle: 'primary'
       },
@@ -45696,6 +45697,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
     ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
       {
+        form: 'session-form',
         onClick: this.handleLogIn,
         bsStyle: 'primary'
       },
@@ -45722,7 +45724,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'form',
-            null,
+            { id: 'session-form' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__misc_errors__["a" /* default */], { errors: this.props.errors }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'fieldset',
@@ -45840,9 +45842,9 @@ exports['default'] = thunk;
   session: __WEBPACK_IMPORTED_MODULE_0__session__["a" /* default */],
   currentEvent: __WEBPACK_IMPORTED_MODULE_6__current_event__["a" /* default */],
   errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */],
-  events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */],
-  maps: __WEBPACK_IMPORTED_MODULE_4__map__["a" /* default */],
-  scheduleItems: __WEBPACK_IMPORTED_MODULE_5__schedule_items__["a" /* default */]
+  events: __WEBPACK_IMPORTED_MODULE_2__events__["a" /* default */]
+  // maps,
+  // scheduleItems
 }));
 
 /***/ }),
@@ -45995,7 +45997,7 @@ const fetchMap = id => $.ajax({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_map__ = __webpack_require__(103);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ((state = {}, action) => {
+/* unused harmony default export */ var _unused_webpack_default_export = ((state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   switch (action.type) {
@@ -46017,7 +46019,7 @@ const fetchMap = id => $.ajax({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_scheduleItem__ = __webpack_require__(25);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ((state = { all_ids: [], by_id: {} }, action) => {
+/* unused harmony default export */ var _unused_webpack_default_export = ((state = { all_ids: [], by_id: {} }, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;

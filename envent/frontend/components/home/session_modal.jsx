@@ -50,13 +50,15 @@ export default class SessionModal extends React.Component {
     title = this.props.modalAction === "signup" ? "Sign Up" : "Log In";
     button = this.props.modalAction === "signup" ? (
       <Button
-      onClick={ this.handleSignUp }
-      bsStyle="primary"
+        form="session-form"
+        onClick={ this.handleSignUp }
+        bsStyle="primary"
       >Sign Up</Button>
     ) : (
       <Button
-      onClick={ this.handleLogIn }
-      bsStyle="primary"
+        form="session-form"
+        onClick={ this.handleLogIn }
+        bsStyle="primary"
       >Log In</Button>
     );
 
@@ -68,7 +70,7 @@ export default class SessionModal extends React.Component {
           </Modal.Header>
 
           <Modal.Body>
-            <form>
+            <form id="session-form">
               <Errors errors={this.props.errors} />
               <fieldset>
                 {/* <label htmlFor="email"></label> */}
