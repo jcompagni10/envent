@@ -185,22 +185,7 @@ maps = Map.create!([
   }
 ])
 
-news = News.create!([
-{
-  event_id: 1,
-  title: "37 Dead",
-  message: "Lorem Ipsum"
-},
-{
-  event_id: 2,
-  title: "Event extended",
-  message: "Lorem Ipsum"
-},
-{
-  event_id: 3,
-  title: "Docking at main stage",
-  message: "Lorem Ipsum"
-}
+
 news = News.create!([
   {
     event_id: 1,
