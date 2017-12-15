@@ -1,6 +1,8 @@
-json.id @event.id
-json.name @event.name
-json.tag @event.tag
+# json.id @event.id
+# json.name @event.name
+# json.tag @event.tag
+# json.img_url: @event.img
+json.extract! @event, :id, :name, :tag, :img_url, :start_date, :end_date
 json.display_elements do
   json.array! @event.display_elements.sort_by(&:position).pluck(:module)
 end
@@ -23,7 +25,7 @@ if @schedule_items
 else
   json.scheduleItems({})
 end
-    
+
 
 
 json.scheduleItemsArray arr

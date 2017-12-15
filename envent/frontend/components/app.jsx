@@ -7,6 +7,7 @@ import AppBuilderContainer from './builder/app_builder_container';
 import Dashboard from './dashboard/dashboard';
 import Event from './event/event';
 import Schedule from './schedule/schedule';
+import Map from './map/map_container';
 import HomeLandingPage from './home/landing_page';
 
 export default ()=>(
@@ -19,6 +20,7 @@ export default ()=>(
       {/* <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} /> */}
 
       <ProtectedRoute path='/event_builder' component = {AppBuilderContainer} />
+      <ProtectedRoute path='/event/:eventTag/map/1' component={Map} />
       <AuthRoute exact path="/" component = {HomeLandingPage} />
       <AuthRoute exact path="/signup" component = {LandingPage} />
       {/* <AuthRoute exact path="/:signup?" component = {LandingPage} /> */}

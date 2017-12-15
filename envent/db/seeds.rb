@@ -30,25 +30,32 @@ events = Event.create!([
     name: "OCD House Party",
     tag: "OCD",
     user_id: 1,
+    start_date: Date.new(2018,2,3),
+    end_date: Date.new(2018,2,5),
     private: false
 
   },
   { name: "Sick Festival",
     tag: "Coachella",
     user_id: 2,
-    private: false
-
+    private: false,
+    start_date: Date.new(2018,2,3),
+    end_date: Date.new(2018,2,5)
   },
   { name: "Corporate McCorporate",
     tag: "biznitch",
     user_id: 1,
-    private: false
+    private: false,
+    start_date: Date.new(2018,2,3),
+    end_date: Date.new(2018,2,5)
 
   },
   { name: "Christmast party",
     tag: "xmas",
     user_id: 2,
-    private: false
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
 
   },
    ])
@@ -170,6 +177,15 @@ schedule_items = ScheduleItem.create!([
   }
   ])
 
+maps = Map.create!([
+  {
+    event_id: 1, 
+    title: "OCD MAP",
+    # img_url: "https://i.pinimg.com/736x/10/50/72/105072385f123d60287715cc006a185b--bedroom-floor-plans--bedroom-carriage-house-plans.jpg"
+  }
+])
+
+
 news = News.create!([
   {
     event_id: 1,
@@ -204,29 +220,6 @@ news = News.create!([
   }
 ])
 
-info = Info.create!([
-  {
-    start_date: Date.new(1234, 5, 6),
-    end_date: Date.new(1234, 5, 7),
-    location: "eddie's pants",
-    message: "byob",
-    event_id: 1
-  },
-  {
-    start_date: Date.new(5678, 5, 6),
-    end_date: Date.new(5678, 5, 7),
-    location: "Karim's palace",
-    message: "this is a party i would like to attend",
-    event_id: 2
-  },
-  {
-    start_date: Date.new(1987, 5, 6),
-    end_date: Date.new(1987, 5, 7),
-    location: "OCD Venue",
-    message: "there will be kegs",
-    event_id: 3
-  }
-])
 
 messages = Message.create!([
   {

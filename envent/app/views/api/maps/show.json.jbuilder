@@ -1,1 +1,1 @@
-json.extract! @map, :title, :img_url, :event_id
+json.extract! @map, :id, :title, :img_url, :event_id
