@@ -10,9 +10,18 @@ import {
   RECEIVE_MAP, 
   REMOVE_MAP
 } from '../actions/map';
+import  {
+  RECEIVE_INFO
+} from '../actions/info';
 
+let _nullState = {
+  scheduleItems: {},
+  scheduleItemsArray: [],
+  info: {},
+  maps: {}
+};
 
-const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: {} }, action) => {
+const currentEvent = (state = _nullState, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
@@ -37,8 +46,17 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: 
         return newState; 
 
     case RECEIVE_SCHEDULE_ITEMS:
-      newState.scheduleItems = action.scheduleItems.by_id;
-      newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      if (action.scheduleItems.by_id === undefined) {
+        action.scheduleItems.by_id = {};
+      } else {
+        newState.scheduleItems = action.scheduleItems.by_id;
+      }
+
+      if (action.scheduleItems.all_ids === undefined) {
+        newState.scheduleItemsArray = [];  
+      } else {
+        newState.scheduleItemsArray = action.scheduleItems.all_ids;
+      }
     
       return newState;
 
@@ -61,6 +79,10 @@ const currentEvent = (state = { scheduleItems: {}, scheduleItemArray: [], maps: 
       return newState;
     case REMOVE_MAP:
       newState.maps = undefined;
+      return newState;
+
+    case RECEIVE_INFO:
+      newState.info = action.info;
       return newState;
 
     default:

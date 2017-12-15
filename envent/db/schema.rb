@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171213044223) do
+=======
+ActiveRecord::Schema.define(version: 20171214181221) do
+>>>>>>> 65e2843df361dd5f63a5dd35586974babe31ce42
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171213044223) do
     t.integer "user_id", null: false
     t.boolean "private", default: false, null: false
     t.string "password"
+    t.string "img_url", default: "http://res.cloudinary.com/trwong/image/upload/c_scale,w_600/v1513275248/teemu-paananen-376238_wkqe62.jpg"
   end
 
   create_table "featured_people", force: :cascade do |t|
@@ -39,12 +44,33 @@ ActiveRecord::Schema.define(version: 20171213044223) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "infos", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "location"
+    t.text "message"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_infos_on_event_id"
+  end
+
   create_table "maps", force: :cascade do |t|
     t.string "title", null: false
     t.string "img_url", default: "https://res.cloudinary.com/ejbai31/image/upload/v1513139888/45944_sjwpfv.svg", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "author_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["event_id"], name: "index_messages_on_event_id"
   end
 
   create_table "news", force: :cascade do |t|

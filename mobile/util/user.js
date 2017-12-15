@@ -15,7 +15,7 @@ export function signOut(){
 export async function currentUser(){
   let user = {};
   user["email"] = await AsyncStorage.getItem('userEmail');
-  user["sesssionToken"] = await AsyncStorage.getItem('sessionToken');
+  user["sessionToken"] = await AsyncStorage.getItem('sessionToken');
 
   if (user["email"]) return user;
   return null;

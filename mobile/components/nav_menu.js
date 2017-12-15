@@ -17,9 +17,11 @@ const modules = {
   Schedule:
     {title: 'Schedule', icon: 'map'},
   News:
-    {title: "News", icon: 'announcement'},
+    {title: "News", icon: 'news'},
   MessageBoard:
-    {title: "Message Board", icon: "message"}
+    {title: "Message Board", icon: "message"},
+  Ticket:
+    {title: "Ticket", icon: "ticket", type: "Entypo"}
 };
 
 export default class CustomItems extends React.Component {
@@ -80,7 +82,11 @@ export default class CustomItems extends React.Component {
               >
                 <Icon
                   name = {modules[item].icon}
+                  size = {17}
                   reverse = {true}
+                  type = 'entypo'
+                  raised
+
                   color = '#4abdac' />
                 <Text style={style.navTitle}>
                   {modules[item].title}
@@ -94,9 +100,12 @@ export default class CustomItems extends React.Component {
               onPress = {this.accountAction.bind(this)}
              >
               <Icon
+                style = {style.button}
                 name = "account"
                 type = "material-community"
                 reverse = {true}
+                raised
+                size = {17}
                 color = '#4abdac' />
               <Text style={style.navTitle}>
               {  (this.state.user) ? "Log Out" : "Sign In"}

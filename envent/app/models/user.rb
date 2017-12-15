@@ -18,6 +18,11 @@ class User < ApplicationRecord
   attr_reader :password
   
   has_many :events
+  
+  has_many :messages,
+    class_name: :Message,
+    foreign_key: :author_id,
+    primary_key: :id
 
   after_initialize :ensure_session_token
 

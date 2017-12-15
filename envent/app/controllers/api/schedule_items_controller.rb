@@ -1,9 +1,10 @@
 class Api::ScheduleItemsController < ApplicationController
 
   def create
-    create_params = schedule_item_params
-    create_params["event_id"] = params[:event_id]
-    @schedule_item = ScheduleItem.new(create_params)
+    # create_params = schedule_item_params
+    # create_params["event_id"] = params[:event_id]
+    @schedule_item = ScheduleItem.new(schedule_item_params)
+    @schedule_item.event_id = params[:event_id]
     feature = FeaturedPerson.find_or_create_by(name:
       params[:schedule_item][:feature_name])
     @schedule_item.featured_person = feature
@@ -16,12 +17,15 @@ class Api::ScheduleItemsController < ApplicationController
 
   def index
     event_id = params[:event_id]
-    if event_id
-      @schedule_items = Event.find(event_id).schedule_items
+    if event_id == "undefined"
+      @items = ScheduleItem.all
+    elsif event_id == event_id.to_i.to_s
+      # find by event_id
+      @items = Event.find_by(id: event_id).schedule_items
     else
-      @schedule_items = ScheduleItem.all
+      # find by event tag
+      @items = Event.find_by(tag: event_id).schedule_items
     end
-
     render :index
   end
 

@@ -23,11 +23,30 @@ class Event < ApplicationRecord
              class_name: :User,
              foreign_key: :user_id
 
+  has_many :messages,
+    class_name: :Message,
+    foreign_key: :event_id,
+    primary_key: :id
+    
   has_many :display_elements
-  has_many :schedule_items
+  has_many :schedule_items do
+    def time_group
+      times = {}
+      self.group_by(&:start_time).each do |time, events|
+        date = time.strftime("%A, %b %d")
+        unless times[date]
+          times[date] = {}
+        end
+        time_str = time.strftime("%I:%M %p")
+        times[date][time_str] = events.pluck(:id)
+      end
+      times
+    end
+  end
 
   has_one :map
   has_many :news
+  has_one :info
 
   def downcase_fields
     self.tag.downcase!
