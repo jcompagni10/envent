@@ -30,7 +30,7 @@ export default class EventShow extends React.Component {
     }
 
     let links = display_elements.map(el => (
-      <Link to={`/event/${id}/${el}`}>{ el }</Link>
+      <Link key={el} to={`/event/${id}/${el}`}>{ el }</Link>
     ));
 
     return (

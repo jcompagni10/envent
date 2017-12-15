@@ -65,7 +65,7 @@ export default class EventForm extends React.Component{
         if (err) {
           console.error(err);
         }
-
+        debugger;
       if (response.body.secure_url !== '') {
         this.setState({
           img_url: response.body.secure_url
@@ -75,9 +75,19 @@ export default class EventForm extends React.Component{
   }
 
   render(){
+    let {
+      name,
+      tag,
+      location,
+      message,
+      start_date,
+      end_date,
+      img_url
+    } = this.props.currentEvent;
+
     return (
       <div>
-        <h2> Event Form</h2>
+        <h2>Event Form</h2>
         <form>
           <Errors errors = {this.props.errors} />
           <fieldset>
@@ -87,6 +97,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("name",e)}
               placeholder ="Event Name"
+              value={ name }
             />
           </fieldset>
           <fieldset>
@@ -96,6 +107,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("tag",e)}
               placeholder ="Event Tag"
+              value={ tag }
             />
           </fieldset>
           <fieldset>
@@ -105,6 +117,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("location",e)}
               placeholder ="Event Location"
+              value={ location }
             />
           </fieldset>
           <fieldset>
@@ -114,6 +127,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("message",e)}
               placeholder ="A custom event message"
+              value={ message }
             />
           </fieldset>
           <fieldset>
@@ -122,12 +136,14 @@ export default class EventForm extends React.Component{
               id = "event-start"
               selected = {this.state.start_date}
               onChange = {(e)=>this.handDateChange("start_date",e)}
+              value={ start_date }
             />
           <label htmlFor ="event-end">end date</label>
             <DatePicker
               id ="event-end"
               selected = {this.state.end_date}
               onChange = {(e)=>this.handDateChange("end_date",e)}
+              value={ end_date }
             />
           </fieldset>
           {modules.map(module =>(

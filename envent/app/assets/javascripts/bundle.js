@@ -50909,7 +50909,10 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 
 
 
-const mapStateToProps = state => ({ errors: state.errors.eventErrors });
+const mapStateToProps = state => ({
+  errors: state.errors.eventErrors,
+  currentEvent: state.currentEvent
+});
 
 const mapDispatchToProps = dispatch => ({
   createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event))
@@ -51022,7 +51025,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       if (err) {
         console.error(err);
       }
-
+      debugger;
       if (response.body.secure_url !== '') {
         this.setState({
           img_url: response.body.secure_url
@@ -51032,13 +51035,23 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
   }
 
   render() {
+    let {
+      name,
+      tag,
+      location,
+      message,
+      start_date,
+      end_date,
+      img_url
+    } = this.props.currentEvent;
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
         null,
-        ' Event Form'
+        'Event Form'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
@@ -51056,7 +51069,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             id: 'event-name',
             type: 'text',
             onChange: e => this.handleChange("name", e),
-            placeholder: 'Event Name'
+            placeholder: 'Event Name',
+            value: name
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -51071,7 +51085,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             id: 'event-tag',
             type: 'text',
             onChange: e => this.handleChange("tag", e),
-            placeholder: 'Event Tag'
+            placeholder: 'Event Tag',
+            value: tag
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -51086,7 +51101,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             id: 'event-location',
             type: 'text',
             onChange: e => this.handleChange("location", e),
-            placeholder: 'Event Location'
+            placeholder: 'Event Location',
+            value: location
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -51101,7 +51117,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             id: 'event-message',
             type: 'text',
             onChange: e => this.handleChange("message", e),
-            placeholder: 'A custom event message'
+            placeholder: 'A custom event message',
+            value: message
           })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -51115,7 +51132,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
             id: 'event-start',
             selected: this.state.start_date,
-            onChange: e => this.handDateChange("start_date", e)
+            onChange: e => this.handDateChange("start_date", e),
+            value: start_date
           }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'label',
@@ -51125,7 +51143,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
             id: 'event-end',
             selected: this.state.end_date,
-            onChange: e => this.handDateChange("end_date", e)
+            onChange: e => this.handDateChange("end_date", e),
+            value: end_date
           })
         ),
         modules.map(module => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -72022,7 +72041,7 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
     let links = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-      { to: `/event/${id}/${el}` },
+      { key: el, to: `/event/${id}/${el}` },
       el
     ));
 

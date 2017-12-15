@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215023109) do
+ActiveRecord::Schema.define(version: 20171215180350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171215023109) do
     t.integer "user_id", null: false
     t.boolean "private", default: false, null: false
     t.string "password"
-    t.string "img_url", default: "http://res.cloudinary.com/trwong/image/upload/c_scale,w_600/v1513275248/teemu-paananen-376238_wkqe62.jpg"
+    t.string "img_url", default: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_600/v1513275248/teemu-paananen-376238_wkqe62.jpg"
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.string "location"
