@@ -1,19 +1,19 @@
-export const getScheduleItem = (scheduleItemId) => (
+export const getScheduleItem = ( scheduleItemId) => (
   $.ajax({
     url: `/api/schedule_items/${scheduleItemId}`
   })
 );
 
-export const getScheduleItems = () => (
+export const getScheduleItems = (eventId) => (
   $.ajax({
-    url: `/api/schedule_items/`
+    url: `/api/events/${eventId}/schedule_items/`
   })
 );
 
-export const postScheduleItem = (schedule_item) => (
+export const postScheduleItem = (eventId, schedule_item) => (
   $.ajax({
     method: 'POST',
-    url: 'api/schedule_items',
+    url: `api/events/${eventId}/schedule_items`,
     data: { schedule_item }
   })
 );

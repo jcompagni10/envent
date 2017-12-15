@@ -1,0 +1,119 @@
+.landing-page-background-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 120vh;
+  background-image: url("https://res.cloudinary.com/trwong/image/upload/v1513238696/ezra-jeffrey-77199_yskzks.jpg");
+  background-position: center;
+  background-size: cover;
+  z-index: -2;
+}
+
+.landing-page-opaque-background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 120vh;
+  background-color: rgba($color: #4abdac, $alpha: 0.9)
+}
+
+.home-landing-page-container {
+  color: white;
+  height: 100vh;
+  min-height: 400px;
+}
+
+.landing-page-main-container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.landing-page-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 30px;
+}
+
+.landing-page-create-button {
+  background-color: Transparent;
+  border-radius: 20px;
+  border: 3px solid white;
+  margin-left: 20px;
+  padding: 9px;
+  color: white;
+}
+
+.landing-page-create-button:hover {
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+  background-color: white;
+  color: #4abdac;
+  cursor: pointer;
+}
+
+.landing-page-create-button-large {
+  background-color: white;
+  border-radius: 20px;
+  border: 3px solid white;
+  color: #4abdac;
+  font-size: 20px;
+  padding: 13px;
+  font-weight: bold;
+}
+
+.landing-page-create-button-large:hover {
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+  color: white;
+  background-color: #4abdac;
+  cursor: pointer;
+}
+
+.landing-page-home-link {
+  color: white;
+  // background-color: transparent;
+  // outline: none;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+div[class*="landing-page-section"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-page-section-big {
+  font-size: 44px;
+}
+
+.landing-page-section-medium {
+  font-size: 32px;
+}
+
+.landing-page-section-small {
+  font-size: 20px;
+}
+
+.landing-page-emphasis {
+  color: #bd634a;
+  font-weight: bold;
+}
+
+.second-element {
+  margin-top: 7px;
+}
+
+.logo {
+  font-size: 36px;
+}
+
+

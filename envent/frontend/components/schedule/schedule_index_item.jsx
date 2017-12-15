@@ -6,9 +6,9 @@ export default class ScheduleIndexItem extends React.Component {
   }
 
   render() {
-    let { by_id } = this.props.scheduleItems;
     // debugger;
-    let scheduleItem = by_id[this.props.scheduleItemId];
+    let id_arr = this.props.currentEvent.scheduleItems;
+    let scheduleItem = id_arr[this.props.scheduleItemId];
     let {
       title,
       start_time,

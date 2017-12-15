@@ -5,11 +5,11 @@ import {
 } from './../../actions/scheduleItem';
 
 const mapStateToProps = state => ({
-
+  currentEvent: state.currentEvent,
 });
 
 const mapDispatchToProps = dispatch => ({
-  createScheduleItem: scheduleItem => dispatch(createScheduleItem(scheduleItem)),
+  createScheduleItem: (eventId, schedule_item) => dispatch(createScheduleItem(eventId, schedule_item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleForm);

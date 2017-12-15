@@ -11,7 +11,8 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   StatusBar,
-  AsyncStorage
+  AsyncStorage,
+  ImageBackground
 } from 'react-native';
 import {
   NavigationActions,
@@ -19,7 +20,8 @@ import {
 } from 'react-navigation';
 
 import style from './styles/landing_page.js';
-
+import AuthForm from './auth_form';
+import Loader from './misc/loader';
 
 export default class HomeLandingPage extends React.Component {
 
@@ -28,13 +30,13 @@ export default class HomeLandingPage extends React.Component {
     this.state = {
       eventTag: "",
       eventId: undefined,
+      showAuth: false,
       isLoading: true
     };
     this.findEventFromInput = this.findEventFromInput.bind(this);
   }
 
   componentDidMount(){
-    this.setState({isLoading: true});
     StatusBar.setHidden(true);
       try {
         AsyncStorage.getItem('eventTag')
@@ -42,39 +44,59 @@ export default class HomeLandingPage extends React.Component {
       } catch (error) {
         Alert.alert(error);
       }
+
+  }
+
+  handleTagSubmit(){
+    this.setState({status: ''});
+    let eventTag = this.state.eventTag;
+    if (eventTag){
+      this.findEventFromInput(eventTag)
+      .then((event)=>this.displayAuth(event));
+    }else {
+      this.setState({
+        status: "Event Tag Cannot Be Blank",
+        showAuth: false
+      });
+      return;
+    }
   }
 
   handleDBTag(tag){
     if (tag){
       this.state['eventTag'] = tag;
-      this.findEventFromInput(tag);
+      this.findEventFromInput(tag)
+      .then((event)=>{
+        this.enterEvent(event);
+      });
     } else{
       this.setState({isLoading: false});
     }
   }
 
-  findEventFromInput(tag = null) {
+  findEventFromInput(eventTag) {
     // TODO1 Add logic if failed response
-
-    let eventTag = tag || this.state.eventTag;
-    fetch("http://192.168.3.37:3000/api/events/"+eventTag)
-      .then((response) => response.json())
-      .then(this.enterEvent.bind(this))
+    return fetch("http://192.168.3.37:3000/api/events/"+eventTag)
+      .then(
+        (response) => {
+          this.setState({isLoading: false});
+          if (response.status === 200){
+            return response.json();
+          } else{
+            throw new Error(response.statusText);
+          }
+        })
       .catch(error => {
-        debugger
-        this.setState({status: "Event Not Found"})
+        this.setState({
+          status: "Event Not Found",
+          showAuth: false,
+          isLoading: false
+        });
       });
     }
 
-  buildNav(elements){
-    let navItems = [];
-    elements.forEach(element => (
-      navItems.push({
-        title: moduleNames[element],
-        component: element
-    }
-    )));
-    return navItems;
+  closeAuth(){
+    this.setState({showAuth: false});
   }
 
   storeEventTag(){
@@ -86,16 +108,34 @@ export default class HomeLandingPage extends React.Component {
     }
   }
 
-  enterEvent(event) {
-      this.storeEventTag();
-      // let navItems = this.buildNav(event.display_elements);
-      this.props.navigation.navigate(
-        'Router',
-        {
-          items: event.display_elements,
-          eventName: event.name
-         }
-      );
+  displayAuth(event){
+    if (this.state.status !== '') return;
+    AsyncStorage.getItem('userEmail').then(email=>{
+      if (email){
+        this.enterEvent(event);
+      } else {
+        this.setState({
+          showAuth: true,
+          status: '',
+          event
+        });
+      }
+    });
+  }
+
+
+  enterEvent(event= null) {
+    let eventt = event || this.state.event;
+    this.setState({showAuth: false});
+    this.storeEventTag();
+    this.props.navigation.navigate(
+      'Router',
+      {
+        items: eventt.display_elements,
+        eventName: eventt.name,
+        eventId: eventt.id
+       }
+    );
   }
 
 
@@ -106,46 +146,46 @@ export default class HomeLandingPage extends React.Component {
   render() {
     if (this.state.isLoading){
       return (
-        // TODO2: make this sexier
-        <View style={style.landingPageContainer}>
-          <ActivityIndicator
-            size='large'
-            color="#4abdac"/>
-        </View>
+        <Loader />
       );
     }
     return (
-      <View style={style.landingPageContainer} >
-        <Image
+      <View style={{flex:1}}>
+        <ImageBackground
           source={require('./../assets/crowd.jpg')}
           style={style.backgroundImage}
-        />
-        <View style ={style.logoWrapper} >
+        >
           <Image
-          source={require('./../assets/logo.png')}
-          style={style.logo}
-          />
-        </View>
-        <View style ={style.entryForm}>
-          <Text style = {style.statusText}>
-          {this.state.status}
-          </Text>
-          <View style = {style.tagBar}>
-            <TextInput
-              style={style.tagInput}
-              placeholder="Event Tag"
-              onChangeText={ eventTag => this.handleChange(eventTag) }
-              onSubmitEditing = {()=>this.findEventFromInput()}
-              returnKeyType = "join"
+            source={require('./../assets/logo.png')}
+            style={style.logo}
             />
-            <TouchableOpacity
-              style={style.joinButton}
-              onPress={()=>this.findEventFromInput()}
-            >
-              <Text style ={style.joinButtonText}>Join</Text>
-            </TouchableOpacity>
+          <View style ={style.entryForm}>
+            <View style = {style.tagBar}>
+              <TextInput
+                style={style.tagInput}
+                placeholder="Event Tag"
+                onChangeText={ eventTag => this.handleChange(eventTag) }
+                onSubmitEditing = {()=>this.handleTagSubmit()}
+                returnKeyType = "join"
+              />
+              <TouchableOpacity
+                style={style.joinButton}
+                onPress={()=>this.handleTagSubmit()}
+              >
+                <Text style ={style.joinButtonText}>Join</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style = {style.statusText}>
+              {this.state.status}
+            </Text>
           </View>
-        </View>
+        </ImageBackground>
+        <AuthForm
+          visible = {this.state.showAuth}
+          callback = {this.enterEvent.bind(this)}
+          skip = {true}
+          close = {this.closeAuth.bind(this)}
+          />
       </View>
     );
   }

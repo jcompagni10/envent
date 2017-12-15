@@ -40,7 +40,7 @@ export const fetchEvent = eventId => dispatch => (
   .then(event => dispatch(receiveEvent(event)))
 ); 
 
-export const fetchEvents = () => dispatch => (
-  getEvents()
+export const fetchEvents = userId => dispatch => (
+  getEvents(userId)
     .then(events => dispatch(receiveEvents(events)))
 );

@@ -7,18 +7,21 @@ import AppBuilder from './builder/app_builder';
 import Dashboard from './dashboard/dashboard';
 import Event from './event/event';
 import Schedule from './schedule/schedule';
+import HomeLandingPage from './home/landing_page';
 
 export default ()=>(
   <div>
     <ProtectedRoute path="/" component = {HeaderContainer} />
-  <Switch>
-    <ProtectedRoute path='/dashboard' component = {Dashboard} />
-    <ProtectedRoute exact path='/event/' component = {Event} />
-    {/* <ProtectedRoute path='/event' component = {Event} /> */}
-    <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} />
+    <Switch>
+      <ProtectedRoute path='/dashboard' component = {Dashboard} />
+      <ProtectedRoute exact path='/event/' component = {Event} />
+      {/* <ProtectedRoute path='/event' component = {Event} /> */}
+      {/* <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} /> */}
 
-    <ProtectedRoute path='/event_builder' component = {AppBuilder} />
-    <AuthRoute exact path="/:signup?" component = {LandingPage} />
-  </Switch>
-</div>
+      <ProtectedRoute path='/event_builder' component = {AppBuilder} />
+      <AuthRoute exact path="/" component = {HomeLandingPage} />
+      <AuthRoute exact path="/signup" component = {LandingPage} />
+      {/* <AuthRoute exact path="/:signup?" component = {LandingPage} /> */}
+    </Switch>
+  </div>
 );

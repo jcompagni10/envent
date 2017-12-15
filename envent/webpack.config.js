@@ -28,9 +28,13 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2017', 'react']
-        }
-      }
-    ]
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+    ],
   },
   devtool: 'source-map',
   resolve: {

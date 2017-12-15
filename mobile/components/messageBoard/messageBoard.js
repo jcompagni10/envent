@@ -4,52 +4,159 @@ import {
   Text,
   View,
   Image,
-  TextInput,
-  Alert,
   Button,
-  ListView,
-  ActivityIndicator,
   TouchableHighlight,
+  FlatList,
+  Alert,
+  KeyboardAvoidingView,
+  ActivityIndicator,
+  RefreshControl
 } from 'react-native';
+import AppHeader from '../header';
+import {fetchModuleData} from '../../util/api';
+import Loader from '../misc/loader';
+import style from '../styles/messages';
+import {currentUser} from '../../util/user';
+import PostMessage from '../misc/post_message';
 
-export default class MessageBoard extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Message Board',
-  };
-
+export default class Schedule extends React.Component {
   constructor(props) {
     super(props);
+    this.state ={
+      isLoading: true,
+      fetching: false,
+    };
+  }
+
+  componentWillMount(){
+    currentUser()
+      .then(user=>(this.setState({user})));
+    let eventId = this.props.navigation.state.params.eventId;
+    this.state["eventId"] = eventId;
+    this.fetchPosts(eventId);
+  }
+
+  fetchPosts(eventId = null){
+    eventId = this.state.eventId || eventId
+    let offset;
+    if (this.state.postIds){
+      offset = this.state.postIds.length;
+    }
+    return fetchModuleData(eventId, "messages", offset)
+      .then(data =>{
+        let newPostIds = this.state.postIds || [];
+        newPostIds = data.all_ids.concat(newPostIds);
+
+        this.setState({
+          posts: Object.assign({}, this.state.posts, data.by_id),
+          postIds: newPostIds,
+          isLoading: false,
+          refreshing: false
+        });
+      });
+  }
+
+  _onRefresh() {
+    this.setState({refreshing: true});
+    this.fetchPosts().then(() => {
+      this.setState({refreshing: false});
+    });
+  }
+
+  _getItemLayout(data, index){
+    const height = 99;
+    return {
+      length: height,
+      offset: height * index,
+      index
+    };
+  }
+
+  overScroll(){
+    this.fetchPosts();
+  }
+
+  listStyle(){
+    return (this.isLoggedIn()) ? style.listWrapperPostable : style.listWrapper;
+  }
+
+  isLoggedIn(){
+    return (this.state.user);
+  }
+
+  succcesfulPost(){
+    this.fetchPosts().then(()=>{
+      // this.refs.PostList.scrollToOffset(10);
+    });
+  }
+  _renderListItem(item){
+    let data = this.state.posts[item];
+    try {
+    return (
+      <View style={style.listItemWrapper}>
+        <View style={style.listItem}>
+          <Text style={style.posterName}>
+            {data.author_username} says
+          </Text>
+          <Text style={style.newsText}>
+            {data.body}
+          </Text>
+          <View style={style.postTime}>
+            <Text style={style.postTimeText}>
+              {data.posted_time}
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
+  catch (e){
+    debugger
+  }
   }
 
   render() {
+    if (this.state.isLoading){
+      return (
+        <Loader />
+      );
+    }
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "stretch", backgroundColor: 'powderblue' }}>
-
-        {/* So the iOS info at the top doesn't overlap our info (signal, time, battery) */}
-        <View style={{ flex: 0.05 }}>
-
-          {/* nav bar header */}
+        <KeyboardAvoidingView style={style.fullPage}
+          behavior="position"
+          keyboardVerticalOffset ={70}>
+          <AppHeader
+            title = {"Message Board"}
+            navigation = {this.props.navigation}
+          />
+        <View style={this.listStyle()}>
+          <FlatList
+            ref= "PostList"
+            getItemLayout = {this._getItemLayout}
+            onEndReached = {this.overScroll.bind(this)}
+            onEndReachedThreshold = {0}
+            inverted = {true}
+            refreshControl={
+              <RefreshControl
+                colors ={["#4abdac", 'red']}
+                progressBackground ={"red"}
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh.bind(this)}
+              />
+            }
+            renderItem={({item}) => this._renderListItem(item)}
+            data = {this.state.postIds}
+            keyExtractor={(item, index) => index}
+          />
         </View>
-        <View style={{ flex: 0.1, flexDirection: "row", justifyContent: "space-around" }}>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('DrawerToggle')}
-          >
-            <Image
-              source={require('./../../assets/hamburger.jpg')}
-              style={{ width: 40, height: 40 }}
-            />
-          </TouchableHighlight>
-          <Text>Message Board</Text>
-          <Text></Text>
-        </View>
-
-        {/* body */}
-        <View style={{ flex: 0.85 }}>
-          <Text>
-            Message Board
-          </Text>
-        </View>
-      </View>
+        <PostMessage
+          user = {this.state.user}
+          visible = {this.isLoggedIn()}
+          eventId = {this.state.eventId}
+          callback = {this.succcesfulPost.bind(this)}
+          type = "messageBoard"
+          />
+        </KeyboardAvoidingView>
     );
   }
 }

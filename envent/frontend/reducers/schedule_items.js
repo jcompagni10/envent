@@ -13,7 +13,7 @@ export default (state = { all_ids: [], by_id: {} }, action) => {
     case RECEIVE_SCHEDULE_ITEM:
       newState.by_id[action.scheduleItem.id] = action.scheduleItem; 
 
-
+    // debugger;
       index = newState.all_ids.indexOf(action.scheduleItem.id);
       if (index > -1) {
         newState.all_ids.splice(index, 1);
