@@ -1,4 +1,9 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+
+const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
 
 export default class Schedule extends React.Component {
   constructor(props) {
@@ -10,7 +15,7 @@ export default class Schedule extends React.Component {
       end_time: "",
       feature_id: "",
       location: "",
-      image: undefined,
+      img_url: "",
       description: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,6 +34,28 @@ export default class Schedule extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createScheduleItem(this.props.currentEvent.id, this.state);
+  }
+
+  onImageDrop(files) {
+    this.handleImageUpload(files[0]);
+  }
+
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          img_url: response.body.secure_url
+        });
+      }
+    });
   }
 
   render() {
@@ -63,15 +90,17 @@ export default class Schedule extends React.Component {
             name="location"
             placeholder="Location"/>
           <input
-            onChange={ this.handleChange("image") }
-            type="file"
-            name="image"
-            placeholder="Image"/>
-          <input
             onChange={ this.handleChange("description") }
             type="text"
             name="description"
             placeholder="Description"/>
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <p>Drop an image or click to select a file to upload.</p>
+          </Dropzone>
+          <img src={this.state.img_url} />
           <input
             onClick={this.handleSubmit}
             type="submit"/>

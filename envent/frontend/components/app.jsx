@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util.js';
 import LandingPage from './landing_page.jsx';
 import HeaderContainer from './header/header_container';
-import AppBuilder from './builder/app_builder';
+import AppBuilderContainer from './builder/app_builder_container';
 import Dashboard from './dashboard/dashboard';
 import Event from './event/event';
 import Schedule from './schedule/schedule';
@@ -18,7 +18,7 @@ export default ()=>(
       {/* <ProtectedRoute path='/event' component = {Event} /> */}
       {/* <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} /> */}
 
-      <ProtectedRoute path='/event_builder' component = {AppBuilder} />
+      <ProtectedRoute path='/event_builder' component = {AppBuilderContainer} />
       <AuthRoute exact path="/" component = {HomeLandingPage} />
       <AuthRoute exact path="/signup" component = {LandingPage} />
       {/* <AuthRoute exact path="/:signup?" component = {LandingPage} /> */}

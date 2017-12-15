@@ -22,12 +22,12 @@ export default class ScheduleIndexItem extends React.Component {
     return (
       <div>
         {/* <div id="calendar"></div> */}
+        <img src={ img_url } alt=""/>
         title: { title }
         start_time: { start_time }
         end_time: { end_time }
         feature_id: { feature_id }
         location: { location }
-        img_url: { img_url }
         description: { description }
         <button>Update</button>
         <button

@@ -55,7 +55,7 @@ export default class HomeLandingPage extends React.Component {
           <h2 className="second-element">Your Own Custom Mobile Event App</h2>
         </div>
         <div className="landing-page-section-small">
-          <h3>Engage participants. Interact with your audience. Create inspirin meetings</h3>
+          <h3>Engage participants. Interact with your audience. Create inspiring meetings</h3>
           <h3 className="second-element">Your next successful event stars with Envent</h3>
         </div>
           <button onClick={ () => this.openModal("signup") } className="landing-page-create-button-large">

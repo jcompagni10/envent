@@ -41,8 +41,7 @@ export default class EventForm extends React.Component{
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
-    // this.props.history.push(`/event_builder/${event.tag}/${this.modules[0]}`);
-    
+    this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
   }
 
   onImageDrop(files) {
