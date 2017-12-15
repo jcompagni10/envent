@@ -24,9 +24,16 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    lowercase_tag = params[:id].downcase
-    @event = Event.find_by(tag: lowercase_tag)
+    id = params[:id]
+    if id == id.to_i.to_s
+      @event = Event.find(id)
+    else
+      lowercase_tag = params[:id].downcase
+      @event = Event.find_by(tag: lowercase_tag)
+    end
+
     @scheduleItems = ScheduleItem.find_by(event_id: @event.id)
+    
     if @event
       render :show
     else

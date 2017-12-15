@@ -3,6 +3,8 @@ import ScheduleForm from './schedule_form';
 import {
   createScheduleItem,
 } from './../../actions/scheduleItem';
+import { withRouter } from 'react-router-dom';
+import { fetchEvent } from './../../actions/event';
 
 const mapStateToProps = state => ({
   currentEvent: state.currentEvent,
@@ -10,6 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createScheduleItem: (eventId, schedule_item) => dispatch(createScheduleItem(eventId, schedule_item)),
+  fetchEvent: eventId => dispatch(fetchEvent(eventId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScheduleForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScheduleForm));

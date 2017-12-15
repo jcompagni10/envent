@@ -21,11 +21,17 @@ export default class Schedule extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentWillReceiveProps(newProps) {
-    // if (newProps.currentEvent.id !== this.props.currentEvent.id) {
-    //   this.setState({ event_id: newProps.currentEvent.id });
-    // }
-  // }
+  componentDidMount() {
+    if (this.props.currentEvent.id === undefined) {
+      this.props.fetchEvent(this.props.match.params.eventTag);
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.currentEvent.id !== this.props.currentEvent.id) {
+      this.setState({ event_id: newProps.currentEvent.id });
+    }
+  }
 
   handleChange(title) {
     return event => this.setState({ [title]: event.target.value});

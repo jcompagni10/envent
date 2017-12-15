@@ -9,11 +9,6 @@ import InfoFormContainer from './../info/info_form_container';
 
 export default class AppBuilder extends React.Component {
 
-  componentDidMount() {
-    debugger;
-    this.props.fetchEvent
-  }
-
   render(){
     return (
       <div>
