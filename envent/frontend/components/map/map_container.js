@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   destroyMap: mapId => dispatch(destroyMap(mapId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map)
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

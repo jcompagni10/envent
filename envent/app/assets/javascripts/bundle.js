@@ -37104,20 +37104,16 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentWillMount() {
-    debugger;
+
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
-  test() {
-    debugger;
-  }
   render() {
 
-    debugger;
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { height: '200', width: '200', onClick: this.test.bind(this) });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { height: '200', width: '200' });
     }
     let display = this.props.maps.map(map => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',

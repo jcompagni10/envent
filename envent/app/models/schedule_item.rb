@@ -18,16 +18,10 @@
 class ScheduleItem < ApplicationRecord
   validates :title, :start_time, :end_time, presence: true
 
-<<<<<<< HEAD
-  # belongs_to :featured_person,
-  #   foreign_key: :feature_id,
-  #   class_name: :FeaturedPerson
-=======
   belongs_to :featured_person,
     foreign_key: :feature_id,
     class_name: :FeaturedPerson,
     optional: true
->>>>>>> 65e2843df361dd5f63a5dd35586974babe31ce42
 
   belongs_to :event
 

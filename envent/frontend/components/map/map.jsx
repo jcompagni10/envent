@@ -6,22 +6,17 @@ export default class Map extends React.Component{
   }
 
   componentWillMount(){
-    debugger
+    
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
-  test(){
-    debugger
-  }
   render(){
     
-    debugger
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
-     <div height="200" width ='200' onClick = {
-        this.test.bind(this) }>
+     <div height='200' width ='200'>
       </div>);
     }
     let display = this.props.maps.map(map => (
