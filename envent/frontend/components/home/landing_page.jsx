@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
-import SessionModal from './session_modal';
+import SessionModalContainer from './session_modal_container';
 
 export default class HomeLandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: false,
+      modalAction: "signup",
     };
 
     this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  openModal() {
-    this.setState({modalOpen: true});
+  openModal( action="signup" ) {
+    this.setState({modalOpen: true, modalAction: action});
   }
 
   closeModal() {
@@ -22,8 +24,6 @@ export default class HomeLandingPage extends React.Component {
   }
 
   render() {
-
-    
 
     return (
     <div className="home-landing-page-container">
@@ -33,10 +33,10 @@ export default class HomeLandingPage extends React.Component {
           Envent
         </h2>
         <div>
-          <Link to="/signup" className="landing-page-home-link">
+          <button onClick={ () => this.openModal("login") } className="landing-page-home-link">
             LOG IN
-          </Link>
-          <button onClick={ this.openModal } className="landing-page-create-button">
+          </button>
+          <button onClick={ () => this.openModal("signup") } className="landing-page-create-button">
             CREATE YOUR APP
           </button>
         </div>
@@ -58,11 +58,16 @@ export default class HomeLandingPage extends React.Component {
           <h3>Engage participants. Interact with your audience. Create inspirin meetings</h3>
           <h3 className="second-element">Your next successful event stars with Envent</h3>
         </div>
-        <button onClick={ this.openModal } className="landing-page-create-button-large">
+          <button onClick={ () => this.openModal("signup") } className="landing-page-create-button-large">
           CREATE YOUR APP
         </button>
       </div>
 
+      <SessionModalContainer 
+        modalOpen= { this.state.modalOpen }
+        closeModal= { this.closeModal }
+        modalAction = { this.state.modalAction }
+      />
       {/* <SessionModal 
         modalOpen= {this.state.modalOpen}
         closeModal= {this.closeModal.bind(this)}

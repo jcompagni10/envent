@@ -33,7 +33,7 @@ export default class SessionForm extends React.Component {
   render(){
     return (
       <div>
-        <h3>{this.title()}</h3>
+        {/* <h3>{this.title()}</h3> */}
         <form>
           <Errors errors = {this.props.errors} />
           <fieldset>
@@ -43,27 +43,27 @@ export default class SessionForm extends React.Component {
               type="text"
               value ={this.state.email}
               placeholder = "email"
-              onChange = {(e) => this.handleChange("email", e)}
+              onChange = {(e) => this.props.handleUpdate("email", e)}
               />
           </fieldset>
           <fieldset>
-            <label htmlFor="passowrd">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
               id="password"
               type="password"
               value ={this.state.password}
               placeholder = "password"
-              onChange = {(e) => this.handleChange("password", e)}
+              onChange = {(e) => this.props.handleUpdate("password", e)}
               />
           </fieldset>
-        <button
+        {/* <button
           onClick ={this.handleSubmit.bind(this)}
           className ="btn btn-primary"
           >
           {this.title()}
-        </button>
+        </button> */}
         </form>
-        {this.linkToOtherForm()}
+        {/* {this.linkToOtherForm()} */}
       </div>
     );
   }
