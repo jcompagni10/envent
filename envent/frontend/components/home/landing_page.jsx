@@ -33,12 +33,12 @@ export default class HomeLandingPage extends React.Component {
           Envent
         </h2>
         <div>
-          <Button onClick={ () => this.openModal("login") } className="landing-page-home-link">
+          <button onClick={ () => this.openModal("login") } className="landing-page-home-link">
             LOG IN
-          </Button>
-          <Button onClick={ this.openModal } className="landing-page-create-button">
+          </button>
+          <button onClick={ () => this.openModal("signup") } className="landing-page-create-button">
             CREATE YOUR APP
-          </Button>
+          </button>
         </div>
       </header>
       <div className="landing-page-main-container">
@@ -58,9 +58,9 @@ export default class HomeLandingPage extends React.Component {
           <h3>Engage participants. Interact with your audience. Create inspirin meetings</h3>
           <h3 className="second-element">Your next successful event stars with Envent</h3>
         </div>
-        <Button onClick={ this.openModal } className="landing-page-create-button-large">
+          <button onClick={ () => this.openModal("signup") } className="landing-page-create-button-large">
           CREATE YOUR APP
-        </Button>
+        </button>
       </div>
 
       <SessionModalContainer 

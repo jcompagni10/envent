@@ -7459,7 +7459,7 @@ const ProtectedRoute = Object(__WEBPACK_IMPORTED_MODULE_2_react_router__["c" /* 
       { className: "errors" },
       errors.map(error => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "li",
-        { className: "alert alert-danger" },
+        { className: "alert alert-danger", key: error },
         error
       ))
     );
@@ -34265,13 +34265,13 @@ class HomeLandingPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
           'div',
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["a" /* Button */],
+            'button',
             { onClick: () => this.openModal("login"), className: 'landing-page-home-link' },
             'LOG IN'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["a" /* Button */],
-            { onClick: this.openModal, className: 'landing-page-create-button' },
+            'button',
+            { onClick: () => this.openModal("signup"), className: 'landing-page-create-button' },
             'CREATE YOUR APP'
           )
         )
@@ -34328,8 +34328,8 @@ class HomeLandingPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["a" /* Button */],
-          { onClick: this.openModal, className: 'landing-page-create-button-large' },
+          'button',
+          { onClick: () => this.openModal("signup"), className: 'landing-page-create-button-large' },
           'CREATE YOUR APP'
         )
       ),
@@ -45614,19 +45614,17 @@ var Well = function (_React$Component) {
 
 
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  let action = ownProps.match.params.signup ? __WEBPACK_IMPORTED_MODULE_1__actions_session__["f" /* signupUser */] : __WEBPACK_IMPORTED_MODULE_1__actions_session__["d" /* login */];
-  return {
-    action: user => dispatch(action(user))
-  };
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  login: user => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_session__["d" /* login */])(user)),
+  signupUser: user => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_session__["f" /* signupUser */])(user))
+});
 
-const mapSateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => ({
   errors: state.session.errors,
   type: ownProps.match.params.signup ? "signup" : "login"
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_router__["c" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapSateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_0__session_modal__["a" /* default */])));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_router__["c" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_0__session_modal__["a" /* default */])));
 
 /***/ }),
 /* 407 */
@@ -45636,8 +45634,8 @@ const mapSateToProps = (state, ownProps) => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__landing_page__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__session_session_form_container__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__misc_errors__ = __webpack_require__(129);
 
 
 
@@ -45652,17 +45650,34 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
       password: ""
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
   }
 
-  handleSubmit(email, password) {
-    this.props.action({ email: email, password: password });
+  title() {
+    return this.props.type === "login" ? "Log In" : "Sign Up";
   }
 
-  handleUpdate(field, e) {
-    e.preventDefault();
-    // debugger;
+  linkToOtherForm() {
+    let url = this.props.type === "login" ? "signup" : "";
+    let text = this.props.type === "login" ? "Sign Up" : "Login";
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
+      { to: url },
+      text
+    );
+  }
+
+  handleSignUp() {
+    this.props.signupUser(this.state);
+  }
+
+  handleLogIn() {
+    this.props.login(this.state);
+  }
+
+  handleChange(field, e) {
     this.setState({ [field]: e.target.value });
   }
 
@@ -45674,14 +45689,14 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
     button = this.props.modalAction === "signup" ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
       {
-        onClick: this.handleSubmit.bind(this),
+        onClick: this.handleSignUp,
         bsStyle: 'primary'
       },
       'Sign Up'
     ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
       {
-        onClick: this.handleSubmit.bind(this),
+        onClick: this.handleLogIn,
         bsStyle: 'primary'
       },
       'Log In'
@@ -45705,7 +45720,33 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Body,
           null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__session_session_form_container__["a" /* default */], { handleUpdate: this.handleUpdate })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'form',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__misc_errors__["a" /* default */], { errors: this.props.errors }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'fieldset',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                id: 'email',
+                type: 'text',
+                value: this.state.email,
+                placeholder: 'Email',
+                onChange: e => this.handleChange("email", e)
+              })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'fieldset',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                id: 'password',
+                type: 'password',
+                value: this.state.password,
+                placeholder: 'Password',
+                onChange: e => this.handleChange("password", e)
+              })
+            )
+          )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Footer,

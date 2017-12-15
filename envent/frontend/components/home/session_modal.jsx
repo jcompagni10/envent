@@ -1,7 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import LandingPage from './../landing_page';
-import SessionFormContainer from './../session/session_form_container';
+import { Link } from 'react-router-dom';
+import Errors from '../misc/errors';
+
 
 export default class SessionModal extends React.Component {
   constructor(props) {
@@ -12,20 +13,35 @@ export default class SessionModal extends React.Component {
       password: "",
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
   }
 
-
-  handleSubmit(email, password) {
-    this.props.action({ email: email, password: password });
+  title() {
+    return (this.props.type === "login") ? "Log In" : "Sign Up";
   }
 
-  handleUpdate(field, e) {
-    e.preventDefault();
-    // debugger;
+  linkToOtherForm() {
+    let url = (this.props.type === "login") ? "signup" : "";
+    let text = (this.props.type === "login") ? "Sign Up" : "Login";
+    return (
+      <Link to={url}>{text}</Link>
+    );
+  }
+
+  handleSignUp() {
+    this.props.signupUser(this.state);
+  }
+
+  handleLogIn() {
+    this.props.login(this.state);
+  }
+
+  handleChange(field, e) {
     this.setState({ [field]: e.target.value });
   }
+
 
   render() {
     let title;
@@ -34,12 +50,12 @@ export default class SessionModal extends React.Component {
     title = this.props.modalAction === "signup" ? "Sign Up" : "Log In";
     button = this.props.modalAction === "signup" ? (
       <Button
-      onClick={this.handleSubmit.bind(this)}
+      onClick={ this.handleSignUp }
       bsStyle="primary"
       >Sign Up</Button>
     ) : (
       <Button
-      onClick={this.handleSubmit.bind(this)}
+      onClick={ this.handleLogIn }
       bsStyle="primary"
       >Log In</Button>
     );
@@ -52,10 +68,42 @@ export default class SessionModal extends React.Component {
           </Modal.Header>
 
           <Modal.Body>
-            <SessionFormContainer handleUpdate={ this.handleUpdate }/>
+            <form>
+              <Errors errors={this.props.errors} />
+              <fieldset>
+                {/* <label htmlFor="email"></label> */}
+                <input
+                  id="email"
+                  type="text"
+                  value={this.state.email}
+                  placeholder="Email"
+                  onChange={(e) => this.handleChange("email", e)}
+                />
+              </fieldset>
+              <fieldset>
+                {/* <label htmlFor="password"></label> */}
+                <input
+                  id="password"
+                  type="password"
+                  value={this.state.password}
+                  placeholder="Password"
+                  onChange={(e) => this.handleChange("password", e)}
+                />
+              </fieldset>
+            </form>
           </Modal.Body>
 
           <Modal.Footer>
+
+            {/* <button
+          onClick ={ this.handleSubmit}
+          className ="btn btn-primary"
+          >
+          {this.title()}
+        </button> */}
+
+            
+            
             <Button onClick={ this.props.closeModal }>Close</Button>
             { button }
           </Modal.Footer>
