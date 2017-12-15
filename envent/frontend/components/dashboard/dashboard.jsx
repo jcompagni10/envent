@@ -6,9 +6,9 @@ export default()=>{
   return (
     <div>
       <h1> DASHBOARD</h1>
-      <Link to="/event_builder">
-        Create An Event
-      </Link>
+      // <Link to="/event_builder">
+      //   Create An Event
+      // </Link>
       <EventIndexContainer />
     </div>
   );

@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {createEvent} from '../../actions/event.js';
 import EventForm from './event_form';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
   errors: state.errors.eventErrors,
@@ -11,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
   createEvent: (event)=>dispatch(createEvent(event))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(EventForm);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EventForm));

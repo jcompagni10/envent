@@ -16,7 +16,7 @@ export default class Header extends React.Component {
               <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#/event_builder">App Builder <span className="sr-only">(current)</span></a>
+              <a className="nav-link" href="#/event_builder">Create Event <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item active">
               <a className="nav-link" href="#/event">Your Events <span className="sr-only">(current)</span></a>

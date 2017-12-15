@@ -15,6 +15,7 @@ class Api::EventsController < ApplicationController
 
   def index
     userId = params[:userId]
+    # debugger;
     if userId
       @events = User.find(userId).events
     else
