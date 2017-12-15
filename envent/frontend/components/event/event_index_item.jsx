@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class EventIndexItem extends React.Component {
   constructor(props) {
@@ -17,7 +18,9 @@ export default class EventIndexItem extends React.Component {
 
     return (
       <div>
-        Name: {name}
+        Name: <Link to={`/event/${this.props.eventId}`}>
+          {name}
+        </Link>
         <br />
         Tag: {tag}
         <br />

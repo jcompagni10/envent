@@ -16,6 +16,9 @@ export default class InfoForm extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.currentEvent.id === undefined) {
+      this.props.fetchEvent(this.props.match.params.eventTag);
+    }
     this.props.fetchInfo(this.props.currentEvent.id);
   }
 

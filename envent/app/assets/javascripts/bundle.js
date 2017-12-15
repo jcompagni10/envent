@@ -50439,7 +50439,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__header_header_container__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__builder_app_builder_container__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__ = __webpack_require__(405);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__event_event__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__event_event_container__ = __webpack_require__(568);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__schedule_schedule__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__map_map_container__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_landing_page__ = __webpack_require__(414);
@@ -50463,7 +50463,7 @@ var createMemoryHistory = function createMemoryHistory() {
     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/dashboard', component: __WEBPACK_IMPORTED_MODULE_6__dashboard_dashboard__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { exact: true, path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_7__event_event_container__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_5__builder_app_builder_container__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["b" /* ProtectedRoute */], { path: '/event/:eventTag/map/1', component: __WEBPACK_IMPORTED_MODULE_9__map_map_container__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__util_route_util_js__["a" /* AuthRoute */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_10__home_landing_page__["a" /* default */] }),
@@ -50723,7 +50723,7 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             { className: "nav-item active" },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "a",
-              { className: "nav-link", href: "#/event_builder" },
+              { className: "nav-link", href: "#/event" },
               "Your Events ",
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "span",
@@ -50811,7 +50811,6 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/info', component: __WEBPACK_IMPORTED_MODULE_7__info_info_form_container__["a" /* default */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/news', component: __WEBPACK_IMPORTED_MODULE_6__news_news_container___default.a }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
@@ -50968,7 +50967,7 @@ const getEvents = userId => $.ajax({
 
 
 
-const modules = ["schedule", "news", "info", "message board", "map"];
+const modules = ["schedule", "news", "message board", "map"];
 const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
 
@@ -59471,7 +59470,7 @@ const mapDispatchToProps = dispatch => ({
   createInfo: (eventId, info) => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_info__["b" /* createInfo */])(eventId, info))
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__info_form__["a" /* default */]));
+/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__info_form__["a" /* default */]));
 
 /***/ }),
 /* 403 */
@@ -59498,6 +59497,9 @@ class InfoForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentDidMount() {
+    if (this.props.currentEvent.id === undefined) {
+      this.props.fetchEvent(this.props.match.params.eventTag);
+    }
     this.props.fetchInfo(this.props.currentEvent.id);
   }
 
@@ -59682,17 +59684,16 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
   }
 
   componentDidMount() {
-    this.props.fetchEvents(this.props.currentUser.id);
+    // this.props.fetchEvents(this.props.currentUser.id);
   }
 
   render() {
     let { events } = this.props;
     let display;
 
-    if (events === {}) {
+    if (events.all_ids.length === 0) {
       return null;
     }
-
     display = events.all_ids.map(eventId => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__event_index_item_container__["a" /* default */], {
       key: eventId,
       eventId: eventId }));
@@ -59701,7 +59702,7 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       'div',
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h5',
+        'h3',
         null,
         'Your Events'
       ),
@@ -59739,6 +59740,8 @@ const mapDispatchToProps = dispatch => ({});
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(18);
+
 
 
 class EventIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -59756,19 +59759,23 @@ class EventIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
     } = this.props.events.by_id[this.props.eventId];
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
+      'div',
       null,
-      "Name: ",
-      name,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-      "Tag: ",
+      'Name: ',
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+        { to: `/event/${this.props.eventId}` },
+        name
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+      'Tag: ',
       tag,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
-      "Image:",
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-        className: "event-index-picture",
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+      'Image:',
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+        className: 'event-index-picture',
         src: img_url,
-        alt: "" })
+        alt: '' })
     );
   }
 }
@@ -59782,6 +59789,14 @@ class EventIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_event_show_container__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_route_util__ = __webpack_require__(130);
+
+
+
+
 
 
 class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -59790,7 +59805,7 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    this.props.fetchEvents(this.props.currentUser);
   }
 
   render() {
@@ -59798,7 +59813,12 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      'Event'
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/:eventId', component: __WEBPACK_IMPORTED_MODULE_3__event_event_show_container__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__["a" /* default */] })
+      )
     );
   }
 }
@@ -71911,6 +71931,120 @@ const deleteNews = newsId => $.ajax({
   url: `api/news/${newsId}`
 });
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteNews;
+
+
+/***/ }),
+/* 568 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_event__ = __webpack_require__(19);
+
+
+
+
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  fetchEvents: userId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_event__["g" /* fetchEvents */])(userId))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event__["a" /* default */]));
+
+/***/ }),
+/* 569 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_redux__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_event_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_show__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_event__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(18);
+
+
+
+
+
+
+const mapStateToProps = state => ({
+  currentEvent: state.currentEvent
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchEvent: eventId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_event__["f" /* fetchEvent */])(eventId))
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_show__["a" /* default */])));
+
+/***/ }),
+/* 570 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_form_container__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_container__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_route_util__ = __webpack_require__(130);
+
+
+
+
+
+
+class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchEvent(parseInt(this.props.match.params.eventId));
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.eventId !== newProps.match.params.eventId) {
+      this.props.fetchEvent(parseInt(newProps.match.params.eventId));
+    }
+  }
+
+  render() {
+    let { id, display_elements } = this.props.currentEvent;
+
+    if (id === undefined) {
+      return null;
+    }
+
+    let links = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+      { to: `/event/${id}/${el}` },
+      el
+    ));
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h3',
+        null,
+        'Event Show'
+      ),
+      links,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/:eventId/schedule', component: __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_container__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/:eventId', component: __WEBPACK_IMPORTED_MODULE_2__event_event_form_container__["a" /* default */] })
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = EventShow;
 
 
 /***/ })

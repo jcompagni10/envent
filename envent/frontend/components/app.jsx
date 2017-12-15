@@ -5,7 +5,7 @@ import LandingPage from './landing_page.jsx';
 import HeaderContainer from './header/header_container';
 import AppBuilderContainer from './builder/app_builder_container';
 import Dashboard from './dashboard/dashboard';
-import Event from './event/event';
+import EventContainer from './event/event_container';
 import Schedule from './schedule/schedule';
 import Map from './map/map_container';
 import HomeLandingPage from './home/landing_page';
@@ -15,7 +15,7 @@ export default ()=>(
     <ProtectedRoute path="/" component = {HeaderContainer} />
     <Switch>
       <ProtectedRoute path='/dashboard' component = {Dashboard} />
-      <ProtectedRoute exact path='/event/' component = {Event} />
+      <ProtectedRoute path='/event/' component = {EventContainer} />
       {/* <ProtectedRoute path='/event' component = {Event} /> */}
       {/* <ProtectedRoute path='/event/:eventTag/schedule' component = {Schedule} /> */}
 

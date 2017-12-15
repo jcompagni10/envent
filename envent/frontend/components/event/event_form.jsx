@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
-const modules = ["schedule", "news", "info", "message board", "map"];
+const modules = ["schedule", "news", "message board", "map"];
 const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
 
