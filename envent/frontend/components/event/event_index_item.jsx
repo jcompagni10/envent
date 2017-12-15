@@ -12,9 +12,8 @@ export default class EventIndexItem extends React.Component {
     }
     
     let {
-      name, tag,
+      name, tag, img_url
     } = this.props.events.by_id[this.props.eventId];
-
 
     return (
       <div>
@@ -22,6 +21,11 @@ export default class EventIndexItem extends React.Component {
         <br />
         Tag: {tag}
         <br />
+        Image:
+        <img
+          className="event-index-picture"
+          src={img_url}
+          alt=""/>
       </div>
     );
   }

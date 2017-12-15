@@ -1,7 +1,13 @@
 import React from 'react';
 import Errors from '../misc/errors';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 const modules = ["schedule", "news", "info", "message board", "map"];
+
+const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
+
 
 export default class EventForm extends React.Component{
   constructor(){
@@ -9,6 +15,7 @@ export default class EventForm extends React.Component{
     this.state = {
       name: "",
       tag: "",
+      img_url: "",
     };
     this.modules = new Set;
   }
@@ -34,11 +41,31 @@ export default class EventForm extends React.Component{
     let event = this.state;
     event["modules"] = Array.from(this.modules);
     this.props.createEvent(event);
-    this.props.history.push(`/event_builder/${event.tag}/${this.state.modules[0]}`);
+    // this.props.history.push(`/event_builder/${event.tag}/${this.modules[0]}`);
     
   }
 
+  onImageDrop(files) {
+    this.handleImageUpload(files[0]);
+  }
 
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
+      upload.end((err, response) => {
+        if (err) {
+          console.error(err);
+        }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          img_url: response.body.secure_url
+        });
+      }
+    });
+  }
+  
   render(){
     return (
       <div>
@@ -78,6 +105,16 @@ export default class EventForm extends React.Component{
               </div>
             </fieldset>
           ))}
+
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            onDrop={this.onImageDrop.bind(this)}>
+            <p>Drop an image or click to select a file to upload.</p>
+          </Dropzone>
+
+          <img src={this.state.img_url} />
+
           <fieldset>
             <button
               className= "btn btn-primary"
