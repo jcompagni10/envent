@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadedState = { session: { currentUser: window.currentUser } };
     delete window.currentUser;
   }
-  const store = configureStore();
+  const store = configureStore(preloadedState);
   window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.destroyScheduleItem = destroyScheduleItem;
   window.fetchEvent = fetchEvent;
   window.fetchEvents = fetchEvents;
-  
+
   window.createNews = createNews;
   window.fetchSingleNews = fetchSingleNews;
   window.fetchNews = fetchNews;

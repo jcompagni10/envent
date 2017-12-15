@@ -11528,7 +11528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadedState = { session: { currentUser: window.currentUser } };
     delete window.currentUser;
   }
-  const store = Object(__WEBPACK_IMPORTED_MODULE_3__store_store_js__["a" /* default */])();
+  const store = Object(__WEBPACK_IMPORTED_MODULE_3__store_store_js__["a" /* default */])(preloadedState);
   window.store = store;
   const root = document.getElementById('root');
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_root__["a" /* default */], { store: store }), root);

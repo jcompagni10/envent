@@ -17,9 +17,11 @@ const modules = {
   Schedule:
     {title: 'Schedule', icon: 'map'},
   News:
-    {title: "News", icon: 'announcement'},
+    {title: "News", icon: 'news'},
   MessageBoard:
-    {title: "Message Board", icon: "message"}
+    {title: "Message Board", icon: "message"},
+  Ticket:
+    {title: "Ticket", icon: "ticket", type: "Entypo"}
 };
 
 export default class CustomItems extends React.Component {
@@ -82,6 +84,7 @@ export default class CustomItems extends React.Component {
                   name = {modules[item].icon}
                   size = {17}
                   reverse = {true}
+                  type = 'entypo'
                   raised
 
                   color = '#4abdac' />
