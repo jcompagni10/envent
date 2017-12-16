@@ -1,16 +1,59 @@
 import  {StyleSheet} from 'react-native';
+import Dimensions from 'Dimensions';
 
 export default StyleSheet.create({
   landingPageContainer : {
-    flex: 1
+    top: -70,
+    zIndex: -1,
+    height: Dimensions.get('window').height + 70,
+    bottom: 0,
   },
-  headerTitle :{
-    color: '#000',
-    fontFamily: 'Thonburi-Bold',
-    fontSize: 20
+  eventTitle:{
+    color: '#4abdac',
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 1,
+    textShadowColor: "rgba(0,0,0,.5)"
   },
-  headerContainer: {
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1
+  eventMessage:{
+    color: '#fff',
+    textAlign: 'center',
+    top: 25,
+    fontSize: 15,
+    fontWeight: 'bold',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 1,
+    textShadowColor: "rgba(0,0,0,.5)"
+  },
+  scrollHeader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  scrollHeaderContainer: {
+    top: 70,
+    padding: 20
+  },
+  eventDateText: {
+    marginTop: 50,
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+    textShadowColor: "rgba(0,0,0,.5)"
+
+  },
+  eventLocationText: {
+    marginTop: 5,
+    fontSize: 17,
+    color: '#fff',
+    textAlign: 'center',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 1,
+    textShadowColor: "rgba(0,0,0,.5)"
   }
+
 });

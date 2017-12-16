@@ -21,6 +21,8 @@ const modules = {
   MessageBoard:
     {title: "Message Board", icon: "message"},
   Ticket:
+    {title: "Ticket", icon: "ticket", type: "Entypo"},
+  Map:
     {title: "Ticket", icon: "ticket", type: "Entypo"}
 };
 

@@ -19,10 +19,11 @@ import {
   DrawerNavigator,
 } from 'react-navigation';
 
+
 import style from './styles/landing_page.js';
 import AuthForm from './auth_form';
 import Loader from './misc/loader';
-
+// import {findEventFromInput} from '../util/api';
 export default class HomeLandingPage extends React.Component {
 
   constructor(props) {
@@ -45,6 +46,28 @@ export default class HomeLandingPage extends React.Component {
         Alert.alert(error);
       }
 
+  }
+
+  findEventFromInput(eventTag) {
+    // TODO1 Add logic if failed response
+    const END_POINT = "http://192.168.3.37:3000";
+    return fetch(END_POINT+"/api/events/"+eventTag)
+      .then(
+        (response) => {
+          this.setState({isLoading: false});
+          if (response.status === 200){
+            return response.json();
+          } else{
+            throw new Error(response.statusText);
+          }
+        })
+      .catch(error => {
+        this.setState({
+          status: "Event Not Found",
+          showAuth: false,
+          isLoading: false
+        });
+      });
   }
 
   handleTagSubmit(){
@@ -73,27 +96,6 @@ export default class HomeLandingPage extends React.Component {
       this.setState({isLoading: false});
     }
   }
-
-  findEventFromInput(eventTag) {
-    // TODO1 Add logic if failed response
-    return fetch("http://192.168.3.37:3000/api/events/"+eventTag)
-      .then(
-        (response) => {
-          this.setState({isLoading: false});
-          if (response.status === 200){
-            return response.json();
-          } else{
-            throw new Error(response.statusText);
-          }
-        })
-      .catch(error => {
-        this.setState({
-          status: "Event Not Found",
-          showAuth: false,
-          isLoading: false
-        });
-      });
-    }
 
   closeAuth(){
     this.setState({showAuth: false});
@@ -130,7 +132,7 @@ export default class HomeLandingPage extends React.Component {
     this.storeEventTag();
     this.props.navigation.navigate(
       'Router',
-      // TODO1: fix code to get rid of need for redundant properties 
+      // TODO1: fix code to get rid of need for redundant properties
       {
         items: event.display_elements,
         eventName: event.name,

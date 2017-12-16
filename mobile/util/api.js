@@ -1,7 +1,9 @@
 import {Alert} from 'react-native';
 
+const END_POINT = "http://192.168.3.37:3000";
+
 export function fetchModuleData(eventId, module, offset){
-  return fetch(`http://192.168.3.37:3000/api/events/${eventId}/${module}?offset=${offset}`)
+  return fetch(`${END_POINT}/api/events/${eventId}/${module}?offset=${offset}`)
   .then(response => {
     if (response.status === 200){
       return response.json();
@@ -12,8 +14,10 @@ export function fetchModuleData(eventId, module, offset){
   );
 }
 
+
+
 export function postNewsMessage(eventId, message){
-  return fetch(`http://192.168.3.37:3000/api/events/${eventId}/news`,{
+  return fetch(`${END_POINT}/api/events/${eventId}/news`,{
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -35,7 +39,7 @@ export function postNewsMessage(eventId, message){
 }
 
 export function postMessage(eventId, message){
-  return fetch(`http://192.168.3.37:3000/api/events/${eventId}/messages`,{
+  return fetch(`${END_POINT}/api/events/${eventId}/messages`,{
     method: 'POST',
     headers: {
       Accept: 'application/json',

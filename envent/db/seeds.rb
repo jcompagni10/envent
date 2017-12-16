@@ -61,7 +61,6 @@ events = Event.create!([
    ])
 
 
-
 elements = DisplayElement.create!([
   {
     event_id: 1,
