@@ -59,7 +59,9 @@ export default class Schedule extends React.Component {
   render() {
     if (this.state.isLoading){
       return (
-        <Loader />
+        <View style ={style.loader}>
+          <Loader/>
+        </View>
       );
     }
     return (

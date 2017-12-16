@@ -19,7 +19,7 @@ import style from '../styles/messages';
 import {currentUser} from '../../util/user';
 import PostMessage from '../misc/post_message';
 import AuthForm from '../auth_form';
-
+import ValidityChecker from '../misc/validity_checker';
 export default class Schedule extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +27,7 @@ export default class Schedule extends React.Component {
       isLoading: true,
       fetching: false,
       showAuth: false,
+      validity: true,
     };
   }
 
@@ -90,6 +91,15 @@ export default class Schedule extends React.Component {
       offset: height * index,
       index
     };
+  }
+
+  handleInvalid(){
+    this.setState({validity: false});
+  }
+
+  markValid(){
+    debugger
+    this.setState({validity: true});
   }
 
   overScroll(){
@@ -170,6 +180,7 @@ export default class Schedule extends React.Component {
         visible = {this.isLoggedIn()}
         eventId = {this.state.eventId}
         callback = {this.succcesfulPost.bind(this)}
+        invalidPost = {this.handleInvalid.bind(this)}
         type = "messageBoard"
         />
       {this.isLoggedIn() ? null :
@@ -193,6 +204,10 @@ export default class Schedule extends React.Component {
         close = {this.closeAuth.bind(this)}
         callback = {this.succesfulLogin.bind(this)}
         />
+      <ValidityChecker
+        validity = {this.state.validity}
+        callback = {this.markValid.bind(this)}
+      />
     </View>
     );
   }

@@ -17,15 +17,15 @@ const modules = {
   EventLandingPage:
     {title: 'Home', icon: 'home' },
   Schedule:
-    {title: 'Schedule', icon: 'map'},
+    {title: 'Schedule', icon: 'calendar'},
   News:
     {title: "News", icon: 'news'},
   MessageBoard:
-    {title: "Message Board", icon: "message"},
+    {title: "Message Board", icon: "chat"},
   Ticket:
-    {title: "Ticket", icon: "ticket", type: "Entypo"},
+    {title: "Ticket", icon: "ticket"},
   Map:
-    {title: "Ticket", icon: "ticket", type: "Entypo"}
+    {title: "Map", icon: "map"}
 };
 
 export default class CustomItems extends React.Component {

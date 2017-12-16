@@ -30,7 +30,9 @@ export default StyleSheet.create({
   homeBtn: {
     position: 'absolute',
     bottom:25,
-    left:15,
+    width: '100%',
+    flex:1,
+    justifyContent: 'center'
   },
   button: {
     marginRight: 200

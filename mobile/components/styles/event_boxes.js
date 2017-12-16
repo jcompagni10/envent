@@ -2,6 +2,9 @@ import  {StyleSheet} from 'react-native';
 import Dimensions from 'Dimensions';
 export default StyleSheet.create({
 
+  loader: {
+    marginTop: 80,
+  },
   squaresContainer: {
     width: '100%',
     flex: 1,
