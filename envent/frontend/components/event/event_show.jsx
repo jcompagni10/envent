@@ -30,13 +30,18 @@ export default class EventShow extends React.Component {
     }
 
     let links = display_elements.map(el => (
-      <Link key={el} to={`/event/${id}/${el}`}>{ el }</Link>
+      <Link
+        className="event-link-nav"
+        key={el}
+        to={`/event/${id}/${el}`}
+      >{ el }</Link>
     ));
 
     return (
       <div>
-        <h3>Event Show</h3>
-        { links }
+        <div className="event-links-container">
+          { links }
+        </div>
 
         <Switch>
           <ProtectedRoute path="/event/:eventId/schedule" component={ScheduleContainer} />

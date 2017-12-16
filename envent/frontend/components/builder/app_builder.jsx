@@ -12,7 +12,7 @@ export default class AppBuilder extends React.Component {
   render(){
     return (
       <div>
-        <h2>Build Your App</h2>
+        <h2 className="app-builder-title">Build Your App</h2>
         <ProgressBarContainer data={[1,5]} />
         <Switch>
           {/* <ProtectedRoute path='/event_builder/:eventTag/info' component={InfoFormContainer} /> */}

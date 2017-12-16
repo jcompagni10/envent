@@ -1,0 +1,54 @@
+.event-form-main-container {
+  width: 60%;
+  min-width: 600px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.event-form-main-container  {
+}
+
+.event-form-date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#event-start, #event-end {
+  width: 80%;
+}
+
+.event-form-date-container > div {
+  width: 100%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.event-dropzone {
+  width: 90%;
+  height: 75px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed gray;
+}
+
+.event-form-image-preview {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.event-form-main-container label {
+  margin: 10px 0 3px 0;
+}

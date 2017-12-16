@@ -19,6 +19,7 @@
     "moment": "^2.19.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-beautiful-dnd": "^3.0.0",
     "react-bootstrap": "^0.31.5",
     "react-datepicker": "^0.62.0",
     "react-dom": "^16.2.0",

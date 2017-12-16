@@ -25104,7 +25104,7 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__CarouselItem__ = __webpack_require__(272);
 /* unused harmony reexport CarouselItem */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Checkbox__ = __webpack_require__(464);
-/* unused harmony reexport Checkbox */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_10__Checkbox__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Clearfix__ = __webpack_require__(465);
 /* unused harmony reexport Clearfix */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__CloseButton__ = __webpack_require__(99);
@@ -25124,9 +25124,9 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Form__ = __webpack_require__(488);
 /* unused harmony reexport Form */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FormControl__ = __webpack_require__(489);
-/* unused harmony reexport FormControl */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_20__FormControl__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FormGroup__ = __webpack_require__(492);
-/* unused harmony reexport FormGroup */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_21__FormGroup__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__Glyphicon__ = __webpack_require__(101);
 /* unused harmony reexport Glyphicon */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__Grid__ = __webpack_require__(281);
@@ -25150,7 +25150,7 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem__ = __webpack_require__(507);
 /* unused harmony reexport MenuItem */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__Modal__ = __webpack_require__(508);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_33__Modal__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_33__Modal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ModalBody__ = __webpack_require__(287);
 /* unused harmony reexport ModalBody */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__ModalFooter__ = __webpack_require__(288);
@@ -25160,15 +25160,15 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ModalTitle__ = __webpack_require__(290);
 /* unused harmony reexport ModalTitle */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__Nav__ = __webpack_require__(291);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_38__Nav__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_38__Nav__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__Navbar__ = __webpack_require__(524);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_39__Navbar__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_39__Navbar__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__NavbarBrand__ = __webpack_require__(292);
 /* unused harmony reexport NavbarBrand */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__NavDropdown__ = __webpack_require__(528);
 /* unused harmony reexport NavDropdown */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__NavItem__ = __webpack_require__(293);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_42__NavItem__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_42__NavItem__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__Overlay__ = __webpack_require__(294);
 /* unused harmony reexport Overlay */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__OverlayTrigger__ = __webpack_require__(535);
@@ -50740,13 +50740,13 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */],
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */],
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */].Header,
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */].Header,
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */].Brand,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */].Brand,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'a',
@@ -50756,31 +50756,31 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Nav */],
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Nav */],
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/dashboard',
             eventKey: 1 },
           'Home'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/event',
             eventKey: 2 },
           'Your Events'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/event_builder',
             eventKey: 3 },
           'App Builder'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/',
             onClick: this.props.logout,
@@ -50887,7 +50887,7 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
-        null,
+        { className: 'app-builder-title' },
         'Build Your App'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__progress_bar_container__["a" /* default */], { data: [1, 5] }),
@@ -51028,6 +51028,8 @@ const getEvents = userId => $.ajax({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_datepicker_dist_react_datepicker_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_datepicker_dist_react_datepicker_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__ = __webpack_require__(256);
+
 
 
 
@@ -51136,10 +51138,31 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     } = this.state;
 
     let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+    let navbar = this.props.match.params.eventId ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["f" /* Nav */],
+      { bsStyle: 'tabs', activeKey: 1 },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+        {
+          eventKey: 1,
+          href: `#/event/${this.props.currentEvent.id}`
+        },
+        'Event'
+      ),
+      this.props.currentEvent.display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+        {
+          eventKey: i + 2,
+          href: '#'
+        },
+        el
+      ))
+    ) : "";
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-form-main-container' },
+      navbar,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
         null,
@@ -51148,136 +51171,180 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */],
+          {
+            controlId: 'formBasicText' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-name' },
-            ' Name '
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-name',
-            type: 'text',
-            onChange: e => this.handleChange("name", e),
-            placeholder: 'Event Name',
-            value: name
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-tag' },
-            'Tag'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-tag',
-            type: 'text',
-            onChange: e => this.handleChange("tag", e),
-            placeholder: 'Event Tag',
-            value: tag
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-location' },
-            'Location'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-location',
-            type: 'text',
-            onChange: e => this.handleChange("location", e),
-            placeholder: 'Event Location',
-            value: location
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-message' },
-            'Message'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-message',
-            type: 'text',
-            onChange: e => this.handleChange("message", e),
-            placeholder: 'A custom event message',
-            value: message
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-start' },
-            'start date'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
-            id: 'event-start',
-            selected: this.state.start_date,
-            onChange: e => this.handDateChange("start_date", e)
-          }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-end' },
-            'end date'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
-            id: 'event-end',
-            selected: this.state.end_date,
-            onChange: e => this.handDateChange("end_date", e)
-          })
-        ),
-        modules.map(module => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          { key: module },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'form-check' },
+            'fieldset',
+            null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'form-check-label' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                className: 'form-check-input',
-                type: 'checkbox',
-                value: module,
-                onChange: e => this.handleChange("modules", e)
-              }),
-              module
-            )
-          )
-        )),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */],
-          {
-            multiple: false,
-            accept: 'image/*',
-            onDrop: this.onImageDrop.bind(this) },
+              { htmlFor: 'event-name' },
+              ' Name '
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-name',
+              type: 'text',
+              onChange: e => this.handleChange("name", e),
+              placeholder: 'Event Name',
+              value: name
+            })
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
+            'fieldset',
             null,
-            'Drop an image or click to select a file to upload.'
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.img_url }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-tag' },
+              'Tag'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-tag',
+              type: 'text',
+              onChange: e => this.handleChange("tag", e),
+              placeholder: 'Event Tag',
+              value: tag
+            })
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'button',
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-location' },
+              'Location'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-location',
+              type: 'text',
+              onChange: e => this.handleChange("location", e),
+              placeholder: 'Event Location',
+              value: location
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-message' },
+              'Message'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-message',
+              type: 'text',
+              onChange: e => this.handleChange("message", e),
+              placeholder: 'A custom event message',
+              value: message
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'event-form-date-container' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { htmlFor: 'event-start' },
+                  'Start Date'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
+                  id: 'event-start',
+                  selected: this.state.start_date,
+                  onChange: e => this.handDateChange("start_date", e)
+                })
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { htmlFor: 'event-end' },
+                  'End Date'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
+                  id: 'event-end',
+                  selected: this.state.end_date,
+                  onChange: e => this.handDateChange("end_date", e)
+                })
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'event-modules' },
+            'Modules'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */],
+            null,
+            modules.map(module => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'fieldset',
+              { key: module },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'form-check' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { className: 'form-check-label' },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["b" /* Checkbox */],
+                    {
+                      id: 'event-modules',
+                      className: 'form-check-input',
+                      type: 'checkbox',
+                      value: module,
+                      onChange: e => this.handleChange("modules", e)
+                    },
+                    module
+                  )
+                )
+              )
+            ))
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            null,
+            'Event Image'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */],
             {
-              className: 'btn btn-primary',
-              onClick: this.handleSubmit.bind(this) },
-            'Create Event'
+              multiple: false,
+              accept: 'image/*',
+              style: { "width": "300px;" },
+              className: 'event-dropzone',
+              onDrop: this.onImageDrop.bind(this) },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'p',
+              null,
+              'Drop an image or click to select a file to upload.'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            null,
+            'Image Preview'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+            className: 'event-form-image-preview',
+            src: this.state.img_url }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              {
+                className: 'btn btn-primary',
+                onClick: this.handleSubmit.bind(this) },
+              'Create Event'
+            )
           )
         )
       )
@@ -59964,12 +60031,16 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-switch-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/:eventId', component: __WEBPACK_IMPORTED_MODULE_3__event_event_show_container__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__["a" /* default */] })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'event-index-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__["a" /* default */] })
+        )
       )
     );
   }
@@ -60044,7 +60115,11 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
     let links = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-      { key: el, to: `/event/${id}/${el}` },
+      {
+        className: 'event-link-nav',
+        key: el,
+        to: `/event/${id}/${el}`
+      },
       el
     ));
 
@@ -60052,11 +60127,10 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       'div',
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h3',
-        null,
-        'Event Show'
+        'div',
+        { className: 'event-links-container' },
+        links
       ),
-      links,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
         null,
@@ -62277,7 +62351,7 @@ var Checkbox = function (_React$Component) {
 Checkbox.propTypes = propTypes;
 Checkbox.defaultProps = defaultProps;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["a" /* bsClass */])('checkbox', Checkbox));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["a" /* bsClass */])('checkbox', Checkbox));
 
 /***/ }),
 /* 465 */
@@ -64010,7 +64084,7 @@ FormControl.contextTypes = contextTypes;
 FormControl.Feedback = __WEBPACK_IMPORTED_MODULE_10__FormControlFeedback__["a" /* default */];
 FormControl.Static = __WEBPACK_IMPORTED_MODULE_11__FormControlStatic__["a" /* default */];
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["a" /* bsClass */])('form-control', Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].SMALL, __WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].LARGE], FormControl)));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["a" /* bsClass */])('form-control', Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].SMALL, __WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].LARGE], FormControl)));
 
 /***/ }),
 /* 490 */
@@ -64307,7 +64381,7 @@ var FormGroup = function (_React$Component) {
 FormGroup.propTypes = propTypes;
 FormGroup.childContextTypes = childContextTypes;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["a" /* bsClass */])('form-group', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], FormGroup)));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["a" /* bsClass */])('form-group', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], FormGroup)));
 
 /***/ }),
 /* 493 */
@@ -71666,19 +71740,19 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
       'div',
       { className: 'static-modal' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */],
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */],
         { show: this.props.modalOpen, onHide: this.props.closeModal },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Header,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Header,
           { closeButton: true },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Title,
+            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Title,
             null,
             title
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Body,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Body,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'form',
@@ -71709,7 +71783,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Footer,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Footer,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
