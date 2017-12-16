@@ -118,7 +118,7 @@ export default class EventForm extends React.Component{
 
     let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
     let navbar = this.props.match.params.eventId ? (
-      <Nav bsStyle="tabs" activeKey={1}>
+      <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
         <NavItem
           eventKey={1}
           href={`#/event/${this.props.currentEvent.id}`}

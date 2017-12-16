@@ -51140,7 +51140,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
     let navbar = this.props.match.params.eventId ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["f" /* Nav */],
-      { bsStyle: 'tabs', activeKey: 1 },
+      { bsStyle: 'tabs', activeHref: this.props.location.pathname },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
         {
@@ -60125,13 +60125,12 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     //     to={`/event/${id}/${el}`}
     //   >{ el }</Link>
     // ));
-
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'event-show-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["f" /* Nav */],
-        { bsStyle: 'tabs', activeKey: 1 },
+        { bsStyle: 'tabs', activeHref: "#" + this.props.location.pathname },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["g" /* NavItem */],
           {

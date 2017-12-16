@@ -36,14 +36,13 @@ export default class EventShow extends React.Component {
     //     to={`/event/${id}/${el}`}
     //   >{ el }</Link>
     // ));
-
     return (
       <div className="event-show-container">
         {/* <div className="event-links-container">
           { links }
         </div> */}
 
-        <Nav bsStyle="tabs" activeKey={1}>
+        <Nav bsStyle="tabs" activeHref={"#" + this.props.location.pathname}>
           <NavItem
             eventKey={1}
             href={`#/event/${id}`}
