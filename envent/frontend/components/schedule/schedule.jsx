@@ -9,7 +9,7 @@ export default class Schedule extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className="schedule-form-index-container">
         <ScheduleFormContainer />
         <ScheduleIndexContainer />
       </div>

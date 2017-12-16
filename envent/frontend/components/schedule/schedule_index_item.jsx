@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class ScheduleIndexItem extends React.Component {
   constructor(props) {
@@ -18,20 +19,55 @@ export default class ScheduleIndexItem extends React.Component {
       description,
     } = scheduleItem;
 
+    // let displayStart = moment(start_time)
+    // let displayEnd = moment(start_time).format("MMM DD h:mma");
+    
+    let start = new Date(start_time);
+    let end = new Date(end_time);
+
+    let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
+    let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
+
+
     return (
-      <div>
+      <div className="schedule-index-item-container">
         {/* <div id="calendar"></div> */}
-        <img src={ img_url } alt=""/>
-        title: { title }
-        start_time: { start_time }
-        end_time: { end_time }
-        feature_id: { feature_id }
-        location: { location }
-        description: { description }
-        <button>Update</button>
-        <button
-          onClick={ () => this.props.destroyScheduleItem(this.props.scheduleItemId) }
-          >Delete</button>
+        <div>
+          <img
+            className="schedule-index-item-image"
+            src={ img_url } alt=""/>
+        </div>
+
+        <div className="schedule-index-item-container-right">
+          <label htmlFor="">Title </label> &nbsp;
+          { title }
+          <br/>
+
+          <label htmlFor="">Start Time </label> &nbsp;
+          { displayStart }
+          <br />
+
+          <label htmlFor="">End Time </label> &nbsp;
+          { displayEnd }
+          <br />
+
+          <label htmlFor="">Feature </label> &nbsp;
+          { feature_id }
+          <br />
+
+          <label htmlFor="">Location </label> &nbsp;
+          { location }
+          <br />
+
+          <label htmlFor="">Description </label> &nbsp;
+          { description }
+          <br />
+
+          {/* <button>Update</button>
+          <button
+            onClick={ () => this.props.destroyScheduleItem(this.props.scheduleItemId) }
+            >Delete</button> */}
+        </div>
       </div>
     );
   }

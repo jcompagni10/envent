@@ -51,6 +51,15 @@ class Api::EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      render :show
+    else
+      render json: @event.errors.full_messages, status: 404
+    end
+  end
+
   private
 
   def event_params
