@@ -43,27 +43,21 @@ export default class ScheduleIndexItem extends React.Component {
         <div className="schedule-index-item-container-right">
           <label htmlFor="">Title </label> &nbsp;
           { title }
-          <br/>
 
           <label htmlFor="">Start Time </label> &nbsp;
           { parsed_start }
-          <br />
 
           <label htmlFor="">End Time </label> &nbsp;
           { parsed_end }
-          <br />
 
           <label htmlFor="">Feature </label> &nbsp;
           { feature_id }
-          <br />
 
           <label htmlFor="">Location </label> &nbsp;
           { location }
-          <br />
 
           <label htmlFor="">Description </label> &nbsp;
           { description }
-          <br />
 
           {/* <button>Update</button>
           <button

@@ -4,7 +4,9 @@ import EventFormContainer from '../event/event_form_container';
 import ScheduleContainer from './../schedule/schedule_container';
 import { ProtectedRoute } from './../../util/route_util';
 import { Nav, NavItem } from 'react-bootstrap';
-
+import NewsPlaceholder from './../news/news_placeholder';
+import MessageBoardPlaceholder from './../message_board/message_board_placeholder';
+import MapContainer from './../map/map_container';
 
 
 export default class EventShow extends React.Component {
@@ -61,6 +63,9 @@ export default class EventShow extends React.Component {
 
         <Switch>
           <ProtectedRoute path="/event/:eventId/schedule" component={ScheduleContainer} />
+          <ProtectedRoute path="/event/:eventId/News" component={NewsPlaceholder} />
+          <ProtectedRoute path="/event/:eventId/MessageBoard" component={MessageBoardPlaceholder} />
+          <ProtectedRoute path="/event/:eventId/Map" component={MapContainer} />
           <ProtectedRoute path="/event/:eventId" component={EventFormContainer} />
         </Switch>
       </div>
