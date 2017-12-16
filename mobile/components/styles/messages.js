@@ -2,6 +2,10 @@ import  {StyleSheet} from 'react-native';
 import Dimensions from 'Dimensions';
 
 export default StyleSheet.create({
+  container:{
+    height: '100%',
+    width: '100%'
+  },
   fullPage: {
     height: Dimensions.get('window').height - 70,
   },
@@ -26,7 +30,7 @@ export default StyleSheet.create({
   listWrapper: {
     top: 0,
     bottom: 0,
-    height: Dimensions.get('window').height- 80,
+    height: Dimensions.get('window').height- 120,
   },
 
 
@@ -107,6 +111,22 @@ export default StyleSheet.create({
     alignItems: 'center',
     bottom: 25,
     zIndex: -1
+  },
+  loginReqContainer: {
+    flexGrow:1,
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  loginReq:{
+    marginLeft: -3,
+    fontSize: 17,
+    textAlign: 'center',
+    color: '#999',
+  },
+  authWrapper: {
   }
 
 });

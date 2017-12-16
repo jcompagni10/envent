@@ -14,6 +14,8 @@ import {signOut, currentUser} from '../util/user';
 import AuthForm from './auth_form';
 
 const modules = {
+  EventLandingPage:
+    {title: 'Home', icon: 'home' },
   Schedule:
     {title: 'Schedule', icon: 'map'},
   News:
@@ -50,6 +52,9 @@ export default class CustomItems extends React.Component {
     this.props.navigation.navigate(module);
   }
 
+  navItems(){
+    return ["EventLandingPage"].concat(this.props.navigation.state.params.items);
+  }
 
   toLanding(){
     AsyncStorage.setItem('eventTag', "", ()=>{
@@ -76,7 +81,7 @@ export default class CustomItems extends React.Component {
           <View style= {style.navMenu} >
 
           <FlatList
-            data = {this.props.navigation.state.params.items}
+            data = {this.navItems()}
             renderItem = {({item}) =>
             <TouchableOpacity
                 style= {style.navItem}
