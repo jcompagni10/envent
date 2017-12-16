@@ -7,7 +7,7 @@ export default class EventIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchEvents(this.props.currentUser.id);
+    this.props.fetchEvents(this.props.currentUser.id);
   }
 
   render() {
@@ -25,7 +25,7 @@ export default class EventIndex extends React.Component {
 
     return (
       <div>
-        <h3>Your Events</h3>
+        {/* <h3>Manage Your Events</h3> */}
         { display }
       </div>
     );
