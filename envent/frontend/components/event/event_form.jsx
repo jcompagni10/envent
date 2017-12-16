@@ -126,15 +126,13 @@ export default class EventForm extends React.Component{
         {
           this.props.currentEvent.display_elements.map( (el, i) => (
             <NavItem
+              key={el}
+              id={el}
               eventKey={i + 2}
               href="#"
             >{ el }</NavItem>
           ))
-
         }
-
-        {/* <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-        <NavItem eventKey={3} disabled>NavItem 3 content</NavItem> */}
       </Nav>
     ) : (
       ""
@@ -142,11 +140,12 @@ export default class EventForm extends React.Component{
 
     return (
       <div className="event-form-main-container">
-      { navbar }
+      {/* { navbar } */}
         <h2>{ title }</h2>
         <form>
           <FormGroup
-            controlId="formBasicText">
+            // controlId="formBasicText"
+            >
             <Errors errors = {this.props.errors} />
             <fieldset>
               <label htmlFor ="event-name"> Name </label>
@@ -230,6 +229,7 @@ export default class EventForm extends React.Component{
                   <div className="form-check">
                     <label className="form-check-label">
                       <Checkbox
+                        key={module}
                         id="event-modules"
                         className="form-check-input"
                         type="checkbox"
@@ -248,7 +248,7 @@ export default class EventForm extends React.Component{
             <Dropzone
               multiple={false}
               accept="image/*"
-              style={{"width": "300px;"}}
+              // style={{"width": "300px;"}}
               className="event-dropzone"
               onDrop={this.onImageDrop.bind(this)}>
               <p>Drop an image or click to select a file to upload.</p>

@@ -51152,6 +51152,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       this.props.currentEvent.display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
         {
+          key: el,
+          id: el,
           eventKey: i + 2,
           href: '#'
         },
@@ -51162,7 +51164,6 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'event-form-main-container' },
-      navbar,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
         null,
@@ -51172,9 +51173,10 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
         'form',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */],
-          {
-            controlId: 'formBasicText' },
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */]
+          // controlId="formBasicText"
+          ,
+          null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'fieldset',
@@ -51296,6 +51298,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["b" /* Checkbox */],
                     {
+                      key: module,
                       id: 'event-modules',
                       className: 'form-check-input',
                       type: 'checkbox',
@@ -51317,9 +51320,9 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
             __WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */],
             {
               multiple: false,
-              accept: 'image/*',
-              style: { "width": "300px;" },
-              className: 'event-dropzone',
+              accept: 'image/*'
+              // style={{"width": "300px;"}}
+              , className: 'event-dropzone',
               onDrop: this.onImageDrop.bind(this) },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'p',
@@ -60085,6 +60088,8 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_form_container__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_container__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_route_util__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__ = __webpack_require__(256);
+
 
 
 
@@ -60113,23 +60118,37 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       return null;
     }
 
-    let links = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-      {
-        className: 'event-link-nav',
-        key: el,
-        to: `/event/${id}/${el}`
-      },
-      el
-    ));
+    // let links = display_elements.map(el => (
+    //   <Link
+    //     className="event-link-nav"
+    //     key={el}
+    //     to={`/event/${id}/${el}`}
+    //   >{ el }</Link>
+    // ));
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-show-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'event-links-container' },
-        links
+        __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["f" /* Nav */],
+        { bsStyle: 'tabs', activeKey: 1 },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["g" /* NavItem */],
+          {
+            eventKey: 1,
+            href: `#/event/${id}`
+          },
+          'Event'
+        ),
+        display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["g" /* NavItem */],
+          {
+            key: el,
+            eventKey: i + 2,
+            href: `#/event/${id}/${el}`
+          },
+          el
+        ))
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
