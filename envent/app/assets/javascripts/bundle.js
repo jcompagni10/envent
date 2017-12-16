@@ -12022,7 +12022,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event))
+  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event)),
+  updateEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["updateEvent"])(event))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_form__["a" /* default */])));
@@ -51056,6 +51057,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     };
 
     this.modules = new Set();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51098,13 +51100,18 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     this.setState({ [field]: date });
   }
 
-  handleSubmit() {
+  handleSubmit(action = "create") {
     let event = Object.assign({}, this.state);
     event["modules"] = Array.from(this.modules);
     event.start_date = this.state.start_date.format();
     event.end_date = this.state.end_date.format();
-    this.props.createEvent(event);
-    this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    if (action === "create") {
+      this.props.createEvent(event);
+      this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    } else {
+      this.props.updateEvent(event);
+      this.props.history.push(`/event/${event.id}`);
+    }
   }
 
   onImageDrop(files) {
@@ -51137,29 +51144,73 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       end_date
     } = this.state;
 
-    let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
-    let navbar = this.props.match.params.eventId ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["f" /* Nav */],
-      { bsStyle: 'tabs', activeHref: this.props.location.pathname },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+    // let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+    // let navbar = this.props.match.params.eventId ? (
+    //   <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
+    //     <NavItem
+    //       eventKey={1}
+    //       href={`#/event/${this.props.currentEvent.id}`}
+    //       >Event</NavItem>
+    //     {
+    //       this.props.currentEvent.display_elements.map( (el, i) => (
+    //         <NavItem
+    //           key={el}
+    //           id={el}
+    //           eventKey={i + 2}
+    //           href="#"
+    //         >{ el }</NavItem>
+    //       ))
+    //     }
+    //   </Nav>
+    // ) : (
+    //   ""
+    // );
+
+    let title;
+    let navbar;
+    let button;
+    if (this.props.match.params.eventId) {
+      title = "Update Event";
+      navbar = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["f" /* Nav */],
+        { bsStyle: 'tabs', activeHref: this.props.location.pathname },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+          {
+            eventKey: 1,
+            href: `#/event/${this.props.currentEvent.id}`
+          },
+          'Event'
+        ),
+        this.props.currentEvent.display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+          {
+            key: el,
+            id: el,
+            eventKey: i + 2,
+            href: '#'
+          },
+          el
+        ))
+      );
+      button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
         {
-          eventKey: 1,
-          href: `#/event/${this.props.currentEvent.id}`
-        },
-        'Event'
-      ),
-      this.props.currentEvent.display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+          className: 'btn btn-primary',
+          onClick: () => this.handleSubmit("update") },
+        'Update Event'
+      );
+    } else {
+      title = "Event Form";
+      navbar = "";
+      button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
         {
-          key: el,
-          id: el,
-          eventKey: i + 2,
-          href: '#'
-        },
-        el
-      ))
-    ) : "";
+          className: 'btn btn-primary',
+          onClick: () => this.handleSubmit("create") },
+        'Create Event'
+      );
+    }
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
@@ -51341,13 +51392,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'fieldset',
             null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'button',
-              {
-                className: 'btn btn-primary',
-                onClick: this.handleSubmit.bind(this) },
-              'Create Event'
-            )
+            button
           )
         )
       )

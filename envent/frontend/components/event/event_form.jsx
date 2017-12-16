@@ -33,6 +33,7 @@ export default class EventForm extends React.Component{
     };
 
     this.modules = new Set;
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -75,13 +76,18 @@ export default class EventForm extends React.Component{
     this.setState({[field]: date});
   }
 
-  handleSubmit(){
+  handleSubmit( action = "create" ) {
     let event = Object.assign({},this.state);
     event["modules"] = Array.from(this.modules);
     event.start_date = this.state.start_date.format();
     event.end_date = this.state.end_date.format();
-    this.props.createEvent(event);
-    this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    if (action === "create") {
+      this.props.createEvent(event);
+      this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    } else {
+      this.props.updateEvent(event);
+      this.props.history.push(`/event/${event.id}`);
+    }
   }
 
   onImageDrop(files) {
@@ -116,27 +122,69 @@ export default class EventForm extends React.Component{
       end_date,
     } = this.state;
 
-    let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
-    let navbar = this.props.match.params.eventId ? (
-      <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
-        <NavItem
-          eventKey={1}
-          href={`#/event/${this.props.currentEvent.id}`}
+    // let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+    // let navbar = this.props.match.params.eventId ? (
+    //   <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
+    //     <NavItem
+    //       eventKey={1}
+    //       href={`#/event/${this.props.currentEvent.id}`}
+    //       >Event</NavItem>
+    //     {
+    //       this.props.currentEvent.display_elements.map( (el, i) => (
+    //         <NavItem
+    //           key={el}
+    //           id={el}
+    //           eventKey={i + 2}
+    //           href="#"
+    //         >{ el }</NavItem>
+    //       ))
+    //     }
+    //   </Nav>
+    // ) : (
+    //   ""
+    // );
+
+    let title;
+    let navbar;
+    let button;
+    if (this.props.match.params.eventId) {
+      title = "Update Event";
+      navbar = (
+        <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
+          <NavItem
+            eventKey={1}
+            href={`#/event/${this.props.currentEvent.id}`}
           >Event</NavItem>
-        {
-          this.props.currentEvent.display_elements.map( (el, i) => (
-            <NavItem
-              key={el}
-              id={el}
-              eventKey={i + 2}
-              href="#"
-            >{ el }</NavItem>
-          ))
-        }
-      </Nav>
-    ) : (
-      ""
-    );
+          {
+            this.props.currentEvent.display_elements.map((el, i) => (
+              <NavItem
+                key={el}
+                id={el}
+                eventKey={i + 2}
+                href="#"
+              >{el}</NavItem>
+            ))
+          }
+        </Nav>
+      );
+      button = (
+        <button
+          className="btn btn-primary"
+          onClick={ () => this.handleSubmit("update") }>
+          Update Event
+        </button>
+      );
+    } else {
+      title = "Event Form";
+      navbar = "";
+      button = (
+      <button
+        className="btn btn-primary"
+        onClick={ () => this.handleSubmit("create") }>
+        Create Event
+      </button>
+      );
+    }
 
     return (
       <div className="event-form-main-container">
@@ -259,11 +307,7 @@ export default class EventForm extends React.Component{
               className="event-form-image-preview"
               src={this.state.img_url} />
             <fieldset>
-              <button
-                className= "btn btn-primary"
-                onClick = {this.handleSubmit.bind(this)}>
-                Create Event
-              </button>
+              { button }
             </fieldset>
           </FormGroup>
         </form>
