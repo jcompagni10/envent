@@ -20,7 +20,7 @@ export default StyleSheet.create({
   eventMessage:{
     color: '#fff',
     textAlign: 'center',
-    top: 25,
+    marginTop: 45,
     fontSize: 15,
     fontWeight: 'bold',
     textShadowOffset: {width: 1, height: 1},
@@ -37,7 +37,7 @@ export default StyleSheet.create({
     padding: 20
   },
   eventDateText: {
-    marginTop: 50,
+    marginTop: 10,
     fontSize: 20,
     color: '#fff',
     textAlign: 'center',

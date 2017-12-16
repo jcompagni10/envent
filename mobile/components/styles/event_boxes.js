@@ -24,12 +24,12 @@ export default StyleSheet.create({
   },
   squareTitle:{
     backgroundColor: 'transparent',
-    top: -25,
+    top: -20,
     marginLeft: 5,
     fontSize: 15,
     color: '#fff',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 1,
-    textShadowColor: "rgba(0,0,0,1)"
+    textShadowColor: "rgba(0,0,0,1)",
   }
 });
