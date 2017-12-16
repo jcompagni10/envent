@@ -39,7 +39,9 @@ export default class ScheduleIndex extends React.Component {
     return (
       <div>
         <h3>Current Schedule Items</h3>
-        { display }
+        {/* <div className="schedule-index-container"> */}
+          { display }
+        {/* </div> */}
       </div>
     );
   }

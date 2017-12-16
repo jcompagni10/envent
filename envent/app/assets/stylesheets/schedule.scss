@@ -3,13 +3,13 @@
 
 }
 
-.schedule-form-index-container:first-child {
-  width: 27%;
-}
+// .schedule-form-index-container:first-child {
+//   width: 27%;
+// }
 
-.schedule-form-index-container:nth-child(2) {
-  width: 77%;
-}
+// .schedule-form-index-container:nth-child(2) {
+//   width: 67%;
+// }
 
 .schedule-form-preview-image {
   width: 95%;
@@ -44,4 +44,19 @@
 
 .schedule-index-item-container-right {
   margin-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.schedule-form-index-container-left {
+  width: 27%
+}
+
+.schedule-form-index-container-right {
+width: 100%
+}
+
+.schedule-index-container {
+  display: flex;
+  flex-wrap: wrap;
 }
