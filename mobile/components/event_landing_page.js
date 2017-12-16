@@ -41,7 +41,6 @@ export default class EventLandingPage extends React.Component {
     const start = new Moment(event.start_date);
     const end = new Moment(event.end_date);
     return start.format("MMMM Do") +  " ~ " + end.format("MMMM Do");
-
   }
 
 
@@ -68,13 +67,13 @@ export default class EventLandingPage extends React.Component {
           renderForeground = {()=>(
             <View style={style.scrollHeaderContainer}>
               <Text style={style.eventTitle}>{event.name}</Text>
-              <Text style={style.eventMessage}>{event.message}</Text>
               <Text style = {style.eventDateText}>
-                 {this.formatDate(event)}
-                </Text>
-                <Text style = {style.eventLocationText}>
-                  {event.location}
-                </Text>
+                {this.formatDate(event)}
+              </Text>
+              <Text style={style.eventMessage}>{event.message}</Text>
+              <Text style = {style.eventLocationText}>
+                {event.location}
+              </Text>
             </View>
           )}
         >

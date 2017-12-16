@@ -32,7 +32,10 @@ events = Event.create!([
     user_id: 1,
     start_date: Date.new(2018,2,3),
     end_date: Date.new(2018,2,5),
-    private: false
+    private: false,
+    message: 'So You Know When the Keg Arrives',
+    img_url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+    location: 'Eddies Pants'
 
   },
   { name: "Sick Festival",
@@ -82,6 +85,11 @@ elements = DisplayElement.create!([
     event_id: 1,
     position: 3,
     module: "Ticket",
+  },
+  {
+    event_id: 1,
+    position: 3,
+    module: "Map",
   },
   {
     event_id: 2,

@@ -5,7 +5,7 @@ import {
   View,
   Image,
   Button,
-  TouchableHighlight,
+  TouchableOpacity,
   SectionList,
   ListItem,
   Header,
@@ -99,13 +99,13 @@ export default class Schedule extends React.Component {
 
   _renderButton(item){
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         key = {item}
         style={this.buttonStyle(item)}
         onPress={()=>this.setDay(item)}
       >
         <Text style={style.dayButtonText}>{item}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
   dayButtons(){
