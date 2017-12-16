@@ -1,1 +1,1 @@
-json.extract! schedule_item, :id, :title, :start_time, :end_time, :feature_id, :location, :img_url, :description, :event_id
+json.extract! schedule_item, :id, :title, :start_time, :end_time, :feature_id, :location, :img_url, :description, :event_id, :parsed_start, :parsed_end

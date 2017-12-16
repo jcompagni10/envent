@@ -59698,17 +59698,20 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
       feature_id,
       location,
       img_url,
-      description
+      description,
+      parsed_start,
+      parsed_end
     } = scheduleItem;
 
     // let displayStart = moment(start_time)
     // let displayEnd = moment(start_time).format("MMM DD h:mma");
 
-    let start = new Date(start_time);
-    let end = new Date(end_time);
+    // let start = new Date(start_time);
+    // let end = new Date(end_time);
 
-    let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
-    let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
+    // let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
+    // let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
+
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
@@ -59737,7 +59740,7 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
           'Start Time '
         ),
         ' \xA0',
-        displayStart,
+        parsed_start,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'label',
@@ -59745,7 +59748,7 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
           'End Time '
         ),
         ' \xA0',
-        displayEnd,
+        parsed_end,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'label',

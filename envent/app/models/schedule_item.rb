@@ -25,9 +25,24 @@ class ScheduleItem < ApplicationRecord
 
   belongs_to :event
 
-  before_save :ensure_image
+  before_save :ensure_image, :parse_times
 
   def ensure_image
     self.img_url ||= "https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg"
   end
+
+  def parse_times
+    self.parsed_start = self.start_time.strftime("%b %e %l:%M%P")
+    self.parsed_end = self.end_time.strftime("%b %e %l:%M%P")
+  end
+  
+  # def start_time=(start_time)
+  #   self.start_time = start_time
+  #   self.parsed_start = start_time.strftime("%b %e %l:%M%P")
+  # end
+
+  # def end_time=(end_time)
+  #   self.end_time = end_time
+  #   self.parsed_end = end_time.strftime("%b %e %l:%M%P")
+  # end
 end

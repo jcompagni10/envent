@@ -17,16 +17,18 @@ export default class ScheduleIndexItem extends React.Component {
       location,
       img_url,
       description,
+      parsed_start,
+      parsed_end
     } = scheduleItem;
 
     // let displayStart = moment(start_time)
     // let displayEnd = moment(start_time).format("MMM DD h:mma");
-    
-    let start = new Date(start_time);
-    let end = new Date(end_time);
 
-    let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
-    let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
+    // let start = new Date(start_time);
+    // let end = new Date(end_time);
+
+    // let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
+    // let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
 
 
     return (
@@ -44,11 +46,11 @@ export default class ScheduleIndexItem extends React.Component {
           <br/>
 
           <label htmlFor="">Start Time </label> &nbsp;
-          { displayStart }
+          { parsed_start }
           <br />
 
           <label htmlFor="">End Time </label> &nbsp;
-          { displayEnd }
+          { parsed_end }
           <br />
 
           <label htmlFor="">Feature </label> &nbsp;
