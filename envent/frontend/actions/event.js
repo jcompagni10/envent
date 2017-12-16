@@ -1,7 +1,8 @@
 import {
   postEvent,
   getEvent,
-  getEvents
+  getEvents,
+  patchEvent,
 } from '../util/event_api';
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
@@ -43,4 +44,9 @@ export const fetchEvent = eventId => dispatch => (
 export const fetchEvents = userId => dispatch => (
   getEvents(userId)
     .then(events => dispatch(receiveEvents(events)))
+);
+
+export const updateEvent = event => dispatch => (
+  patchEvent(event)
+    .then(newEvent => dispatch(receiveEvent(newEvent)))
 );

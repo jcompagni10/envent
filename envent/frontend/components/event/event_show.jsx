@@ -3,7 +3,7 @@ import { Link, Switch } from 'react-router-dom';
 import EventFormContainer from '../event/event_form_container';
 import ScheduleContainer from './../schedule/schedule_container';
 import { ProtectedRoute } from './../../util/route_util';
-
+import { Nav, NavItem } from 'react-bootstrap';
 
 
 
@@ -29,14 +29,35 @@ export default class EventShow extends React.Component {
       return null;
     }
 
-    let links = display_elements.map(el => (
-      <Link key={el} to={`/event/${id}/${el}`}>{ el }</Link>
-    ));
-
+    // let links = display_elements.map(el => (
+    //   <Link
+    //     className="event-link-nav"
+    //     key={el}
+    //     to={`/event/${id}/${el}`}
+    //   >{ el }</Link>
+    // ));
     return (
-      <div>
-        <h3>Event Show</h3>
-        { links }
+      <div className="event-show-container">
+        {/* <div className="event-links-container">
+          { links }
+        </div> */}
+
+        <Nav bsStyle="tabs" activeHref={"#" + this.props.location.pathname}>
+          <NavItem
+            eventKey={1}
+            href={`#/event/${id}`}
+          >Event</NavItem>
+          {
+            display_elements.map((el, i) => (
+              <NavItem
+                key={el}
+                eventKey={i + 2}
+                href={`#/event/${id}/${el}`}
+              >{el}</NavItem>
+            ))
+          }
+        </Nav>
+        
 
         <Switch>
           <ProtectedRoute path="/event/:eventId/schedule" component={ScheduleContainer} />

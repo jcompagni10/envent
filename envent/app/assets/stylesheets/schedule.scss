@@ -1,0 +1,62 @@
+.schedule-form-index-container {
+  display: flex;
+
+}
+
+// .schedule-form-index-container:first-child {
+//   width: 27%;
+// }
+
+// .schedule-form-index-container:nth-child(2) {
+//   width: 67%;
+// }
+
+.schedule-form-preview-image {
+  width: 95%;
+}
+
+.schedule-index-item-image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.schedule-form-container label {
+  margin: 7px 0 3px 0;
+}
+
+.schedule-dropzone {
+  width: 100%;
+  height: 75px;
+  border: 1px dashed gray;
+  display: flex;
+  align-items: center;
+}
+
+.schedule-form-container {
+  margin: 0 15px 0 0;
+}
+
+.schedule-index-item-container {
+  display: flex;
+}
+
+.schedule-index-item-container-right {
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.schedule-form-index-container-left {
+  width: 27%
+}
+
+.schedule-form-index-container-right {
+width: 100%
+}
+
+.schedule-index-container {
+  display: flex;
+  flex-wrap: wrap;
+}

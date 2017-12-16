@@ -5446,7 +5446,7 @@ const receiveEventErrors = errors => ({
 });
 
 // thunk action creators
-const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["c" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
+const createEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["d" /* postEvent */])(event).then(dbEvent => dispatch(receiveEvent(dbEvent)), errors => dispatch(receiveEventErrors(errors.responseJSON)));
 /* harmony export (immutable) */ __webpack_exports__["e"] = createEvent;
 
 
@@ -5456,6 +5456,10 @@ const fetchEvent = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__ut
 
 const fetchEvents = userId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["b" /* getEvents */])(userId).then(events => dispatch(receiveEvents(events)));
 /* harmony export (immutable) */ __webpack_exports__["g"] = fetchEvents;
+
+
+const updateEvent = event => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_event_api__["c" /* patchEvent */])(event).then(newEvent => dispatch(receiveEvent(newEvent)));
+/* harmony export (immutable) */ __webpack_exports__["h"] = updateEvent;
 
 
 /***/ }),
@@ -12022,7 +12026,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event))
+  createEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["e" /* createEvent */])(event)),
+  updateEvent: event => dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions_event_js__["h" /* updateEvent */])(event))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__event_form__["a" /* default */])));
@@ -25044,9 +25049,17 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_form_container__["a" /* default */], null),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__schedule_index_container__["a" /* default */], null)
+      { className: 'schedule-form-index-container' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'schedule-form-index-container-left' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_form_container__["a" /* default */], null)
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'schedule-form-index-container-right' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__schedule_index_container__["a" /* default */], null)
+      )
     );
   }
 }
@@ -25104,7 +25117,7 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__CarouselItem__ = __webpack_require__(272);
 /* unused harmony reexport CarouselItem */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Checkbox__ = __webpack_require__(464);
-/* unused harmony reexport Checkbox */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_10__Checkbox__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Clearfix__ = __webpack_require__(465);
 /* unused harmony reexport Clearfix */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__CloseButton__ = __webpack_require__(99);
@@ -25124,9 +25137,9 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Form__ = __webpack_require__(488);
 /* unused harmony reexport Form */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FormControl__ = __webpack_require__(489);
-/* unused harmony reexport FormControl */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_20__FormControl__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FormGroup__ = __webpack_require__(492);
-/* unused harmony reexport FormGroup */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_21__FormGroup__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__Glyphicon__ = __webpack_require__(101);
 /* unused harmony reexport Glyphicon */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__Grid__ = __webpack_require__(281);
@@ -25150,7 +25163,7 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem__ = __webpack_require__(507);
 /* unused harmony reexport MenuItem */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__Modal__ = __webpack_require__(508);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_33__Modal__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_33__Modal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ModalBody__ = __webpack_require__(287);
 /* unused harmony reexport ModalBody */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__ModalFooter__ = __webpack_require__(288);
@@ -25160,15 +25173,15 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ModalTitle__ = __webpack_require__(290);
 /* unused harmony reexport ModalTitle */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__Nav__ = __webpack_require__(291);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_38__Nav__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_38__Nav__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__Navbar__ = __webpack_require__(524);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_39__Navbar__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_39__Navbar__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__NavbarBrand__ = __webpack_require__(292);
 /* unused harmony reexport NavbarBrand */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__NavDropdown__ = __webpack_require__(528);
 /* unused harmony reexport NavDropdown */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__NavItem__ = __webpack_require__(293);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_42__NavItem__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_42__NavItem__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__Overlay__ = __webpack_require__(294);
 /* unused harmony reexport Overlay */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__OverlayTrigger__ = __webpack_require__(535);
@@ -50740,13 +50753,13 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */],
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */],
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */].Header,
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */].Header,
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Navbar */].Brand,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["h" /* Navbar */].Brand,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'a',
@@ -50756,31 +50769,31 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["c" /* Nav */],
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["f" /* Nav */],
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/dashboard',
             eventKey: 1 },
           'Home'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/event',
             eventKey: 2 },
           'Your Events'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/event_builder',
             eventKey: 3 },
           'App Builder'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["d" /* NavItem */],
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["g" /* NavItem */],
           {
             href: '#/',
             onClick: this.props.logout,
@@ -50887,16 +50900,20 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
-        null,
+        { className: 'app-builder-title' },
         'Build Your App'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__progress_bar_container__["a" /* default */], { data: [1, 5] }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/news', component: __WEBPACK_IMPORTED_MODULE_6__news_news_container___default.a }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
+        'div',
+        { className: 'app-builder-content-container' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/schedule', component: __WEBPACK_IMPORTED_MODULE_4__schedule_schedule_container__["a" /* default */] }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder/:eventTag/news', component: __WEBPACK_IMPORTED_MODULE_6__news_news_container___default.a }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__util_route_util__["b" /* ProtectedRoute */], { path: '/event_builder', component: __WEBPACK_IMPORTED_MODULE_3__event_event_form_container__["a" /* default */] })
+        )
       )
     );
   }
@@ -50996,7 +51013,7 @@ const postEvent = event => $.ajax({
   url: 'api/events',
   data: { event }
 });
-/* harmony export (immutable) */ __webpack_exports__["c"] = postEvent;
+/* harmony export (immutable) */ __webpack_exports__["d"] = postEvent;
 
 
 const getEvent = eventTag => $.ajax({
@@ -51010,6 +51027,17 @@ const getEvents = userId => $.ajax({
   data: { userId }
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = getEvents;
+
+
+const patchEvent = event => {
+  debugger;
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/events/${event.id}`,
+    data: { event }
+  });
+};
+/* harmony export (immutable) */ __webpack_exports__["c"] = patchEvent;
 
 
 /***/ }),
@@ -51028,6 +51056,8 @@ const getEvents = userId => $.ajax({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_datepicker_dist_react_datepicker_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_datepicker_dist_react_datepicker_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__ = __webpack_require__(256);
+
 
 
 
@@ -51054,6 +51084,7 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     };
 
     this.modules = new Set();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51096,13 +51127,18 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     this.setState({ [field]: date });
   }
 
-  handleSubmit() {
+  handleSubmit(action = "create") {
     let event = Object.assign({}, this.state);
     event["modules"] = Array.from(this.modules);
     event.start_date = this.state.start_date.format();
     event.end_date = this.state.end_date.format();
-    this.props.createEvent(event);
-    this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    if (action === "create") {
+      this.props.createEvent(event);
+      this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+    } else {
+      this.props.updateEvent(event);
+      this.props.history.push(`/event/${event.id}`);
+    }
   }
 
   onImageDrop(files) {
@@ -51135,11 +51171,77 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       end_date
     } = this.state;
 
-    let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+    // let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+    // let navbar = this.props.match.params.eventId ? (
+    //   <Nav bsStyle="tabs" activeHref={this.props.location.pathname}>
+    //     <NavItem
+    //       eventKey={1}
+    //       href={`#/event/${this.props.currentEvent.id}`}
+    //       >Event</NavItem>
+    //     {
+    //       this.props.currentEvent.display_elements.map( (el, i) => (
+    //         <NavItem
+    //           key={el}
+    //           id={el}
+    //           eventKey={i + 2}
+    //           href="#"
+    //         >{ el }</NavItem>
+    //       ))
+    //     }
+    //   </Nav>
+    // ) : (
+    //   ""
+    // );
+
+    let title;
+    let navbar;
+    let button;
+    if (this.props.match.params.eventId) {
+      title = "Update Event";
+      navbar = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["f" /* Nav */],
+        { bsStyle: 'tabs', activeHref: this.props.location.pathname },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+          {
+            eventKey: 1,
+            href: `#/event/${this.props.currentEvent.id}`
+          },
+          'Event'
+        ),
+        this.props.currentEvent.display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["g" /* NavItem */],
+          {
+            key: el,
+            id: el,
+            eventKey: i + 2,
+            href: '#'
+          },
+          el
+        ))
+      );
+      button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        {
+          className: 'btn btn-primary',
+          onClick: () => this.handleSubmit("update") },
+        'Update Event'
+      );
+    } else {
+      title = "Event Form";
+      navbar = "";
+      button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        {
+          className: 'btn btn-primary',
+          onClick: () => this.handleSubmit("create") },
+        'Create Event'
+      );
+    }
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-form-main-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
         null,
@@ -51148,136 +51250,176 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
+          __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */]
+          // controlId="formBasicText"
+          ,
           null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__misc_errors__["a" /* default */], { errors: this.props.errors }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-name' },
-            ' Name '
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-name',
-            type: 'text',
-            onChange: e => this.handleChange("name", e),
-            placeholder: 'Event Name',
-            value: name
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-tag' },
-            'Tag'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-tag',
-            type: 'text',
-            onChange: e => this.handleChange("tag", e),
-            placeholder: 'Event Tag',
-            value: tag
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-location' },
-            'Location'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-location',
-            type: 'text',
-            onChange: e => this.handleChange("location", e),
-            placeholder: 'Event Location',
-            value: location
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-message' },
-            'Message'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-            id: 'event-message',
-            type: 'text',
-            onChange: e => this.handleChange("message", e),
-            placeholder: 'A custom event message',
-            value: message
-          })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-start' },
-            'start date'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
-            id: 'event-start',
-            selected: this.state.start_date,
-            onChange: e => this.handDateChange("start_date", e)
-          }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'label',
-            { htmlFor: 'event-end' },
-            'end date'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
-            id: 'event-end',
-            selected: this.state.end_date,
-            onChange: e => this.handDateChange("end_date", e)
-          })
-        ),
-        modules.map(module => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          { key: module },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'form-check' },
+            'fieldset',
+            null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'label',
-              { className: 'form-check-label' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                className: 'form-check-input',
-                type: 'checkbox',
-                value: module,
-                onChange: e => this.handleChange("modules", e)
-              }),
-              module
-            )
-          )
-        )),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */],
-          {
-            multiple: false,
-            accept: 'image/*',
-            onDrop: this.onImageDrop.bind(this) },
+              { htmlFor: 'event-name' },
+              ' Name '
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-name',
+              type: 'text',
+              onChange: e => this.handleChange("name", e),
+              placeholder: 'Event Name',
+              value: name
+            })
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
+            'fieldset',
             null,
-            'Drop an image or click to select a file to upload.'
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.img_url }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'fieldset',
-          null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-tag' },
+              'Tag'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-tag',
+              type: 'text',
+              onChange: e => this.handleChange("tag", e),
+              placeholder: 'Event Tag',
+              value: tag
+            })
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'button',
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-location' },
+              'Location'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-location',
+              type: 'text',
+              onChange: e => this.handleChange("location", e),
+              placeholder: 'Event Location',
+              value: location
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'event-message' },
+              'Message'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["c" /* FormControl */], {
+              id: 'event-message',
+              type: 'text',
+              onChange: e => this.handleChange("message", e),
+              placeholder: 'A custom event message',
+              value: message
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'event-form-date-container' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { htmlFor: 'event-start' },
+                  'Start Date'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
+                  id: 'event-start',
+                  selected: this.state.start_date,
+                  onChange: e => this.handDateChange("start_date", e)
+                })
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { htmlFor: 'event-end' },
+                  'End Date'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_datepicker__["a" /* default */], {
+                  id: 'event-end',
+                  selected: this.state.end_date,
+                  onChange: e => this.handDateChange("end_date", e)
+                })
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'event-modules' },
+            'Modules'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["d" /* FormGroup */],
+            null,
+            modules.map(module => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'fieldset',
+              { key: module },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'form-check' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  { className: 'form-check-label' },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_7_react_bootstrap__["b" /* Checkbox */],
+                    {
+                      key: module,
+                      id: 'event-modules',
+                      className: 'form-check-input',
+                      type: 'checkbox',
+                      value: module,
+                      onChange: e => this.handleChange("modules", e)
+                    },
+                    module
+                  )
+                )
+              )
+            ))
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            null,
+            'Event Image'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_react_dropzone__["a" /* default */],
             {
-              className: 'btn btn-primary',
-              onClick: this.handleSubmit.bind(this) },
-            'Create Event'
+              multiple: false,
+              accept: 'image/*'
+              // style={{"width": "300px;"}}
+              , className: 'event-dropzone',
+              onDrop: this.onImageDrop.bind(this) },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'p',
+              null,
+              'Drop an image or click to select a file to upload.'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            null,
+            'Image Preview'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+            className: 'event-form-image-preview',
+            src: this.state.img_url }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'fieldset',
+            null,
+            button
           )
         )
       )
@@ -59206,6 +59348,8 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dropzone__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_superagent__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_superagent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_superagent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_bootstrap__ = __webpack_require__(256);
+
 
 
 
@@ -59283,67 +59427,115 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'schedule-form-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h2',
+        'h3',
         null,
         ' Schedule Form '
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'form',
         { action: '' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-title',
-          onChange: this.handleChange("title"),
-          type: 'text',
-          name: 'title',
-          placeholder: 'Title' }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-start-time',
-          onChange: this.handleChange("start_time"),
-          type: 'datetime-local',
-          name: 'start_time',
-          placeholder: 'Start Time' }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-end-time',
-          onChange: this.handleChange("end_time"),
-          type: 'datetime-local',
-          name: 'end_time',
-          placeholder: 'End Time' }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-feature-id',
-          onChange: this.handleChange("feature_id"),
-          type: 'text',
-          name: 'feature_id',
-          placeholder: 'Feature(_id)' }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-location',
-          onChange: this.handleChange("location"),
-          type: 'text',
-          name: 'location',
-          placeholder: 'Location' }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          id: 'schedule-description',
-          onChange: this.handleChange("description"),
-          type: 'text',
-          name: 'description',
-          placeholder: 'Description' }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_dropzone__["a" /* default */],
-          {
-            multiple: false,
-            accept: 'image/*',
-            onDrop: this.onImageDrop.bind(this) },
+          __WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["d" /* FormGroup */],
+          null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'p',
+            'label',
+            { htmlFor: 'schedule-title' },
+            'Title'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-title',
+            onChange: this.handleChange("title"),
+            type: 'text',
+            name: 'title',
+            placeholder: 'Title' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-start-time' },
+            'Start Time'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-start-time',
+            onChange: this.handleChange("start_time"),
+            type: 'datetime-local',
+            name: 'start_time',
+            placeholder: 'Start Time' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-end-time' },
+            'End Time'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-end-time',
+            onChange: this.handleChange("end_time"),
+            type: 'datetime-local',
+            name: 'end_time',
+            placeholder: 'End Time' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-feature-id' },
+            'Feature'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-feature-id',
+            onChange: this.handleChange("feature_id"),
+            type: 'text',
+            name: 'feature_id',
+            placeholder: 'Feature(_id)' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-location' },
+            'Location'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-location',
+            onChange: this.handleChange("location"),
+            type: 'text',
+            name: 'location',
+            placeholder: 'Location' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-description' },
+            'Description'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            id: 'schedule-description',
+            onChange: this.handleChange("description"),
+            type: 'text',
+            name: 'description',
+            placeholder: 'Description' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
             null,
-            'Drop an image or click to select a file to upload.'
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.state.img_url }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          onClick: this.handleSubmit,
-          type: 'submit' })
+            'Image'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_1_react_dropzone__["a" /* default */],
+            {
+              className: 'schedule-dropzone',
+              multiple: false,
+              accept: 'image/*',
+              onDrop: this.onImageDrop.bind(this) },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'p',
+              null,
+              'Drop an image or click to select a file to upload.'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { htmlFor: 'schedule-image' },
+            'Image Preview'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+            id: 'schedule-image',
+            className: 'schedule-form-preview-image',
+            src: this.state.img_url }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["c" /* FormControl */], {
+            onClick: this.handleSubmit,
+            type: 'submit' })
+        )
       )
     );
   }
@@ -59422,9 +59614,9 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     super(props);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchScheduleItems(this.props.currentEvent.id);
-  // }
+  componentDidMount() {
+    this.props.fetchScheduleItems(this.props.currentEvent.id);
+  }
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentEvent.id !== this.props.currentEvent.id) {
@@ -59437,7 +59629,14 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     if (currentEvent === undefined || currentEvent.scheduleItemsArray === undefined) {
       return null;
     }
-    let display = this.props.currentEvent.scheduleItemsArray.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
+
+    let { scheduleItemsArray } = currentEvent;
+
+    let display = scheduleItemsArray.length === 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      'No Schedule Items'
+    ) : scheduleItemsArray.map(id => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__schedule_index_item_container__["a" /* default */], {
       key: id,
       scheduleItemId: id
     }));
@@ -59446,7 +59645,7 @@ class ScheduleIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
       'div',
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h5',
+        'h3',
         null,
         'Current Schedule Items'
       ),
@@ -59487,6 +59686,9 @@ const mapDispatchToProps = dispatch => ({
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+
 
 
 class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -59504,36 +59706,82 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
       feature_id,
       location,
       img_url,
-      description
+      description,
+      parsed_start,
+      parsed_end
     } = scheduleItem;
 
+    // let displayStart = moment(start_time)
+    // let displayEnd = moment(start_time).format("MMM DD h:mma");
+
+    // let start = new Date(start_time);
+    // let end = new Date(end_time);
+
+    // let displayStart = `${start.getMonth()} ${start.getDate()} at ${start.getHours()}:${start.getMinutes()}`;
+    // let displayEnd = `${end.getMonth()} ${end.getDate()} at ${end.getHours()}:${end.getMinutes()}`;
+
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
-      null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: img_url, alt: "" }),
-      "title: ",
-      title,
-      "start_time: ",
-      start_time,
-      "end_time: ",
-      end_time,
-      "feature_id: ",
-      feature_id,
-      "location: ",
-      location,
-      "description: ",
-      description,
+      'div',
+      { className: 'schedule-index-item-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "button",
+        'div',
         null,
-        "Update"
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+          className: 'schedule-index-item-image',
+          src: img_url, alt: '' })
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "button",
-        {
-          onClick: () => this.props.destroyScheduleItem(this.props.scheduleItemId)
-        },
-        "Delete"
+        'div',
+        { className: 'schedule-index-item-container-right' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'Title '
+        ),
+        ' \xA0',
+        title,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'Start Time '
+        ),
+        ' \xA0',
+        parsed_start,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'End Time '
+        ),
+        ' \xA0',
+        parsed_end,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'Feature '
+        ),
+        ' \xA0',
+        feature_id,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'Location '
+        ),
+        ' \xA0',
+        location,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'label',
+          { htmlFor: '' },
+          'Description '
+        ),
+        ' \xA0',
+        description,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
       )
     );
   }
@@ -59964,12 +60212,16 @@ class Event extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-switch-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Switch */],
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/:eventId', component: __WEBPACK_IMPORTED_MODULE_3__event_event_show_container__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__["a" /* default */] })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'event-index-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__util_route_util__["b" /* ProtectedRoute */], { path: '/event/', component: __WEBPACK_IMPORTED_MODULE_1__event_event_index_container__["a" /* default */] })
+        )
       )
     );
   }
@@ -60014,6 +60266,8 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_form_container__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_container__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_route_util__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__ = __webpack_require__(256);
+
 
 
 
@@ -60042,21 +60296,37 @@ class EventShow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       return null;
     }
 
-    let links = display_elements.map(el => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-      { key: el, to: `/event/${id}/${el}` },
-      el
-    ));
-
+    // let links = display_elements.map(el => (
+    //   <Link
+    //     className="event-link-nav"
+    //     key={el}
+    //     to={`/event/${id}/${el}`}
+    //   >{ el }</Link>
+    // ));
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'event-show-container' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h3',
-        null,
-        'Event Show'
+        __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["f" /* Nav */],
+        { bsStyle: 'tabs', activeHref: "#" + this.props.location.pathname },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["g" /* NavItem */],
+          {
+            eventKey: 1,
+            href: `#/event/${id}`
+          },
+          'Event'
+        ),
+        display_elements.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_5_react_bootstrap__["g" /* NavItem */],
+          {
+            key: el,
+            eventKey: i + 2,
+            href: `#/event/${id}/${el}`
+          },
+          el
+        ))
       ),
-      links,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
         null,
@@ -62277,7 +62547,7 @@ var Checkbox = function (_React$Component) {
 Checkbox.propTypes = propTypes;
 Checkbox.defaultProps = defaultProps;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["a" /* bsClass */])('checkbox', Checkbox));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["a" /* bsClass */])('checkbox', Checkbox));
 
 /***/ }),
 /* 465 */
@@ -64010,7 +64280,7 @@ FormControl.contextTypes = contextTypes;
 FormControl.Feedback = __WEBPACK_IMPORTED_MODULE_10__FormControlFeedback__["a" /* default */];
 FormControl.Static = __WEBPACK_IMPORTED_MODULE_11__FormControlStatic__["a" /* default */];
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["a" /* bsClass */])('form-control', Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].SMALL, __WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].LARGE], FormControl)));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["a" /* bsClass */])('form-control', Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].SMALL, __WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__["c" /* Size */].LARGE], FormControl)));
 
 /***/ }),
 /* 490 */
@@ -64307,7 +64577,7 @@ var FormGroup = function (_React$Component) {
 FormGroup.propTypes = propTypes;
 FormGroup.childContextTypes = childContextTypes;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["a" /* bsClass */])('form-group', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], FormGroup)));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["a" /* bsClass */])('form-group', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["b" /* bsSizes */])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], FormGroup)));
 
 /***/ }),
 /* 493 */
@@ -71666,19 +71936,19 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
       'div',
       { className: 'static-modal' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */],
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */],
         { show: this.props.modalOpen, onHide: this.props.closeModal },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Header,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Header,
           { closeButton: true },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Title,
+            __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Title,
             null,
             title
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Body,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Body,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'form',
@@ -71709,7 +71979,7 @@ class SessionModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["b" /* Modal */].Footer,
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["e" /* Modal */].Footer,
           null,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["a" /* Button */],
