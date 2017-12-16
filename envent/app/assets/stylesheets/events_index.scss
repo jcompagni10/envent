@@ -4,3 +4,22 @@
   object-fit: cover;
   object-position: center;
 }
+
+
+// EVENT INDEX ITEMS
+
+.event-index-item-container {
+  border: 1px solid gray;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.event-index-item-text-container {
+  margin: 0 0 0 10px;
+}
+
+.event-index-picture {
+
+}

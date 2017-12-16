@@ -61,6 +61,46 @@ events = Event.create!([
     end_date: DateTime.new(2018,2,5)
 
   },
+  { name: "Negotiations Helicopter Conference",
+    tag: "heli",
+    user_id: 4,
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
+
+  },
+  { name: "Chafe Fest",
+    tag: "chafe",
+    user_id: 4,
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
+
+  },
+  { name: "Generic Concert",
+    tag: "conc",
+    user_id: 4,
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
+
+  },
+  { name: "Nochella",
+    tag: "nope",
+    user_id: 4,
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
+
+  },
+  { name: "yellow calw",
+    tag: "yc",
+    user_id: 4,
+    private: false,
+    start_date: DateTime.new(2018,2,3),
+    end_date: DateTime.new(2018,2,5)
+
+  },
    ])
 
 
@@ -183,6 +223,15 @@ schedule_items = ScheduleItem.create!([
     end_time: DateTime.new(2018,2,4,15,0)
   }
   ])
+
+maps = Map.create!([
+  {
+    event_id: 1, 
+    title: "OCD MAP",
+    # img_url: "https://i.pinimg.com/736x/10/50/72/105072385f123d60287715cc006a185b--bedroom-floor-plans--bedroom-carriage-house-plans.jpg"
+  }
+])
+
 
 news = News.create!([
   {

@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
-const modules = ["schedule", "news", "info", "message board", "map"];
+const modules = ["Schedule", "News", "MessageBoard", "Map"];
 const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
 
@@ -27,6 +27,29 @@ export default class EventForm extends React.Component{
     this.modules = new Set;
   }
 
+  componentDidMount() {
+    let {
+      name,
+      tag,
+      img_url,
+      location,
+      message,
+      // start_date,
+      // end_date,
+    } = this.props.currentEvent;
+
+    if (this.props.match.params.eventId) {
+      this.setState({
+        name,
+        tag,
+        img_url,
+        location,
+        message,
+        // start_date,
+        // end_date,
+      });
+    }
+  }
 
   handleChange(field, e){
     if (field === 'modules'){
@@ -50,8 +73,7 @@ export default class EventForm extends React.Component{
     event.start_date = this.state.start_date.format();
     event.end_date = this.state.end_date.format();
     this.props.createEvent(event);
-    // this.props.history.push(`/event_builder/${event.tag}/${this.modules[0]}`);
-
+    this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
   }
 
   onImageDrop(files) {
@@ -76,9 +98,21 @@ export default class EventForm extends React.Component{
   }
 
   render(){
+    let {
+      name,
+      tag,
+      img_url,
+      location,
+      message,
+      start_date,
+      end_date,
+    } = this.state;
+
+    let title = this.props.match.params.eventId ? "Update Event" : "Event Form";
+
     return (
       <div>
-        <h2> Event Form</h2>
+        <h2>{ title }</h2>
         <form>
           <Errors errors = {this.props.errors} />
           <fieldset>
@@ -88,6 +122,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("name",e)}
               placeholder ="Event Name"
+              value={name}
             />
           </fieldset>
           <fieldset>
@@ -97,6 +132,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("tag",e)}
               placeholder ="Event Tag"
+              value={tag}
             />
           </fieldset>
           <fieldset>
@@ -106,6 +142,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("location",e)}
               placeholder ="Event Location"
+              value={location}
             />
           </fieldset>
           <fieldset>
@@ -115,6 +152,7 @@ export default class EventForm extends React.Component{
               type ="text"
               onChange ={(e)=>this.handleChange("message",e)}
               placeholder ="A custom event message"
+              value={message}
             />
           </fieldset>
           <fieldset>

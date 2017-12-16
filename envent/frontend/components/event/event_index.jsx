@@ -14,10 +14,9 @@ export default class EventIndex extends React.Component {
     let { events } = this.props;
     let display;
     
-    if (events === {}) {
+    if (events.all_ids.length === 0) {
       return null;
     }
-    
     display = events.all_ids.map( eventId => (
       <EventIndexItemContainer
         key={eventId}
@@ -26,7 +25,7 @@ export default class EventIndex extends React.Component {
 
     return (
       <div>
-        <h5>Your Events</h5>
+        {/* <h3>Manage Your Events</h3> */}
         { display }
       </div>
     );

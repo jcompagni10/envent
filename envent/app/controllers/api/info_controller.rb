@@ -20,7 +20,6 @@ class Api::InfoController < ApplicationController
 
   def update
     # @info = Info.find(params[:id])
-    # debugger;
     @info = Event.find(params[:event_id]).info
     if @info.update_attributes(info_params)
       render :show
