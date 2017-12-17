@@ -12,27 +12,32 @@ export default class AppBuilder extends React.Component {
   
 
   render(){
-    let data, first, last;
-    let {
-      currentEvent,
-      location,
-      match,
-    } = this.props;
-    let { display_elements } = currentEvent;
+    // debugger;
+    // let data, first, last;
+    // let {
+    //   currentEvent,
+    //   location,
+    //   match,
+    // } = this.props;
+    // let { display_elements } = currentEvent;
 
-    if (location.pathname === "/event_builder") {
-      data = [1, 6];
-    } else {
-      first = display_elements.indexOf(match.params.split("/".pop())) + 1;
-      last = display_elements.length;
-      data = [ first, last ];
-    }
+    // if (currentEvent.id === undefined) {
+    //   return null;
+    // }
+
+    // if (location.pathname === "/event_builder") {
+    //   data = [1, 6];
+    // } else {
+    //   first = display_elements.indexOf(match.params.split("/".pop())) + 1;
+    //   last = display_elements.length;
+    //   data = [ first, last ];
+    // }
 
     return (
       <div>
         <h2 className="app-builder-title">Build Your App</h2>
-        {/* <ProgressBarContainer data={ [1,6] } /> */}
-        <ProgressBarContainer data={ data } />
+        <ProgressBarContainer data={ [1,6] } />
+        {/* <ProgressBarContainer data={ data } /> */}
         <div className="app-builder-content-container">
           <Switch>
             {/* <ProtectedRoute path='/event_builder/:eventTag/info' component={InfoFormContainer} /> */}
