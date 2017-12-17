@@ -1,6 +1,6 @@
 .schedule-form-index-container {
   display: flex;
-
+  justify-content: space-between
 }
 
 // .schedule-form-index-container:first-child {
@@ -54,11 +54,11 @@
 }
 
 .schedule-form-index-container-left {
-  width: 45%
+  width: 45%;
 }
 
 .schedule-form-index-container-right {
-  width: 100%
+  width: 55%;
 }
 
 .schedule-index-container {
