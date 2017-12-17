@@ -9,11 +9,30 @@ import InfoFormContainer from './../info/info_form_container';
 
 export default class AppBuilder extends React.Component {
 
+  
+
   render(){
+    let data, first, last;
+    let {
+      currentEvent,
+      location,
+      match,
+    } = this.props;
+    let { display_elements } = currentEvent;
+
+    if (location.pathname === "/event_builder") {
+      data = [1, 6];
+    } else {
+      first = display_elements.indexOf(match.params.split("/".pop())) + 1;
+      last = display_elements.length;
+      data = [ first, last ];
+    }
+
     return (
       <div>
         <h2 className="app-builder-title">Build Your App</h2>
-        <ProgressBarContainer data={[1,5]} />
+        {/* <ProgressBarContainer data={ [1,6] } /> */}
+        <ProgressBarContainer data={ data } />
         <div className="app-builder-content-container">
           <Switch>
             {/* <ProtectedRoute path='/event_builder/:eventTag/info' component={InfoFormContainer} /> */}

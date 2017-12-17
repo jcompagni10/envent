@@ -41,6 +41,7 @@
 
 .schedule-index-item-container {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .schedule-index-item-container-right {
@@ -60,4 +61,14 @@ width: 100%
 .schedule-index-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.schedule-form-submit-button {
+  margin-top: 20px;
+}
+
+.schedule-index-item-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 3px 0;
 }

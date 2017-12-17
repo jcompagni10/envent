@@ -32,37 +32,49 @@ export default class ScheduleIndexItem extends React.Component {
 
 
     return (
-      <div className="schedule-index-item-container">
+      <div className="schedule-index-item-container-daddy">
         {/* <div id="calendar"></div> */}
-        <div>
-          <img
-            className="schedule-index-item-image"
-            src={ img_url } alt=""/>
+        <div className="schedule-index-item-title">
+          {title}
         </div>
 
-        <div className="schedule-index-item-container-right">
-          <label htmlFor="">Title </label> &nbsp;
-          { title }
+        <div className="schedule-index-item-container">
+          <div>
+            <img
+              className="schedule-index-item-image"
+              src={ img_url } alt=""/>
+          </div>
 
-          <label htmlFor="">Start Time </label> &nbsp;
-          { parsed_start }
+          <div className="schedule-index-item-container-right">
+            {/* <div>
+              <label htmlFor="">Title </label>&nbsp;
+            </div> */}
 
-          <label htmlFor="">End Time </label> &nbsp;
-          { parsed_end }
+            <div>
+              <label htmlFor="">Start Time </label>&nbsp;{ parsed_start }
+            </div>
 
-          <label htmlFor="">Feature </label> &nbsp;
-          { feature_id }
+            <div>
+              <label htmlFor="">End Time </label>&nbsp;{ parsed_end }
+            </div>
 
-          <label htmlFor="">Location </label> &nbsp;
-          { location }
+            <div>
+              <label htmlFor="">Feature </label>&nbsp;{ feature_id }
+            </div>
 
-          <label htmlFor="">Description </label> &nbsp;
-          { description }
+            <div>
+              <label htmlFor="">Location </label>&nbsp;{ location }
+            </div>
 
-          {/* <button>Update</button>
-          <button
-            onClick={ () => this.props.destroyScheduleItem(this.props.scheduleItemId) }
-            >Delete</button> */}
+            <div>
+              <label htmlFor="">Description </label>&nbsp;{ description }
+            </div>
+
+            {/* <button>Update</button>
+            <button
+              onClick={ () => this.props.destroyScheduleItem(this.props.scheduleItemId) }
+              >Delete</button> */}
+          </div>
         </div>
       </div>
     );
