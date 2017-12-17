@@ -36,7 +36,7 @@ export default class AppBuilder extends React.Component {
     return (
       <div>
         <h2 className="app-builder-title">Build Your App</h2>
-        <ProgressBarContainer data={ [1,6] } />
+        {/* <ProgressBarContainer data={ [1,6] } /> */}
         {/* <ProgressBarContainer data={ data } /> */}
         <div className="app-builder-content-container">
           <Switch>
