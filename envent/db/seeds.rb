@@ -29,7 +29,7 @@ events = Event.create!([
   {
     name: "OCD House Party",
     tag: "OCD",
-    user_id: 1,
+    user_id: 4,
     start_date: Date.new(2018,2,3),
     end_date: Date.new(2018,2,5),
     private: false,
@@ -295,3 +295,24 @@ messages = Message.create!([
   body: "OGC"
   },
 ])
+
+# event_view = EventView.create!([
+#   {
+#     event_id: 1,
+#     created_at: Time.now - 1.day
+#   },
+#   {
+#     event_id: 1,
+#     created_at: Time.now - 1.day
+#   },
+#   {
+#     event_id: 2,
+#     created_at: Time.now - 1.day
+#   },
+# ])
+
+5.times{ EventView.create!(event_id: 1, created_at: Time.now)}
+4.times{ EventView.create!(event_id: 1, created_at: Time.now - 1.day)}
+6.times{ EventView.create!(event_id: 1, created_at: Time.now - 2.day)}
+2.times{ EventView.create!(event_id: 1, created_at: Time.now - 3.day)}
+

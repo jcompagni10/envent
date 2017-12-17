@@ -82,7 +82,7 @@ export default class Schedule extends React.Component {
   }
 
   render() {
-    debugger;
+    // debugger;
     return (
       <div className="schedule-form-container">
         <h3> Schedule Form </h3>

@@ -12,10 +12,19 @@ arr = @events
         .reverse
 
 json.all_ids arr
+
+views_arr = []
+
+(0...7).to_a.reverse.each do |i|
+  views_arr << @views.count(Date.today - i)
+end
+
+
 if @views
-  json.set! :views, @views
+  json.set! :views, views_arr
   json.set! :avg_views, @views.length/@events.length
 end
+
 # json.array! @events.each do |event|
 #   json.extract! event, :name, :id
 # end
