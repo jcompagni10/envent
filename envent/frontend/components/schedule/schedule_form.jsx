@@ -145,7 +145,7 @@ export default class Schedule extends React.Component {
               onDrop={this.onImageDrop.bind(this)}>
               <p>Drop an image or click to select a file to upload.</p>
             </Dropzone>
-            
+
             <label htmlFor="schedule-image">Image Preview</label>
             <img
               id="schedule-image"

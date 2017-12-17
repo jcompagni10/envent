@@ -51,7 +51,7 @@ export default class HomeLandingPage extends React.Component {
   findEventFromInput(eventTag) {
     // TODO1 Add logic if failed response
     const END_POINT = "http://192.168.3.37:3000";
-    return fetch(END_POINT+"/api/events/"+eventTag)
+    return fetch(END_POINT+"/api/events/"+eventTag+"/?mobile=true")
       .then(
         (response) => {
           this.setState({isLoading: false});
