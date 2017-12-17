@@ -1,5 +1,5 @@
 class Api::MapsController < ApplicationController
-  
+
   def create
     @map = Map.new(map_params)
     if @map.save
@@ -9,13 +9,13 @@ class Api::MapsController < ApplicationController
     end
   end
 
+  def index
+    @map = event_data("map")
+  end
+
   def show
     event = Event.find(params[:event_id])
-    
-    @map = event.map
-    # @map = Map.find(params[:id]) 
-  
-   
+    @map = Map.find(params[:id])
     render :show
   end
 
@@ -29,7 +29,7 @@ class Api::MapsController < ApplicationController
 
   def map_params
     params.require(:schedule_items).permit(
-      :title, 
+      :title,
       :img_url,
       :event_id
     )

@@ -6,15 +6,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def index
-    event_id = params[:event_id]
-    if event_id == "undefined"
-      @messages = Messages.all.includes(:author)
-    elsif event_id == event_id.to_i.to_s
-      @messages = Event.find_by(id: event_id).messages.offset(params[:offset]).includes(:author)
-    else
-      @messages = Event.find_by(tag: event_id).messages.offset(params[:offset]).includes(:author)
-    end
-
+    @messages = event_data("messages")
     render :index
   end
 
