@@ -3,7 +3,6 @@ import Errors from '../misc/errors';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import DatePicker from 'react-datepicker';
-import '/assets/react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import {
   FormGroup,

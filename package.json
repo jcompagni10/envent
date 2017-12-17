@@ -37,9 +37,7 @@
     "superagent": "^3.8.2",
     "webpack": "^3.10.0"
   },
-  "devDependencies": {
-    "css-loader": "^0.28.7"
-  },
+  "devDependencies": {},
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
