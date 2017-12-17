@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import EventIndexContainer from './../event/event_index_container';
 import StatsContainer from './../stats/stats_container';
+import { Glyphicon } from 'react-bootstrap';
 
 export default()=>{
   return (
