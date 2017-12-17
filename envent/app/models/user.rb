@@ -16,9 +16,11 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}, allow_nil: true
 
   attr_reader :password
-  
   has_many :events
-  
+
+  has_many :event_views,
+  through: :events
+
   has_many :messages,
     class_name: :Message,
     foreign_key: :author_id,
