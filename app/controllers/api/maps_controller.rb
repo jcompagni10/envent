@@ -38,13 +38,8 @@ class Api::MapsController < ApplicationController
   private
 
   def map_params
-<<<<<<< HEAD
-    params.require(:schedule_items).permit(
-      :title,
-=======
     params.require(:map).permit(
       :title, 
->>>>>>> 7ad3c958c47fadd7475990084d83ac8fc0337f6c
       :img_url,
       # :event_id
     )
