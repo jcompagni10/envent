@@ -15,8 +15,10 @@ json.all_ids arr
 
 views_arr = []
 
-(0...7).to_a.reverse.each do |i|
-  views_arr << @views.count(Date.today - i)
+if @views
+  (0...7).to_a.reverse.each do |i|
+    views_arr << @views.count(Date.today - i)
+  end
 end
 
 json.set! :current_events, @events.where("? between start_date and end_date", Date.today).count
