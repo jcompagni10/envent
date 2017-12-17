@@ -2,6 +2,7 @@ class Api::MapsController < ApplicationController
   
   def create
     @map = Map.new(map_params)
+    @map.event_id = params[:event_id]
     if @map.save
       render :show
     else
@@ -28,10 +29,10 @@ class Api::MapsController < ApplicationController
   private
 
   def map_params
-    params.require(:schedule_items).permit(
+    params.require(:map).permit(
       :title, 
       :img_url,
-      :event_id
+      # :event_id
     )
   end
 end

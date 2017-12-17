@@ -6350,7 +6350,7 @@ const getMap = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_m
 /* harmony export (immutable) */ __webpack_exports__["g"] = getMap;
 
 
-const createMap = (eventId, map) => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(map).then(map => dispatch(receiveMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+const createMap = (eventId, map) => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(eventId, map).then(newMap => dispatch(receiveMap(newMap)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
 /* harmony export (immutable) */ __webpack_exports__["e"] = createMap;
 
 
@@ -50815,11 +50815,6 @@ const mapStateToProps = (state, ownProps) => ({});
 
 class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
-  componentDidMount() {
-    // debugger;
-    this.props.fetchEvent;
-  }
-
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
@@ -59644,25 +59639,44 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     this.state = {
       title: "",
-      img_url: ""
+      img_url: ``
+      // eventTag: undefined,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
+  componentWillReceiveProps(newProps) {
+    // if (this.props.maps[0])
+    // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
+    this.setState({ img_url: newProps.maps[0].img_url });
+    // }
+  }
+
   handleChange(title) {
+    // debugger
     return event => this.setState({ [title]: event.target.value });
   }
 
+  handleTitle(event) {
+    this.setState({ title: event.target.value });
+  }
+
   handleSubmit(event) {
-    debugger;
+    // debugger
     event.preventDefault();
-    this.props.createMap(this.props.match.params.eventTag);
+    // this.setState({eventTag: this.props.match.params.eventTag});
+    // let newMap = this.state;
+    // newMap[eventTag] = this.props.match.params.eventTag;
+
+    this.props.createMap(this.props.match.params.eventTag, this.state);
   }
 
   onImageDrop(files) {
@@ -59686,11 +59700,12 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   render() {
-
+    // debugger
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { height: '150', width: '150' });
     }
+    // debugger
     let display = this.props.maps.map(map => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
@@ -59706,8 +59721,9 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         'form',
         { action: '' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-          onChange: this.handleChange("title"),
-          type: 'text',
+          onChange: this.handleTitle
+          // onChange={ this.handleChange("title") }
+          , type: 'text',
           name: 'title',
           placeholder: 'Map Title' }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -59727,6 +59743,7 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           type: 'submit' })
       )
     ));
+    // debugger
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
@@ -59744,7 +59761,7 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 const postMap = (eventId, map) => $.ajax({
   method: 'POST',
-  url: `api/events/${eventId}/maps/1`,
+  url: `api/events/${eventId}/maps`,
   data: { map }
 });
 /* harmony export (immutable) */ __webpack_exports__["c"] = postMap;

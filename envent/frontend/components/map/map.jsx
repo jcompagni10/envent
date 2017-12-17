@@ -11,25 +11,44 @@ export default class Map extends React.Component{
 
     this.state = {
       title: "", 
-      img_url: ""
+      img_url: ``,
+      // eventTag: undefined,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
+  componentWillReceiveProps(newProps){
+    // if (this.props.maps[0])
+    // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
+      this.setState({ img_url: newProps.maps[0].img_url});
+    // }
+  }
+
   handleChange(title) {
+    // debugger
     return event => this.setState({ [title]: event.target.value });
   }
 
+  handleTitle(event) {
+    this.setState({ title: event.target.value });
+  }
+
   handleSubmit(event){
-    debugger
+    // debugger
     event.preventDefault();
-    this.props.createMap(this.props.match.params.eventTag);
+    // this.setState({eventTag: this.props.match.params.eventTag});
+    // let newMap = this.state;
+    // newMap[eventTag] = this.props.match.params.eventTag;
+
+    this.props.createMap(this.props.match.params.eventTag, this.state);
   }
   
   onImageDrop(files){
@@ -57,7 +76,7 @@ export default class Map extends React.Component{
   
 
   render(){
-    
+    // debugger
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -65,6 +84,7 @@ export default class Map extends React.Component{
         
       </div>);
     }
+    // debugger
     let display = this.props.maps.map(map => (
       <div>
         <h5>{map.title}</h5>
@@ -73,7 +93,8 @@ export default class Map extends React.Component{
         />
         <form action="">
           <input
-            onChange={this.handleChange("title")}
+            onChange={ this.handleTitle }
+            // onChange={ this.handleChange("title") }
             type="text"
             name="title"
             placeholder="Map Title" />
@@ -90,6 +111,7 @@ export default class Map extends React.Component{
       
       </div>
     ));
+    // debugger
     return(
       <div >
         {display}

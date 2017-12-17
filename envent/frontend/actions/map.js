@@ -32,8 +32,8 @@ export const getMap = (eventId) => dispatch => (
 );
 
 export const createMap = (eventId, map) => dispatch => (
-  postMap(map)
-  .then(map => dispatch(receiveMap(map)),
+  postMap(eventId, map)
+  .then(newMap => dispatch(receiveMap(newMap)),
     errors => dispatch(receiveMapErrors(errors.responseJSON))
   )
 );

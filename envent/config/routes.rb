@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create]
     resources :events, only: [:index, :show, :create] do
       resources :schedule_items, only: [:index, :create, :update]
-      resources :maps, only: [:show, :destroy]
+      resources :maps, only: [:create, :show, :destroy]
       resources :news, only: [:create, :index]
       resources :info, only: [:create, :show, :update]
       resources :messages, only: [:create, :index]

@@ -10,10 +10,6 @@ import MapContainer from './../map/map_container';
 
 export default class AppBuilder extends React.Component {
 
-  componentDidMount() {
-    // debugger;
-    this.props.fetchEvent
-  }
 
   render(){
     return (
