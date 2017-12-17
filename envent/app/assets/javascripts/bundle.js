@@ -11640,12 +11640,16 @@ const getMap = eventId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_m
 /* harmony export (immutable) */ __webpack_exports__["g"] = getMap;
 
 
-const createMap = (eventId, map) => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* postMap */])(eventId, map).then(newMap => dispatch(receiveMap(newMap)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+const createMap = (eventId, map) => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["d" /* postMap */])(eventId, map).then(newMap => dispatch(receiveMap(newMap)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
 /* harmony export (immutable) */ __webpack_exports__["e"] = createMap;
 
 
 const destroyMap = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["a" /* deleteMap */])(mapId).then(map => dispatch(removeMap(map)), errors => dispatch(receiveMapErrors(errors.responseJSON)));
 /* harmony export (immutable) */ __webpack_exports__["f"] = destroyMap;
+
+
+const updateMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* patchMap */])(map).then(updatedMap => dispatch(receiveMap(updatedMap)));
+/* unused harmony export updateMap */
 
 
 /***/ }),
@@ -90063,7 +90067,7 @@ const postMap = (eventId, map) => $.ajax({
   url: `api/events/${eventId}/maps`,
   data: { map }
 });
-/* harmony export (immutable) */ __webpack_exports__["c"] = postMap;
+/* harmony export (immutable) */ __webpack_exports__["d"] = postMap;
 
 
 const deleteMap = id => $.ajax({
@@ -90078,6 +90082,16 @@ const fetchMap = eventId => $.ajax({
   url: `api/events/${eventId}/maps/1`
 });
 /* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
+
+
+const patchMap = map => {
+  return $.ajax({
+    method: "PATCH",
+    url: `api/events/${map.id}`,
+    data: { map }
+  });
+};
+/* harmony export (immutable) */ __webpack_exports__["c"] = patchMap;
 
 
 /***/ }),

@@ -19,3 +19,13 @@ export const fetchMap = (eventId) => (
     url: `api/events/${eventId}/maps/1`
   })
 );
+
+export const patchMap = map => {
+  return(
+    $.ajax({
+      method: "PATCH",
+      url: `api/events/${map.id}`,
+      data: {map}
+    })
+  );
+};

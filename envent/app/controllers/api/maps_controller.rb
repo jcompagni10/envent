@@ -21,7 +21,12 @@ class Api::MapsController < ApplicationController
   end
 
   def update 
-    
+    @map = Map.find(params[:id])
+    if @map.update_attributes(map_params)
+      render :show
+    else
+      render json: @map.errors.full_messages, status: 422
+    end
   end
 
   def destroy
