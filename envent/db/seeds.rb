@@ -311,8 +311,12 @@ messages = Message.create!([
 #   },
 # ])
 
-5.times{ EventView.create!(event_id: 1, created_at: Time.now)}
-4.times{ EventView.create!(event_id: 1, created_at: Time.now - 1.day)}
-6.times{ EventView.create!(event_id: 1, created_at: Time.now - 2.day)}
-2.times{ EventView.create!(event_id: 1, created_at: Time.now - 3.day)}
+17.times{ EventView.create!(event_id: 1, created_at: Time.now)}
+15.times{ EventView.create!(event_id: 1, created_at: Time.now - 1.day)}
+14.times{ EventView.create!(event_id: 1, created_at: Time.now - 2.day)}
+12.times{ EventView.create!(event_id: 1, created_at: Time.now - 3.day)}
+9.times{ EventView.create!(event_id: 1, created_at: Time.now - 4.day)}
+7.times{ EventView.create!(event_id: 1, created_at: Time.now - 5.day)}
+7.times{ EventView.create!(event_id: 1, created_at: Time.now - 6.day)}
+8.times{ EventView.create!(event_id: 1, created_at: Time.now - 7.day)}
 
