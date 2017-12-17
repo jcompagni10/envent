@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import {Glyphicon} from 'react-bootstrap';
 
 export default class EventIndexItem extends React.Component {
   constructor(props) {
@@ -10,22 +12,44 @@ export default class EventIndexItem extends React.Component {
     if (this.props.events.by_id === {}) {
       return null;
     }
-    
+
     let {
-      name, tag, img_url
+      name, tag, img_url, last_edit
     } = this.props.events.by_id[this.props.eventId];
 
     return (
-      <div>
-        Name: {name}
-        <br />
-        Tag: {tag}
-        <br />
-        Image:
-        <img
-          className="event-index-picture"
-          src={img_url}
-          alt=""/>
+      <div className="event-index-item-container">
+        <div className ="event-data-left">
+          <img
+            className="event-index-picture"
+            src={img_url}
+            alt=""/>
+          <div className="event-index-item-text-container">
+            <Link
+              className ="event-title"
+              to={`/event/${this.props.eventId}`}>
+              {name}
+            </Link>
+            <div className ="event-tag">
+              Tag: {tag}
+            </div>
+          </div>
+        </div>
+        <div className ="event-data-center">
+          <div className ="event-last-modified">
+            Last edited {last_edit}
+          </div>
+        </div>
+        <div className ="event-data-right">
+          <div className ="event-edit-icon">
+            <Link
+              to="/event_builder">
+              <Glyphicon
+                className = "edit-cog"
+                glyph = "cog" /> Edit
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

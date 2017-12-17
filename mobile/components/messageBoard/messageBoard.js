@@ -18,13 +18,16 @@ import Loader from '../misc/loader';
 import style from '../styles/messages';
 import {currentUser} from '../../util/user';
 import PostMessage from '../misc/post_message';
-
+import AuthForm from '../auth_form';
+import ValidityChecker from '../misc/validity_checker';
 export default class Schedule extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
       isLoading: true,
       fetching: false,
+      showAuth: false,
+      validity: true,
     };
   }
 
@@ -36,8 +39,26 @@ export default class Schedule extends React.Component {
     this.fetchPosts(eventId);
   }
 
+  showAuth(){
+    this.setState({showAuth: true});
+  }
+
+  closeAuth(){
+    this.setState({showAuth: false});
+  }
+
+  succesfulLogin(){
+    this.closeAuth();
+    currentUser()
+      .then(user=>{
+        this.setState({user});
+        //force navdrawer to rerender
+        this.props.navigation.navigate('MessageBoard', {user});
+      });
+  }
+
   fetchPosts(eventId = null){
-    eventId = this.state.eventId || eventId
+    eventId = this.state.eventId || eventId;
     let offset;
     if (this.state.postIds){
       offset = this.state.postIds.length;
@@ -72,6 +93,15 @@ export default class Schedule extends React.Component {
     };
   }
 
+  handleInvalid(){
+    this.setState({validity: false});
+  }
+
+  markValid(){
+    debugger
+    this.setState({validity: true});
+  }
+
   overScroll(){
     this.fetchPosts();
   }
@@ -86,12 +116,11 @@ export default class Schedule extends React.Component {
 
   succcesfulPost(){
     this.fetchPosts().then(()=>{
-      // this.refs.PostList.scrollToOffset(10);
+      this.refs.PostList.scrollToOffset(10);
     });
   }
   _renderListItem(item){
     let data = this.state.posts[item];
-    try {
     return (
       <View style={style.listItemWrapper}>
         <View style={style.listItem}>
@@ -110,10 +139,6 @@ export default class Schedule extends React.Component {
       </View>
     );
   }
-  catch (e){
-    debugger
-  }
-  }
 
   render() {
     if (this.state.isLoading){
@@ -122,41 +147,68 @@ export default class Schedule extends React.Component {
       );
     }
     return (
-        <KeyboardAvoidingView style={style.fullPage}
-          behavior="position"
-          keyboardVerticalOffset ={70}>
-          <AppHeader
-            title = {"Message Board"}
-            navigation = {this.props.navigation}
+    <View style={style.container}>
+      <KeyboardAvoidingView style={style.fullPage}
+        behavior="position"
+        keyboardVerticalOffset ={70}>
+        <AppHeader
+          title = {"Message Board"}
+          navigation = {this.props.navigation}
+        />
+      <View style={this.listStyle()}>
+        <FlatList
+          ref= "PostList"
+          getItemLayout = {this._getItemLayout}
+          onEndReached = {this.overScroll.bind(this)}
+          onEndReachedThreshold = {0}
+          inverted = {true}
+          refreshControl={
+            <RefreshControl
+              colors ={["#4abdac", 'red']}
+              progressBackground ={"red"}
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
+          renderItem={({item}) => this._renderListItem(item)}
+          data = {this.state.postIds}
+          keyExtractor={(item, index) => index}
+        />
+      </View>
+      <PostMessage
+        user = {this.state.user}
+        visible = {this.isLoggedIn()}
+        eventId = {this.state.eventId}
+        callback = {this.succcesfulPost.bind(this)}
+        invalidPost = {this.handleInvalid.bind(this)}
+        type = "messageBoard"
+        />
+      {this.isLoggedIn() ? null :
+        (
+        <View style= {style.loginReqContainer}>
+          <Button
+            fontSize = {15}
+            color ='#4abdac'
+            title = "Log In"
+            onPress = {this.showAuth.bind(this)}
           />
-        <View style={this.listStyle()}>
-          <FlatList
-            ref= "PostList"
-            getItemLayout = {this._getItemLayout}
-            onEndReached = {this.overScroll.bind(this)}
-            onEndReachedThreshold = {0}
-            inverted = {true}
-            refreshControl={
-              <RefreshControl
-                colors ={["#4abdac", 'red']}
-                progressBackground ={"red"}
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh.bind(this)}
-              />
-            }
-            renderItem={({item}) => this._renderListItem(item)}
-            data = {this.state.postIds}
-            keyExtractor={(item, index) => index}
-          />
+          <Text style = {style.loginReq}>
+            To Post...
+          </Text>
         </View>
-        <PostMessage
-          user = {this.state.user}
-          visible = {this.isLoggedIn()}
-          eventId = {this.state.eventId}
-          callback = {this.succcesfulPost.bind(this)}
-          type = "messageBoard"
-          />
-        </KeyboardAvoidingView>
+        )
+      }
+      </KeyboardAvoidingView>
+      <AuthForm
+        visible = {this.state.showAuth}
+        close = {this.closeAuth.bind(this)}
+        callback = {this.succesfulLogin.bind(this)}
+        />
+      <ValidityChecker
+        validity = {this.state.validity}
+        callback = {this.markValid.bind(this)}
+      />
+    </View>
     );
   }
 }

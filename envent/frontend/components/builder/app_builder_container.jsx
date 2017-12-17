@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchEvent } from './../../actions/event';
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchEvent: eventId => dispatch(fetchEvent(eventId)),
+const mapStateToProps = (state, ownProps) => ({
+  currentEvent: state.currentEvent,
+  ownProps: ownProps,
 });
 
-const mapStateToProps = (state, ownProps) => ({
-
+const mapDispatchToProps = (dispatch) => ({
+  fetchEvent: eventId => dispatch(fetchEvent(eventId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppBuilder));

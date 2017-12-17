@@ -1,5 +1,7 @@
 import React from 'react';
 import EventIndexItemContainer from './event_index_item_container';
+import {Link} from 'react-router-dom';
+import {Glyphicon} from 'react-bootstrap';
 
 export default class EventIndex extends React.Component {
   constructor(props) {
@@ -13,11 +15,10 @@ export default class EventIndex extends React.Component {
   render() {
     let { events } = this.props;
     let display;
-    
-    if (events === {}) {
+
+    if (events.all_ids.length === 0) {
       return null;
     }
-    
     display = events.all_ids.map( eventId => (
       <EventIndexItemContainer
         key={eventId}
@@ -25,8 +26,20 @@ export default class EventIndex extends React.Component {
     ));
 
     return (
-      <div>
-        <h5>Your Events</h5>
+      <div className='event-index-container'>
+        <div className="event-index-item-container">
+          <Link
+            className="dashboard-create-event-link"
+            to="/event_builder">
+            <Glyphicon
+              className = "plus-sign"
+              glyph = "plus" />
+            Create An Event
+          </Link>
+        </div>
+        <div className ="event-or">
+          Or
+        </div>
         { display }
       </div>
     );

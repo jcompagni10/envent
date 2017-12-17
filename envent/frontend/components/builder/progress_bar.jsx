@@ -22,12 +22,17 @@ export default class ProgressBar extends React.Component {
     let { currentEvent } = this.props;
     let { display_elements } = currentEvent;
     if (display_elements) {
-      display = display_elements.map(el => (
-        <Link
-          key={el}
-          to={`/event_builder/${currentEvent.tag}/${el}`}
-          >{`${el}`}</Link>
-      ));
+      display = display_elements.map(el => {
+        if (el === "schedule" || el === "map") {
+          return (
+            <Link
+              key={el}
+              to={`/event_builder/${currentEvent.tag}/${el}`}
+              >{`${el}`}</Link>
+          );
+        }
+       }
+      );
     }
 
   return (

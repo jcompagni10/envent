@@ -14,9 +14,11 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    userId = params[:userId]
+    userId = params[:userId] || params[:userid]
     if userId
-      @events = User.find(userId).events
+      user = User.find(userId)
+      @events = user.events.includes(:event_views)
+      @views = user.event_views.pluck(:created_at).map(&:to_date)
     else
       @events = Event.all
     end
@@ -24,10 +26,18 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    lowercase_tag = params[:id].downcase
-    @event = Event.find_by(tag: lowercase_tag)
+    id = params[:id]
+    if id == id.to_i.to_s
+      @event = Event.find(id)
+    else
+      lowercase_tag = params[:id].downcase
+      @event = Event.find_by(tag: lowercase_tag)
+    end
+
     @scheduleItems = ScheduleItem.find_by(event_id: @event.id)
+
     if @event
+      @event.event_views.create if params[:mobile]
       render :show
     else
       render json: @event.errors.full_messages, status: 404
@@ -37,6 +47,15 @@ class Api::EventsController < ApplicationController
   def show_id
     @event = Event.find(params[:id])
     if @event
+      render :show
+    else
+      render json: @event.errors.full_messages, status: 404
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
       render :show
     else
       render json: @event.errors.full_messages, status: 404

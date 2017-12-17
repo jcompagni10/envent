@@ -23,7 +23,6 @@ export default (state = { all_ids:[], by_id: {} }, action) => {
         newState.all_ids.splice(index, 1);
       }
       newState.all_ids.unshift(action.event.id);
-
       newState.by_id[action.event.id] = action.event;
 
       return newState;

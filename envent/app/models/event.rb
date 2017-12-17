@@ -27,7 +27,8 @@ class Event < ApplicationRecord
     class_name: :Message,
     foreign_key: :event_id,
     primary_key: :id
-    
+
+  has_many :event_views
   has_many :display_elements
   has_many :schedule_items do
     def time_group

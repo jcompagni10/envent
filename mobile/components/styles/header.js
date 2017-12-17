@@ -9,5 +9,6 @@ export default StyleSheet.create({
   headerContainer: {
     borderBottomColor: '#ccc',
     borderBottomWidth: 1
-  }
+  },
+
 });

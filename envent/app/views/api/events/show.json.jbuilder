@@ -2,7 +2,8 @@
 # json.name @event.name
 # json.tag @event.tag
 # json.img_url: @event.img
-json.extract! @event, :id, :name, :tag, :img_url, :start_date, :end_date
+json.extract! @event, :id, :name, :tag, :img_url, :start_date, :end_date, :message, :location
+json.set! :views, @event.event_views.count
 json.display_elements do
   json.array! @event.display_elements.sort_by(&:position).pluck(:module)
 end

@@ -18,3 +18,14 @@ export const getEvents = (userId) => (
     data: { userId }
   })
 );
+
+export const patchEvent = event => {
+  debugger;
+  return (
+  $.ajax({
+    method: "PATCH",
+    url:`/api/events/${event.id}`,
+    data: { event }
+  })
+);
+};

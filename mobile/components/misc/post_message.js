@@ -4,7 +4,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Alert
+  Alert,
+  Keyboard
 } from 'react-native';
 import style from '../styles/messages';
 import {postNewsMessage, postMessage} from '../../util/api';
@@ -54,6 +55,11 @@ export default class PostMessage extends React.Component {
   postToMessageBoard(){
     let message = {};
     message["body"] = this.state.message;
+    if (message['body'].toLowerCase().includes("cookie")){
+      Keyboard.dismiss();
+      this.props.invalidPost();
+      return;
+    }
     message["sessionToken"] = this.props.user.sessionToken;
     postMessage(this.props.eventId, message)
     .then(result=>{

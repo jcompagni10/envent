@@ -5,7 +5,7 @@ import {
   View,
   Image,
   Button,
-  TouchableHighlight,
+  TouchableOpacity,
   SectionList,
   ListItem,
   Header,
@@ -99,13 +99,13 @@ export default class Schedule extends React.Component {
 
   _renderButton(item){
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         key = {item}
         style={this.buttonStyle(item)}
         onPress={()=>this.setDay(item)}
       >
         <Text style={style.dayButtonText}>{item}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
   dayButtons(){
@@ -132,6 +132,18 @@ export default class Schedule extends React.Component {
     if (this.state.isLoading){
       return (
         <Loader />
+      );
+    } else if (this.state.days.length < 1){
+      return (
+        <View>
+          <AppHeader
+            title = {"Schedule"}
+            navigation = {this.props.navigation}
+          />
+        <View style={style.noScheduleContainer}>
+            <Text style={style.noScheduleText}> No Schedule Items</Text>
+          </View>
+        </View>
       );
     }
     return (

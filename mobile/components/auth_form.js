@@ -38,7 +38,7 @@ export default class AuthForm extends React.Component {
   }
 
   login(){
-    fetch("http://192.168.3.37:3000/api/session/",{
+    fetch("http://192.168.3.21:3000/api/session/",{
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -62,7 +62,7 @@ export default class AuthForm extends React.Component {
   }
 
   signup(){
-    fetch("http://192.168.3.37:3000/api/users/",{
+    fetch("http://192.168.3.21:3000/api/users/",{
       method: 'POST',
       headers: {
         Accept: 'application/json',
