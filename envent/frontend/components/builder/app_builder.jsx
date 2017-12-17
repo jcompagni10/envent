@@ -43,8 +43,8 @@ export default class AppBuilder extends React.Component {
             {/* <ProtectedRoute path='/event_builder/:eventTag/info' component={InfoFormContainer} /> */}
             <ProtectedRoute path='/event_builder/:eventTag/schedule' component={ScheduleContainer} />
             <ProtectedRoute path='/event_builder/:eventTag/news' component={NewsContainer} />
-            <ProtectedRoute path="/event_builder" component={EventFormContainer} />
             <ProtectedRoute path="/event_builder/:eventTag/map" component={MapContainer} />
+            <ProtectedRoute path="/event_builder" component={EventFormContainer} />
 
           </Switch>
         </div>

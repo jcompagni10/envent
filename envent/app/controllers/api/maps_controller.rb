@@ -20,6 +20,10 @@ class Api::MapsController < ApplicationController
     render :show
   end
 
+  def update 
+    
+  end
+
   def destroy
     @map = Map.find(params[:id])
     @map.destroy

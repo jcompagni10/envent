@@ -84,7 +84,7 @@ export default class Map extends React.Component{
         
       </div>);
     }
-    // debugger
+    debugger
     let display = this.props.maps.map(map => (
       <div>
         <h5>{map.title}</h5>
