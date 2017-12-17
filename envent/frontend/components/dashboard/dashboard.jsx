@@ -16,6 +16,19 @@ export default()=>{
       <StatsContainer />
 
         <div className="dashboard-content">
+        <div className="event-index-item-container">
+          <Link
+            className="dashboard-create-event-link"
+            to="/event_builder">
+            <Glyphicon
+              className="plus-sign"
+              glyph="plus" />
+            Create An Event
+          </Link>
+        </div>
+        <div className="event-or">
+          Or
+        </div>
           <EventIndexContainer />
         </div>
       </div>

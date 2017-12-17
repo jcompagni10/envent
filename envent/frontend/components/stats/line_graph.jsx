@@ -36,7 +36,15 @@ export default class Schedule extends React.Component {
         <Line
           data={this.props.chartData}
           options={{
-            maitainAspectRatio: false
+            maitainAspectRatio: false,
+            scales: {
+              yAxes: [{
+                display: true,
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
           }}
         />
       </div>

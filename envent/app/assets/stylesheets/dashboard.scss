@@ -26,8 +26,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  width: 85%;
+  max-width: 1000px;
 }
 
 .plus-sign {
@@ -41,7 +43,7 @@
   color: white;
   width: 250px;
   text-align: center;
-
+  // width: 60%;
 }
 
 .dashboard-or{

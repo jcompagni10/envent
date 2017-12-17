@@ -27,7 +27,7 @@ export default class EventIndex extends React.Component {
 
     return (
       <div className='event-index-container'>
-        <div className="event-index-item-container">
+        {/* <div className="event-index-item-container">
           <Link
             className="dashboard-create-event-link"
             to="/event_builder">
@@ -39,7 +39,7 @@ export default class EventIndex extends React.Component {
         </div>
         <div className ="event-or">
           Or
-        </div>
+        </div> */}
         { display }
       </div>
     );
