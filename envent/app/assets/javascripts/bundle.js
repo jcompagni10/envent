@@ -35122,9 +35122,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_index_container__ = __webpack_require__(329);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_bootstrap__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stats_stats_container__ = __webpack_require__(713);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stats_stats_container__ = __webpack_require__(713);
 
 
 
@@ -35143,7 +35141,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         'Dashboard'
       )
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__stats_stats_container__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__stats_stats_container__["a" /* default */], null),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'dashboard-content' },
@@ -90305,6 +90303,8 @@ const mapDispatchToProps = dispatch => ({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_bootstrap__ = __webpack_require__(27);
+
 
 
 
@@ -90319,6 +90319,10 @@ class Stats extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     };
   }
 
+  boxStats() {
+    const events = this.props.events;
+    return [{ label: "All Events", icon: "tasks", value: events.all_ids.length, color: "#796AEE" }, { label: "Current Events", icon: "calendar", value: events.current_events, color: "#ff7676" }, { label: "Total Views", icon: "eye-open", value: events.views.length, color: "#54e69d" }, { label: "Avg. Views", icon: "filter", value: events.avg_views, color: "#ffc36d" }];
+  }
   componentWillReceiveProps(newProps) {
     if (this.props.events.all_ids.length !== newProps.events.all_ids.length) {
       this.getChartData(newProps);
@@ -90347,11 +90351,43 @@ class Stats extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'stats-container' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__line_graph_container__["a" /* default */], { chartData: this.state.chartData })
-    );
+    if (this.props.events.views) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'box-stats-container' },
+          this.boxStats().map((item, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            {
+              key: idx,
+              className: 'box-stats-item' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'icon', style: { backgroundColor: item.color } },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_bootstrap__["e" /* Glyphicon */], { glyph: item.icon })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'box-stats-label' },
+              item.label
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'box-stats-value' },
+              item.value
+            )
+          ))
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'stats-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__line_graph_container__["a" /* default */], { chartData: this.state.chartData })
+        )
+      );
+    }
+    return null;
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Stats;
