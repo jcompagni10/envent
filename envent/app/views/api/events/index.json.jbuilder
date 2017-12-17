@@ -19,7 +19,7 @@ views_arr = []
   views_arr << @views.count(Date.today - i)
 end
 
-
+json.set! :current_events, @events.where("? between start_date and end_date", Date.today).count
 if @views
   json.set! :views, views_arr
   json.set! :avg_views, @views.length/@events.length
