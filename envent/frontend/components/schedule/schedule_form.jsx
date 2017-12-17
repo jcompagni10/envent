@@ -82,6 +82,7 @@ export default class Schedule extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="schedule-form-container">
         <h3> Schedule Form </h3>
@@ -152,6 +153,7 @@ export default class Schedule extends React.Component {
               src={this.state.img_url} />
 
             <FormControl
+              className="schedule-form-submit-button"
               onClick={this.handleSubmit}
               type="submit"/>
           </FormGroup>
