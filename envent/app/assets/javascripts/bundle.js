@@ -11648,8 +11648,8 @@ const destroyMap = mapId => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util
 /* harmony export (immutable) */ __webpack_exports__["f"] = destroyMap;
 
 
-const updateMap = map => dispatch => Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* patchMap */])(map).then(updatedMap => dispatch(receiveMap(updatedMap)));
-/* unused harmony export updateMap */
+const updateMap = (eventId, map) => dispatch => (Object(__WEBPACK_IMPORTED_MODULE_0__util_map_api__["c" /* patchMap */])(eventId, map).then(updatedMap => dispatch(receiveMap(updatedMap))), errors => dispatch(receiveMapErrors(errors.responseJSON)));
+/* harmony export (immutable) */ __webpack_exports__["h"] = updateMap;
 
 
 /***/ }),
@@ -17601,7 +17601,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getMap: eventId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["g" /* getMap */])(eventId)),
   createMap: (eventId, map) => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["e" /* createMap */])(eventId, map)),
-  destroyMap: mapId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["f" /* destroyMap */])(mapId))
+  destroyMap: mapId => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["f" /* destroyMap */])(mapId)),
+  updateMap: (eventId, map) => dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_map__["h" /* updateMap */])(eventId, map))
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__map__["a" /* default */])));
@@ -89952,11 +89953,13 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentDidMount() {
+    debugger;
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
   componentWillReceiveProps(newProps) {
+    debugger;
     // if (this.props.maps[0])
     // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
     this.setState({ img_url: newProps.maps[0].img_url });
@@ -89972,14 +89975,20 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.setState({ title: event.target.value });
   }
 
-  handleSubmit(event) {
-    // debugger
-    event.preventDefault();
+  handleSubmit(action = "create") {
+    debugger;
+    action.preventDefault();
+    let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
     // newMap[eventTag] = this.props.match.params.eventTag;
-
-    this.props.createMap(this.props.match.params.eventTag, this.state);
+    if (action === "create") {
+      this.props.createMap(this.props.match.params.eventTag, this.state);
+      this.props.history.push(`/event_builder/${event.tag}/map`);
+    } else {
+      this.props.updateMap(this.props.match.params.eventTag, this.state);
+      this.props.history.push(`/event_builder/${event.tag}/map`);
+    }
   }
 
   onImageDrop(files) {
@@ -90003,12 +90012,11 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   render() {
-    // debugger
+    debugger;
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { height: '150', width: '150' });
     }
-    debugger;
     let display = this.props.maps.map(map => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
@@ -90046,7 +90054,7 @@ class Map extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           type: 'submit' })
       )
     ));
-    // debugger
+    debugger;
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
@@ -90084,10 +90092,10 @@ const fetchMap = eventId => $.ajax({
 /* harmony export (immutable) */ __webpack_exports__["b"] = fetchMap;
 
 
-const patchMap = map => {
+const patchMap = (eventId, map) => {
   return $.ajax({
     method: "PATCH",
-    url: `api/events/${map.id}`,
+    url: `api/events/${eventId}/maps`,
     data: { map }
   });
 };

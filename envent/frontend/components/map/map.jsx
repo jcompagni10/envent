@@ -21,11 +21,13 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
+    debugger
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
   componentWillReceiveProps(newProps){
+    debugger
     // if (this.props.maps[0])
     // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
       this.setState({ img_url: newProps.maps[0].img_url});
@@ -41,14 +43,20 @@ export default class Map extends React.Component{
     this.setState({ title: event.target.value });
   }
 
-  handleSubmit(event){
-    // debugger
-    event.preventDefault();
+  handleSubmit(action = "create"){
+    debugger
+    action.preventDefault();
+    let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
     // newMap[eventTag] = this.props.match.params.eventTag;
-
-    this.props.createMap(this.props.match.params.eventTag, this.state);
+    if (action === "create"){
+      this.props.createMap(this.props.match.params.eventTag, this.state);
+      this.props.history.push(`/event_builder/${event.tag}/map`);
+    } else {
+      this.props.updateMap(this.props.match.params.eventTag, this.state);
+      this.props.history.push(`/event_builder/${event.tag}/map`);
+    }
   }
   
   onImageDrop(files){
@@ -73,10 +81,8 @@ export default class Map extends React.Component{
     });
   }
 
-  
-
   render(){
-    // debugger
+    debugger
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -84,7 +90,6 @@ export default class Map extends React.Component{
         
       </div>);
     }
-    debugger
     let display = this.props.maps.map(map => (
       <div>
         <h5>{map.title}</h5>
@@ -111,7 +116,7 @@ export default class Map extends React.Component{
       
       </div>
     ));
-    // debugger
+    debugger
     return(
       <div >
         {display}

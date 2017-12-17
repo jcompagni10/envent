@@ -20,11 +20,11 @@ export const fetchMap = (eventId) => (
   })
 );
 
-export const patchMap = map => {
+export const patchMap = (eventId, map) => {
   return(
     $.ajax({
       method: "PATCH",
-      url: `api/events/${map.id}`,
+      url: `api/events/${eventId}/maps`,
       data: {map}
     })
   );

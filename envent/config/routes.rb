@@ -7,16 +7,16 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create]
     resources :events, only: [:index, :show, :create, :update] do
       resources :schedule_items, only: [:index, :create, :update]
-      resources :maps, only: [:create, :show, :destroy]
+      resources :maps, only: [:create, :show, :update]
       resources :news, only: [:create, :index]
       resources :info, only: [:create, :show, :update]
       resources :messages, only: [:create, :index]
     end
-    resources :messages, only: [:show, :update, :delete]
-    resources :news, only: [:show, :destroy, :update]
-    resources :schedule_items, only: [:show, :destroy]
-    resources :maps, only: [:create, :show, :destroy]
-    resources :news, only: [:create, :index, :update]
-    get 'events/show_id/:id', :to => 'events#show_id'
+    # resources :messages, only: [:show, :update, :delete]
+    # resources :news, only: [:show, :destroy, :update]
+    # resources :schedule_items, only: [:show, :destroy]
+    # resources :maps, only: [:create, :show, :destroy]
+    # resources :news, only: [:create, :index, :update]
+    # get 'events/show_id/:id', :to => 'events#show_id'
   end
 end

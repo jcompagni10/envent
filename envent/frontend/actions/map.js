@@ -46,7 +46,8 @@ export const destroyMap = mapId => dispatch => (
   )
 );
 
-export const updateMap = map => dispatch => (
-  patchMap(map)
-  .then(updatedMap => dispatch(receiveMap(updatedMap)))
+export const updateMap = (eventId, map) => dispatch => (
+  patchMap(eventId, map)
+  .then(updatedMap => dispatch(receiveMap(updatedMap))),
+    errors => dispatch(receiveMapErrors(errors.responseJSON))
 );
