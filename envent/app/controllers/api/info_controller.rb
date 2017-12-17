@@ -4,7 +4,7 @@ class Api::InfoController < ApplicationController
     if !@info.event_id
       @info.event_id = params[:event_id]
     end
-    
+
     if @info.save
       render :show
     else
@@ -27,9 +27,9 @@ class Api::InfoController < ApplicationController
       render json: @info.errors.full_messages, status: 422
     end
   end
-  
+
   private
-  
+
   def info_params
     params.require(:info).permit(
       :start_date,
