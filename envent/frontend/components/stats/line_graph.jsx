@@ -1,6 +1,6 @@
 import React from 'react';
 // import Chart from 'chartjs';
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
 
 

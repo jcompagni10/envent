@@ -83,7 +83,8 @@ export default class EventForm extends React.Component{
     event.end_date = this.state.end_date.format();
     if (action === "create") {
       this.props.createEvent(event);
-      this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+      // this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+      this.props.history.push(`/event/${event.tag}/${event.modules[0]}`);
     } else {
       this.props.updateEvent(event);
       this.props.history.push(`/event/${event.id}`);
