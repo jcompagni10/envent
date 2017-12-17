@@ -34,9 +34,9 @@ export default class ScheduleIndexItem extends React.Component {
     return (
       <div className="schedule-index-item-container-daddy">
         {/* <div id="calendar"></div> */}
-        <div className="schedule-index-item-title">
+        {/* <div className="schedule-index-item-title">
           {title}
-        </div>
+        </div> */}
 
         <div className="schedule-index-item-container">
           <div>
@@ -46,28 +46,33 @@ export default class ScheduleIndexItem extends React.Component {
           </div>
 
           <div className="schedule-index-item-container-right">
-            {/* <div>
-              <label htmlFor="">Title </label>&nbsp;
-            </div> */}
+           <div className="schedule-item-right-container-left">
+              <div className="schedule-item-field">
+                <strong htmlFor="">Title </strong>&nbsp;&nbsp; { title };
+              </div>
 
-            <div>
-              <label htmlFor="">Start Time </label>&nbsp;{ parsed_start }
+              <div className="schedule-item-field">
+                <strong htmlFor="">Start </strong>&nbsp;&nbsp;{ parsed_start }
+              </div>
+
+              <div className="schedule-item-field">
+                <strong htmlFor="">End </strong>&nbsp;&nbsp;{ parsed_end }
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="">End Time </label>&nbsp;{ parsed_end }
-            </div>
 
-            <div>
-              <label htmlFor="">Feature </label>&nbsp;{ feature_id }
-            </div>
+            <div className="schedule-item-right-container-right">
+              <div className="schedule-item-field">
+                <strong htmlFor="">Feature </strong>&nbsp;&nbsp;{ feature_id }
+              </div>
 
-            <div>
-              <label htmlFor="">Location </label>&nbsp;{ location }
-            </div>
+              <div className="schedule-item-field">
+                <strong htmlFor="">Location </strong>&nbsp;&nbsp;{ location }
+              </div>
 
-            <div>
-              <label htmlFor="">Description </label>&nbsp;{ description }
+              <div className="schedule-item-field">
+                <strong htmlFor="">Description </strong>&nbsp;&nbsp;{ description }
+              </div>
             </div>
 
             {/* <button>Update</button>

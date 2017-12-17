@@ -25,7 +25,7 @@ class ScheduleItem < ApplicationRecord
 
   belongs_to :event
 
-  before_save :ensure_image#, :parse_times
+  before_save :ensure_image, :parse_times
 
   DEFAULT_IMAGES = %w[
     https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513394909/unsplash_5252bb51404f8_1_bizffe.jpg
@@ -41,7 +41,7 @@ class ScheduleItem < ApplicationRecord
     https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg
   ]
   def ensure_image
-    self.img_url = DEFAULT_IMAGES[ScheduleItem.count % 11]
+    self.img_url ||= DEFAULT_IMAGES[ScheduleItem.count % 11]
   end
 
   def parse_times
