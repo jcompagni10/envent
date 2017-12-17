@@ -10299,7 +10299,7 @@ module.exports = Element;
 /* 24 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.3' };
+var core = module.exports = { version: '2.5.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -18204,7 +18204,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   var VALUES_BUG = false;
   var proto = Base.prototype;
   var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-  var $default = (!BUGGY && $native) || getMethod(DEFAULT);
+  var $default = $native || getMethod(DEFAULT);
   var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
   var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
   var methods, key, IteratorPrototype;
@@ -35094,6 +35094,8 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_event_index_container__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stats_stats_container__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_bootstrap__ = __webpack_require__(27);
+
 
 
 
@@ -35116,6 +35118,25 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'dashboard-content' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'event-index-item-container' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+          {
+            className: 'dashboard-create-event-link',
+            to: '/event_builder' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_bootstrap__["e" /* Glyphicon */], {
+            className: 'plus-sign',
+            glyph: 'plus' }),
+          'Create An Event'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'event-or' },
+        'Or'
+      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__event_event_index_container__["a" /* default */], null)
     )
   );
@@ -70083,7 +70104,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
     $replacer = replacer = args[1];
     if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
     if (!isArray(replacer)) replacer = function (key, value) {
-      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
+      if ($replacer) value = $replacer.call(this, key, value);
       if (!isSymbol(value)) return value;
     };
     args[1] = replacer;
@@ -80833,7 +80854,6 @@ class AppBuilder extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
         { className: 'app-builder-title' },
         'Build Your App'
       ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__progress_bar_container__["a" /* default */], { data: [1, 6] }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'app-builder-content-container' },
@@ -80870,7 +80890,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__progress_bar__["a" /* default */])));
+/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* withRouter */])(Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_1__progress_bar__["a" /* default */])));
 
 /***/ }),
 /* 672 */
@@ -81065,7 +81085,8 @@ class EventForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
     event.end_date = this.state.end_date.format();
     if (action === "create") {
       this.props.createEvent(event);
-      this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+      // this.props.history.push(`/event_builder/${event.tag}/${event.modules[0]}`);
+      this.props.history.push(`/event/${event.tag}/${event.modules[0]}`);
     } else {
       this.props.updateEvent(event);
       this.props.history.push(`/event/${event.id}`);
@@ -89661,11 +89682,6 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
       { className: 'schedule-index-item-container-daddy' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'schedule-index-item-title' },
-        title
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
         { className: 'schedule-index-item-container' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -89679,58 +89695,78 @@ class ScheduleIndexItem extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
           { className: 'schedule-index-item-container-right' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            null,
+            { className: 'schedule-item-right-container-left' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { htmlFor: '' },
-              'Start Time '
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'Title '
+              ),
+              '\xA0\xA0 ',
+              title,
+              ';'
             ),
-            '\xA0',
-            parsed_start
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'Start '
+              ),
+              '\xA0\xA0',
+              parsed_start
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'End '
+              ),
+              '\xA0\xA0',
+              parsed_end
+            )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            null,
+            { className: 'schedule-item-right-container-right' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { htmlFor: '' },
-              'End Time '
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'Feature '
+              ),
+              '\xA0\xA0',
+              feature_id
             ),
-            '\xA0',
-            parsed_end
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { htmlFor: '' },
-              'Feature '
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'Location '
+              ),
+              '\xA0\xA0',
+              location
             ),
-            '\xA0',
-            feature_id
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { htmlFor: '' },
-              'Location '
-            ),
-            '\xA0',
-            location
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              { htmlFor: '' },
-              'Description '
-            ),
-            '\xA0',
-            description
+              'div',
+              { className: 'schedule-item-field' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'strong',
+                { htmlFor: '' },
+                'Description '
+              ),
+              '\xA0\xA0',
+              description
+            )
           )
         )
       )
@@ -89956,25 +89992,6 @@ class EventIndex extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'event-index-container' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'event-index-item-container' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */],
-          {
-            className: 'dashboard-create-event-link',
-            to: '/event_builder' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["e" /* Glyphicon */], {
-            className: 'plus-sign',
-            glyph: 'plus' }),
-          'Create An Event'
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'event-or' },
-        'Or'
-      ),
       display
     );
   }
@@ -90142,9 +90159,10 @@ class Stats extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     return [{ label: "All Events", icon: "tasks", value: events.all_ids.length, color: "#796AEE" }, { label: "Current Events", icon: "calendar", value: events.current_events, color: "#ff7676" }, { label: "Total Views", icon: "eye-open", value: events.views.length, color: "#54e69d" }, { label: "Avg. Views", icon: "filter", value: events.avg_views, color: "#ffc36d" }];
   }
   componentWillReceiveProps(newProps) {
-    if (this.props.events.all_ids.length !== newProps.events.all_ids.length) {
-      this.getChartData(newProps);
-    }
+    // debugger;
+    // if (this.props.events.all_ids.length !== newProps.events.all_ids.length) {
+    this.getChartData(newProps);
+    // }
   }
 
   getChartData(newProps) {
@@ -90276,7 +90294,15 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_chartjs_2__["a" /* Line */], {
         data: this.props.chartData,
         options: {
-          maitainAspectRatio: false
+          maitainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
         }
       })
     );
