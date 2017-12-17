@@ -1,7 +1,7 @@
-export const postMap = (map) => (
+export const postMap = (eventId, map) => (
   $.ajax({
     method: 'POST',
-    url: 'api/maps',
+    url: `api/events/${eventId}/maps/1`,
     data: {map}
   })
 );

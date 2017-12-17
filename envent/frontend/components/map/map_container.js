@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Map from './map';
 import { getMap, createMap, destroyMap } from '../../actions/map';
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = state => {
   return {
@@ -10,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getMap: (eventId) => dispatch(getMap(eventId)),
-  createMap: map => dispatch(createMap(map)),
+  createMap: (eventId, map) => dispatch(createMap(eventId, map)),
   destroyMap: mapId => dispatch(destroyMap(mapId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Map));
