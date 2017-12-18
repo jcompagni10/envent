@@ -5,5 +5,33 @@
 
 .img-view{
   width: 95%;
-  max-height: 300px;
+}
+
+.map-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-left-container {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.map-right-container {
+  width: 70%;
+}
+
+.map-dropzone {
+  width: 100%;
+  border: 1px dashed gray;
+  margin: 10px 0;
+  height: 75px;
+}
+
+.map-submit-button {
+  width: 100%;
+}
+
+.map-title-input {
+  width: 100%;
 }

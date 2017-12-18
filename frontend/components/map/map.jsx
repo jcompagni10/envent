@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import { FormControl } from 'react-bootstrap';
 
 const CLOUDINARY_UPLOAD_PRESET = "umzpk5ol";
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/trwong/image/upload';
@@ -22,19 +23,18 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
-  
     // console.log(this.props);
     
     this.props.getMap(this.props.match.params.eventId);
   }
 
   componentWillReceiveProps(newProps){
-  
     if (newProps.maps.length > 0 ){
-      this.setState({ img_url: newProps.maps[0].img_url,
+      this.setState({ 
+        img_url: newProps.maps[0].img_url,
         id: newProps.maps[0].id,
         title: newProps.maps[0].title
-
+        
       });
     }
     // }
@@ -55,7 +55,8 @@ export default class Map extends React.Component{
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
     // newMap[eventTag] = this.props.match.params.eventTag;
-    if (action === "create"){
+    debugger
+    if (!this.state.id){
       this.props.createMap(this.props.match.params.eventId, this.state);
       // this.props.history.push(`/event_builder/${event.tag}/map`);
     } else {
@@ -90,12 +91,12 @@ export default class Map extends React.Component{
   render(){
     
     // let { currentEvent } = this.props;
-    if (this.props.maps.length === 0) {
-     return (
-      <div height='150' width ='150'>
+    // if (this.props.maps.length === 0) {
+    //  return (
+    //   <div height='150' width ='150'>
         
-      </div>);
-    }
+    //   </div>);
+    // }
     // let display = this.props.maps(map => (
       // <div>
       //   <h5>{map.title}</h5>
@@ -126,15 +127,12 @@ export default class Map extends React.Component{
     return(
       <div className="map-page">
         {/* {display} */}
-        <div>
-          <h5>{this.state.title}</h5>
-          <img
-            className="img-view"
-            src={this.state.img_url}
-          />
-          <h3>Map</h3>
+        <div className="map-left-container">
+          
+          <h2>Map</h2>
           <form className="map-form" action="">
-            <input
+            <FormControl
+              className="map-title-input"
               onChange={this.handleTitle}
               // onChange={ this.handleChange("title") }
               type="text"
@@ -147,11 +145,21 @@ export default class Map extends React.Component{
               onDrop={this.onImageDrop.bind(this)}>
               <p>Drop an image or click to select a file to upload.</p>
             </Dropzone>
-            <input
+            <button
+              className="btn btn-primary"
               onClick={this.handleSubmit}
-              type="submit" />
+              type="submit">
+              Submit
+            </button>
           </form>
+        </div>
 
+        <div className="map-right-container">
+          <h3>{this.state.title}</h3>
+          <img
+            className="img-view"
+            src={this.state.img_url}
+          />
         </div>
       </div>
     );

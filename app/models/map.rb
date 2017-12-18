@@ -14,6 +14,7 @@ class Map < ApplicationRecord
   validates :title, :img_url, presence: true
 
   belongs_to :event,
+             primary_key: :id,
              class_name: :Event,
              foreign_key: :event_id
 end

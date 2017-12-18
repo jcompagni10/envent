@@ -1,8 +1,12 @@
+
+.home-landing-page-container{
+}
+
 .landing-page-background-image {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   background-image: url("https://res.cloudinary.com/trwong/image/upload/v1513238696/ezra-jeffrey-77199_yskzks.jpg");
   background-position: center;
   background-size: cover;
@@ -15,14 +19,19 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 120vh;
+  height: 100vh;
   background-color: rgba($color: #4abdac, $alpha: 0.9)
+}
+
+.landing-top-section{
+  height: 100vh;
+  min-height: 600px;
 }
 
 .home-landing-page-container {
   color: white;
   height: 100vh;
-  min-height: 400px;
+  min-height: 700px;
 }
 
 .landing-page-main-container {
@@ -117,4 +126,49 @@ div[class*="landing-page-section"] {
   font-size: 36px;
 }
 
+.home-landing-page-logo {
+  width: 250px;
+  height: 60px;
+  object-fit: cover;
+  object-position: center;
+}
 
+.landing-bottom-section{
+  color: #000;
+  text-align: center;
+  font-family: "Poppins",sans-serif;
+  background-color: #fff;
+  padding: 30px;
+}
+
+.demo-area{
+  min-width: 800px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.demo-phone-info{
+  color: #999;
+  text-align: center;
+}
+
+.landing-bottom-section h1{
+  margin: 0;
+  font-weight: bold;
+  padding: 0;
+}
+
+.demo-info{
+  text-align: left;
+}
+
+.demo-info li{
+  margin-bottom: 40px;
+}
+.demo-info p{
+  color: #aaa;
+  max-width: 600px;
+
+}

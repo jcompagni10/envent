@@ -56,6 +56,10 @@ class Api::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
+      @event.display_elements.destroy_all
+      params[:event][:modules].each_with_index do |mod, position|
+        @event.display_elements.create({module: mod, position: position})
+      end
       render :show
     else
       render json: @event.errors.full_messages, status: 404

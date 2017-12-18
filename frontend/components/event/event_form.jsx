@@ -7,11 +7,13 @@ import moment from 'moment';
 import {
   FormGroup,
   FormControl,
-  Checkbox,
+  // Checkbox,
   Nav,
   NavItem,
   Navbar,
 } from 'react-bootstrap';
+import { Checkbox, CheckboxGroup } from 'react-checkbox-group';
+
 
 const modules = ["Schedule", "News", "MessageBoard", "Map"];
 const CLOUDINARY_UPLOAD_PRESET = 'umzpk5ol';
@@ -30,13 +32,16 @@ export default class EventForm extends React.Component{
       start_date: moment(),
       end_date: moment(),
       id: undefined,
+      modules: [],
     };
 
-    this.modules = new Set;
+    // this.modules = new Set;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleModules = this.handleModules.bind(this);
   }
 
   componentDidMount() {
+    // debugger;
     let {
       name,
       tag,
@@ -44,6 +49,7 @@ export default class EventForm extends React.Component{
       location,
       message,
       id,
+      display_elements,
       // start_date,
       // end_date,
     } = this.props.currentEvent;
@@ -56,6 +62,7 @@ export default class EventForm extends React.Component{
         location,
         message,
         id,
+        modules: display_elements,
         // start_date,
         // end_date,
       });
@@ -63,14 +70,14 @@ export default class EventForm extends React.Component{
   }
 
   handleChange(field, e){
-    if (field === 'modules'){
-      let value = e.target.value;
-      if (e.target.checked){
-        this.modules.add(value);
-      } else {
-        this.modules.delete(value);
-      }
-    }
+    // if (field === 'modules'){
+    //   let value = e.target.value;
+    //   if (e.target.checked){
+    //     this.modules.add(value);
+    //   } else {
+    //     this.modules.delete(value);
+    //   }
+    // }
     this.setState({[field]: e.target.value});
   }
 
@@ -80,7 +87,7 @@ export default class EventForm extends React.Component{
 
   handleSubmit( action = "create" ) {
     let event = Object.assign({},this.state);
-    event["modules"] = Array.from(this.modules);
+    // event["modules"] = Array.from(this.modules);
     event.start_date = this.state.start_date.format();
     event.end_date = this.state.end_date.format();
     if (action === "create") {
@@ -89,6 +96,7 @@ export default class EventForm extends React.Component{
       this.props.history.push(`/event/${event.tag}/${event.modules[0]}`);
     } else {
       this.props.updateEvent(event);
+      window.scrollTo(0, 0);
       this.props.history.push(`/event/${event.id}`);
     }
   }
@@ -120,6 +128,10 @@ export default class EventForm extends React.Component{
   //   }
   //   return "";
   // }
+
+  handleModules(newModules) {
+    this.setState({modules: newModules});
+  }
 
   render(){
     let {
@@ -290,7 +302,7 @@ export default class EventForm extends React.Component{
             }
             </FormGroup> */}
             <label htmlFor="event-modules">Modules</label>
-            <FormGroup>
+            {/* <FormGroup>
               {modules.map(module =>(
                 <fieldset key = {module}>
                   <div className="form-check">
@@ -312,7 +324,25 @@ export default class EventForm extends React.Component{
                   </div>
                 </fieldset>
               ))}
-            </FormGroup>
+            </FormGroup> */}
+
+            <CheckboxGroup
+              name="modules"
+              value={this.state.modules}
+              onChange={this.handleModules}
+            >
+              { modules.map(module => (
+                <div
+                  key={module}>
+                  <label>
+                    <Checkbox value={module} />
+                    &nbsp;
+                    {module}
+                    </label>
+                    <br/>
+                </div>
+              )) }
+            </CheckboxGroup>
 
             <label>Event Image</label>
             <Dropzone

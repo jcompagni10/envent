@@ -38,17 +38,16 @@ class ScheduleItem < ApplicationRecord
     https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513395303/photo-1466253985008-19ae27987e03_vjeoz6.jpg
     https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513395302/photo-1468231300737-ecd13d75ce6f_eupzhf.jpg
     https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513395301/photo-1507768526132-531921c1177a_ccrbci.jpg
-    https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg
   ]
   def ensure_image
-    self.img_url ||= DEFAULT_IMAGES[ScheduleItem.count % 11]
+    self.img_url ||= DEFAULT_IMAGES[ScheduleItem.count % 10]
   end
 
   def parse_times
     self.parsed_start = self.start_time.strftime("%b %e %l:%M%P")
     self.parsed_end = self.end_time.strftime("%b %e %l:%M%P")
   end
-  
+
   # def start_time=(start_time)
   #   self.start_time = start_time
   #   self.parsed_start = start_time.strftime("%b %e %l:%M%P")

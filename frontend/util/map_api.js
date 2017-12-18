@@ -17,7 +17,7 @@ export const postMap = (eventId, map) => (
 export const fetchMap = (eventId) => (
   $.ajax({
     method: 'GET', 
-    url: `api/events/${eventId}/maps/1`
+    url: `api/events/${eventId}/maps`
   })
 );
 
@@ -25,7 +25,7 @@ export const patchMap = (eventId, map) => {
   return(
     $.ajax({
       method: "PATCH",
-      url: `api/events/${eventId}/maps/${map.id}`,
+      url: `api/events/${eventId}/maps/1`,
       data: {map}
     })
   );

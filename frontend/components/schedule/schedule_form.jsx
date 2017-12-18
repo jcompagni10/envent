@@ -152,7 +152,7 @@ export default class Schedule extends React.Component {
               src={this.state.img_url} />
 
             <FormControl
-              className="schedule-form-submit-button"
+              className="btn btn-primary"
               onClick={this.handleSubmit}
               type="submit"/>
           </FormGroup>

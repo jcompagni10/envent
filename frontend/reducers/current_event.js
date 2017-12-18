@@ -73,7 +73,6 @@ const currentEvent = (state = _nullState, action) => {
       return newState;
     
     case RECEIVE_MAP:
-    
       let maps = Object.assign({}, state.maps, { [action.map]: action.map });
       newState.maps = maps;
       return newState;
