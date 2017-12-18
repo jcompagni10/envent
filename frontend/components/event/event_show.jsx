@@ -39,35 +39,38 @@ export default class EventShow extends React.Component {
     //   >{ el }</Link>
     // ));
     return (
-      <div className="event-show-container">
-        {/* <div className="event-links-container">
-          { links }
-        </div> */}
+      <div className="event-switch-container">
 
-        <Nav bsStyle="tabs" activeHref={"#" + this.props.location.pathname}>
-          <NavItem
-            eventKey={1}
-            href={`#/event/${id}`}
-          >Event</NavItem>
-          {
-            display_elements.map((el, i) => (
-              <NavItem
-                key={el}
-                eventKey={i + 2}
-                href={`#/event/${id}/${el}`}
-              >{el}</NavItem>
-            ))
-          }
-        </Nav>
-        
+        <div className="event-show-container">
+          {/* <div className="event-links-container">
+            { links }
+          </div> */}
 
-        <Switch>
-          <ProtectedRoute path="/event/:eventId/schedule" component={ScheduleContainer} />
-          <ProtectedRoute path="/event/:eventId/News" component={NewsPlaceholder} />
-          <ProtectedRoute path="/event/:eventId/MessageBoard" component={MessageBoardPlaceholder} />
-          <ProtectedRoute path="/event/:eventId/Map" component={MapContainer} />
-          <ProtectedRoute path="/event/:eventId" component={EventFormContainer} />
-        </Switch>
+          <Nav bsStyle="tabs" activeHref={"#" + this.props.location.pathname}>
+            <NavItem
+              eventKey={1}
+              href={`#/event/${id}`}
+            >Event</NavItem>
+            {
+              display_elements.map((el, i) => (
+                <NavItem
+                  key={el}
+                  eventKey={i + 2}
+                  href={`#/event/${id}/${el}`}
+                >{el}</NavItem>
+              ))
+            }
+          </Nav>
+          
+
+          <Switch>
+            <ProtectedRoute path="/event/:eventId/schedule" component={ScheduleContainer} />
+            <ProtectedRoute path="/event/:eventId/News" component={NewsPlaceholder} />
+            <ProtectedRoute path="/event/:eventId/MessageBoard" component={MessageBoardPlaceholder} />
+            <ProtectedRoute path="/event/:eventId/Map" component={MapContainer} />
+            <ProtectedRoute path="/event/:eventId" component={EventFormContainer} />
+          </Switch>
+        </div>
       </div>
     );
   }

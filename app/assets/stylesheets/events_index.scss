@@ -36,12 +36,21 @@
 // EVENT PAGE
 .event-index-container {
   // width: 85%;
-  margin: auto;
   // max-width: 1000px;
-  font-family: "Poppins",sans-serif;
-  width: 100%;
   // display: flex;
   // flex-wrap: wrap;
+
+  // margin: auto;
+  font-family: "Poppins",sans-serif;
+  // width: 100%;
+
+  width: 85%;
+  min-width: 600px;
+  margin: auto;
+  // background-color: white;
+  padding: 15px;
+  // border: 1px solid lightgray;
+  // border-radius: 5px;
 }
 
 .event-or{

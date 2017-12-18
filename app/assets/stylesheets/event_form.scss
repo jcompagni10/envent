@@ -45,7 +45,8 @@
 
 .event-form-image-preview {
   display: block;
-  width: 90%;
+  max-width: 90%;
+  max-height: 400px;
   margin: 10px auto;
 }
 

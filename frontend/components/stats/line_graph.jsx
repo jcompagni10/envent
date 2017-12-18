@@ -41,14 +41,15 @@ export default class LineGraph extends React.Component {
 
   render() {
     let textOverlay;
-    
-    if ( this.allZero(this.props.chartData.datasets[0].data) ) {
-      textOverlay = (
-        <div className="graph-overlay">
-          Requires at least 7 days of data before displaying user data
-        </div>
-      );
-    } 
+    if (this.props.chartData.datasets) {
+      if ( this.allZero(this.props.chartData.datasets[0].data) ) {
+        textOverlay = (
+          <div className="graph-overlay">
+            Requires at least 7 days of data before displaying user data
+          </div>
+        );
+      } 
+    }
 
     return (
       <div className="chart">

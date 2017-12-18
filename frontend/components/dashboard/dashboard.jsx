@@ -7,11 +7,6 @@ import { Glyphicon } from 'react-bootstrap';
 export default()=>{
   return (
       <div className="dashboard-container">
-        <div className="dashboard-header-container">
-          <div className="dashboard-header">
-            Dashboard
-          </div>
-        </div>
 
       <StatsContainer />
 
