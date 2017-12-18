@@ -14,7 +14,7 @@ export default()=>{
           <Link
             className="dashboard-create-event-link"
             to="/event_builder">
-            <Glyphicon
+          <Glyphicon
               className="plus-sign"
               glyph="plus" />
             Create An Event

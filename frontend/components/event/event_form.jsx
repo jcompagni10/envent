@@ -297,7 +297,7 @@ export default class EventForm extends React.Component{
                     <label className="form-check-label">
                       <Checkbox
                         // { checkPropsForModule(module) }
-                        checked={checkPropsForModule(module)}
+                        // checked={checkPropsForModule(module)}
                         // checked={true}
                         key={module}
                         id="event-modules"

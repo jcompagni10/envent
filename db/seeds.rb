@@ -33,40 +33,44 @@ events = Event.create!([
     start_date: Date.new(2018,2,3),
     end_date: Date.new(2018,2,5),
     private: false,
-    message: 'So You Know When the Keg Arrives',
-    img_url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D",
+    message: "Monthly meet up at Eddie's place",
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513394909/unsplash_5252bb51404f8_1_bizffe.jpg",
     location: '637 Larkin St.'
 
   },
-  { name: "Sick Festival",
-    tag: "Coachella",
+  { name: "Stage Coach",
+    tag: "coach",
     user_id: 2,
     private: false,
     start_date: Date.new(2018,2,3),
-    end_date: Date.new(2018,2,5)
+    end_date: Date.new(2018,2,5),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513394908/photo-1501837303764-ada599fdac6c_asqit3.jpg",
   },
-  { name: "Corporate McCorporate",
+  { name: "Corporate Teambuilding",
     tag: "corp",
     user_id: 1,
     private: false,
     start_date: Date.new(2018,2,3),
-    end_date: Date.new(2018,2,5)
+    end_date: Date.new(2018,2,5),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513394906/photo-1491339526372-c7112c8e37f3_xsq8zu.jpg",
 
   },
-  { name: "Christmas party",
+  { name: "Christmas Party",
     tag: "xmas",
     user_id: 2,
     private: false,
     start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
+    end_date: DateTime.new(2018,2,5),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513394905/photo-1493225457124-a3eb161ffa5f_tf51er.jpg",
 
   },
-  { name: "Negotiations Helicopter Conference",
-    tag: "heli",
+  { name: "Negotiations Conference",
+    tag: "nego",
     user_id: 4,
     private: false,
     start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
+    end_date: DateTime.new(2018,2,5),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/v1513394903/60147231_gim7mq.jpg",
 
   },
   { name: "Fyre Fest",
@@ -74,32 +78,17 @@ events = Event.create!([
     user_id: 4,
     private: false,
     start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
-
-  },
-  { name: "Generic Concert",
-    tag: "conc",
-    user_id: 4,
-    private: false,
-    start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
-
-  },
-  { name: "Nochella",
-    tag: "nope",
-    user_id: 4,
-    private: false,
-    start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
+    end_date: DateTime.new(2018,2,5),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513395305/photo-1501716702726-40703eebd722_fg2dv0.jpg",
 
   },
   { name: "Vitas",
     tag: "vitas",
     user_id: 4,
     private: false,
-    start_date: DateTime.new(2018,2,3),
-    end_date: DateTime.new(2018,2,5)
-
+    start_date: DateTime.new(2018,12,15),
+    end_date: DateTime.new(2018,12,17),
+    img_url: "https://res.cloudinary.com/trwong/image/upload/c_scale,w_500/v1513395304/photo-1460723237483-7a6dc9d0b212_r4j5zw.jpg",
   },
    ])
 
