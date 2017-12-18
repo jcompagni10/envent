@@ -118,7 +118,7 @@ export default class Schedule extends React.Component {
               onChange={ this.handleChange("feature_id") }
               type="text"
               name="feature_id"
-              placeholder="Feature(_id)"/>
+              placeholder="Feature"/>
 
             <label htmlFor="schedule-location">Location</label>
             <FormControl
