@@ -43,7 +43,7 @@ export default class EventIndexItem extends React.Component {
         <div className ="event-data-right">
           <div className ="event-edit-icon">
             <Link
-              to="/event_builder">
+              to={`/event/${this.props.eventId}`}>
               <Glyphicon
                 className = "edit-cog"
                 glyph = "cog" /> Edit
