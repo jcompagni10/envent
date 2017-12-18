@@ -17,7 +17,7 @@ export default class Event extends React.Component {
     
 
     return (
-      <div className="event-switch-container">
+      <div>
         <Switch>
           <ProtectedRoute path='/event/:eventId' component={EventShowContainer} />
           <div className="event-index-container">

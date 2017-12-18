@@ -22,6 +22,7 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
+<<<<<<< HEAD
   
     // console.log(this.props);
     
@@ -37,11 +38,23 @@ export default class Map extends React.Component{
 
       });
     }
+=======
+    this.props.getMap(this.props.match.params.eventTag);
+  }
+
+  componentWillReceiveProps(newProps){
+    // if (this.props.maps[0])
+    // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
+    this.setState({ img_url: newProps.maps[0].img_url, id: newProps.maps[0].id});
+>>>>>>> 4885526c4938f3e804673807891f511515bc3dff
     // }
   }
 
   handleChange(title) {
+<<<<<<< HEAD
     //
+=======
+>>>>>>> 4885526c4938f3e804673807891f511515bc3dff
     return event => this.setState({ [title]: event.target.value });
   }
 
@@ -50,6 +63,10 @@ export default class Map extends React.Component{
   }
 
   handleSubmit(action = "create"){
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 4885526c4938f3e804673807891f511515bc3dff
     // action.preventDefault();
     let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
@@ -88,7 +105,10 @@ export default class Map extends React.Component{
   }
 
   render(){
+<<<<<<< HEAD
     
+=======
+>>>>>>> 4885526c4938f3e804673807891f511515bc3dff
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (

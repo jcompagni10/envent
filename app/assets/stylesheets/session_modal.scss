@@ -10,3 +10,15 @@
   font-size: 20px;
   padding: 10px;
 }
+
+.modal-title {
+  position: absolute;
+}
+
+button.close {
+  margin-top: 0;
+}
+
+.modal-header .close {
+  padding: 0 15px 30px 15px;
+}

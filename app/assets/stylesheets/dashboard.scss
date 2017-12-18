@@ -84,7 +84,8 @@
   border-right: 1px solid #ccc;
   align-items: center;
   width: 200px;
-  padding:0 20px;
+  // padding:0 20px;
+  padding: 0 40px 0 20px;
 }
 
 .box-stats-item:last-of-type{
@@ -107,9 +108,21 @@
   padding: 5px;
   width: 40px;
   text-align: center;
+  margin-right: 10px;
 }
 
 .box-stats-value{
   font-size: 23px;
   font-weight: bold;
+}
+
+.dashboard-create-event-link-container {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  background-color: #fff;
+  // width: 100%;
 }

@@ -114,6 +114,13 @@ export default class EventForm extends React.Component{
     });
   }
 
+  checkPropsForModule(module) {
+    if (this.props.currentEvent.display_elements.includes(module)) {
+      return "checked";
+    }
+    return "";
+  }
+
   render(){
     let {
       name,
@@ -188,6 +195,13 @@ export default class EventForm extends React.Component{
       </button>
       );
     }
+
+    const checkPropsForModule = module => {
+      if (this.props.currentEvent.display_elements.includes(module)) {
+        return "checked";
+      }
+      return "";
+    };
 
     return (
       <div className="event-form-main-container">
@@ -280,6 +294,7 @@ export default class EventForm extends React.Component{
                   <div className="form-check">
                     <label className="form-check-label">
                       <Checkbox
+                        // { checkPropsForModule(module) }
                         key={module}
                         id="event-modules"
                         className="form-check-input"

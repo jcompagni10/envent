@@ -45,3 +45,7 @@ table {
 body {
 	background-color: #EEF5F9 !important;
 }
+
+button:focus {
+	outline: 0;
+}
