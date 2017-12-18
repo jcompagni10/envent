@@ -9,7 +9,7 @@ export default class Header extends React.Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Envent</a>
+            <a href="#"><img className="header-logo" src="https://res.cloudinary.com/trwong/image/upload/v1513571017/e11e34d6-fd58-4474-a0ea-2ab954ca0f38_gsrdm7.png" alt=""/></a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
