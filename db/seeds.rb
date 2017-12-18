@@ -248,23 +248,23 @@ maps = Map.create!([
 news = News.create!([
   {
     event_id: 1,
-    title: "37 Dead",
+    title: "",
     message: "Lorem Ipsum"
   },
   {
     event_id: 1,
-    title: "more news",
+    title: "",
     message: "no news is good news"
   },
   {
     event_id: 1,
-    title: "fyre fest sux",
-    message: "Lorem Ipsum"
+    title: "No smoking!",
+    message: "That means YOU Taylor"
   },
   {
     event_id: 1,
-    title: "r kelly is dope",
-    message: "haters want to hate lovers want to love, I don't want none of the above, I want to piss on you yes I do"
+    title: "Found Phone!",
+    message: "Report to Julian!"
   },
   {
     event_id: 1,
@@ -273,7 +273,7 @@ news = News.create!([
   },
   {
     event_id: 1,
-    title: "Docking at main stage",
+    title: "Dock at main stage",
     img_url: "https://d1marr3m5x4iac.cloudfront.net/images/block/I0-001/039/702/572-6.jpeg_/new-years-party-and-performance-72.jpeg",
     message: "Lorem Ipsum much long text to test if long text shows up ok this text goes on and onand onand on. blah"
   }
@@ -284,27 +284,27 @@ messages = Message.create!([
   {
   event_id: 1,
   author_id: 1,
-  body: "docking at main stage"
+  body: "Docking at main stage"
   },
   {
   event_id: 1,
   author_id: 2,
-  body: "tiki lamps for sale"
+  body: "Taco truck arrives!"
   },
   {
   event_id: 1,
   author_id: 3,
-  body: "clan meeting asap"
+  body: "Meeting asap"
   },
   {
   event_id: 2,
   author_id: 4,
-  body: "keg is arriving"
+  body: "Catering arrives"
   },
   {
   event_id: 2,
   author_id: 1,
-  body: "OGC"
+  body: "Hi!"
   },
 ])
 

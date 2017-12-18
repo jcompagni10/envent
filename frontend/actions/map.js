@@ -1,6 +1,6 @@
 import {
   postMap,
-  deleteMap,
+  // deleteMap,
   fetchMap,
   patchMap
 } from '../util/map_api';

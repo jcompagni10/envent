@@ -1,5 +1,5 @@
 # Eventful
-[Live Link](www.eventful.herokuapp.com)
+[Web App Link](www.envent.herokuapp.com)
 ## Summary
 
 Envent is a web application that allows users to create mobile applications for their events. Through Envent, users will be able to convey meaningful information to their guests. Inspired by Attendify, Envent utilizes React/Redux and Rails for the web application and React Native for the mobile application. 
@@ -21,7 +21,7 @@ Envent allows users to:
 The backend of Event was built using Ruby on Rails with a postgreSQL database, utilizing RESTful API requests. 
 
 #### Front End
-The frontend was built using React/Redux for the webapplication, and the mobile application used React Native. 
+The frontend was built using React/Redux for the webapplication. The mobile application used React Native. 
 
 #### Libraries 
 Envent uses:
