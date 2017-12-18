@@ -1,5 +1,6 @@
 # Eventful
 [Web App Link](www.envent.herokuapp.com)
+
 [Mobile App Link](emulator.thing)
 ## Summary
 
@@ -22,7 +23,7 @@ Envent allows users to:
 The backend of Event was built using Ruby on Rails with a postgreSQL database, utilizing RESTful API requests. 
 
 #### Front End
-The frontend was built using React/Redux for the webapplication. The mobile application used React Native. 
+The frontend was built using React/Redux for the web application. The mobile application used React Native. 
 
 #### Libraries 
 Envent uses:
@@ -34,7 +35,9 @@ Envent uses:
 * Cloudinary 
 * Chart.js
 * React-Datepicker 
+* Moment.js
 * React-Beautiful-DragAndDrop
+* Style-Loader
 
 ## Primary Components 
 
@@ -56,3 +59,13 @@ Event creators can broadcast important messages and alerts to all event guests.
 
 #### Chart
 Event creators can get meaningful information through charts of how many users are signed up to attend their event. 
+
+## Screenshots 
+* Web App Splash Page
+![web splash](https://i.imgur.com/rVKRdiG.png)
+
+* Web App Dashboard
+![web dash](https://i.imgur.com/F9tMs48.png)
+
+* Web App Builder
+![web appbuilder](https://i.imgur.com/dS1cLgd.png)
