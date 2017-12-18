@@ -11,7 +11,7 @@ export default class Map extends React.Component{
 
     this.state = {
       title: "", 
-      img_url: ``,
+      img_url: '',
       id: undefined
       // eventTag: undefined,
     };
@@ -22,17 +22,26 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
-    this.props.getMap(this.props.match.params.eventTag);
+  
+    // console.log(this.props);
+    
+    this.props.getMap(this.props.match.params.eventId);
   }
 
   componentWillReceiveProps(newProps){
-    // if (this.props.maps[0])
-    // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
-    this.setState({ img_url: newProps.maps[0].img_url, id: newProps.maps[0].id});
+  
+    if (newProps.maps.length > 0 ){
+      this.setState({ img_url: newProps.maps[0].img_url,
+        id: newProps.maps[0].id,
+        title: newProps.maps[0].title
+
+      });
+    }
     // }
   }
 
   handleChange(title) {
+    //
     return event => this.setState({ [title]: event.target.value });
   }
 
@@ -41,18 +50,17 @@ export default class Map extends React.Component{
   }
 
   handleSubmit(action = "create"){
-  
     // action.preventDefault();
     let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
     // newMap[eventTag] = this.props.match.params.eventTag;
     if (action === "create"){
-      this.props.createMap(this.props.match.params.eventTag, this.state);
+      this.props.createMap(this.props.match.params.eventId, this.state);
       // this.props.history.push(`/event_builder/${event.tag}/map`);
     } else {
       // this.setState({id: this.props.maps[0].id});
-      this.props.updateMap(this.props.match.params.eventTag, this.state);
+      this.props.updateMap(this.props.match.params.eventId, this.state);
       // this.props.history.push(`/event_builder/${this.props.maps[0].event_id}/map`);
     }
   }
@@ -80,6 +88,7 @@ export default class Map extends React.Component{
   }
 
   render(){
+    
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -118,7 +127,7 @@ export default class Map extends React.Component{
       <div >
         {/* {display} */}
         <div>
-          <h5>{this.props.maps[0].title}</h5>
+          <h5>{this.state.title}</h5>
           <img
             src={this.state.img_url}
           />
