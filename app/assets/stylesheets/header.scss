@@ -1,0 +1,20 @@
+// .container {
+//     width: 100%;
+//     white-space: nowrap;
+// }
+
+.navbar-header {
+  position: absolute;
+  left: 0;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 26px !important;
+  color: rgb(74,189,172) !important;
+}
+
+.navbar-nav {
+  position: absolute;
+  right: 0;
+}
