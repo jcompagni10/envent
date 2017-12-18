@@ -24,7 +24,6 @@ export default class Stats extends React.Component {
     ];
   }
   componentWillReceiveProps(newProps) {
-    // debugger;
     // if (this.props.events.all_ids.length !== newProps.events.all_ids.length) {
       this.getChartData(newProps);
     // }

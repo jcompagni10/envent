@@ -21,13 +21,11 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
-    debugger
     // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
   componentWillReceiveProps(newProps){
-    debugger
     // if (this.props.maps[0])
     // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
       this.setState({ img_url: newProps.maps[0].img_url});
@@ -35,7 +33,6 @@ export default class Map extends React.Component{
   }
 
   handleChange(title) {
-    // debugger
     return event => this.setState({ [title]: event.target.value });
   }
 
@@ -44,7 +41,6 @@ export default class Map extends React.Component{
   }
 
   handleSubmit(action = "create"){
-    debugger
     action.preventDefault();
     let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
@@ -82,7 +78,6 @@ export default class Map extends React.Component{
   }
 
   render(){
-    debugger
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -116,7 +111,6 @@ export default class Map extends React.Component{
       
       </div>
     ));
-    debugger
     return(
       <div >
         {display}

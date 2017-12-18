@@ -12,7 +12,6 @@ export default class AppBuilder extends React.Component {
 
 
   render(){
-    // debugger;
     // let data, first, last;
     // let {
     //   currentEvent,

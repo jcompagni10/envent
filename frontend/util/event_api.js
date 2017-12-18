@@ -20,7 +20,6 @@ export const getEvents = (userId) => (
 );
 
 export const patchEvent = event => {
-  debugger;
   return (
   $.ajax({
     method: "PATCH",

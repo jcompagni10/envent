@@ -28,7 +28,8 @@ export default class EventForm extends React.Component{
       location: '',
       message: '',
       start_date: moment(),
-      end_date: moment()
+      end_date: moment(),
+      id: undefined,
     };
 
     this.modules = new Set;
@@ -42,6 +43,7 @@ export default class EventForm extends React.Component{
       img_url,
       location,
       message,
+      id,
       // start_date,
       // end_date,
     } = this.props.currentEvent;
@@ -53,6 +55,7 @@ export default class EventForm extends React.Component{
         img_url,
         location,
         message,
+        id,
         // start_date,
         // end_date,
       });
