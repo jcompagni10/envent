@@ -21,7 +21,6 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
-    // console.log(this.props);
     this.props.getMap(this.props.match.params.eventTag);
   }
 
