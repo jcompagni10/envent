@@ -13,7 +13,7 @@ Envent allows users to:
 * Access events using event tag names 
 * Select modules on the web application to display on the mobile application, such as schedule, announcements, basic info, and a message board
 * Upload pictures for their event and schedule items 
-* Schedule out various events for their event 
+* Schedule various events for event
 * Message other event goers 
 * Send and recieve important event updates and announcements
 

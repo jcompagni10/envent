@@ -124,15 +124,16 @@ export default class Map extends React.Component{
     // ));
     
     return(
-      <div >
+      <div className="map-page">
         {/* {display} */}
         <div>
           <h5>{this.state.title}</h5>
           <img
+            className="img-view"
             src={this.state.img_url}
           />
           <h3>Map</h3>
-          <form action="">
+          <form className="map-form" action="">
             <input
               onChange={this.handleTitle}
               // onChange={ this.handleChange("title") }
@@ -140,6 +141,7 @@ export default class Map extends React.Component{
               name="title"
               placeholder="Map Title" />
             <Dropzone
+              className="map-dropzone"
               multiple={false}
               accept="image/*"
               onDrop={this.onImageDrop.bind(this)}>
