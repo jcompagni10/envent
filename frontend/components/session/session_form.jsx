@@ -26,8 +26,8 @@ export default class SessionForm extends React.Component {
     this.props.action(this.state);
   }
 
-  handleChange(feild, e){
-    this.setState({[feild]: e.target.value});
+  handleChange(field, e){
+    this.setState({[field]: e.target.value});
   }
 
   render(){

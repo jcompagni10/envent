@@ -37,12 +37,23 @@ export default class Schedule extends React.Component {
           data={this.props.chartData}
           options={{
             maitainAspectRatio: false,
+            // scaleShowHorizontalLines: false,
+            // scaleShowVerticalLines: false,
             scales: {
               yAxes: [{
+                gridLines: {
+                  display: false
+                },
                 display: true,
                 ticks: {
                   beginAtZero: true
                 }
+              }],
+              xAxes: [{
+                gridLines: {
+                  display: false
+                },
+                display: true,
               }]
             }
           }}

@@ -22,19 +22,10 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-=======
-  
-    // console.log(this.props);
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     this.props.getMap(this.props.match.params.eventTag);
   }
 
   componentWillReceiveProps(newProps){
-<<<<<<< HEAD
-=======
-  
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     // if (this.props.maps[0])
     // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
     this.setState({ img_url: newProps.maps[0].img_url, id: newProps.maps[0].id});
@@ -42,10 +33,6 @@ export default class Map extends React.Component{
   }
 
   handleChange(title) {
-<<<<<<< HEAD
-=======
-    //
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     return event => this.setState({ [title]: event.target.value });
   }
 
@@ -54,12 +41,8 @@ export default class Map extends React.Component{
   }
 
   handleSubmit(action = "create"){
-<<<<<<< HEAD
-    action.preventDefault();
-=======
   
     // action.preventDefault();
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
@@ -97,10 +80,6 @@ export default class Map extends React.Component{
   }
 
   render(){
-<<<<<<< HEAD
-=======
-    
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -132,14 +111,9 @@ export default class Map extends React.Component{
       //       type="submit" />
       //   </form>
       
-<<<<<<< HEAD
-      </div>
-    ));
-=======
       // </div>
     // ));
     
->>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     return(
       <div >
         {/* {display} */}

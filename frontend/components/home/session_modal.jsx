@@ -50,12 +50,14 @@ export default class SessionModal extends React.Component {
     title = this.props.modalAction === "signup" ? "Sign Up" : "Log In";
     button = this.props.modalAction === "signup" ? (
       <Button
+        type="submit"
         form="session-form"
         onClick={ this.handleSignUp }
         bsStyle="primary"
       >Sign Up</Button>
     ) : (
       <Button
+        type="submit"
         form="session-form"
         onClick={ this.handleLogIn }
         bsStyle="primary"
@@ -66,7 +68,7 @@ export default class SessionModal extends React.Component {
       <div className="static-modal">
         <Modal show={ this.props.modalOpen } onHide={this.props.closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>{ title }</Modal.Title>
+            <Modal.Title>{title}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
