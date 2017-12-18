@@ -114,12 +114,12 @@ export default class EventForm extends React.Component{
     });
   }
 
-  checkPropsForModule(module) {
-    if (this.props.currentEvent.display_elements.includes(module)) {
-      return "checked";
-    }
-    return "";
-  }
+  // checkPropsForModule(module) {
+  //   if (this.props.currentEvent.display_elements.includes(module)) {
+  //     return "checked";
+  //   }
+  //   return "";
+  // }
 
   render(){
     let {
@@ -197,10 +197,12 @@ export default class EventForm extends React.Component{
     }
 
     const checkPropsForModule = module => {
-      if (this.props.currentEvent.display_elements.includes(module)) {
-        return "checked";
+      if (this.props.match.params.eventId === undefined) {
+        return false;
+      } else if (this.props.currentEvent.display_elements.includes(module)) {
+        return true;
       }
-      return "";
+      return false;
     };
 
     return (
@@ -295,6 +297,8 @@ export default class EventForm extends React.Component{
                     <label className="form-check-label">
                       <Checkbox
                         // { checkPropsForModule(module) }
+                        checked={checkPropsForModule(module)}
+                        // checked={true}
                         key={module}
                         id="event-modules"
                         className="form-check-input"

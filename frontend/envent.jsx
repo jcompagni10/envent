@@ -43,28 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
     delete window.currentUser;
   }
   const store = configureStore(preloadedState);
-  window.store = store;
+  // window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.createScheduleItem = createScheduleItem;
-  window.fetchScheduleItem = fetchScheduleItem;
-  window.fetchScheduleItems = fetchScheduleItems;
-  window.destroyScheduleItem = destroyScheduleItem;
-  window.fetchEvent = fetchEvent;
-  window.fetchEvents = fetchEvents;
-  window.getMap = getMap;
-  window.createMap = createMap;
-  window.destroyMap = destroyMap;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.createScheduleItem = createScheduleItem;
+  // window.fetchScheduleItem = fetchScheduleItem;
+  // window.fetchScheduleItems = fetchScheduleItems;
+  // window.destroyScheduleItem = destroyScheduleItem;
+  // window.fetchEvent = fetchEvent;
+  // window.fetchEvents = fetchEvents;
+  // window.getMap = getMap;
+  // window.createMap = createMap;
+  // window.destroyMap = destroyMap;
 
-  window.createNews = createNews;
-  window.fetchSingleNews = fetchSingleNews;
-  window.fetchNews = fetchNews;
-  window.updateNews = updateNews;
-  window.removeNews = removeNews;
+  // window.createNews = createNews;
+  // window.fetchSingleNews = fetchSingleNews;
+  // window.fetchNews = fetchNews;
+  // window.updateNews = updateNews;
+  // window.removeNews = removeNews;
 
-  window.createInfo = createInfo;
-  window.fetchInfo = fetchInfo;
-  window.updateInfo = updateInfo;
+  // window.createInfo = createInfo;
+  // window.fetchInfo = fetchInfo;
+  // window.updateInfo = updateInfo;
 });

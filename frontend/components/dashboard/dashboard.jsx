@@ -11,7 +11,6 @@ export default()=>{
       <StatsContainer />
 
         <div className="dashboard-content">
-        // <div className="dashboard-create-event-link-container">
           <Link
             className="dashboard-create-event-link"
             to="/event_builder">
@@ -20,7 +19,6 @@ export default()=>{
               glyph="plus" />
             Create An Event
           </Link>
-        // </div>
         <div className="event-or">
           Or
         </div>

@@ -56,7 +56,7 @@ export default class HomeLandingPage extends React.Component {
         </div>
         <div className="landing-page-section-small">
           <h3>Engage participants. Interact with your audience. Create inspiring meetings</h3>
-          <h3 className="second-element">Your next successful event stars with Envent</h3>
+          <h3 className="second-element">Your next successful event starts with Envent</h3>
         </div>
           <button onClick={ () => this.openModal("signup") } className="landing-page-create-button-large">
           CREATE YOUR APP
