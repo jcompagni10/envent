@@ -25,10 +25,9 @@ const currentEvent = (state = _nullState, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   let index;
-  
   switch (action.type) {
     case RECEIVE_EVENT:
-      return action.event;
+      return Object.assign({}, _nullState, action.event);
 
     case RECEIVE_SCHEDULE_ITEM:
       newState.scheduleItems[action.scheduleItem.id] = action.scheduleItem;
@@ -74,9 +73,12 @@ const currentEvent = (state = _nullState, action) => {
       return newState;
     
     case RECEIVE_MAP:
-      let maps = Object.assign({}, state.maps, { [action.map.id]: action.map });
+    
+      let maps = Object.assign({}, state.maps, { [action.map]: action.map });
       newState.maps = maps;
       return newState;
+      // newState.maps = action.maps;
+      // return newState;
     case REMOVE_MAP:
       newState.maps = undefined;
       return newState;

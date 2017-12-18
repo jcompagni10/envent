@@ -6,12 +6,13 @@ export const postMap = (eventId, map) => (
   })
 );
 
-export const deleteMap = (id) => (
-  $.ajax({
-    method: 'DELETE', 
-    url: `api/maps/${id}`
-  })
-);
+// don't use
+// export const deleteMap = (id) => (
+//   $.ajax({
+//     method: 'DELETE', 
+//     url: `api/maps/${id}`
+//   })
+// );
 
 export const fetchMap = (eventId) => (
   $.ajax({

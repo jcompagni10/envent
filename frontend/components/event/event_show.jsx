@@ -25,6 +25,7 @@ export default class EventShow extends React.Component {
   }
 
   render() {
+
     let { id, display_elements } = this.props.currentEvent;
     
     if (id === undefined) {
