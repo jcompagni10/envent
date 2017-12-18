@@ -11,7 +11,7 @@ export default()=>{
       <StatsContainer />
 
         <div className="dashboard-content">
-        <div className="event-index-item-container">
+        <div className="dashboard-create-event-link-container">
           <Link
             className="dashboard-create-event-link"
             to="/event_builder">
