@@ -12,6 +12,7 @@ export default class Map extends React.Component{
     this.state = {
       title: "", 
       img_url: ``,
+      id: undefined
       // eventTag: undefined,
     };
 
@@ -21,17 +22,30 @@ export default class Map extends React.Component{
   }
 
   componentDidMount() {
+<<<<<<< HEAD
+=======
+  
+    // console.log(this.props);
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     this.props.getMap(this.props.match.params.eventTag);
   }
 
   componentWillReceiveProps(newProps){
+<<<<<<< HEAD
+=======
+  
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     // if (this.props.maps[0])
     // if (this.props.maps[0].img_url !== newProps.maps[0].img_url){
-      this.setState({ img_url: newProps.maps[0].img_url});
+    this.setState({ img_url: newProps.maps[0].img_url, id: newProps.maps[0].id});
     // }
   }
 
   handleChange(title) {
+<<<<<<< HEAD
+=======
+    //
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     return event => this.setState({ [title]: event.target.value });
   }
 
@@ -40,17 +54,23 @@ export default class Map extends React.Component{
   }
 
   handleSubmit(action = "create"){
+<<<<<<< HEAD
     action.preventDefault();
+=======
+  
+    // action.preventDefault();
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     let map = Object.assign({}, this.state);
     // this.setState({eventTag: this.props.match.params.eventTag});
     // let newMap = this.state;
     // newMap[eventTag] = this.props.match.params.eventTag;
     if (action === "create"){
       this.props.createMap(this.props.match.params.eventTag, this.state);
-      this.props.history.push(`/event_builder/${event.tag}/map`);
+      // this.props.history.push(`/event_builder/${event.tag}/map`);
     } else {
+      // this.setState({id: this.props.maps[0].id});
       this.props.updateMap(this.props.match.params.eventTag, this.state);
-      this.props.history.push(`/event_builder/${event.tag}/map`);
+      // this.props.history.push(`/event_builder/${this.props.maps[0].event_id}/map`);
     }
   }
   
@@ -77,6 +97,10 @@ export default class Map extends React.Component{
   }
 
   render(){
+<<<<<<< HEAD
+=======
+    
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     // let { currentEvent } = this.props;
     if (this.props.maps.length === 0) {
      return (
@@ -84,35 +108,66 @@ export default class Map extends React.Component{
         
       </div>);
     }
-    let display = this.props.maps.map(map => (
-      <div>
-        <h5>{map.title}</h5>
-        <img
-        src={this.state.img_url}
-        />
-        <form action="">
-          <input
-            onChange={ this.handleTitle }
-            // onChange={ this.handleChange("title") }
-            type="text"
-            name="title"
-            placeholder="Map Title" />
-          <Dropzone
-            multiple={false}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
-          </Dropzone>
-          <input
-            onClick={this.handleSubmit}
-            type="submit" />
-        </form>
+    // let display = this.props.maps(map => (
+      // <div>
+      //   <h5>{map.title}</h5>
+      //   <img
+      //   src={this.state.img_url}
+      //   />
+      //   <form action="">
+      //     <input
+      //       onChange={ this.handleTitle }
+      //       // onChange={ this.handleChange("title") }
+      //       type="text"
+      //       name="title"
+      //       placeholder="Map Title" />
+      //     <Dropzone
+      //       multiple={false}
+      //       accept="image/*"
+      //       onDrop={this.onImageDrop.bind(this)}>
+      //       <p>Drop an image or click to select a file to upload.</p>
+      //     </Dropzone>
+      //     <input
+      //       onClick={this.handleSubmit}
+      //       type="submit" />
+      //   </form>
       
+<<<<<<< HEAD
       </div>
     ));
+=======
+      // </div>
+    // ));
+    
+>>>>>>> e239886b7f2d63c6b1f2b6526b6e88a7428e176f
     return(
       <div >
-        {display}
+        {/* {display} */}
+        <div>
+          <h5>{this.props.maps[0].title}</h5>
+          <img
+            src={this.state.img_url}
+          />
+          <h3>Map</h3>
+          <form action="">
+            <input
+              onChange={this.handleTitle}
+              // onChange={ this.handleChange("title") }
+              type="text"
+              name="title"
+              placeholder="Map Title" />
+            <Dropzone
+              multiple={false}
+              accept="image/*"
+              onDrop={this.onImageDrop.bind(this)}>
+              <p>Drop an image or click to select a file to upload.</p>
+            </Dropzone>
+            <input
+              onClick={this.handleSubmit}
+              type="submit" />
+          </form>
+
+        </div>
       </div>
     );
   }
